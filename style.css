@@ -27,3 +27,21 @@ body {
     transform: scale(1.1);
     color: #1976D2;
 }
+.comilla-grande {
+    font-family: serif; /* Puedes elegir otra fuente */
+    font-size: 2.5em;
+    color: #bbb;
+    line-height: 1; /* Ajusta la altura de línea para que no afecte demasiado al texto */
+}
+
+.comilla-grande.izquierda {
+    vertical-align: top; /* Alinea la parte superior de la comilla con el texto */
+    margin-right: 0.2em; /* Un poco de espacio a la derecha */
+    font-size: 2.5em;
+}
+
+.comilla-grande.derecha {
+    vertical-align: bottom; /* Alinea la parte inferior de la comilla con el texto */
+    margin-left: 0.2em; /* Un poco de espacio a la izquierda */
+    font-size: 2.5em;
+}

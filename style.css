@@ -29,19 +29,19 @@ body {
 }
 .comilla-grande {
     font-family: serif; /* Puedes elegir otra fuente */
-    font-size: 2.5em;
+    font-size: 4em; 
     color: #bbb;
-    line-height: 1; /* Ajusta la altura de línea para que no afecte demasiado al texto */
+    line-height: 0; /* Ajusta la altura de línea para que no afecte demasiado al texto */
 }
 
 .comilla-grande.izquierda {
-    vertical-align: top; /* Alinea la parte superior de la comilla con el texto */
+    vertical-align: bottom; /* Alinea la parte superior de la comilla con el texto */
     margin-right: 0.2em; /* Un poco de espacio a la derecha */
-    font-size: 2.5em;
+
 }
 
 .comilla-grande.derecha {
     vertical-align: bottom; /* Alinea la parte inferior de la comilla con el texto */
-    margin-left: 0.2em; /* Un poco de espacio a la izquierda */
-    font-size: 2.5em;
+    margin-left: 0.1em; /* Un poco de espacio a la izquierda */
+
 }

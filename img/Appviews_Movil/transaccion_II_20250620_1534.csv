@@ -1,0 +1,2 @@
+﻿ID_Transaccion,Fecha_Hora,Tipo_Transaccion,ID_Usuario,ID_Proveedor,ID_Cliente,Referencia_Documento,Notas_Transaccion,Ajuste,Image_Transaccion,ID_Empresa
+II_20250620_1534,2025/06/20 15:34:51,II,,,,,Carga de Inventario Inicial segun inventario_inicial_20250620_1534.csv,TRUE,,

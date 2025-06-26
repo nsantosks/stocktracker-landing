@@ -2,7 +2,7 @@
 
 Esta es la página de aterrizaje (landing page) para **StockTracker**, una plantilla de AppSheet diseñada para la gestión de inventario y activos en Pymes. El objetivo es presentar el producto, sus características, módulos y precio de una forma clara y atractiva.
 
-### ✨ [Ver la Demo en Vivo](https://nsantosks.github.io/stocktracker-landing/)
+### ✨ [Ver la Demo en Vivo](https://www.linkedin.com/in/ingnsantos/)
 
 ---
 

@@ -1,2 +1,0 @@
-﻿ID_Producto,Nombre_Producto,Descripcion,Codigo_Fab,Categoria,SubCategoria,Unidad_Medida,Imagen,Codigo_Barras_QR,ID_Proveedor_Principal,Stock_Minimo,Ubicacion_Predeterminada,Notas_Producto,Activo,Fecha_Registro_item,ID_Usuario,ID_Empresa,Inventario_Incial
-STCK1001,Valvula de Freno Fiat Uno,Valvula de Freno Fiat Uno Fire 1,STCK1001,Valvulas,Valvulas,UND,,,,2,V1-02,,TRUE,2025/06/20,,,0

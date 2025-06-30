@@ -1,0 +1,23 @@
+{
+  "name": "stocktracker-landing",
+  "version": "1.0.0",
+  "description": "Esta es la página de aterrizaje (landing page) para **StockTracker**, una plantilla de AppSheet diseñada para la gestión de inventario y activos en Pymes. El objetivo es presentar el producto, sus características, módulos y precio de una forma clara y atractiva.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nsantosks/stocktracker-landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nsantosks/stocktracker-landing/issues"
+  },
+  "homepage": "https://github.com/nsantosks/stocktracker-landing#readme",
+  "dependencies": {
+    "mailgun.js": "^12.0.3"
+  }
+}

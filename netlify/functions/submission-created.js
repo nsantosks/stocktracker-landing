@@ -1,19 +1,24 @@
 // netlify/functions/submission-created.js
-const sgMail = require('@sendgrid/mail');
+const formData = require('form-data');
+const Mailgun = require('mailgun.js');
+
+const mailgun = new Mailgun(formData);
+// Necesitamos la API Key Y el dominio
+const mg = mailgun.client({
+    username: 'api',
+    key: process.env.MAILGUN_API_KEY,
+});
+const mailgunDomain = process.env.MAILGUN_DOMAIN;
 
 exports.handler = async (event) => {
-    // Usamos una variable de entorno para la API Key por seguridad
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    
-    // Parseamos los datos del formulario que Netlify nos envía
     const payload = JSON.parse(event.body).payload.data;
     const buyerEmail = payload.email;
     const buyerName = payload.name;
     const plan = payload.plan;
 
     const msg = {
-        to: buyerEmail, // Correo del comprador
-        from: 'tu-email-verificado@tudominio.com', // ¡IMPORTANTE! Debe ser un email verificado en SendGrid
+        from: `El equipo de StockTracker <mail@${mailgunDomain}>`, // Remitente
+        to: [buyerEmail], // Correo del comprador
         subject: `Confirmación de tu interés en StockTracker - Plan ${plan}`,
         html: `
             <div style="font-family: sans-serif; line-height: 1.6;">
@@ -28,19 +33,16 @@ exports.handler = async (event) => {
     };
 
     try {
-        await sgMail.send(msg);
-        console.log('Correo de confirmación enviado a', buyerEmail);
+        await mg.messages.create(mailgunDomain, msg);
+        console.log('Correo de confirmación enviado vía Mailgun a', buyerEmail);
         return {
             statusCode: 200,
             body: 'Correo enviado exitosamente.',
         };
     } catch (error) {
-        console.error('Error al enviar el correo:', error);
-        if (error.response) {
-            console.error(error.response.body);
-        }
+        console.error('Error al enviar el correo con Mailgun:', error);
         return {
-            statusCode: error.code,
+            statusCode: 500,
             body: JSON.stringify({ msg: 'Error al enviar el correo.' }),
         };
     }

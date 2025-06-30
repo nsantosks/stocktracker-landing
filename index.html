@@ -321,7 +321,7 @@
                 <div class="max-w-5xl mx-auto bg-white p-2 rounded-xl shadow-2xl border">
                     <iframe
                         class="w-full aspect-video rounded-lg"
-                        src="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab"
+                        ''src="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab"
                         title="Demo de StockTracker"
                         frameborder="0"
                         allow="fullscreen"
@@ -364,7 +364,7 @@
                             <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Roles de usuario pre-configurados.</li>
                         </ul>
 
-                        <a href="https://wa.link/nu0i6t" target="_blank" rel="noopener noreferrer" class="w-full mt-auto bg-gray-200 text-primary font-bold py-3 px-6 rounded-full text-lg hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg text-center">
+                        <a href="#" data-plan="Esencial" data-paypal-url="https://www.paypal.com/ncp/payment/6R7TRSBXUAGP8" class="w-full mt-auto bg-gray-200 text-primary font-bold py-3 px-6 rounded-full text-lg hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg text-center">
                             Obtener Plantilla
                         </a>
                     </div>
@@ -405,7 +405,7 @@
                             </li>
                         </ul>
 
-                        <a href="https://wa.link/5g5v5d" target="_blank" rel="noopener noreferrer" class="w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
+                        <a href="#" data-plan="Profesional" data-paypal-url="https://www.paypal.com/ncp/payment/ALQK2Q7X6KYVG" class="w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
                             Asegurar mi Plaza Pro
                         </a>
             </div>  
@@ -438,7 +438,7 @@
                             </li>
                         </ul>
 
-                        <a href="https://wa.link/650405" target="_blank" rel="noopener noreferrer" class="w-full mt-auto bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">
+                        <a href="#" data-plan="A Medida" data-paypal-url="https://wa.link/650405"  class="w-full mt-auto bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">
                             Solicitar Cotización
                         </a>
                     </div>
@@ -495,24 +495,219 @@
     </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    document.addEventListener('DOMContentLoaded', function() {
+        // ---- SMOOTH SCROLL (YA LO TENÍAS) ----
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        for (let anchorLink of anchorLinks) {
+            anchorLink.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.length > 1) { // Evitar que los href="#" de los botones de pago hagan scroll
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        }
 
-    for (let anchorLink of anchorLinks) {
-        anchorLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+        // ---- LÓGICA DEL MODAL DE PAGO ----
+        const paymentButtons = document.querySelectorAll('.payment-btn');
+        const modal = document.getElementById('checkout-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const form = document.getElementById('checkout-form');
+        const planInput = document.getElementById('plan-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        
+        let redirectUrl = '';
 
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+        const openModal = (plan, url) => {
+            planInput.value = plan;
+            redirectUrl = url;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+        };
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            form.reset(); // Limpiar el formulario al cerrar
+            resetSubmitButton();
+        };
+        
+        const resetSubmitButton = () => {
+            submitText.textContent = 'Guardar y Continuar';
+            submitBtn.disabled = false;
+            loadingSpinner.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+        };
+
+        paymentButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const plan = button.dataset.plan;
+                const url = button.dataset.paypalUrl;
+                openModal(plan, url);
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
         });
-    }
-});
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validación simple
+            const requiredFields = form.querySelectorAll('[required]');
+            let allFieldsValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFieldsValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+
+            const emailField = form.querySelector('input[type="email"]');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailField.value)) {
+                allFieldsValid = false;
+                emailField.style.borderColor = 'red';
+            }
+
+            if (!allFieldsValid) {
+                errorMessage.textContent = 'Por favor, completa todos los campos marcados.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            errorMessage.classList.add('hidden');
+            submitText.textContent = 'Guardando...';
+            submitBtn.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                if (response.ok) {
+                    // Éxito: El correo se enviará automáticamente vía Netlify Function
+                    // Redirigir al destino final
+                    window.location.href = redirectUrl;
+                } else {
+                    throw new Error('Hubo un problema al enviar el formulario.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Error al guardar. Por favor, intenta de nuevo.';
+                errorMessage.classList.remove('hidden');
+                resetSubmitButton();
+            }
+        });
+    });
 </script>
+
+<!-- Checkout Modal -->
+<div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto" id="modal-content">
+        <!-- Formulario con integración para Netlify Forms -->
+        <form id="checkout-form" name="lead-capture" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <!-- Campo oculto para Netlify -->
+            <input type="hidden" name="form-name" value="lead-capture" />
+            <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
+            
+            <!-- Campo oculto para saber qué plan eligió el cliente -->
+            <input type="hidden" id="plan-input" name="plan" value="">
+            
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Formulario de Compra</h2>
+                        <p class="text-gray-500 mt-1">Completa tus datos para continuar con el pago.</p>
+                    </div>
+                    <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-700" aria-label="Cerrar modal">×</button>
+                </div>
+
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Nombre y Apellido / Razón Social -->
+                    <div class="sm:col-span-2">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre y Apellido o Razón Social</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- DNI / Cédula / RIF -->
+                    <div>
+                        <label for="tax-id" class="block text-sm font-medium text-gray-700">DNI / Cédula / RIF</label>
+                        <input type="text" id="tax-id" name="tax-id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
+                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- Correo Electrónico -->
+                    <div class="sm:col-span-2">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- Dirección Completa -->
+                    <div class="sm:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Dirección de Facturación</label>
+                    </div>
+                    <div>
+                        <label for="country" class="block text-xs text-gray-500">País</label>
+                        <input type="text" id="country" name="country" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="state" class="block text-xs text-gray-500">Estado / Provincia</label>
+                        <input type="text" id="state" name="state" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="address" class="block text-xs text-gray-500">Dirección Específica (Calle, número, etc.)</label>
+                        <input type="text" id="address" name="address" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer del Modal -->
+            <div class="bg-gray-50 p-6 sm:p-8 rounded-b-xl flex flex-col sm:flex-row-reverse items-center gap-4">
+                <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                    <span id="submit-text">Guardar y Continuar</span>
+                    <!-- Indicador de Carga -->
+                    <div id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-3"></div>
+                </button>
+                <button type="button" id="cancel-btn" class="w-full sm:w-auto text-gray-600 font-medium py-3 px-6 hover:text-gray-900">Cancelar</button>
+            </div>
+             <p id="error-message" class="text-red-600 text-center text-sm p-4 hidden"></p>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

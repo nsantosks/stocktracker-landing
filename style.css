@@ -48,22 +48,64 @@ body {
 
 /* Estilos personalizados para el slider de Swiper.js */
 
-.modules-slider .swiper-button-next,
-.modules-slider .swiper-button-prev {
+/* Estilos ACTUALIZADOS para el slider de Swiper.js */
+
+/* Estilos para las flechas de navegación */
+.swiper-button-next,
+.swiper-button-prev {
     color: #1976D2; /* Tu color primario */
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, color 0.3s;
+
+    /* Posicionamiento FUERA del slider, en el contenedor padre */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.modules-slider .swiper-button-next:after,
-.modules-slider .swiper-button-prev:after {
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #1976D2;
+    color: white;
+}
+
+/* Ajuste fino del icono de la flecha */
+.swiper-button-next:after,
+.swiper-button-prev:after {
     font-size: 20px;
     font-weight: 800;
 }
 
-.modules-slider .swiper-pagination-bullet-active {
+/* Posición específica para cada flecha */
+.swiper-button-prev {
+    left: 0;
+}
+.swiper-button-next {
+    right: 0;
+}
+
+/* Estilos para la paginación (puntos) */
+.swiper-pagination {
+    position: absolute;
+    bottom: 0; /* Lo posicionamos en la parte inferior del padding que creamos */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* Para que se ajuste al contenido */
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #d1d5db; /* Un gris claro para los inactivos */
+    opacity: 1;
+    transition: background-color 0.3s;
+}
+
+.swiper-pagination-bullet-active {
     background-color: #1976D2; /* Tu color primario */
 }

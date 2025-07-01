@@ -30,7 +30,7 @@
                 <a href="#exploracion" class="text-gray-600 hover:text-primary transition-colors font-medium">Explorar</a>
                 <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Precio</a>
                 <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">F&Q</a>
-                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
+                <a href="#cta" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
             </div>
             <div class="md:hidden">
                 <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
@@ -563,7 +563,7 @@
         </div>
     </footer>
 
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         // ---- SMOOTH SCROLL (YA LO TENÍAS) ----
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -697,7 +697,7 @@
             }
         });
 
-                // ---- INICIALIZACIÓN DEL SLIDER DE MÓDULOS ----
+        // ---- INICIALIZACIÓN DEL SLIDER DE MÓDULOS ----
         const modulesSwiper = new Swiper('.modules-slider', {
             // Opciones de configuración
             loop: true, // Para que el slider sea infinito
@@ -721,86 +721,86 @@
             },
         });
     });
-</script>
+    </script>
 
-<!-- Checkout Modal -->
-<div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto" id="modal-content">
-        <!-- Formulario con integración para Netlify Forms -->
-        <form id="checkout-form" name="lead-capture" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-            <!-- Campo oculto para Netlify -->
-            <input type="hidden" name="form-name" value="lead-capturel" />
-            <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
-            
-            <!-- Campo oculto para saber qué plan eligió el cliente -->
-            <input type="hidden" id="plan-input" name="plan" value="">
-            
-            <div class="p-6 sm:p-8">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Formulario de Compra</h2>
-                        <p class="text-gray-500 mt-1">Completa tus datos para continuar con el pago.</p>
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto" id="modal-content">
+            <!-- Formulario con integración para Netlify Forms -->
+            <form id="checkout-form" name="lead-capture" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <!-- Campo oculto para Netlify -->
+                <input type="hidden" name="form-name" value="lead-capture" />
+                <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
+                
+                <!-- Campo oculto para saber qué plan eligió el cliente -->
+                <input type="hidden" id="plan-input" name="plan" value="">
+                
+                <div class="p-6 sm:p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Formulario de Compra</h2>
+                            <p class="text-gray-500 mt-1">Completa tus datos para continuar con el pago.</p>
+                        </div>
+                        <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-700" aria-label="Cerrar modal">×</button>
                     </div>
-                    <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-700" aria-label="Cerrar modal">×</button>
+
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                        <!-- Nombre y Apellido / Razón Social -->
+                        <div class="sm:col-span-2">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre y Apellido o Razón Social</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- DNI / Cédula / RIF -->
+                        <div>
+                            <label for="tax-id" class="block text-sm font-medium text-gray-700">DNI / Cédula / RIF</label>
+                            <input type="text" id="tax-id" name="tax-id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="sm:col-span-2">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Dirección Completa -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Dirección de Facturación</label>
+                        </div>
+                        <div>
+                            <label for="country" class="block text-xs text-gray-500">País</label>
+                            <input type="text" id="country" name="country" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-xs text-gray-500">Estado / Provincia</label>
+                            <input type="text" id="state" name="state" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="address" class="block text-xs text-gray-500">Dirección Específica (Calle, número, etc.)</label>
+                            <input type="text" id="address" name="address" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                    <!-- Nombre y Apellido / Razón Social -->
-                    <div class="sm:col-span-2">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre y Apellido o Razón Social</label>
-                        <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-
-                    <!-- DNI / Cédula / RIF -->
-                    <div>
-                        <label for="tax-id" class="block text-sm font-medium text-gray-700">DNI / Cédula / RIF</label>
-                        <input type="text" id="tax-id" name="tax-id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-
-                    <!-- Teléfono -->
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
-                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-
-                    <!-- Correo Electrónico -->
-                    <div class="sm:col-span-2">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-
-                    <!-- Dirección Completa -->
-                    <div class="sm:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700">Dirección de Facturación</label>
-                    </div>
-                    <div>
-                        <label for="country" class="block text-xs text-gray-500">País</label>
-                        <input type="text" id="country" name="country" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-                    <div>
-                        <label for="state" class="block text-xs text-gray-500">Estado / Provincia</label>
-                        <input type="text" id="state" name="state" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
-                    <div class="sm:col-span-2">
-                        <label for="address" class="block text-xs text-gray-500">Dirección Específica (Calle, número, etc.)</label>
-                        <input type="text" id="address" name="address" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
-                    </div>
+                <!-- Footer del Modal -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-b-xl flex flex-col sm:flex-row-reverse items-center gap-4">
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                        <span id="submit-text">Guardar y Continuar</span>
+                        <!-- Indicador de Carga -->
+                        <div id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-3"></div>
+                    </button>
+                    <button type="button" id="cancel-btn" class="w-full sm:w-auto text-gray-600 font-medium py-3 px-6 hover:text-gray-900">Cancelar</button>
                 </div>
-            </div>
-
-            <!-- Footer del Modal -->
-            <div class="bg-gray-50 p-6 sm:p-8 rounded-b-xl flex flex-col sm:flex-row-reverse items-center gap-4">
-                <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
-                    <span id="submit-text">Guardar y Continuar</span>
-                    <!-- Indicador de Carga -->
-                    <div id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-3"></div>
-                </button>
-                <button type="button" id="cancel-btn" class="w-full sm:w-auto text-gray-600 font-medium py-3 px-6 hover:text-gray-900">Cancelar</button>
-            </div>
-             <p id="error-message" class="text-red-600 text-center text-sm p-4 hidden"></p>
-        </form>
+                <p id="error-message" class="text-red-600 text-center text-sm p-4 hidden"></p>
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 </html>

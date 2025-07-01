@@ -39,27 +39,37 @@
 
     <main>
         <!-- Hero Section -->
+        <!-- Hero Section (Optimizado con Art Direction) -->
         <section class="relative pt-20 pb-24 text-center overflow-hidden">
             <div class="hero-pattern"></div>
             <div class="container mx-auto px-6 z-10">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
-                    Deja de trabajar para tu hoja Excel y toma el control total de tu inventario.
+                    Deja atrás el Excel. Toma el control total de tu inventario.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    StockTracker es la plantilla de AppSheet definitiva para Pymes, Almacenes y Auditores que te permite gestionar productos y activos de forma fácil, rápida y sin errores.
+                    StockTracker es la plantilla de AppSheet definitiva para Pymes que te permite gestionar productos y activos de forma fácil, rápida y sin errores.
                 </p>
                 <a href="#exploracion" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
                     Explora la Demo en Vivo
                 </a>
                 <div class="mt-12">
-                    <p class="text-sm md:text-sm text-gray-600 max-w-3xl mx-auto mb-8">
-                        <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
-                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> La plantilla más usada por Pymes, Almacenes y Auditores en toda Latinoamérica.</li>
-                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> No requiere conocimientos de programación.</li>
-                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> Trabaja de forma colaborativa en tu Móvil o PC.</li>
-                        </ul>
-                    </p>
-                    <img src="img/banner-03.png" alt="Pantalla de inicio de la aplicación StockTracker" class="max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
+                    <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> La plantilla más usada por Pymes, Almacenes y Auditores en toda Latinoamérica.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> No requiere conocimientos de programación.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> Trabaja de forma colaborativa en tu Móvil o PC.</li>
+                    </ul>
+
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA MÓVIL: Imagen vertical -->
+                    <!-- Se muestra por defecto y se oculta en pantallas medianas (md:hidden) -->
+                    <!-- =============================================================== -->
+                    <img src="img/movil-main-01.jpeg" alt="Aplicación StockTracker en un teléfono móvil" class="mx-auto rounded-lg shadow-2xl border-4 border-gray-200 w-full max-w-sm md:hidden"> 
+
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA ESCRITORIO: Imagen panorámica -->
+                    <!-- Oculta por defecto, se muestra en pantallas medianas (hidden md:block) -->
+                    <!-- =============================================================== -->
+                    <img src="img/banner-03.png" alt="Pantalla de inicio de la aplicación StockTracker" class="hidden md:block max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
                 </div>
             </div>
         </section>
@@ -304,7 +314,7 @@
                     <!-- Testimonio 1 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md"> 
                         <div class="flex items-center">
-                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/cliente1.jpg" alt="Foto de María González">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/ana-maria-gonzalez.png" alt="Foto de Ana María González">
                             <div>
                                 <p class="font-bold text-gray-900">Ana María González</p>
                                 <p class="text-sm text-gray-500">Dueña de "Moda Urbana" Boutique</p>
@@ -316,7 +326,7 @@
                     <!-- Testimonio 2 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md">
                         <div class="flex items-center">
-                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/cliente2.jpg" alt="Foto de Marim Jiménez">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/marim-jimenez.png" alt="Foto de Marim Jiménez">
                             <div>
                                 <p class="font-bold text-gray-900">Marim Jiménez</p>
                                 <p class="text-sm text-gray-500">Abogado, Contador y Auditor</p>
@@ -329,7 +339,7 @@
                     <!-- Testimonio 3 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md">
                         <div class="flex items-center">
-                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/cliente3.jpg" alt="Foto de Carlos Rodríguez">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/carlos-betancourt.png" alt="Foto de Carlos Betancourt">
                             <div>
                                 <p class="font-bold text-gray-900">Carlos Betancourt</p>
                                 <p class="text-sm text-gray-500">Gerente de "Servi-Auto Rápido"</p>
@@ -359,15 +369,15 @@
                     <!-- Se muestra en pantallas pequeñas y se oculta en medianas y grandes (md:hidden) -->
                     <!-- =============================================================== -->
                     <div class="md:hidden relative">
-                        <img src="img/appviews-desktop/02-01-main-page.png" alt="Previsualización de StockTracker en un dispositivo" class="rounded-xl shadow-2xl border w-full">
+                        <img src="img/movil-main-01.jpeg" alt="Previsualización de StockTracker en un dispositivo" class="rounded-xl shadow-2xl border w-full">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
                             <a href="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab" target="_blank" rel="noopener noreferrer" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
                                 Abrir Demo en Vivo
                             </a>
                         </div>
-                    </div>
+                    </div> 
 
-                    <!-- =============================================================== -->
+                    <!-- =============================================================== --> 
                     <!-- VERSIÓN PARA ESCRITORIO (iframe interactivo) -->
                     <!-- Está oculta por defecto y se muestra en pantallas medianas y grandes (hidden md:block) -->
                     <!-- =============================================================== -->

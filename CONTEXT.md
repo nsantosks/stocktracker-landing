@@ -1,6 +1,6 @@
 # **Documento de Contexto y Traspaso: Landing Page de StockTracker**
 
-**Fecha de Creación:** 2024-10-27
+**Fecha de Creación:** 2025-07-01
 **Versión del Proyecto:** 1.2 (Implementación de Flujo de Pago con Modales)
 **Autor del Documento:** (/[Creado por Ing. Nestor Santos/ Gammaliel Analytics](https://www.linkedin.com/in/ingnsantos/), con asistencia de Gemmini 2.5 Pro)
 
@@ -19,134 +19,93 @@
 
 ---
 
-### **1. Resumen del Proyecto**
+# Proyecto: Landing Page de StockTracker
 
-Este proyecto es una **página de aterrizaje (landing page) estática** cuyo objetivo principal es **vender una plantilla de AppSheet llamada "StockTracker"**. La página está diseñada para ser un embudo de ventas completo, guiando al usuario desde el descubrimiento del problema hasta la compra.
+Este documento resume el estado actual del proyecto de la página de aterrizaje para la plantilla de AppSheet "StockTracker". El objetivo es proporcionar un contexto completo a un asistente de IA (LLM) para continuar con el desarrollo.
 
-**Público Objetivo Principal:**
-*   Dueños de Pequeñas y Medianas Empresas (Pymes) que gestionan inventario físico (tiendas, talleres, bodegas, e-commerce).
-*   **Público Objetivo Secundario (Nicho de Alto Valor):** Contadores y Auditores que realizan tomas físicas de inventario para sus clientes.
+## 1. Resumen del Proyecto
 
-**Problema que Resuelve:** La gestión de inventario manual, tediosa y propensa a errores que se realiza comúnmente con hojas de cálculo (Excel).
+- **Producto:** Una plantilla de AppSheet llamada StockTracker para la gestión de inventarios.
+- **Objetivo de la Página:** Servir como una página de ventas profesional, explicando las características, beneficios y precios del producto, y capturando leads a través de un flujo de pago.
+- **Público Objetivo Principal:** Pequeñas y medianas empresas (Pymes) en Latinoamérica.
+- **Público Objetivo Secundario:** Contadores y Auditores que realizan inventarios para clientes.
 
-**Solución Propuesta:** Una plantilla de AppSheet robusta y accesible que centraliza, simplifica y automatiza el control de inventario.
+## 2. Pila Tecnológica (Tech Stack)
 
----
+- **Frontend:** HTML5, Tailwind CSS (vía CDN), Vanilla JavaScript.
+- **Librerías Externas:** Swiper.js (para el slider de módulos, vía CDN).
+- **Hosting:** Netlify.
+- **Formularios y Backend:** Netlify Forms (para captura de leads) y Notificaciones Nativas de Netlify (para el envío de correos de confirmación).
 
-### **2. Pila Tecnológica**
-
-El proyecto es deliberadamente simple para garantizar un rendimiento rápido y un mantenimiento fácil.
-
-*   **HTML5:** Para la estructura semántica del contenido.
-*   **CSS3 (archivo `style.css`):** Para estilos personalizados y clases reutilizables.
-*   **Tailwind CSS (vía CDN):** Framework principal para el diseño responsivo (mobile-first) y utilidades de estilo.
-*   **JavaScript (vanilla, en línea):** Para funcionalidades interactivas como el scroll suave y la lógica de los modales de pago.
-*   **Fuentes:** Google Fonts (familia 'Inter').
-*   **Hosting:** Desplegado en GitHub Pages.
-
----
-
-### **3. Estructura de Archivos**
-
-La estructura del proyecto es la siguiente:
+## 3. Estructura de Archivos
 
 ```
 stocktracker-landing/
-│
 ├── img/
-│   ├── appviews-desktop/ (Capturas de la app)
-│   ├── testimonials/     (Fotos para testimonios)
-│   ├── logo-footer.png
-│   └── logo-header.png
-│
-├── index.html          (Archivo principal de la página)
-├── style.css           (Estilos personalizados)
-├── README.md           (Documentación pública del proyecto)
-└── CONTEXT.md          (Este documento)
+│   ├── appviews-desktop/ (imágenes de la app)
+│   ├── testimonials/ (fotos de los clientes)
+│   ├── banner-03.png (imagen hero para escritorio)
+│   ├── hero-mobile.png (imagen hero para móvil)
+│   └── ... (otros logos e imágenes)
+├── index.html       # Archivo principal de la página
+├── style.css        # Estilos personalizados (colores, slider, etc.)
+├── CONTEXT.md       # Este mismo archivo
+└── README.md        # Descripción general para GitHub
 ```
 
----
+## 4. Características Principales y Flujo de la Página
 
-### **4. Guía de Estilo y Branding**
+La página está estructurada como un embudo de ventas:
 
-*   **Fuente Principal:** 'Inter' de Google Fonts.
-*   **Color Primario (Azul):** `#1976D2` (Clase: `.bg-primary`, `.text-primary`, `.border-primary`)
-*   **Color Secundario (Gris Claro):** `#F5F5F5` (Clase: `.bg-secondary`)
-*   **Logo:** Se utilizan dos versiones, una para el header y otra para el footer, ubicadas en la carpeta `img/`.
+1.  **Header Pegajoso (Sticky):** Con navegación a las secciones clave.
+2.  **Sección Hero:** Con un título potente y "Art Direction" (imágenes separadas para móvil y escritorio para evitar cortes).
+3.  **Sección de Funciones:** Tarjetas que describen las capacidades de la app.
+4.  **Sección "Para Quién Es":** Define y conecta con el público objetivo.
+5.  **Sección de Módulos:** **Implementada como un slider de Swiper.js** para ser más compacta e interactiva. Los textos están reescritos para enfocarse en beneficios.
+6.  **Sección de Testimonios:** Prueba social con 3 perfiles de cliente clave.
+7.  **Sección de Demo Interactiva:** Con "Art Direction":
+    -   **Móvil:** Muestra una imagen y un botón para abrir la demo en una nueva pestaña (evita sobrecargar el dispositivo).
+    -   **Escritorio:** Muestra un `<iframe>` con la demo interactiva funcional.
+8.  **Sección de Precios:** Estructura de 3 niveles:
+    -   **Esencial:** El producto base.
+    -   **Profesional:** El más popular, destacado visualmente y con un toque de escasez ("¡Plazas limitadas!").
+    -   **A Medida:** Para proyectos personalizados.
+9.  **Sección de FAQ:** Responde a las objeciones más comunes.
+10. **Sección CTA (Call to Action):** Un último llamado a la acción. El botón tiene texto y padding responsivos para evitar cortes en móvil.
+11. **Footer:** Con un toque personal del creador.
 
----
+## 5. Funcionalidad Interactiva Clave: Flujo de Pago
 
-### **5. Lógica y Funcionalidades Clave**
+El flujo de pago está implementado completamente en el frontend con JavaScript y se integra con Netlify Forms.
 
-#### 5.1 Scroll Suave
-Un script simple en `index.html` captura los clics en los enlaces de ancla (`<a href="#...">`) y realiza un desplazamiento suave hacia la sección correspondiente.
+1.  **Activación:** El usuario hace clic en uno de los botones de la sección de precios (`.payment-btn`).
+2.  **Apertura del Modal:** Se abre un formulario modal responsive (`#checkout-modal`). El plan seleccionado (`data-plan`) y la URL de redirección (`data-paypal-url`) se almacenan en variables de JavaScript.
+3.  **Captura de Datos:** El usuario rellena el formulario con su información. El formulario incluye validación básica para campos obligatorios y formato de email.
+4.  **Envío del Formulario:**
+    -   Al hacer clic en "Guardar y Continuar", se muestra un indicador de carga.
+    -   Los datos del formulario se envían a Netlify Forms usando una petición `fetch`.
+5.  **Redirección:** Si el envío a Netlify es exitoso, el usuario es redirigido a la URL de PayPal o WhatsApp correspondiente.
+6.  **Confirmación por Correo:** **No se usa una función serverless.** Se ha configurado una **notificación nativa de Netlify Forms** para que, tras cada envío exitoso, envíe automáticamente un correo de confirmación al email proporcionado por el cliente.
 
-#### 5.2 Modales de Flujo de Pago (Lógica más compleja)
-Esta es la funcionalidad más avanzada y se controla con el JavaScript al final de `index.html`.
+## 6. Enlaces Externos y Endpoints
 
-*   **Activación:** Los botones de compra no son enlaces (`<a>`), son botones (`<button>`) que llaman a la función `openPaymentModal('plan')`. El parámetro `'plan'` ('esencial', 'pro', 'medida') se guarda en la variable `selectedPlan` para un uso futuro.
-*   **Modal 1 (Elección):** Se muestra el modal `#payment-choice-modal`, que permite elegir entre "Transferencia Bancaria" y "PayPal".
-*   **Modal 2 (Formulario Bancario):** Si se elige transferencia, se oculta el Modal 1 y se muestra `#bank-form-modal`. Este modal contiene los datos bancarios y un formulario para reportar el pago.
-    *   **Envío del Formulario:** El evento `submit` del formulario es capturado para prevenir la recarga de la página (`e.preventDefault()`). **Actualmente, este formulario es solo front-end.** La lógica para enviar los datos a un backend no está implementada.
-*   **Opción PayPal:** Si se elige PayPal, se llama a la función `redirectToPaypal()`. **Actualmente, esta función muestra una alerta y debe ser configurada con el enlace de pago de PayPal real.**
-*   **Modal 3 (Éxito):** Tras el envío "exitoso" del formulario bancario, se muestra el modal `#success-modal`.
-*   **Cierre de Modales:** La función `closeModal()` oculta todos los modales. Se puede activar con los botones de "Cancelar" o haciendo clic fuera del contenido del modal.
+-   **Plan Esencial (PayPal):** `https://www.paypal.com/ncp/payment/6R7TRSBXUAGP8`
+-   **Plan Profesional (PayPal):** `https://www.paypal.com/ncp/payment/ALQK2Q7X6KYVG`
+-   **Plan a Medida (WhatsApp):** `https://wa.link/650405`
+-   **Demo AppSheet:** `https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab`
 
-**Código de Control de Modales (Snapshot):**
-```javascript
-// (Fragmento del JS en index.html)
-const modalContainer = document.getElementById('modal-container');
-// ... (otras declaraciones de variables de modales)
+## 7. Flujo de Desarrollo y Despliegue
 
-let selectedPlan = '';
+-   El código fuente se gestiona en un repositorio de Git.
+-   El repositorio está alojado en GitHub.
+-   El sitio está conectado a Netlify.
+-   **El despliegue es continuo y automático:** Cada vez que se hace un `git push` a la rama `main`, Netlify reconstruye y despliega la nueva versión del sitio automáticamente.
 
-function openPaymentModal(plan) {
-    selectedPlan = plan;
-    modalContainer.style.display = 'flex';
-    paymentChoiceModal.style.display = 'block';
-    // ... (lógica para ocultar otros modales)
-}
-// ... (resto de las funciones: closeModal, showBankForm, redirectToPaypal, etc.)
-```
+## 8. Estado Actual y Últimos Cambios Implementados
 
----
-
-### **6. Estrategia de Contenido y Ventas**
-
-La página está estructurada como un embudo de ventas que utiliza varios disparadores psicológicos:
-
-*   **Copywriting Orientado a Beneficios:** El texto (especialmente en la sección de "Módulos") se enfoca en el resultado que obtiene el cliente, no en la característica técnica.
-*   **Prueba Social:** La sección de testimonios valida las afirmaciones del producto con casos de uso reales de los tres perfiles de cliente objetivo.
-*   **Autoridad:** Frases sutiles como "Como usan los profesionales" posicionan la herramienta como una solución estándar de la industria.
-*   **Precios por Niveles (Tiered Pricing):** Se utiliza el modelo de 3 opciones (Esencial, Profesional, A Medida) para anclar el precio y hacer que el "Paquete Profesional" se perciba como la mejor oferta (efecto "Más Popular").
-*   **Escasez/Urgencia:** En el paquete profesional se añadió la línea "¡Plazas de implementación limitadas cada mes!" y el botón "Asegurar mi Plaza Pro" para incentivar la toma de decisión y combatir la procrastinación del comprador.
-
----
-
-### **7. Flujo de Trabajo de Desarrollo y Despliegue**
-
-*   **Control de Versiones:** El proyecto se gestiona con Git y está alojado en un repositorio de GitHub.
-*   **Comandos de Actualización:** El flujo de trabajo estándar para subir cambios es:
-    1.  `git add .` (Añadir todos los cambios)
-    2.  `git commit -m "Descripción clara del cambio"` (Guardar los cambios localmente)
-    3.  `git push origin main` (Subir los cambios a GitHub)
-*   **Despliegue (Deployment):** El sitio está desplegado automáticamente a través de **GitHub Pages** desde la rama `main`. Cualquier `push` a esta rama actualizará el sitio en vivo en minutos.
-
----
-
-### **8. Estado Actual y Próximos Pasos**
-
-**Estado Actual:**
-El desarrollo del front-end de la landing page está completo. Todas las secciones están implementadas y son responsivas. El flujo de pago con modales está visualmente y funcionalmente implementado en la interfaz, pero carece de conexión con un backend.
-
-**Limitaciones Conocidas / Deuda Técnica:**
-1.  **Formulario de Pago Desconectado:** El formulario de transferencia bancaria es **100% front-end**. Actualmente no envía los datos a ningún lugar. Esta es la principal tarea pendiente.
-2.  **Enlace de PayPal Genérico:** La función `redirectToPaypal()` solo muestra una alerta y necesita ser actualizada con el enlace de pago real.
-
-**Próximos Pasos Recomendados (Roadmap):**
-1.  **Implementar un Backend para el Formulario:**
-    *   **Opción A (Simple):** Usar un servicio como [SheetDB](https://sheetdb.io/) o un script de Google Apps para enviar los datos del formulario directamente a una hoja de cálculo de Google Sheets. Esto crearía un CRM/base de datos de clientes básico y automático.
-    *   **Opción B (Avanzada):** Crear un pequeño endpoint en un servicio serverless (como Vercel Functions o Netlify Functions) que reciba los datos y los procese (ej. enviar un email).
-2.  **Configurar Enlaces de Pago de PayPal:** Crear enlaces de pago específicos para cada plan en PayPal y actualizar la función `redirectToPaypal()`.
-3.  **Añadir Notificaciones por Email:** Tras el envío del formulario, usar el backend para enviar un correo de confirmación automático al cliente ("Hemos recibido tu reporte de pago...") y una notificación al administrador ("¡Nueva venta reportada!").
-4.  **Integrar Pasarelas de Pago Venezolanas:** Para reducir la fricción, evaluar la integración de una pasarela de pago como PagoFlash o Instapago para automatizar los pagos en Bolívares.
+-   El flujo de pago y el formulario modal están completamente implementados.
+-   La sección de Módulos fue convertida exitosamente a un slider de Swiper.js.
+-   Se solucionaron problemas de responsive en la sección Hero y CTA, implementando "Art Direction" y texto/padding adaptables.
+-   Se solucionó un problema con la demo interactiva en móviles, mostrando una alternativa más ligera.
+-   Se configuró el envío de correos usando las notificaciones nativas de Netlify en lugar de una función serverless con SendGrid/Mailgun para evitar bloqueos regionales.
+-   El código ha sido revisado en busca de errores y se considera estable y listo para producción.

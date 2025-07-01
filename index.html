@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <!-- Enlace al nuevo archivo CSS -->
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 </head>
 <body class="bg-white">
 
@@ -27,10 +29,10 @@
                 <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors font-medium">Reseñas</a>
                 <a href="#exploracion" class="text-gray-600 hover:text-primary transition-colors font-medium">Explorar</a>
                 <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Precio</a>
-                <a href="#cta" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
+                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
             </div>
             <div class="md:hidden">
-                <a href="#cta" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
+                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
             </div>
         </nav>
     </header>
@@ -41,25 +43,27 @@
             <div class="hero-pattern"></div>
             <div class="container mx-auto px-6 z-10">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
-                    Deja atrás el Excel. Toma el control total de tu inventario.
+                    Deja de trabajar para tu hoja Excel y toma el control total de tu inventario.
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    StockTracker es la plantilla de AppSheet definitiva para Pymes que te permite gestionar productos y activos de forma fácil, rápida y sin errores.
+                    StockTracker es la plantilla de AppSheet definitiva para Pymes, Almacenes y Auditores que te permite gestionar productos y activos de forma fácil, rápida y sin errores.
                 </p>
                 <a href="#exploracion" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
                     Explora la Demo en Vivo
                 </a>
                 <div class="mt-12">
                     <p class="text-sm md:text-sm text-gray-600 max-w-3xl mx-auto mb-8">
-                        + La plantilla más usada por Pymes, Empreandedores y Auditores en toda Latinoamerica 
-                        + No Requiere conocimientos de programación
-                    </p> 
-                    <img src="img/appviews-desktop/02-01-main-page.png" alt="Pantalla de inicio de la aplicación StockTracker" class="max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
+                        <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> La plantilla más usada por Pymes, Almacenes y Auditores en toda Latinoamérica.</li>
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> No requiere conocimientos de programación.</li>
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> Trabaja de forma colaborativa en tu Móvil o PC.</li>
+                        </ul>
+                    </p>
+                    <img src="img/banner-03.png" alt="Pantalla de inicio de la aplicación StockTracker" class="max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
                 </div>
             </div>
         </section>
 
-        
         <!-- Features Section -->
         <section id="features" class="py-20 bg-white">
             <div class="container mx-auto px-6">
@@ -108,9 +112,9 @@
             </div>
         </section>
 
-         <!-- ================================================== -->
-        <!-- == NUEVA SECCIÓN: ¿PARA QUIÉN ES? == -->
-        <!-- ================================================== -->
+        <!-- =================================================== -->
+        <!-- == ========= ¿PARA QUIÉN ES? ====================== -->
+        <!-- =================================================== -->
         <section id="target-audience" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 max-w-3xl mx-auto">
@@ -131,7 +135,7 @@
                         <p class="text-gray-600">Sincroniza tu inventario físico con tus ventas online y evita vender productos sin stock.</p>
                     </div>
                     <div class="bg-secondary p-6 rounded-lg shadow-sm">
-                        <h3 class="font-bold text-lg mb-2">✓ Bodegas y Almacenes</h3>
+                        <h3 class="font-bold text-lg mb-2">✓ Almacenadoras y Bodegas</h3>
                         <p class="text-gray-600">Controla entradas, salidas y ubicaciones de productos en tu centro de distribución o almacén.</p>
                     </div>
                     <div class="bg-secondary p-6 rounded-lg shadow-sm">
@@ -146,112 +150,143 @@
             </div>
         </section>
 
-        <!-- Modules Section -->
-        <!-- Modules Section (Benefit-Oriented Rewrite) -->
+        <!-- =================================================== -->
+        <!-- == ================== MODULOS ===================== -->
+        <!-- =================================================== -->
+
         <section id="modules" class="py-20 bg-secondary">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6 overflow-hidden">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Una Navaja Suiza para tu Inventario</h2>
                     <p class="text-lg text-gray-600 mt-2">Cada módulo está diseñado para resolver un dolor de cabeza específico y devolverte el control.</p>
                 </div>
 
-                <!-- Módulo 1: Catálogo de Productos -->
-                <div class="flex flex-wrap items-center mb-16">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Tu Inventario en un Vistazo: Claridad Total</h3>
-                        <p class="text-gray-600 mb-4">Olvida las filas interminables de Excel. Visualiza cada producto con su foto, SKU, ubicación y stock actual en una ficha clara e intuitiva. <strong class="text-primary">Toma decisiones basadas en datos, no en suposiciones.</strong></p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <img src="img/appviews-desktop/08-01-productos.png" alt="Módulo de Productos" class="rounded-lg shadow-xl border" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Módulo 2: Transacciones -->
-                <div class="flex flex-wrap items-center mb-16 flex-row-reverse">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Movimientos a Prueba de Errores: Entradas y Salidas en Segundos</h3>
-                        <p class="text-gray-600 mb-4">Reduce el error humano a cero. Escanea un código de barras y registra una entrada de proveedor o una salida a cliente al instante. Tu stock se actualiza en tiempo real, <strong class="text-primary">evitando ventas de productos que no tienes.</strong></p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <div class="grid grid-cols-1 gap-4">
-                            <img src="img/appviews-desktop/07-01-recepciones.png" alt="Módulo de Recepciones" class="rounded-lg shadow-xl border" loading="lazy">
-                            <img src="img/appviews-desktop/06-01-despachos.png" alt="Módulo de Despachos" class="rounded-lg shadow-xl border" loading="lazy">
+                <!-- Contenedor principal de Swiper -->
+                <div class="swiper modules-slider max-w-6xl mx-auto relative">
+                    <!-- Wrapper donde irán todas las diapositivas (slides) -->
+                    <div class="swiper-wrapper">
+                        
+                        <!-- Slide 1: Catálogo de Productos -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Tu Inventario en un Vistazo: Claridad Total</h3>
+                                    <p class="text-gray-600 mb-4">Olvida las filas interminables de Excel. Visualiza cada producto con su foto, SKU, ubicación y stock actual en una ficha clara e intuitiva. <strong class="text-primary">Toma decisiones basadas en datos, no en suposiciones.</strong></p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <img src="img/01-productos.png" alt="Módulo de Productos" class="rounded-lg shadow-xl border" loading="lazy">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Módulo 3: Histórico -->
-                <div class="flex flex-wrap items-center mb-16">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Rastro de Auditoría Perfecto: Cada Movimiento, Registrado</h3>
-                        <p class="text-gray-600 mb-4">¿Necesitas saber quién movió qué y cuándo? Accede a un historial inmutable de cada transacción. Filtra por fecha, producto o usuario para tener una <strong class="text-primary">trazabilidad completa y responder a cualquier auditoría con total confianza.</strong></p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <img src="img/appviews-desktop/05-historicos.png" alt="Módulo de Histórico de Transacciones" class="rounded-lg shadow-xl border" loading="lazy">
-                    </div>
-                </div>
-
-                <!-- Módulo 4: Contactos -->
-                <div class="flex flex-wrap items-center mb-16 flex-row-reverse">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Tus Socios de Negocio, Organizados</h3>
-                        <p class="text-gray-600 mb-4">Deja de buscar en WhatsApp o en correos. Centraliza los datos de tus proveedores y clientes, y accede a su historial de transacciones con un solo clic. <strong class="text-primary">Agiliza tus órdenes de compra y ofrece un servicio al cliente más informado.</strong></p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <img src="img/appviews-desktop/10-clientes.png" alt="Módulo de Clientes" class="rounded-lg shadow-xl border" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Módulo 5: Carga Masiva de Inventarios -->
-                <div class="flex flex-wrap items-center mb-16">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Implementación Rápida: Importa Tu Inventario en Minutos</h3>
-                        <p class="text-gray-600 mb-4">¿Tienes cientos de productos? No los cargues uno por uno. Nuestro asistente inteligente te permite <strong class="text-primary">importar todo tu catálogo desde una hoja de cálculo,</strong> actualizando precios y costos masivamente. Estarás operativo en tiempo récord.</p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <img src="img/appviews-desktop/16-asistente-carga-step03.png" alt="Módulo de Carga Masiva" class="rounded-lg shadow-xl border" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Módulo 6: Conteo Cíclico / Auditorías -->
-                <div class="flex flex-wrap items-center mb-16 flex-row-reverse">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Auditorías Sin Estrés: Del Campo a la Nube al Instante</h3>
-                        <p class="text-gray-600 mb-4">Transforma la tediosa toma física de inventario. <strong class="text-primary">Como usan los profesionales,</strong> tu equipo puede contar el stock en el campo con sus móviles. Los datos se sincronizan en tiempo real, eliminando la transcripción y dándote una visión precisa del proceso.</p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <div class="grid grid-cols-1 gap-4">
-                            <img src="img/appviews-desktop/21-toma-fisica-inventario.png" alt="Módulo de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
-                            <img src="img/appviews-desktop/22-toma-fisica-inventario.png" alt="Panel de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
+                        <!-- Slide 2: Transacciones -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Movimientos a Prueba de Errores: Entradas y Salidas en Segundos</h3>
+                                    <p class="text-gray-600 mb-4">Reduce el error humano a cero. Escanea un código de barras y registra una entrada o salida al instante. Tu stock se actualiza en tiempo real, <strong class="text-primary">evitando ventas de productos que no tienes.</strong></p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <img src="img/02-entradas-salidas.png" alt="Módulo de Recepciones" class="rounded-lg shadow-xl border" loading="lazy">
+                            
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Módulo 7: Reportes Imprimibles -->
-                <div class="flex flex-wrap items-center mb-16">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Decisiones de Compra Inteligentes: No Vuelvas a Quedarte sin Stock</h3>
-                        <p class="text-gray-600 mb-4">La herramienta identifica automáticamente los productos que están por agotarse. Con un clic, <strong class="text-primary">genera una solicitud de compra profesional y lista para imprimir o enviar,</strong> asegurando que nunca pierdas una venta por falta de inventario.</p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <div class="grid grid-cols-1 gap-4">
-                            <img src="img/appviews-desktop/23-solicitud de compras.png" alt="Solicitud de Compra" class="rounded-lg shadow-xl border" loading="lazy">
+                        
+                        <!-- Slide 3: Histórico -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Rastro de Auditoría Perfecto: Cada Movimiento, Registrado</h3>
+                                    <p class="text-gray-600 mb-4">Accede a un historial inmutable de cada transacción. Filtra por fecha, producto o usuario para tener una <strong class="text-primary">trazabilidad completa y responder a cualquier auditoría con total confianza.</strong></p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <img src="img/03-historicos.png" alt="Módulo de Histórico de Transacciones" class="rounded-lg shadow-xl border" loading="lazy">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Módulo 8: Etiquetas de datos -->
-                <div class="flex flex-wrap items-center mb-16 flex-row-reverse">
-                    <div class="w-full md:w-1/2 p-4">
-                        <h3 class="text-2xl font-bold mb-3">Profesionaliza tu Almacén: Etiquetas con un Clic</h3>
-                        <p class="text-gray-600 mb-4">Dale a tu inventario la organización que merece. Genera e imprime etiquetas con código de barras o QR para cada producto, <strong class="text-primary">facilitando el escaneo y proyectando una imagen de eficiencia y control total.</strong></p>
-                    </div>
-                    <div class="w-full md:w-1/2 p-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <img src="img/appviews-desktop/23-etiqueta-ficha-producto-qr.png" alt="Etiqueta Código QR" class="rounded-lg shadow-xl border" loading="lazy">
-                            <img src="img/appviews-desktop/23-etiqueta-ficha-producto.png" alt="Etiqueta Código de Barras" class="rounded-lg shadow-xl border" loading="lazy">
+                        <!-- Slide 4: Contactos -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Tus Socios de Negocio, Organizados</h3>
+                                    <p class="text-gray-600 mb-4">Centraliza los datos de tus proveedores y clientes, y accede a su historial de transacciones con un solo clic. <strong class="text-primary">Agiliza tus órdenes de compra y ofrece un servicio al cliente más informado.</strong></p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <img src="img/04-clientes-proveedores.png" alt="Módulo de Clientes" class="rounded-lg shadow-xl border" loading="lazy">
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Slide 5: Carga Masiva -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Implementación Rápida: Importa Tu Inventario en Minutos</h3>
+                                    <p class="text-gray-600 mb-4">Nuestro asistente inteligente te permite <strong class="text-primary">importar todo tu catálogo desde una hoja de cálculo,</strong> actualizando precios y costos masivamente. Estarás operativo en tiempo récord.</p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <img src="img/05-carga-masiva.png" alt="Módulo de Carga Masiva" class="rounded-lg shadow-xl border" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6: Auditorías -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Auditorías Sin Estrés: Del Campo a la Nube al Instante</h3>
+                                    <p class="text-gray-600 mb-4"><strong class="text-primary">Como usan los profesionales,</strong> tu equipo puede contar el stock en el campo con sus móviles. Los datos se sincronizan en tiempo real, eliminando la transcripción.</p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <img src="img/06-toma-fisica.png" alt="Módulo de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 7: Solicitudes de Compra -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Decisiones de Compra Inteligentes: No Vuelvas a Quedarte sin Stock</h3>
+                                    <p class="text-gray-600 mb-4">La herramienta identifica los productos por agotarse y con un clic, <strong class="text-primary">genera una solicitud de compra profesional,</strong> asegurando que nunca pierdas una venta.</p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <img src="img/07-compras-productos.png" alt="Módulo de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8: Etiquetas de Datos -->
+                        <div class="swiper-slide">
+                            <div class="flex flex-wrap items-center">
+                                <div class="w-full md:w-1/2 p-4">
+                                    <h3 class="text-2xl font-bold mb-3">Profesionaliza tu Almacén: Etiquetas con un Clic</h3>
+                                    <p class="text-gray-600 mb-4">Genera e imprime etiquetas con código de barras o QR para cada producto, <strong class="text-primary">facilitando el escaneo y proyectando una imagen de eficiencia y control total.</strong></p>
+                                </div>
+                                <div class="w-full md:w-1/2 p-4">
+                                    <div class="grid grid-cols-1 gap-4">
+                                        <img src="img/08-etiquetado-productos.png" alt="Módulo de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                    
+                    <!-- Botones de Navegación (Flechas) -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    
+                    <!-- Paginación (Puntos) -->
+                    <div class="swiper-pagination mt-8"></div>
                 </div>
             </div>
         </section>
@@ -262,16 +297,16 @@
         <section id="testimonials" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Clientes Toman el Control</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todos nuestros clientes ya han tomado el Control... <strong class="text-primary">¿Cuándo lo harás Tú?</strong></h2>
                     <p class="text-lg text-gray-600 mt-2">Descubre por qué dueños de negocios como tú confían en StockTracker.</p>
                 </div>
                 <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
                     <!-- Testimonio 1 -->
-                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                    <div class="bg-secondary p-8 rounded-lg shadow-md"> 
                         <div class="flex items-center">
                             <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/cliente1.jpg" alt="Foto de María González">
                             <div>
-                                <p class="font-bold text-gray-900">María González</p>
+                                <p class="font-bold text-gray-900">Ana María González</p>
                                 <p class="text-sm text-gray-500">Dueña de "Moda Urbana" Boutique</p>
                             </div>
                         </div>
@@ -296,11 +331,11 @@
                         <div class="flex items-center">
                             <img class="w-16 h-16 rounded-full object-cover mr-4" src="img/testimonials/cliente3.jpg" alt="Foto de Carlos Rodríguez">
                             <div>
-                                <p class="font-bold text-gray-900">Carlos Rodríguez</p>
+                                <p class="font-bold text-gray-900">Carlos Betancourt</p>
                                 <p class="text-sm text-gray-500">Gerente de "Servi-Auto Rápido"</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>...la mejor parte es el escaneo de códigos de barra. Registrar la entrada de repuestos en el taller ahora toma segundos, no minutos. La inversión se pagó sola en el primer mes...<span class="comilla-grande derecha">”</span></p>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>...la mejor parte es el escaneo de códigos de barra. Registrar la entrada de repuestos en el taller ¡ahora no toma nada!. La inversión se pagó sola en el primer mes...<span class="comilla-grande derecha">”</span></p>
                     </div>
                     
                 
@@ -317,26 +352,46 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Prueba StockTracker Ahora Mismo</h2>
                     <p class="text-lg text-gray-600 mt-2">Interactúa con una versión de demostración completa. Agrega productos, registra entradas o salidas y descubre su potencial sin ningún compromiso.</p>
                 </div>
-                    
-                <div class="max-w-5xl mx-auto bg-white p-2 rounded-xl shadow-2xl border">
-                    <iframe
-                        class="w-full aspect-video rounded-lg"
-                        ''src="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab"
-                        title="Demo de StockTracker"
-                        frameborder="0"
-                        allow="fullscreen"
-                        loading="lazy">
-                    </iframe>
+                
+                <div class="max-w-5xl mx-auto">
+                    <!-- =============================================================== -->
+                    <!-- VERSIÓN PARA MÓVIL (Imagen + Botón) -->
+                    <!-- Se muestra en pantallas pequeñas y se oculta en medianas y grandes (md:hidden) -->
+                    <!-- =============================================================== -->
+                    <div class="md:hidden relative">
+                        <img src="img/appviews-desktop/02-01-main-page.png" alt="Previsualización de StockTracker en un dispositivo" class="rounded-xl shadow-2xl border w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
+                            <a href="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab" target="_blank" rel="noopener noreferrer" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                                Abrir Demo en Vivo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- =============================================================== -->
+                    <!-- VERSIÓN PARA ESCRITORIO (iframe interactivo) -->
+                    <!-- Está oculta por defecto y se muestra en pantallas medianas y grandes (hidden md:block) -->
+                    <!-- =============================================================== -->
+                    <div class="hidden md:block bg-white p-2 rounded-xl shadow-2xl border">
+                        <iframe
+                            class="w-full aspect-video rounded-lg"
+                            src="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab"
+                            title="Demo de StockTracker"
+                            frameborder="0"
+                            allow="fullscreen"
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
+                
                 <p class="text-center text-gray-500 mt-6 text-sm">Nota: Los datos ingresados en esta demostración son públicos y se reinician periódicamente.</p>
             </div>
-        </section>  
+        </section>
 
         <!-- ================================================== -->
         <!-- == FIN DE LA SECCIÓN DE EXPLORACIÓN INTERACTIVA  = -->
         <!-- ================================================== -->
-         
-        <!-- Pricing Section V2 - Tiered Options -->
+
+        <!-- Call to Action Section -->
         <section id="pricing" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 max-w-3xl mx-auto">
@@ -408,7 +463,7 @@
                         <a href="#" data-plan="Profesional" data-paypal-url="https://www.paypal.com/ncp/payment/ALQK2Q7X6KYVG" class="payment-btn w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
                             Asegurar mi Plaza Pro
                         </a>
-            </div>  
+                    </div>  
 
                     <!-- Tier 3: Solución a Medida -->
                     <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
@@ -447,7 +502,6 @@
             </div>
         </section>
 
-        
         <!-- FAQ Section -->
         <section id="faq" class="py-20 bg-secondary">
             <div class="container mx-auto px-6 max-w-3xl">
@@ -467,7 +521,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>        
 
         <!-- Call to Action Section -->
         <section id="cta" class="bg-primary text-white">
@@ -476,8 +530,8 @@
                 <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
                     Deja de perder tiempo y dinero con métodos obsoletos. Invierte en una herramienta que crece contigo.
                 </p>
-                <a href="https://wa.link/nu0i6t" target="_blank" rel="noopener noreferrer" class="bg-white text-primary font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg">
-                    Quiero mi Plantilla StockTracker por $149
+                <a href="#pricing" target="_blank" rel="noopener noreferrer" class="bg-white text-primary font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg">
+                    ¡Quiero mi Plantilla StockTracker Ahora!
                 </a>
             </div>
         </section>
@@ -627,6 +681,30 @@
                 resetSubmitButton();
             }
         });
+
+                // ---- INICIALIZACIÓN DEL SLIDER DE MÓDULOS ----
+        const modulesSwiper = new Swiper('.modules-slider', {
+            // Opciones de configuración
+            loop: true, // Para que el slider sea infinito
+            spaceBetween: 30, // Espacio entre slides
+            
+            // Paginación (los puntos de abajo)
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navegación (las flechas)
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Para que funcione con el teclado (accesibilidad)
+            keyboard: {
+                enabled: true,
+            },
+        });
     });
 </script>
 
@@ -636,7 +714,7 @@
         <!-- Formulario con integración para Netlify Forms -->
         <form id="checkout-form" name="lead-capture" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
             <!-- Campo oculto para Netlify -->
-            <input type="hidden" name="form-name" value="lead-capture" />
+            <input type="hidden" name="form-name" value="lead-capturel" />
             <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
             
             <!-- Campo oculto para saber qué plan eligió el cliente -->

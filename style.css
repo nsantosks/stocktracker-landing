@@ -45,3 +45,25 @@ body {
     margin-left: 0.1em; /* Un poco de espacio a la izquierda */
 
 }
+
+/* Estilos personalizados para el slider de Swiper.js */
+
+.modules-slider .swiper-button-next,
+.modules-slider .swiper-button-prev {
+    color: #1976D2; /* Tu color primario */
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.modules-slider .swiper-button-next:after,
+.modules-slider .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.modules-slider .swiper-pagination-bullet-active {
+    background-color: #1976D2; /* Tu color primario */
+}

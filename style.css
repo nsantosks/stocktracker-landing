@@ -46,20 +46,19 @@ body {
 
 }
 
-/* Estilos personalizados para el slider de Swiper.js */
-
-/* Estilos ACTUALIZADOS para el slider de Swiper.js */
+/* Estilos  para el slider de Swiper.js */
 
 /* Estilos para las flechas de navegación */
 .swiper-button-next,
 .swiper-button-prev {
     color: #1976D2; /* Tu color primario */
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(107, 104, 104, 0.041);
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, color 0.5s;  
+     
 
     /* Posicionamiento FUERA del slider, en el contenedor padre */
     position: absolute;
@@ -77,8 +76,8 @@ body {
 /* Ajuste fino del icono de la flecha */
 .swiper-button-next:after,
 .swiper-button-prev:after {
-    font-size: 20px;
-    font-weight: 800;
+    font-size: 10px;
+    font-weight: 400;
 }
 
 /* Posición específica para cada flecha */

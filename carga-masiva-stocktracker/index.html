@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link href="../style.css" rel="stylesheet"> <!-- Ojo: La ruta cambia a ../style.css -->
 </head>
-<body class="bg-white">
+<body class="bg-white flex flex-col min-h-screen">
 
     <!-- Header (Reutilizado de la página principal) -->
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
@@ -36,29 +36,45 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal de la Herramienta -->
-    <main>
+    <!-- =================================================== -->
+    <!-- == CONTENIDO PRINCIPAL (REDISÉÑADO) == -->
+    <!-- =================================================== -->
+    <main class="flex-grow">
         <section class="py-12 md:py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">Herramienta de Carga Masiva</h1>
-                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Sigue las instrucciones dentro de la aplicación para importar o actualizar tu inventario desde una hoja de cálculo.</p>
-            </div>
-
-            <div class="container mx-auto px-6 mt-10">
-                <div class="bg-white p-2 rounded-xl shadow-2xl border w-full max-w-6xl mx-auto">
-                    <!-- =============================================================== -->
-                    <!-- == INCRUSTACIÓN DE TU HERRAMIENTA DE APP SCRIPT == -->
-                    <!-- =============================================================== -->
-                    <iframe
-                        class="w-full rounded-lg"
-                        style="height: 80vh;"
-                        src="https://script.google.com/macros/s/AKfycbwgF5MQBQjOl-y14LuQQJ7g-qtSvv0fIsSyJ6YFFn7Jlyzrz0t85HP36ApTErNkfjJBzA/exec"
-                        title="Herramienta de Carga Masiva de StockTracker"
-                        frameborder="0"
-                        allow="fullscreen">
-                    </iframe>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">Herramienta de Carga Masiva</h1>
+                    <p class="mt-4 text-lg text-gray-600">Importa o actualiza tu inventario completo desde una hoja de cálculo. Haz clic abajo para empezar.</p>
                 </div>
-                <p class="text-center text-gray-500 mt-6 text-sm">Si tienes problemas, por favor <a href="/#faq" class="text-primary underline">contacta a soporte</a>.</p>
+
+                <div class="max-w-5xl mx-auto">
+                    <!-- =============================================================== -->
+                    <!-- VERSIÓN PARA MÓVIL (Imagen + Botón) -->
+                    <!-- =============================================================== -->
+                    <div class="md:hidden relative">
+                        <img src="../img/asistente-carga-masiva.jpeg" alt="Herramienta de carga masiva en móvil" class="rounded-xl shadow-2xl border w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
+                            <a href="URL_DE_TU_APP_SCRIPT_AQUI" target="_blank" rel="noopener noreferrer" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                                Abrir Herramienta
+                            </a>
+                        </div>
+                    </div> 
+
+                    <!-- =============================================================== --> 
+                    <!-- VERSIÓN PARA ESCRITORIO (Imagen + Botón) -->
+                    <!-- =============================================================== -->
+                    <div class="hidden md:block relative">
+                        <img src="../img/05-carga-masiva.png" alt="Herramienta de carga masiva en escritorio" class="rounded-xl shadow-2xl border w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
+                            <a href="https://script.google.com/macros/s/AKfycbwgF5MQBQjOl-y14LuQQJ7g-qtSvv0fIsSyJ6YFFn7Jlyzrz0t85HP36ApTErNkfjJBzA/exec" target="_blank" rel="noopener noreferrer" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg flex items-center">
+                                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                Abrir Herramienta de Carga
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center text-gray-500 mt-6 text-sm">La herramienta se abrirá en una nueva pestaña para una mejor experiencia.</p>
             </div>
         </section>
     </main>
@@ -73,10 +89,5 @@
         </div>
     </footer>
 
-    <!-- No necesitamos el script complejo de la página principal aquí -->
-    <script>
-        // Script simple por si se necesitan interacciones futuras, por ahora puede estar vacío
-        // o contener solo el smooth-scroll si fuera necesario en esta página.
-    </script>
 </body>
 </html>

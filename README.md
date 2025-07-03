@@ -2,13 +2,13 @@
 
 Esta es la página de aterrizaje (landing page) para **StockTracker**, una plantilla de AppSheet diseñada para la gestión de inventario y activos en Pymes. El objetivo es presentar el producto, sus características, módulos y precio de una forma clara y atractiva.
 
-### ✨ [Ver la Demo en Vivo](https://www.linkedin.com/in/ingnsantos/)
+### ✨ [Ver la Demo en Vivo](https://gammalielanalytics.com/))
 
 ---
 
 ### 📸 Vista Previa
 
-![Vista previa de la landing page de StockTracker]([https://i.imgur.com/gLNvwko.png])
+![Vista previa de la landing page de StockTracker](https://gammalielanalytics.com/img/banner-01.png)
 
 ---
 

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Consultoría: Nestor Santos - Análisis de Datos e Inteligencia de Negocios</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #005A9C;   /* Azul corporativo oscuro */
+            --secondary-color: #00AEEF; /* Azul más brillante para acentos */
+            --text-color: #333333;
+            --light-text-color: #555555;
+            --header-text-color: #FFFFFF;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --highlight-bg-color: #e0f7ff; /* Azul muy claro para resaltar */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            --button-text-color: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--header-text-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        header img.profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary-color);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin: 10px 0 5px 0;
+        }
+
+        header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 25px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background-color: var(--highlight-bg-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300AEEF' class='bi bi-check-circle-fill' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 0 5px;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--light-text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--button-text-color);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.primary {
+            background-color: var(--primary-color);
+        }
+        .cta-button.primary:hover {
+             background-color: #004175; /* Azul oscuro un poco más intenso */
+        }
+
+        .dashboard-preview {
+            text-align: center;
+        }
+
+        .dashboard-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 8px 8px;
+            margin-top: -25px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            header h2 { font-size: 1.2em; }
+            .card h3 { font-size: 1.5em; }
+            .container { width: 95%; }
+            .cta-button { padding: 10px 15px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.dropbox.com/scl/fi/ssmwr3w27v0e50tdzicgm/ProfileV01.jpg?rlkey=6rio5ubg2k4o0kqqwux8ug2dp&dl=1" alt="Foto de Nestor Santos" class="profile-pic">
+        <h1>Nestor Santos</h1>
+        <h2>Análisis de Datos e Inteligencia de Negocios</h2>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>Impulsando el Rendimiento de su Negocio a Través de Datos y Estrategia</h3>
+            <p>
+                Como MBA e Ingeniero Mecánico, con <span class="highlight">más de 5 años de experiencia</span> liderando la transformación de datos en estrategias efectivas y optimizando operaciones en diversas áreas funcionales, ofrezco servicios de consultoría personalizados para empresas que buscan alcanzar su máximo potencial. Mi pasión es ayudar a organizaciones como la suya a <span class="highlight">mejorar la eficiencia, tomar decisiones más inteligentes y lograr un crecimiento sostenible</span>.
+            </p>
+            <p>
+                Mi enfoque combina una sólida visión de negocio con un profundo dominio técnico en Inteligencia de Negocios (Power BI, SQL, IA), Gestión de Procesos (BPM) y Calidad Total (TQM). Estoy aquí para ser su aliado estratégico, convirtiendo sus datos en su activo más valioso.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Mi propuesta Valor</h3>
+            <p>
+                He desarrollado un conjunto de habilidades para abordar sus desafíos específicos y capitalizar oportunidades:
+            </p>
+            <ul>
+                <li><strong>Diagnóstico y Estrategia de Datos:</strong> Evaluación de sus procesos actuales y desarrollo de una hoja de ruta para una cultura basada en datos.</li>
+                <li><strong>Desarrollo de Soluciones de Business Intelligence:</strong> Creación de dashboards e informes interactivos (Power BI) para una visualización clara de KPIs y tendencias.</li>
+                <li><strong>Optimización de Procesos de Negocio (BPM):</strong> Análisis y rediseño de procesos clave para aumentar la eficiencia, reducir costos y mejorar la calidad.</li>
+                <li><strong>Análisis de Rentabilidad y Reducción de Costos:</strong> Identificación de áreas de mejora financiera y estrategias para optimizar la rentabilidad.</li>
+                <li><strong>Modelado y Análisis Predictivo:</strong> Uso de datos históricos y técnicas de IA para pronosticar tendencias y anticipar escenarios.</li>
+                <li><strong>Capacitación y Adopción de Herramientas de BI:</strong> Formación para sus equipos para asegurar la correcta utilización y el máximo aprovechamiento de las soluciones implementadas.</li>
+                <li><strong>Soporte en la Toma de Decisiones Estratégicas:</strong> Proporciono insights basados en datos para respaldar decisiones críticas de negocio.</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h3>Mi Enfoque: Colaboración y Resultados Medibles</h3>
+            <p>
+                Mi metodología de trabajo se basa en la colaboración estrecha con su equipo y un enfoque en la obtención de resultados tangibles y medibles:
+            </p>
+            <ol style="padding-left: 20px;">
+                <li style="margin-bottom:10px; padding-left:10px; background:none;"><strong>Entender:</strong> Inmersión profunda para comprender sus desafíos, objetivos y contexto de negocio.</li>
+                <li style="margin-bottom:10px; padding-left:10px; background:none;"><strong>Analizar:</strong> Aplicación de técnicas analíticas para diagnosticar la situación actual e identificar oportunidades clave.</li>
+                <li style="margin-bottom:10px; padding-left:10px; background:none;"><strong>Diseñar:</strong> Co-creación de soluciones personalizadas y planes de acción prácticos y realistas.</li>
+                <li style="margin-bottom:10px; padding-left:10px; background:none;"><strong>Implementar:</strong> Apoyo en la puesta en marcha de las soluciones, ya sea desarrollando herramientas de BI, rediseñando procesos o capacitando a su personal.</li>
+                <li style="margin-bottom:10px; padding-left:10px; background:none;"><strong>Medir y Optimizar:</strong> Establecimiento de métricas para evaluar el impacto y asegurar la mejora continua.</li>
+            </ol>
+            <p>
+                Este proceso se fundamenta en principios de <span class="highlight">Gestión de Procesos de Negocio (BPM)</span>, <span class="highlight">Calidad Total</span> y un uso intensivo del <span class="highlight">análisis de datos</span>.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Capacidades Clave y Herramientas</h3>
+            <p>
+                Mi experiencia multifuncional (Operaciones, Cadena de Suministro, Finanzas, Ventas) me permite tener una visión integral de su negocio. Mis herramientas y capacidades técnicas incluyen:
+            </p>
+            <ul>
+                <li><strong>Dominio de Power BI:</strong> Desde la conexión a fuentes de datos hasta la creación de visualizaciones complejas y modelos de datos robustos.</li>
+                <li><strong>SQL para Análisis de Datos:</strong> Extracción, transformación y análisis eficiente de grandes volúmenes de información.</li>
+                <li><strong>Excel Avanzado (Power Pivot, Power Query, VBA):</strong> Para modelado financiero, análisis ad-hoc y automatización.</li>
+                <li><strong>Inteligencia Artificial:</strong> Aplicación conceptual y práctica para pronósticos, segmentación y optimización.</li>
+                <li><strong>Google Workspace y Herramientas Colaborativas:</strong> Para una gestión de proyectos eficiente y comunicación fluida.</li>
+                <li><strong>Análisis Estratégico y de Negocio:</strong> Para asegurar que las soluciones técnicas estén alineadas con los objetivos de su empresa.</li>
+                <li><strong>Liderazgo de Proyectos y Gestión del Cambio:</strong> Habilidades blandas esenciales para el éxito de cualquier iniciativa de transformación.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Ejemplo de Soluciones Implementadas</h3>
+            <p>
+                Para ofrecerle una idea más concreta de cómo puedo agregar valor, le invito a explorar un ejemplo de dashboard interactivo. Este tipo de herramienta puede adaptarse para visualizar sus KPIs más importantes, desde el rendimiento de ventas y la eficiencia operativa hasta la satisfacción del cliente o la gestión de inventarios, proporcionando insights cruciales para la toma de decisiones.
+            </p>
+             <p>
+                Departamento de Ventas:
+            </p>
+            <div class="dashboard-preview">
+              <iframe title="Dashboard Fresco y Sano" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOWRjN2UzOTktNmRiOC00NjUyLWE4NjItNzFmYjMyNzNkM2M5IiwidCI6IjZmMGJiNzJmLTUzNzctNGRkZi05MzZhLWI2YzcyYmYyMWFlMiIsImMiOjF9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+            <p>
+                Departamento de Marketing:
+            </p>
+            <div class="dashboard-preview">
+              <iframe title="Mercadeo Fresco y Sano" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYjZlZTY5Y2QtNDUyNy00ZjExLTlhZjUtYmZlNWQyYjQ4YWJmIiwidCI6IjZmMGJiNzJmLTUzNzctNGRkZi05MzZhLWI2YzcyYmYyMWFlMiIsImMiOjF9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+            <p>
+                Departamento de Logistica y Operaciones.
+            </p>
+            <div class="dashboard-preview">
+             <iframe title="Dashboard_Transporte_Ejemplo" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNDNmZDkwYjAtM2I5Ny00OTBkLTliMWEtNWRhNDMyNzdlZmU3IiwidCI6IjZmMGJiNzJmLTUzNzctNGRkZi05MzZhLWI2YzcyYmYyMWFlMiIsImMiOjF9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+            
+              
+        </div>
+
+        <div class="card">
+            <h3>Conversemos Sobre sus Desafíos y Oportunidades</h3>
+            <p>
+                Estoy convencido de que puedo ayudar a su empresa a navegar la complejidad del entorno actual y a convertir sus datos en una ventaja competitiva sostenible. Me encantaría tener la oportunidad de conocer sus desafíos específicos y explorar cómo mis servicios de consultoría pueden contribuir a sus objetivos.
+            </p>
+            <p>
+                Le invito a una conversación inicial sin compromiso para discutir sus necesidades.
+            </p>
+            <div class="text-center">
+                <a href="https://www.linkedin.com/in/ingnsantos/" target="_blank" class="cta-button">Contactar por LinkedIn</a>
+       
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Servicios de Consultoría en Inteligencia de Negocios y Optimización Estratégica ofrecidos por Nestor Santos.</p>
+        <p>© <span id="currentYear"></span> Nestor Santos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -607,6 +607,14 @@
         const openModal = (plan, url) => {
             planInput.value = plan;
             redirectUrl = url;
+            // Asegurarnos de que dataLayer existe
+            window.dataLayer = window.dataLayer || [];
+            // Empujar el evento personalizado
+            window.dataLayer.push({
+                'event': 'open_checkout_modal', // Este es el "ID" del evento.
+                'plan_name': plan              // ¡Enviamos el nombre del plan como un extra!
+            });
+            // ===================================
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden'; // Evitar scroll del fondo

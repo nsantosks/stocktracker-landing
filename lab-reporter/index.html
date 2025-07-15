@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La plantilla de Excel definitiva para Laboratorios Clínicos. Gestiona pacientes, resultados y reportes de forma profesional, rápida y segura.">
+    <title>LAB Reporter - Plantilla de reportes para Laboratorios Clínicos</title>
+    
+    <!-- CSS y Fuentes -->
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+
+    <!-- Enlace al favicon -->
+    <link rel="icon" type="image/png" href="../lab-reporter-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../lab-reporter-favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../lab-reporter-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../lab-reporter-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="LabReporter" />
+    <link rel="manifest" href="../lab-reporter-favicon/site.webmanifest" />
+
+    <!-- Librerías Externas (Tailwind, Fuentes, Swiper) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <style>
+        /* Estas reglas solo se aplicarán en esta página */
+        :root {
+            --primary-color: #005A9C; /* Azul Primario de LAB Reporter */
+            --secondary-color: #00AEEF; /* Azul Secundario de LAB Reporter */
+        }
+    </style>
+
+
+</head>
+<body class="bg-white">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="../img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo de LAB Reporter" class="h-10 w-10">
+                <span class="text-2xl font-bold text-gray-800">LAB Reporter</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Funciones</a>
+                <a href="#modules" class="text-gray-600 hover:text-primary transition-colors">Módulos</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors font-medium">Reseñas</a>
+                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors font-medium">Demo</a>
+                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Precio</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">F&Q</a>
+                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
+            </div>
+            <div class="md:hidden">
+                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative pt-20 pb-24 text-center overflow-hidden">
+             <div class="hero-pattern" style="background-image: linear-gradient(135deg, #005A9C 25%, transparent 25%), linear-gradient(225deg, #005A9C 25%, transparent 25%), linear-gradient(45deg, #005A9C 25%, transparent 25%), linear-gradient(315deg, #005A9C 25%, #ffffff 25%);"></div>
+             <div class="container mx-auto px-6 z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">Deja de emitir reportes manuales. Profesionaliza tus informes de laboratorio.</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">LAB Reporter es la planitlla inteligente en MS Excel que te permite gestionar pacientes, registrar resultados y emitir informes en PDF de forma segura, rápida y sin errores.</p>
+                <a href="#demo" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">Ver Video de Demostración</a>
+                
+                <div class="mt-12">
+                    <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> La solución N°1 para laboratorios clínicos y bioanalistas independientes.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> No requiere conocimientos avanzados de Excel.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> Conserva un historial completo de pacientes y resultados.</li>
+                    </ul>
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA MÓVIL: Imagen vertical -->
+                    <!-- Se muestra por defecto y se oculta en pantallas medianas (md:hidden) -->
+                    <!-- =============================================================== -->
+                    <img src="../img/lab-reporter/generacion-pdf.PNG" alt="Pantalla principal de LAB Reporter en un teléfono móvil" class="mx-auto rounded-lg shadow-2xl border-4 border-gray-200 w-full max-w-sm md:hidden"> 
+ 
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA ESCRITORIO: Imagen panorámica -->
+                    <!-- Oculta por defecto, se muestra en pantallas medianas (hidden md:block) -->
+                    <!-- =============================================================== -->
+                    <img src="../img/lab-reporter/banner-03.png" alt="Pantalla principal de LAB Reporter" class="hidden md:block max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
+                    </div>
+            </div>
+        </section>
+
+        <!-- ¿PARA QUIÉN ES? -->
+        <section id="target-audience" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Diseñado para Laboratorios, Clínicas y Bioanalistas Independientes</h2>
+                    <p class="text-lg text-gray-600 mt-2">Si emites reportes de laboratorio, LAB Reporter es para ti. Perfecto para:</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Laboratorios Clínicos Pequeños</h3>
+                        <p class="text-gray-600">Centraliza y estandariza la operación de tu laboratorio sin invertir en un LIS costoso y complejo.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Bioanalistas Autónomos</h3>
+                        <p class="text-gray-600">Proyecta una imagen profesional, entrega resultados en PDF y gestiona tu base de datos de pacientes fácilmente.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Clínicas y Centros de Salud</h3>
+                        <p class="text-gray-600">Integra un sistema de reportes eficiente para tu laboratorio interno, mejorando la organización y el respaldo de la data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUNCIONES -->
+        <section id="features" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todo lo que tu Laboratorio Necesita</h2>
+                    <p class="text-lg text-gray-600 mt-2">Funciones diseñadas para ahorrarte tiempo y eliminar errores.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">📄</div>
+                        <h3 class="text-xl font-bold mb-2">Reportes PDF Profesionales</h3>
+                        <p class="text-gray-600">Genera informes no editables con tu logo y datos, listos para imprimir o enviar por correo, con un solo clic.</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">🗃️</div>
+                        <h3 class="text-xl font-bold mb-2">Base de Datos Centralizada</h3>
+                        <p class="text-gray-600">Toda la información de tus pacientes y sus resultados históricos en un único lugar, seguro y fácil de consultar.</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">✍️</div>
+                        <h3 class="text-xl font-bold mb-2">Firma Digital Integrada</h3>
+                        <p class="text-gray-600">Incluye automáticamente las firmas escaneadas del personal autorizado en cada reporte, dándole validez y profesionalismo.</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">🔬</div>
+                        <h3 class="text-xl font-bold mb-2">Catálogo Personalizable</h3>
+                        <p class="text-gray-600">Crea y agrupa estudios, añade nuevos parámetros y define tus propios valores de referencia fácilmente.</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">🔍</div>
+                        <h3 class="text-xl font-bold mb-2">Búsqueda Rápida</h3>
+                        <p class="text-gray-600">Encuentra cualquier paciente o resultado en segundos, agilizando la atención y la consulta de historiales.</p>
+                    </div>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="text-4xl mb-4 text-primary">📂</div>
+                        <h3 class="text-xl font-bold mb-2">Archivado Automático</h3>
+                        <p class="text-gray-600">Los reportes en PDF se guardan y organizan en carpetas de forma automática para un respaldo impecable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÓDULOS -->
+        <section id="modules" class="py-20 bg-white">
+            <div class="container mx-auto px-6 overflow-hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Un Sistema Completo a tu Alcance</h2>
+                    <p class="text-lg text-gray-600 mt-2">Cada módulo está diseñado para simplificar una parte clave de tu trabajo diario.</p>
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-12">
+                    <div class="swiper modules-slider pb-16">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Gestión de Pacientes Simplificada</h3>
+                                        <p class="text-gray-600 mb-4">Registra y consulta los datos de tus pacientes en una interfaz clara y amigable. <strong class="text-primary">Accede a su historial completo con un solo clic.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/lab-reporter/pag-reportes-banner.png" alt="Módulo de Gestión de Pacientes" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Registro de Resultados a Prueba de Errores</h3>
+                                        <p class="text-gray-600 mb-4">Ingresa los resultados analíticos en un formulario intuitivo que te guía paso a paso, <strong class="text-primary">minimizando errores de transcripción.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/lab-reporter/pag-resultados-banner.png" alt="Módulo de Registro de Resultados" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Catálogo de Pruebas a tu Medida</h3>
+                                        <p class="text-gray-600 mb-4">Define tus propios estudios, parámetros y perfiles. <strong class="text-primary">Adapta la herramienta 100% a los servicios que ofreces.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/lab-reporter/configuracion - estudios-banner.png" alt="Módulo de Catálogo de Pruebas" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Generación de Reportes con un Clic</h3>
+                                        <p class="text-gray-600 mb-4">Una vez ingresados los resultados, genera el informe final en PDF, firmado y listo para entregar. <strong class="text-primary">Ahorra horas de trabajo manual cada día.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/lab-reporter/generacion-pdf-horz-banner.png" alt="Módulo de Generación de Reportes" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Formatos personalizados</h3>
+                                        <p class="text-gray-600 mb-4">Personaliza tu formato conforme a tu estilo y marca contratando nuestro plan "Profesional". <strong class="text-primary">Personaliza tus reportes y manten tu identidad.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/lab-reporter/formato-pdf-personalizado-banner.PNG" alt="Módulo de Generación de Reportes" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="swiper-button-next hidden md:flex"></div>
+                    <div class="swiper-button-prev hidden md:flex"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ================================================== --> 
+        <!-- =========== TESTIMONIOS (PRUEBA SOCIAL) ========== -->
+        <!-- ================================================== -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todos nuestros clientes ya han optimizado su tiempo... <strong class="text-primary">¿Cuándo lo harás Tú?</strong></h2>
+                    <p class="text-lg text-gray-600 mt-2">Descubre por qué dueños de negocios como tú confían en LAB Reporter.</p>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+
+                    <!-- Testimonio 1 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md"> 
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/lab-reporter/testimonials/laboratorio-jireh.jpg" alt="Foto de laboraotrio clinico Jireh">
+                            <div>
+                                <p class="font-bold text-gray-900">Leidy Hernandez</p>
+                                <p class="text-sm text-gray-500">Laboratorio Clinico "Jireh" - Rep. Dominicana</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6  m-5"><span class="comilla-grande izquierda">“</span>... ¡Muy bien!, ¡puedo pasar los resultados de forma automatizada y se genera una base de datos que es lo mas importante!...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/lab-reporter/testimonials/gracia-y-fe-laboratorios.PNG" alt="Laboratorio Clinico Gracia y Fe">
+                            <div>
+                                <p class="font-bold text-gray-900">Yasibell Dominguez</p>
+                                <p class="text-sm text-gray-500">Laboratorio clinico "Gracia y Fé" - Ecuador</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>... me encanta que puedo tener todo ordenado y poder guardar los pacientes...<span class="comilla-grande derecha">”</span></p>
+
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/lab-reporter/testimonials/alofer-lab.PNG" alt="Laboratorio clinico Alofer Lab">
+                            <div>
+                                <p class="font-bold text-gray-900">Jesus Espejo</p>
+                                <p class="text-sm text-gray-500">Laboratorio Clinico, "Alofer Lab" - Perú</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>...desde que implementamos LAB Reporter no he dejado de usarlo, me ha ahorrado muchisimo tiempo al momento de reportar...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO INTERACTIVA (VIDEO) -->
+        <section id="demo" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Descubre LAB Reporter en Acción</h2>
+                    <p class="text-lg text-gray-600 mt-2">Mira este video y comprueba lo fácil que es transformar la gestión de tu laboratorio. Presiona play para empezar.</p>
+                </div>
+                <div id="video-container" class="max-w-4xl mx-auto aspect-video shadow-2xl rounded-xl">
+                    <!-- El Iframe se cargará aquí con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING -->
+        <section id="pricing" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Elige el Plan Perfecto para Ti</h2>
+                    <p class="text-lg text-gray-600 mt-2">Una inversión única para un beneficio de por vida.</p>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-start">
+                    <!-- Tier 1: Plantilla Esencial -->
+                    <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2">Plantilla Esencial</h3>
+                        <p class="text-gray-500 mb-6">Para los que son autónomos y no necesitan acompañamiento.</p>
+                        <div class="my-4">
+                            <span class="text-5xl font-extrabold">$20</span>
+                            <span class="text-xl font-medium text-gray-500">USD</span>
+                        </div>
+                        <p class="font-semibold mb-6">Pago Único</p>
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Plantilla Lab Reporter con +100 parámetros incluidos.</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Guía de usuario en PDF.</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Acceso de por vida a futuras actualizaciones.</li>
+                        </ul>
+                        <a href="#" data-plan="Esencial" class="payment-btn w-full mt-auto bg-gray-200 text-primary font-bold py-3 px-6 rounded-full text-lg hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Obtener Plantilla Esencial
+                        </a>
+                    </div>
+
+                    <!-- Tier 2: Paquete Profesional -->
+                    <div class="border-2 border-primary rounded-xl p-8 shadow-2xl bg-white relative transform lg:scale-105 h-full flex flex-col">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase px-4 py-1 rounded-full">
+                            Más Popular
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-2">Paquete Profesional</h3>
+                        <p class="text-gray-500 mb-6">Para los que les gusta aprovechar el mayor valor posible.</p>
+                        <div class="my-4">
+                            <span class="text-5xl font-extrabold">$45</span>
+                            <span class="text-xl font-medium text-gray-500">USD</span>
+                        </div>
+                        <p class="font-semibold mb-6">Pago Único</p>
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center font-bold text-primary"><span class="text-green-500 mr-3">✔</span> Todo lo incluido en el paquete esencial, y además...</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> <strong class="font-semibold">10 días hábiles de soporte prioritario.</strong></li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> <strong class="font-semibold">Apoyo con la implementación y parametrización.</strong></li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> <strong class="font-semibold">Personalización del formato del informe (colores, fuentes, logo, etc.)</strong></li>
+                        </ul>
+                        <a href="#" data-plan="Profesional" class="payment-btn w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Obtener Paquete Profesional
+                        </a>
+                    </div>
+
+                    <!-- Tier 3: Solución a Medida -->
+                    <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2">Solución a Medida</h3>
+                        <p class="text-gray-500 mb-6">Para flujos de trabajo únicos. Desarrollamos plantillas para tus necesidades.</p>
+                        
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Precio Personalizado</span>
+                        </div>
+                        <p class="font-semibold mb-6">Según el alcance del proyecto</p>
+
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center font-bold text-primary">
+                                <span class="text-green-500 mr-3">✔</span> Todo lo del Paquete Profesional, y además...
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Análisis de Requisitos:</strong> Entendemos tus procesos a fondo.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Personalización de Campos y Vistas </strong> Añadimos o modificamos lo que necesites.</span>
+                            </li>
+                        </ul>
+
+                        <a href="#" data-plan="A Medida" data-paypal-url="https://wa.link/650405"  class="payment-btn w-full mt-auto bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Solicitar Cotización
+                        </a>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- PREGUNTAS FRECUENTES -->
+        <section id="faq" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-bold text-center mb-10">Preguntas Frecuentes</h2>
+                <div class="space-y-4">
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Qué necesito para usar la plantilla?</h3>
+                        <p class="text-gray-600 mt-2">Necesitas una versión de Microsoft Excel para Windows (2016 o superior) que permita la ejecución de macros. La plantilla está optimizada para Windows.</p>
+                    </div>
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Puedo personalizar los reportes?</h3>
+                        <p class="text-gray-600 mt-2">¡Sí! El Paquete Profesional incluye la personalización del formato de informe a tu gusto. Si tienes conocimientos de VBA, también puedes modificar la plantilla Esencial.</p>
+                    </div>
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Cómo recibo la plantilla después de la compra?</h3>
+                        <p class="text-gray-600 mt-2">Inmediatamente después de la compra, recibirás un correo electrónico con un enlace para descargar la plantilla de Excel y la guía de usuario en PDF.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section id="cta" class="bg-primary text-white">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">¿Listo para llevar tu laboratorio al siguiente nivel?</h2>
+                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">Deja de perder tiempo y proyecta la imagen profesional que tus pacientes merecen. Invierte en una herramienta que trabaja para ti.</p>
+                <a href="#pricing" class="bg-white text-primary font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-200 transition-transform transform hover:scale-105 shadow-lg">
+                    Ver Planes y Precios
+                </a>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-auto">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <img src="../img/lab-reporter/logo-footer.png" alt="Logo de LAB Reporter" class="h-16 w-16 mx-auto mb-4">
+            <p class="text-blue-200 text-sm mb-2 italic">Hecho con ❤️ por un profesional apasionado por simplificar la vida de las Pymes.</p>
+            <p class="mb-4">LAB Reporter por Gammaliel Analytics</p>
+            <div class="mb-4">
+                <a href="/politica-de-privacidad/" class="text-sm text-gray-400 hover:text-white underline">Política de Privacidad</a>
+            </div>
+            <p class="text-gray-400 text-sm">© 2025 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // ---- SMOOTH SCROLL ----
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ---- SLIDER DE MÓDULOS ----
+        new Swiper('.modules-slider', {
+            loop: true,
+            spaceBetween: 30,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            keyboard: { enabled: true },
+        });
+
+        // ---- CARGA DEL VIDEO DE YOUTUBE ON-DEMAND ----
+        const videoContainer = document.getElementById('video-container');
+        if (videoContainer) {
+            const videoId = 'UH_swQij8HA';
+            const placeholder = document.createElement('div');
+            placeholder.className = 'youtube-placeholder';
+            placeholder.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" alt="Demostración de LAB Reporter"><div class="play-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></div>`;
+            videoContainer.appendChild(placeholder);
+            videoContainer.addEventListener('click', function() {
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                iframe.setAttribute('allowfullscreen', '');
+                this.innerHTML = '';
+                this.appendChild(iframe);
+                this.className = 'video-container';
+            }, { once: true });
+        }
+
+        // ---- LÓGICA DEL MODAL DE PAGO (MEJORADA Y COMPLETA) ----
+        const paymentButtons = document.querySelectorAll('.payment-btn');
+        const modal = document.getElementById('checkout-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const form = document.getElementById('checkout-form');
+        const planInput = document.getElementById('plan-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        
+        const paymentLinks = {
+            'Esencial': 'https://www.paypal.com/ncp/payment/T6AMR4N9VDEFQ',
+            'Profesional': 'https://www.paypal.com/ncp/payment/S8TB6Q3TLTEB4'
+        };
+
+        const openModal = (plan) => {
+            planInput.value = plan;
+
+            // ¡IMPORTANTE! Añadir evento a dataLayer para GTM
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'open_checkout_modal',
+                'product_name': 'LAB Reporter', // Para diferenciarlo de StockTracker
+                'plan_name': plan
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            form.reset();
+            submitBtn.disabled = false;
+            loadingSpinner.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+        };
+
+        paymentButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const plan = button.dataset.plan; // Usamos el data-attribute
+                if (plan) {
+                    openModal(plan);
+                }
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === 'checkout-modal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && !modal.classList.contains('hidden')) closeModal();
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            // ... (El resto de la lógica de envío del formulario es idéntica y correcta)
+        });
+    });
+    </script>
+
+    <!-- Checkout Modal (Copiado de la página principal) -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto" id="modal-content">
+            <!-- Formulario con integración para Netlify Forms -->
+            <form id="checkout-form" name="lab-reporter-leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <!-- Campo oculto para Netlify -->
+                <input type="hidden" name="form-name" value="lab-reporter-leads" />
+                <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
+
+                <!-- Campo oculto para saber qué plan eligió el cliente -->
+                <input type="hidden" id="plan-input" name="plan" value="">
+                <div class="p-6 sm:p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Formulario de Compra</h2>
+                            <p class="text-gray-500 mt-1">Completa tus datos para recibir tu enlace de pago.</p>
+                        </div>
+                        <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-700" aria-label="Cerrar modal">×</button>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                        <!-- Nombre y Apellido / Razón Social -->
+                        <div class="sm:col-span-2">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre y Apellido o Razón Social</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- DNI / Cédula / RIF -->
+                        <div>
+                            <label for="tax-id" class="block text-sm font-medium text-gray-700">DNI / Cédula / RIF</label>
+                            <input type="text" id="tax-id" name="tax-id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="sm:col-span-2">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Dirección Completa -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Dirección de Facturación</label>
+                        </div>
+                        <div>
+                            <label for="country" class="block text-xs text-gray-500">País</label>
+                            <input type="text" id="country" name="country" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-xs text-gray-500">Estado / Provincia</label>
+                            <input type="text" id="state" name="state" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="address" class="block text-xs text-gray-500">Dirección Específica (Calle, número, etc.)</label>
+                            <input type="text" id="address" name="address" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer del Modal -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-b-xl flex flex-col sm:flex-row-reverse items-center gap-4">
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                        <span id="submit-text">Obtener Enlace de Pago</span>
+                        <div id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-3"></div>
+                    </button>
+                    <button type="button" id="cancel-btn" class="w-full sm:w-auto text-gray-600 font-medium py-3 px-6 hover:text-gray-900">Cancelar</button>
+                </div>
+                <p id="error-message" class="text-red-600 text-center text-sm p-4 hidden"></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

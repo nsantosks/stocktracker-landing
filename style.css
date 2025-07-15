@@ -1,18 +1,41 @@
-/* style.css */
+/* =================================================== */
+/* == CONFIGURACIÓN GLOBAL Y TEMA POR DEFECTO (StockTracker) == */
+/* =================================================== */
+
+:root {
+    --primary-color: #1976D2; /* Azul de StockTracker */
+    --secondary-color: #1E88E5; /* Hover de StockTracker */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     color: #212121;
 }
-.bg-primary { background-color: #1976D2; }
-.text-primary { color: #1976D2; }
-.border-primary { border-color: #1976D2; }
+
+/* =================================================== */
+/* == CLASES DE UTILIDAD (USAN LAS VARIABLES CSS) == */
+/* =================================================== */
+
+.bg-primary { background-color: var(--primary-color); }
+.text-primary { color: var(--primary-color); }
+.border-primary { border-color: var(--primary-color); }
+.hover\:text-primary:hover { color: var(--primary-color); }
+.hover\:bg-blue-700:hover { background-color: var(--secondary-color); }
+
+/* Clases de utilidad adicionales que tenías */
 .bg-secondary { background-color: #F5F5F5; }
 .text-accent { color: #FFA726; }
 .bg-accent { background-color: #FFA726; }
+
+/* =================================================== */
+/* == ESTILOS DE COMPONENTES ESPECÍFICOS == */
+/* =================================================== */
+
+/* Hero Section Pattern (Ahora usa la variable) */
 .hero-pattern {
     background-color: #ffffff;
     opacity: 0.1;
-    background-image:  linear-gradient(135deg, #1976D2 25%, transparent 25%), linear-gradient(225deg, #1976D2 25%, transparent 25%), linear-gradient(45deg, #1976D2 25%, transparent 25%), linear-gradient(315deg, #1976D2 25%, #ffffff 25%);
+    background-image:  linear-gradient(135deg, var(--primary-color) 25%, transparent 25%), linear-gradient(225deg, var(--primary-color) 25%, transparent 25%), linear-gradient(45deg, var(--primary-color) 25%, transparent 25%), linear-gradient(315deg, var(--primary-color) 25%, #ffffff 25%);
     background-position:  10px 0, 10px 0, 0 0, 0 0;
     background-size: 10px 10px;
     background-repeat: repeat;
@@ -23,44 +46,45 @@ body {
     bottom: 0;
     z-index: -1;
 }
+
+/* Feature Cards (Ahora usa la variable) */
 .feature-card:hover .feature-icon {
     transform: scale(1.1);
-    color: #1976D2;
+    color: var(--primary-color);
 }
+
+/* Testimonial Quotes (Versión mejorada) */
 .comilla-grande {
-    font-family: serif; /* Puedes elegir otra fuente */
-    font-size: 4em; 
+    font-family: serif;
+    font-size: 3rem; /* 48px */
+    line-height: 0;
     color: #bbb;
-    line-height: 0; /* Ajusta la altura de línea para que no afecte demasiado al texto */
+    font-weight: 800;
 }
 
 .comilla-grande.izquierda {
-    vertical-align: bottom; /* Alinea la parte superior de la comilla con el texto */
-    margin-right: 0.2em; /* Un poco de espacio a la derecha */
-
+    position: relative;
+    top: 10px;
+    margin-right: 0.5rem;
 }
 
 .comilla-grande.derecha {
-    vertical-align: bottom; /* Alinea la parte inferior de la comilla con el texto */
-    margin-left: 0.1em; /* Un poco de espacio a la izquierda */
-
+    position: relative;
+    top: 25px;
+    margin-left: 0.5rem;
 }
 
-/* Estilos  para el slider de Swiper.js */
 
-/* Estilos para las flechas de navegación */
+/* Slider de Módulos (Ahora usa variables y con mejoras) */
 .swiper-button-next,
 .swiper-button-prev {
-    color: #1976D2; /* Tu color primario */
-    background-color: rgba(107, 104, 104, 0.041);
+    color: var(--primary-color); /* Usa variable */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s, color 0.5s;  
-     
-
-    /* Posicionamiento FUERA del slider, en el contenedor padre */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, color 0.3s;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -69,42 +93,81 @@ body {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background-color: #1976D2;
+    background-color: var(--primary-color); /* Usa variable */
     color: white;
 }
 
-/* Ajuste fino del icono de la flecha */
+/* Iconos de flecha más grandes y visibles */
 .swiper-button-next:after,
 .swiper-button-prev:after {
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 800;
 }
 
-/* Posición específica para cada flecha */
-.swiper-button-prev {
-    left: 0;
-}
-.swiper-button-next {
-    right: 0;
-}
+.swiper-button-prev { left: 0; }
+.swiper-button-next { right: 0; }
 
-/* Estilos para la paginación (puntos) */
 .swiper-pagination {
     position: absolute;
-    bottom: 0; /* Lo posicionamos en la parte inferior del padding que creamos */
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: auto; /* Para que se ajuste al contenido */
+    width: auto;
 }
 
 .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background-color: #d1d5db; /* Un gris claro para los inactivos */
+    background-color: #d1d5db;
     opacity: 1;
     transition: background-color 0.3s;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #1976D2; /* Tu color primario */
+    background-color: var(--primary-color); /* Usa variable */
+}
+
+
+/* Video de YouTube Placeholder */
+.youtube-placeholder {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+.youtube-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.youtube-placeholder .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 1.5rem;
+    transition: background-color 0.2s;
+}
+.youtube-placeholder:hover .play-button {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+.youtube-placeholder .play-button svg {
+    width: 3rem;
+    height: 3rem;
+    color: white;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CROMO - Control Lote a Lote</title>
+    <!-- Carga de Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Lucide Icons (Iconos para web) --><script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Configuración de la fuente Inter y colores personalizados */
+        :root {
+            --color-cromo-primary: #06b6d4; /* Tailwind cyan-500 */
+            --color-cromo-dark: #0f172a; /* Tailwind slate-900 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-cromo-dark);
+        }
+        .icon-teal {
+            color: var(--color-cromo-primary);
+        }
+        .btn-primary {
+            background-color: var(--color-cromo-primary);
+            transition: all 0.3s ease;
+            display: block; /* Asegura que el <a> se comporte como botón de ancho completo */
+            text-align: center;
+        }
+        .btn-primary:hover {
+            background-color: #0e7490; /* Darker cyan */
+        }
+        /* Clase para el logo con manejo de error */
+        .logo-cromo {
+            width: 80px;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cromo-primary': '#06b6d4',
+                        'cromo-dark': '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Contenedor Principal del Brochure (Centrado y Responsive) --><div class="p-4 md:p-8 lg:p-12 min-h-screen flex items-center justify-center">
+
+        <!-- Diseño de dos paneles: apilado en móvil, lado a lado en escritorio --><div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Panel 1: El Impacto y la Promesa (Frontal - Tema Oscuro) --><div class="p-8 md:p-10 lg:p-12 bg-cromo-dark text-white shadow-2xl rounded-2xl flex flex-col justify-between border-t-8 border-cromo-primary">
+                
+                <!-- Cabecera y Eslogan --><div>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <img src="https://i.imgur.com/yBUJzO4.png" alt="Logotipo CROMO" class="logo-cromo" onerror="this.onerror=null; this.src='https://placehold.co/80x80/06b6d4/ffffff?text=CROMO';" />
+                        <h1 class="text-xl font-extrabold tracking-widest uppercase">CROMO</h1>
+                    </div>
+                    
+                    <p class="text-cromo-primary text-lg md:text-xl font-semibold mb-6 border-l-4 pl-3 border-cyan-400">
+                        CONTROL LOTE A LOTE. GESTIÓN MAESTRA EN EL PISO DE PRODUCCIÓN.
+                    </p>
+
+                    <!-- Título Central --><h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-8">
+                        ¿Cansado de la Incertidumbre en sus Lotes de Producción?
+                    </h2>
+
+                    <!-- Cuerpo - El Problema --><p class="text-gray-300 mb-6 text-base md:text-lg">
+                        Si su rentabilidad depende de la precisión en la dosificación y la trazabilidad impecable, no puede permitirse el error del papel o de sistemas genéricos. Las desviaciones en la materia prima o los cuellos de botella no detectados matan su margen.
+                    </p>
+
+                    <!-- Cuerpo - La Solución CROMO --><p class="text-gray-100 mb-10 font-medium text-base md:text-lg">
+                        <strong class="text-cromo-primary">CROMO</strong> es la solución de seguimiento de producción hiper-especializada en Lotes y construida para la agilidad. Le da el control exacto que necesita para transformar la materia prima en calidad auditable y ganancias predecibles.
+                    </p>
+                </div>
+
+                <!-- Llamada a la Acción --><div class="mt-8">
+                    <!-- Enlace de WhatsApp agregado con el mismo estilo del botón -->
+                    <a href="https://wa.me/+584121691851" target="_blank" rel="noopener noreferrer" 
+                       class="btn-primary w-full py-3 px-6 text-cromo-dark font-bold text-lg rounded-xl shadow-lg hover:shadow-cromo-primary/50 transition-all duration-300">
+                        Pida una demostración hoy y descubra cómo CROMO pulirá sus procesos.
+                    </a>
+                </div>
+            </div>
+
+            <!-- Panel 2: Funcionalidades Clave y Beneficios (Interior - Tema Claro) --><div class="grid grid-cols-1 divide-y divide-gray-200 bg-white shadow-2xl rounded-2xl">
+                
+                <!-- Sección I: El Valor de CROMO (Lo que Resolverá su Dolor) --><div class="p-8 md:p-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-cromo-primary/50">
+                        I. El Valor de CROMO
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Enfocados en la producción por lotes, CROMO le entrega tres beneficios irremplazables:
+                    </p>
+
+                    <!-- Beneficio 1: Trazabilidad --><div class="flex items-start mb-6">
+                        <div class="p-3 bg-cromo-primary/10 rounded-full mr-4 flex-shrink-0">
+                            <i data-lucide="scan-line" class="icon-teal w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-900">Trazabilidad Química (Misión Crítica)</h4>
+                            <p class="text-sm text-gray-700">
+                                Elimine las conjeturas. Registre el consumo de materia prima escaneando códigos QR, asegurando que cada gramo utilizado esté atado a un Lote Maestro. Auditorías en segundos, no en días.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Beneficio 2: Productividad --><div class="flex items-start mb-6">
+                        <div class="p-3 bg-cromo-primary/10 rounded-full mr-4 flex-shrink-0">
+                            <i data-lucide="clock" class="icon-teal w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-900">Productividad al Instante (Reducción de Setup)</h4>
+                            <p class="text-sm text-gray-700">
+                                Mida el tiempo real de cada ciclo con un registro preciso de inicio y fin. Identifique y reduzca el costoso tiempo de reconfiguración entre lotes para maximizar las horas productivas de su planta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Beneficio 3: Control de Calidad --><div class="flex items-start">
+                        <div class="p-3 bg-cromo-primary/10 rounded-full mr-4 flex-shrink-0">
+                            <i data-lucide="badge-check" class="icon-teal w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-900">Control de Calidad (QC) en el Flujo</h4>
+                            <p class="text-sm text-gray-700">
+                                La verificación por parte del supervisor es obligatoria antes del despacho. Asegure que cada lote cuente con la aprobación digital y la firma de calidad antes de impactar su inventario final.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección II: Características Técnicas Destacadas --><div class="p-8 md:p-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-cromo-primary/50">
+                        II. Características Técnicas Destacadas
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        CROMO utiliza el poder de AppSheet y sus datos para ofrecer una plataforma robusta:
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded-lg border border-cromo-primary/20">
+                            <h4 class="font-medium text-gray-900 flex items-center">
+                                <i data-lucide="layout-grid" class="icon-teal w-5 h-5 mr-2"></i> Inventario Centralizado
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-7">Gestión de inventario único con códigos QR/Barras y stock mínimo para todos sus insumos y productos finales.</p>
+                        </div>
+                        
+                        <div class="p-4 bg-gray-50 rounded-lg border border-cromo-primary/20">
+                            <h4 class="font-medium text-gray-900 flex items-center">
+                                <i data-lucide="users" class="icon-teal w-5 h-5 mr-2"></i> Gestión de Usuarios
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-7">Asignación de roles y permisos para garantizar que solo el personal autorizado registre los movimientos críticos.</p>
+                        </div>
+
+                        <div class="p-4 bg-gray-50 rounded-lg border border-cromo-primary/20">
+                            <h4 class="font-medium text-gray-900 flex items-center">
+                                <i data-lucide="git-commit" class="icon-teal w-5 h-5 mr-2"></i> Registro Dual de Movimiento
+                            </h4>
+                            <p class="text-sm text-gray-600 ml-7">Claridad absoluta en el inventario con el registro de CONSUMO vs. GENERACIÓN en cada movimiento de SKU.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección III: El Significado de CROMO --><div class="p-8 md:p-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2 border-cromo-primary/50">
+                        III. El Significado de CROMO
+                    </h3>
+                    <p class="text-base text-gray-700 mb-4">
+                        Cada letra de CROMO representa un pilar fundamental para su producción:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-6">
+                        <li><strong class="text-cromo-primary">C</strong><strong class="text-gray-800">ontrol:</strong> La capacidad de monitorear y gestionar todos los pasos del lote.</li>
+                        <li><strong class="text-cromo-primary">R</strong><strong class="text-gray-800">endimiento:</strong> La meta final: medir y maximizar la producción por lote.</li>
+                        <li><strong class="text-cromo-primary">O</strong><strong class="text-gray-800">peracional:</strong> Se enfoca en las actividades de la planta (el piso de producción).</li>
+                        <li><strong class="text-cromo-primary">M</strong><strong class="text-gray-800">onitoreo:</strong> La función principal del software: observar el proceso en tiempo real.</li>
+                        <li><strong class="text-cromo-primary">O</strong><strong class="text-gray-800">ptimización:</strong> El valor final del sistema: usar los datos para mejorar continuamente.</li>
+                    </ul>
+                    <p class="text-base font-semibold text-gray-800">
+                        CROMO: Control y Rendimiento Operacional por Monitoreo y Optimización.
+                    </p>
+                </div>
+
+                <!-- Sección IV: Nuestro Compromiso --><div class="p-8 md:p-10 bg-cromo-dark/5 rounded-b-2xl">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        IV. Nuestro Compromiso
+                    </h3>
+                    <p class="text-base text-gray-700">
+                        CROMO no es solo un tracker; es su socio en la optimización operacional. Le entregamos una solución lista para adaptarse a sus procesos de producción, garantizando la confianza y la precisión que su negocio exige.
+                    </p>
+                </div>
+                
+            </div>
+            <!-- Fin Panel 2 --></div>
+    </div>
+
+    <!-- Inicialización de Lucide Icons --><script>
+        // Esta función busca todos los elementos con el atributo 'data-lucide' y los reemplaza con SVGs.
+        lucide.createIcons();
+    </script>
+</body>
+</html>

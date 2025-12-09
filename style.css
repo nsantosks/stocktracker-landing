@@ -1,19 +1,21 @@
 /* =================================================== */
-/* == CONFIGURACIÓN GLOBAL Y TEMA POR DEFECTO (StockTracker) == */
+/* == 1. CONFIGURACIÓN GLOBAL Y ESTILOS ORIGINALES == */
 /* =================================================== */
 
 :root {
+    /* VARIABLES ORIGINALES (PARA EL RESTO DEL SITIO) */
     --primary-color: #1976D2; /* Azul de StockTracker */
     --secondary-color: #1E88E5; /* Hover de StockTracker */
 }
 
 body {
+    /* El body original usa 'Inter', preservamos esto para las otras secciones */
     font-family: 'Inter', sans-serif;
     color: #212121;
 }
 
 /* =================================================== */
-/* == CLASES DE UTILIDAD (USAN LAS VARIABLES CSS) == */
+/* == 2. CLASES DE UTILIDAD ORIGINALES == */
 /* =================================================== */
 
 .bg-primary { background-color: var(--primary-color); }
@@ -28,15 +30,15 @@ body {
 .bg-accent { background-color: #FFA726; }
 
 /* =================================================== */
-/* == ESTILOS DE COMPONENTES ESPECÍFICOS == */
+/* == 3. ESTILOS DE COMPONENTES ESPECÍFICOS ORIGINALES == */
 /* =================================================== */
 
 /* Hero Section Pattern (Ahora usa la variable) */
 .hero-pattern {
     background-color: #ffffff;
     opacity: 0.1;
-    background-image:  linear-gradient(135deg, var(--primary-color) 25%, transparent 25%), linear-gradient(225deg, var(--primary-color) 25%, transparent 25%), linear-gradient(45deg, var(--primary-color) 25%, transparent 25%), linear-gradient(315deg, var(--primary-color) 25%, #ffffff 25%);
-    background-position:  10px 0, 10px 0, 0 0, 0 0;
+    background-image: linear-gradient(135deg, var(--primary-color) 25%, transparent 25%), linear-gradient(225deg, var(--primary-color) 25%, transparent 25%), linear-gradient(45deg, var(--primary-color) 25%, transparent 25%), linear-gradient(315deg, var(--primary-color) 25%, #ffffff 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
     background-size: 10px 10px;
     background-repeat: repeat;
     position: absolute;
@@ -74,12 +76,11 @@ body {
     margin-left: 0.5rem;
 }
 
-
-/* Slider de Módulos (Ahora usa variables y con mejoras) */
+/* Slider de Módulos */
 .swiper-button-next,
 .swiper-button-prev {
-    color: var(--primary-color); /* Usa variable */
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.8);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -93,11 +94,10 @@ body {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background-color: var(--primary-color); /* Usa variable */
+    background-color: var(--primary-color);
     color: white;
 }
 
-/* Iconos de flecha más grandes y visibles */
 .swiper-button-next:after,
 .swiper-button-prev:after {
     font-size: 20px;
@@ -124,7 +124,7 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--primary-color); /* Usa variable */
+    background-color: var(--primary-color);
 }
 
 
@@ -170,4 +170,191 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* =================================================== */
+/* == 4. ESTILOS DEL NUEVO LANDING PAGE (ENCAPSULADOS) == */
+/* =================================================== */
+
+.landing-page-wrapper {
+    /* Nuevas variables de color y tipografía específicas para el landing */
+    --color-primary: #004d99; /* Azul Corporativo Fuerte */
+    --color-secondary: #ff7f50; /* Color de Acento (Coral) */
+    --color-text: #333333;
+    --color-background: #ffffff;
+    --color-light-gray: #f9f9f9;
+    --color-dark-gray: #666666;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Aseguramos que la tipografía del contenido del landing page sea la nueva */
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.landing-page-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.landing-page-wrapper h1,
+.landing-page-wrapper h2,
+.landing-page-wrapper h3 {
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+/* Navbar */
+.landing-page-wrapper .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.landing-page-wrapper .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.landing-page-wrapper .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.landing-page-wrapper .nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.landing-page-wrapper .nav-links a:hover {
+    color: var(--color-secondary);
+}
+
+.landing-page-wrapper .nav-cta a {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Botones (CTAs) */
+.landing-page-wrapper .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.landing-page-wrapper .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.landing-page-wrapper .btn-primary:hover {
+    background-color: #003366; /* Tono más oscuro */
+}
+
+.landing-page-wrapper .btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.landing-page-wrapper .btn-secondary:hover {
+    background-color: var(--color-light-gray);
+}
+
+/* HERO SECTION */
+.landing-page-wrapper .hero-section {
+    background-color: var(--color-light-gray);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.landing-page-wrapper .hero-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.landing-page-wrapper .hero-content p {
+    font-size: 1.3em;
+    color: var(--color-dark-gray);
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.landing-page-wrapper .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* SERVICIOS CLAVE SECTION */
+.landing-page-wrapper .services-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.landing-page-wrapper .services-section h2 {
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.landing-page-wrapper .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.landing-page-wrapper .service-card {
+    background-color: var(--color-background);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    border-top: 5px solid var(--color-primary);
+    transition: transform 0.3s;
+}
+
+.landing-page-wrapper .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page-wrapper .service-card h3 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.landing-page-wrapper .service-card p {
+    color: var(--color-dark-gray);
+    margin-bottom: 20px;
+}
+
+.landing-page-wrapper .service-link {
+    display: inline-block;
+    color: var(--color-secondary);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.landing-page-wrapper .service-link:hover {
+    color: var(--color-primary);
 }

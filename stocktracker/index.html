@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La plantilla de AppSheet definitiva para Pymes. Gestiona inventario, productos y activos de forma fácil, rápida y sin errores. Deja atrás el Excel y toma el control.">
+    <title>StockTracker - Plantilla de Gestión de Inventario y Activos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Enlace al nuevo archivo CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body class="bg-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="../img/logo-header.png" alt="Logo de StockTracker" class="h-10 w-10">
+                <span class="text-2xl font-bold text-gray-800">StockTracker</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Funciones</a>
+                <a href="#modules" class="text-gray-600 hover:text-primary transition-colors">Módulos</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors font-medium">Reseñas</a>
+                <a href="#exploracion" class="text-gray-600 hover:text-primary transition-colors font-medium">Explorar</a>
+                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Cotizar</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">F&Q</a>
+                <a href="#cta" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
+            </div>
+            <div class="md:hidden">
+                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- =================================================== -->
+        <!-- ============== HERO SECTION ==================== -->
+        <!-- =================================================== -->
+        <section class="relative pt-20 pb-24 text-center overflow-hidden">
+            <div class="hero-pattern"></div>
+            <div class="container mx-auto px-6 z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+                    Deja de trabajar para tu hoja Excel y empieza a tomar el control de tu inventario ahora.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    StockTracker es la plantilla de AppSheet definitiva para Pymes que te permite gestionar productos y activos de forma fácil, rápida y sin errores.
+                </p>
+                <a href="#exploracion" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                    Explora la Demo en Vivo
+                </a>
+                <div class="mt-12">
+                    <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> La plantilla más usada por Pymes, Almacenes y Auditores en toda Latinoamérica.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> No requiere conocimientos de programación.</li>
+                        <li class="flex items-start"><span class="text-primary mr-2">✔</span> Trabaja de forma colaborativa en tu Móvil o PC.</li>
+                    </ul>
+
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA MÓVIL: Imagen vertical -->
+                    <!-- Se muestra por defecto y se oculta en pantallas medianas (md:hidden) -->
+                    <!-- =============================================================== -->
+                    <img src="../img/movil-main-01.jpeg" alt="Aplicación StockTracker en un teléfono móvil" class="mx-auto rounded-lg shadow-2xl border-4 border-gray-200 w-full max-w-sm md:hidden"> 
+
+                    <!-- =============================================================== -->
+                    <!-- IMAGEN PARA ESCRITORIO: Imagen panorámica -->
+                    <!-- Oculta por defecto, se muestra en pantallas medianas (hidden md:block) -->
+                    <!-- =============================================================== -->
+                    <img src="../img/banner-03.png" alt="Pantalla de inicio de la aplicación StockTracker" class="hidden md:block max-w-4xl mx-auto rounded-lg shadow-2xl border-4 border-gray-200" loading="lazy">
+                </div>
+            </div>
+        </section>
+        <!-- =================================================== -->
+        <!-- ============== ¿PARA QUIÉN ES? ==================== -->
+        <!-- =================================================== -->
+        <section id="target-audience" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Diseñado para Emprendedores, Almacenadoras y Auditores Contables</h2>
+                    <p class="text-lg text-gray-600 mt-2">Si tu negocio gestiona inventario físico, StockTracker es para ti. Perfecto para:</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Contadores y Auditores</h3>
+                        <p class="text-gray-600">Realiza auditorias de inventarios y activos, devolviendote las horas que perdías en la transcripción entrega de datos.</p>
+                    </div>
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Emprendedores</h3>
+                        <p class="text-gray-600">Empieza con el pie derecho y profesionaliza la gestión de tu inventario desde el día uno.</p>
+                    </div>
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ e-commerce</h3>
+                        <p class="text-gray-600">Sincroniza tu inventario físico con tus ventas online y evita vender productos sin stock.</p>
+                    </div>
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Almacenadoras y Bodegas</h3>
+                        <p class="text-gray-600">Controla entradas, salidas y ubicaciones de productos en tu centro de distribución o almacén.</p>
+                    </div>
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Talleres y Servicios</h3>
+                        <p class="text-gray-600">Lleva un registro de repuestos, herramientas y materiales utilizados en cada servicio.</p>
+                    </div>
+                    <div class="bg-secondary p-6 rounded-lg shadow-sm">
+                        <h3 class="font-bold text-lg mb-2">✓ Tiendas Minoristas</h3>
+                        <p class="text-gray-600">Gestiona el stock de tu tienda de ropa, electrónica, ferretería o cualquier comercio con venta al público.</p>
+                    </div>                   
+                </div>
+            </div>
+        </section>
+        <!-- =================================================== -->
+        <!-- =================== FUNCIONES ===================== -->
+        <!-- =================================================== -->
+        <section id="features" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todo lo que necesitas, y nada que no necesites</h2>
+                    <p class="text-lg text-gray-600 mt-2">Funciones pensadas para optimizar Tú Gestión.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">📦</div>
+                        <h3 class="text-xl font-bold mb-2">Gestión Centralizada</h3>
+                        <p class="text-gray-600">Controla todo tu inventario, productos y activos desde un único lugar, accesible desde cualquier dispositivo.</p>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">📱</div>
+                        <h3 class="text-xl font-bold mb-2">Escaneo de Códigos</h3>
+                        <p class="text-gray-600">Usa la cámara de tu móvil para escanear códigos de barras y QR, agilizando las entradas y salidas de stock.</p>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">🔔</div>
+                        <h3 class="text-xl font-bold mb-2">Alertas de Stock Mínimo</h3>
+                        <p class="text-gray-600">Define puntos de reorden y recibe alertas automáticas para no quedarte nunca sin existencias de productos clave.</p>
+                    </div>
+                    <!-- Feature Card 4 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">👥</div>
+                        <h3 class="text-xl font-bold mb-2">Roles de Usuario</h3>
+                        <p class="text-gray-600">Asigna roles de Administrador o Usuario para controlar quién puede ver y modificar la información crítica.</p>
+                    </div>
+                    <!-- Feature Card 5 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">🚀</div>
+                        <h3 class="text-xl font-bold mb-2">Auditorías de Inventarios</h3>
+                        <p class="text-gray-600">Realiza levantamientos de inventarios en el campo y ten el control de todo el proceso en tiempo real en la palma de tu mano.</p>
+                    </div>
+                    <!-- Feature Card 6 -->
+                    <div class="feature-card text-center p-6 bg-secondary rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                        <div class="feature-icon text-4xl mb-4 transition-transform text-primary">🛒</div>
+                        <h3 class="text-xl font-bold mb-2">Emisión de solicitudes de Compra</h3>
+                        <p class="text-gray-600">Emite tus solicitudes de compra para que no te quedes si stock, gestiona en tiempo real el control de tu caja.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =================================================== -->
+        <!-- ==== MODULOS (VERSIÓN CORREGIDA CON MÁS ESPACIO) ==== -->
+        <!-- =================================================== -->
+        <section id="modules" class="py-20 bg-secondary">
+            <div class="container mx-auto px-6 overflow-hidden">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Una Navaja Suiza para tu Inventario</h2>
+                    <p class="text-lg text-gray-600 mt-2">Cada módulo está diseñado para resolver un dolor de cabeza específico y devolverte el control.</p>
+                </div>
+
+                <!-- =============================================================== -->
+                <!-- == NUEVO CONTENEDOR PARA CREAR ESPACIO PARA LOS CONTROLES == -->
+                <!-- =============================================================== -->
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-12">
+                    <!-- Contenedor principal de Swiper -->
+                    <div class="swiper modules-slider pb-16">
+                        <!-- Wrapper donde irán todas las diapositivas (slides) -->
+                        <div class="swiper-wrapper">
+                            
+                            <!-- Slide 1: Catálogo de Productos -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Tu Inventario en un Vistazo: Claridad Total</h3>
+                                        <p class="text-gray-600 mb-4">Olvida las filas interminables de Excel. Visualiza cada producto con su foto, SKU, ubicación y stock actual en una ficha clara e intuitiva. <strong class="text-primary">Toma decisiones basadas en datos, no en suposiciones.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/01-productos.png" alt="Módulo de Productos" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Transacciones -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Movimientos a Prueba de Errores: Entradas y Salidas en Segundos</h3>
+                                        <p class="text-gray-600 mb-4">Reduce el error humano a cero. Escanea un código de barras y registra una entrada o salida al instante. Tu stock se actualiza en tiempo real, <strong class="text-primary">evitando ventas de productos que no tienes.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/02-entradas-salidas.png" alt="Módulo de Recepciones" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 3: Histórico -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Rastro de Auditoría Perfecto: Cada Movimiento, Registrado</h3>
+                                        <p class="text-gray-600 mb-4">Accede a un historial inmutable de cada transacción. Filtra por fecha, producto o usuario para tener una <strong class="text-primary">trazabilidad completa y responder a cualquier auditoría con total confianza.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/03-historicos.png" alt="Módulo de Histórico de Transacciones" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 4: Contactos -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Tus Socios de Negocio, Organizados</h3>
+                                        <p class="text-gray-600 mb-4">Centraliza los datos de tus proveedores y clientes, y accede a su historial de transacciones con un solo clic. <strong class="text-primary">Agiliza tus órdenes de compra y ofrece un servicio al cliente más informado.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/04-clientes-proveedores.png" alt="Módulo de Clientes" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 5: Carga Masiva -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Implementación Rápida: Importa Tu Inventario en Minutos</h3>
+                                        <p class="text-gray-600 mb-4">Nuestro asistente inteligente te permite <strong class="text-primary">importar todo tu catálogo desde una hoja de cálculo,</strong> actualizando precios y costos masivamente. Estarás operativo en tiempo récord.</p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/05-carga-masiva.png" alt="Módulo de Carga Masiva" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 6: Auditorías -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Auditorías Sin Estrés: Del Campo a la Nube al Instante</h3>
+                                        <p class="text-gray-600 mb-4"><strong class="text-primary">Como usan los profesionales,</strong> tu equipo puede contar el stock en el campo con sus móviles. Los datos se sincronizan en tiempo real, eliminando la transcripción.</p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/06-toma-fisica.png" alt="Módulo de Toma Física" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 7: Solicitudes de Compra -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Decisiones de Compra Inteligentes: No Vuelvas a Quedarte sin Stock</h3>
+                                        <p class="text-gray-600 mb-4">La herramienta identifica los productos por agotarse y con un clic, <strong class="text-primary">genera una solicitud de compra profesional,</strong> asegurando que nunca pierdas una venta.</p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/07-compras-productos.png" alt="Solicitud de Compra" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide 8: Etiquetas -->
+                            <div class="swiper-slide">
+                                <div class="flex flex-wrap items-center">
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <h3 class="text-2xl font-bold mb-3">Profesionaliza tu Almacén: Etiquetas con un Clic</h3>
+                                        <p class="text-gray-600 mb-4">Genera e imprime etiquetas con código de barras o QR para cada producto, <strong class="text-primary">facilitando el escaneo y proyectando una imagen de eficiencia y control total.</strong></p>
+                                    </div>
+                                    <div class="w-full md:w-1/2 p-4">
+                                        <img src="../img/08-etiquetado-productos.png" alt="Etiquetas de Producto" class="rounded-lg shadow-xl border" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Paginación (Puntos) -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    
+                    <!-- Botones de Navegación (Flechas) - AHORA FUERA DEL SLIDER PRINCIPAL PERO DENTRO DEL CONTENEDOR RELATIVO -->
+                    <div class="swiper-button-next hidden md:flex"></div>
+                    <div class="swiper-button-prev hidden md:flex"></div>
+                </div>
+            </div>
+        </section>
+        <!-- ================================================== -->
+        <!-- =========== TESTIMONIOS (PRUEBA SOCIAL) ========== -->
+        <!-- ================================================== -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todos nuestros clientes ya han tomado el Control... <strong class="text-primary">¿Cuándo lo harás Tú?</strong></h2>
+                    <p class="text-lg text-gray-600 mt-2">Descubre por qué dueños de negocios como tú confían en StockTracker.</p>
+                </div>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+
+                    <!-- Testimonio 1 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md"> 
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/testimonials/ana-maria-gonzalez.png" alt="Foto de Ana María González">
+                            <div>
+                                <p class="font-bold text-gray-900">Ana María González</p>
+                                <p class="text-sm text-gray-500">Dueña de "Moda Urbana" Boutique</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6  m-5"><span class="comilla-grande izquierda">“</span>... estábamos ahogados en hojas de cálculo y notas. Con StockTracker, ahora todo el equipo sabe qué hay en stock desde su celular. ¡Nos ahorró incontables horas y errores!...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/testimonials/marim-jimenez.png" alt="Foto de Marim Jiménez">
+                            <div>
+                                <p class="font-bold text-gray-900">Marim Jiménez</p>
+                                <p class="text-sm text-gray-500">Abogado, Contador y Auditor</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>... desde que implementamos StockTracker, la toma de inventarios para nuestros clientes se ha vuelto increíblemente eficiente. Lo que antes nos llevaba días, ahora lo completamos en cuestión de horas...<span class="comilla-grande derecha">”</span></p>
+
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="../img/testimonials/carlos-betancourt.png" alt="Foto de Carlos Betancourt">
+                            <div>
+                                <p class="font-bold text-gray-900">Carlos Betancourt</p>
+                                <p class="text-sm text-gray-500">Gerente de "Servi-Auto Rápido"</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>...la mejor parte es el escaneo de códigos de barra. Registrar la entrada de repuestos en el taller ¡ahora no toma nada!. La inversión se pagó sola en el primer mes...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================== -->
+        <!-- == SECCIÓN DE EXPLORACIÓN INTERACTIVA (CON CARGA ON-DEMAND) == -->
+        <!-- ============================================================== -->
+        <section id="exploracion" class="py-20 bg-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Prueba StockTracker Ahora Mismo</h2>
+                    <p class="text-lg text-gray-600 mt-2">Interactúa con una versión de demostración completa. Agrega productos, registra entradas o salidas y descubre su potencial sin ningún compromiso.</p>
+                </div>
+                
+                <div class="max-w-5xl mx-auto">
+                    <!-- VERSIÓN PARA MÓVIL -->
+                    <div class="md:hidden relative">
+                        <img src="../img/movil-main-01.jpeg" alt="Previsualización de StockTracker en un dispositivo" class="rounded-xl shadow-2xl border w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
+                            <a href="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab" target="_blank" rel="noopener noreferrer" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">
+                                Abrir Demo en Vivo
+                            </a>
+                        </div>
+                    </div> 
+
+                    <!-- =============================================================== --> 
+                    <!-- VERSIÓN PARA ESCRITORIO (MODIFICADA CON CARGA ON-DEMAND) -->
+                    <!-- Está oculta por defecto y se muestra en pantallas medianas y grandes (hidden md:block) -->
+                    <!-- =============================================================== -->
+                    <div class="hidden md:block">
+                        <!-- 1. Placeholder que se muestra al inicio -->
+                        <div id="demo-placeholder" class="relative cursor-pointer">
+                            <img src="../img/banner-01.png" alt="Previsualización de la aplicación StockTracker" class="rounded-xl shadow-2xl border w-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-xl">
+                                <button id="load-demo-btn" class="bg-primary text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg flex items-center">
+                                    <!-- Icono de Play SVG -->
+                                    <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                    Iniciar Demo Interactiva
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Contenedor del Iframe, oculto al inicio -->
+                        <div id="iframe-container" class="hidden bg-white p-2 rounded-xl shadow-2xl border">
+                            <iframe
+                                id="demo-iframe"
+                                class="w-full aspect-video rounded-lg"
+                                data-src="https://www.appsheet.com/start/5d3f3159-865d-4d66-987a-469bb5e2b1ab"
+                                title="Demo de StockTracker"
+                                frameborder="0"
+                                allow="fullscreen">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center text-gray-500 mt-6 text-sm">Nota: Los datos ingresados en esta demostración son públicos y se reinican periódicamente. <a href="/politica-de-privacidad/" class="text-sm text-gray-400 hover:text-blue-700 underline">Ver Política de Privacidad</a></p>
+            </div>
+        </section>
+        <!-- ================================================== -->
+        <!-- =================== PRICING  ===================== -->
+        <!-- ================================================== -->
+        <section id="pricing" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Elige la Solución Perfecta para Tu Negocio</h2>
+                    <p class="text-lg text-gray-600 mt-2">Desde la plantilla lista para usar hasta una solución completamente personalizada...</p>
+                </div>
+
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-start">
+
+                    <!-- Tier 1: Plantilla Esencial -->
+                    <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2">Plantilla Esencial</h3>
+                        <p class="text-gray-500 mb-6">Para el que lo hace todo. Obtén la plantilla y adáptala a tu ritmo.</p>
+                        
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Pago Único</span>
+                        </div>
+
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Todos los módulos y funciones.</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Backend sobre Google Sheets.</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Guía de inicio rápido y videotutorial.</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Roles de usuario pre-configurados.</li>
+                        </ul>
+
+                        <a href="https://wa.link/650405" data-plan="Esencial" class="bg-primary w-full mt-auto bg-gray-200 text-primary font-bold py-3 px-6 rounded-full text-lg hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Obtener Plantilla
+                        </a>
+                    </div>
+
+                    <!-- Tier 2: Paquete Profesional -->
+                    <div class="border-2 border-primary rounded-xl p-8 shadow-2xl bg-white relative transform lg:scale-105 h-full flex flex-col">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase px-4 py-1 rounded-full">
+                            Más Popular
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary mb-2">Paquete Profesional</h3>
+                        <p class="text-gray-500 mb-6">Para el que valora su tiempo. Nos encargamos de la puesta en marcha.</p>
+                        
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Pago Único</span>
+                        </div>
+                        
+                        <!-- == LÍNEA DE ESCASEZ == -->
+                        <p class="text-sm text-red-600 font-bold mb-6 animate-pulse">¡Plazas de implementación limitadas cada mes!</p>
+                        
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center font-bold text-primary">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span>Todo lo de la Plantilla Esencial, y además...</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Acompañamiento Personalizado:</strong> Te guiamos hasta la puesta en marcha y te damos 30 días de soporte prioritario.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Dashboard Power BI:</strong> Obtén una visión estratégica y visualiza indicadores clave de tu inventario.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Desarrollo de Lógicas a Medida </strong> Alertas, reportes o flujos de trabajo unicos.</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://wa.link/650405" data-plan="Profesional"  class="bg-primary w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Asegurar mi Agenda Ahora
+                        </a>
+                    </div>
+
+                    <!-- Tier 3: Solución a Medida -->
+                    <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                        <h3 class="text-2xl font-bold mb-2">Solución a Medida</h3>
+                        <p class="text-gray-500 mb-6">Para flujos de trabajo únicos. Adaptamos la herramienta a tus necesidades.</p>
+                        
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold">Precio Personalizado</span>
+                        </div>
+                        <p class="font-semibold mb-6">Según el alcance del proyecto</p>
+
+                        <ul class="space-y-3 text-left mb-8 flex-grow">
+                            <li class="flex items-center font-bold text-primary">
+                                <span class="text-green-500 mr-3">✔</span> Todo lo del Paquete Profesional, y además...
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Análisis de Requisitos:</strong> Entendemos tus procesos a fondo.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Personalización de Campos y Vistas </strong> Añadimos o modificamos lo que necesites.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3">✔</span>
+                                <span><strong class="font-semibold">Integración de analizadores de IA:</strong> Realiza informes de análisis de stockouts, rotación y forecast de ventas.</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://wa.link/650405" data-plan="A Medida"  class="bg-primary w-full mt-auto bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">
+                            Solicitar Cotización
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ================================================== -->
+        <!-- ========== PREGUNTAS FRECUENTES ================== -->
+        <!-- ================================================== -->
+        <section id="faq" class="py-20 bg-secondary">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-bold text-center mb-10">Preguntas Frecuentes</h2>
+                <div class="space-y-4">
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Qué necesito para usar la plantilla?</h3>
+                        <p class="text-gray-600 mt-2">Solo necesitas una cuenta de Google (personal o de Google Workspace) para poder usar AppSheet y Google Sheets, donde se guardarán tus datos de forma segura.</p>
+                    </div>
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Puedo personalizar la plantilla?</h3>
+                        <p class="text-gray-600 mt-2">¡Sí! Puedes cargar el logo de tu empresa. Para personalizaciones más profundas (añadir campos, cambiar flujos), se recomienda tener conocimientos de AppSheet o contratar nuestro servicio de personalización.</p>
+                    </div>
+                    <div class="border rounded-lg p-5 bg-white">
+                        <h3 class="font-bold text-lg">¿Cómo recibo la plantilla después de la compra?</h3>
+                        <p class="text-gray-600 mt-2">Recibirás un correo electrónico con un enlace para copiar la plantilla directamente a tu cuenta de AppSheet, junto con la guía de inicio rápido y el acceso al videotutorial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>        
+        <!-- ================================================== -->
+        <!-- =============== CALL TO ACTION =================== -->
+        <!-- ================================================== -->
+        <section id="cta" class="bg-primary text-white">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">¿Listo para transformar la gestión de tu inventario?</h2>
+                <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">Deja de perder tiempo y dinero con métodos obsoletos. Invierte en una herramienta que crece contigo.</p>
+                <a href="#pricing" class="bg-white text-primary font-bold py-4 rounded-full transition-transform transform hover:scale-105 shadow-lg text-base px-8 md:text-lg md:px-10">
+                    Obtener StockTracker Ahora
+                </a>
+            </div>
+        </section> 
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-auto">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <img src="../img/logo-footer.png" alt="Logo de StockTracker" class="h-16 w-16 mx-auto mb-4">
+            <p class="text-blue-200 text-sm mb-2 italic">Hecho con pasión por un profesional dedicado a simplificar la vida de las Pymes.</p>
+            <p class="mb-4">StockTracker por Gammaliel Analytics</p>
+            
+            <!-- === politica de privacidad === -->
+            <div class="mb-4">
+                <a href="../politica-de-privacidad/" class="text-sm text-gray-400 hover:text-white underline">Política de Privacidad</a>
+            </div>
+            
+            <p class="text-gray-400 text-sm">© 2025 Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ---- LÓGICA SMOOTH SCROLL ----
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        for (let anchorLink of anchorLinks) {
+            anchorLink.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.length > 1) { // Evitar que los href="#" de los botones de pago hagan scroll
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        }
+        // ---- LÓGICA DEL MODAL DE PAGO ----
+        const paymentButtons = document.querySelectorAll('.payment-btn');
+        const modal = document.getElementById('checkout-modal');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const form = document.getElementById('checkout-form');
+        const planInput = document.getElementById('plan-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const errorMessage = document.getElementById('error-message');
+        
+        let redirectUrl = '';
+
+        const openModal = (plan, url) => {
+            planInput.value = plan;
+            redirectUrl = url;
+            // Asegurarnos de que dataLayer existe
+            window.dataLayer = window.dataLayer || [];
+            // Empujar el evento personalizado
+            window.dataLayer.push({
+                'event': 'open_checkout_modal', // Este es el "ID" del evento.
+                'plan_name': plan              // ¡Enviamos el nombre del plan como un extra!
+            });
+            // ===================================
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+        };
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            form.reset(); // Limpiar el formulario al cerrar
+            resetSubmitButton();
+        };
+        
+        const resetSubmitButton = () => {
+            submitText.textContent = 'Guardar y Continuar';
+            submitBtn.disabled = false;
+            loadingSpinner.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+        };
+
+        paymentButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const plan = button.dataset.plan;
+                const url = button.dataset.paypalUrl;
+                openModal(plan, url);
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validación simple
+            const requiredFields = form.querySelectorAll('[required]');
+            let allFieldsValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    allFieldsValid = false;
+                    field.style.borderColor = 'red';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+
+            const emailField = form.querySelector('input[type="email"]');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailField.value)) {
+                allFieldsValid = false;
+                emailField.style.borderColor = 'red';
+            }
+
+            if (!allFieldsValid) {
+                errorMessage.textContent = 'Por favor, completa todos los campos marcados.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            errorMessage.classList.add('hidden');
+            submitText.textContent = 'Guardando...';
+            submitBtn.disabled = true;
+            loadingSpinner.classList.remove('hidden');
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
+
+                if (response.ok) {
+                    // Éxito: El correo se enviará automáticamente vía Netlify Function
+                    // Redirigir al destino final
+                    window.location.href = redirectUrl;
+                } else {
+                    throw new Error('Hubo un problema al enviar el formulario.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Error al guardar. Por favor, intenta de nuevo.';
+                errorMessage.classList.remove('hidden');
+                resetSubmitButton();
+            }
+        });
+
+        // ---- INICIALIZACIÓN DEL SLIDER DE MÓDULOS ----
+        const modulesSwiper = new Swiper('.modules-slider', {
+            // Opciones de configuración
+            loop: true, // Para que el slider sea infinito
+            spaceBetween: 30, // Espacio entre slides
+            
+            // Paginación (los puntos de abajo)
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navegación (las flechas)
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Para que funcione con el teclado (accesibilidad)
+            keyboard: {
+                enabled: true,
+            },
+        });
+
+        // ---- LÓGICA PARA CARGAR LA DEMO ON-DEMAND ----
+            const loadDemoBtn = document.getElementById('load-demo-btn');
+            const demoPlaceholder = document.getElementById('demo-placeholder');
+            const iframeContainer = document.getElementById('iframe-container');
+            const demoIframe = document.getElementById('demo-iframe');
+
+            if (loadDemoBtn) { // Asegurarnos que el botón existe antes de añadir el listener
+                loadDemoBtn.addEventListener('click', function() {
+                    const iframeSrc = demoIframe.dataset.src;
+                    if (iframeSrc) {
+                        // Ponemos la URL en el iframe para que empiece a cargar
+                        demoIframe.setAttribute('src', iframeSrc);
+                        
+                        // Ocultamos el placeholder y mostramos el iframe
+                        demoPlaceholder.style.display = 'none';
+                        iframeContainer.classList.remove('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-full overflow-y-auto" id="modal-content">
+            <!-- Formulario con integración para Netlify Forms -->
+            <form id="checkout-form" name="lead-capture" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <!-- Campo oculto para Netlify -->
+                <input type="hidden" name="form-name" value="lead-capture" />
+                <p class="hidden"><label>No llenar esto: <input name="bot-field"></label></p>
+                
+                <!-- Campo oculto para saber qué plan eligió el cliente -->
+                <input type="hidden" id="plan-input" name="plan" value="">
+                
+                <div class="p-6 sm:p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Formulario de Compra</h2>
+                            <p class="text-gray-500 mt-1">Completa tus datos para continuar con el pago.</p>
+                        </div>
+                        <button type="button" id="close-modal-btn" class="text-gray-400 hover:text-gray-700" aria-label="Cerrar modal">×</button>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
+                        <!-- Nombre y Apellido / Razón Social -->
+                        <div class="sm:col-span-2">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre y Apellido o Razón Social</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- DNI / Cédula / RIF -->
+                        <div>
+                            <label for="tax-id" class="block text-sm font-medium text-gray-700">DNI / Cédula / RIF</label>
+                            <input type="text" id="tax-id" name="tax-id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="sm:col-span-2">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Dirección Completa -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Dirección de Facturación</label>
+                        </div>
+                        <div>
+                            <label for="country" class="block text-xs text-gray-500">País</label>
+                            <input type="text" id="country" name="country" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-xs text-gray-500">Estado / Provincia</label>
+                            <input type="text" id="state" name="state" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="address" class="block text-xs text-gray-500">Dirección Específica (Calle, número, etc.)</label>
+                            <input type="text" id="address" name="address" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer del Modal -->
+                <div class="bg-gray-50 p-6 sm:p-8 rounded-b-xl flex flex-col sm:flex-row-reverse items-center gap-4">
+                    <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                        <span id="submit-text">Guardar y Continuar</span>
+                        <!-- Indicador de Carga -->
+                        <div id="loading-spinner" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-3"></div>
+                    </button>
+                    <button type="button" id="cancel-btn" class="w-full sm:w-auto text-gray-600 font-medium py-3 px-6 hover:text-gray-900">Cancelar</button>
+                </div>
+                <p id="error-message" class="text-red-600 text-center text-sm p-4 hidden"></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

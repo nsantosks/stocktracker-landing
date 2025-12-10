@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función EOMONTH() | Gammaliel Analytics</title> 
+    
+    <link href="../../style.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>EOMONTH()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>EOMONTH()</strong> (End Of Month) devuelve la fecha correspondiente al <strong>último día</strong> de un mes específico, calculado a partir de una fecha base y un número de meses a sumar o restar.</p>
+            
+            <p>Es esencial para cálculos financieros (cierres de mes), establecer fechas límite de pago, o calcular rangos de fechas para reportes mensuales.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                EOMONTH( Fecha_Base, Meses_A_Sumar )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Fecha_Base</code>: Una fecha o fecha-hora de partida (ej: <code>TODAY()</code> o <code>[FechaFactura]</code>).</li>
+                <li><code>Meses_A_Sumar</code>: Un número entero.
+                    <ul>
+                        <li><code>0</code>: Devuelve el fin del mes actual de la fecha base.</li>
+                        <li><code>1</code> (o positivo): Suma meses hacia el futuro.</li>
+                        <li><code>-1</code> (o negativo): Resta meses hacia el pasado.</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="note">
+                <strong>Truco Pro:</strong> 
+                Para obtener el <strong>primer día del mes</strong>, usa EOMONTH para ir al fin del mes anterior y suma 1 día. <br>
+                Ejemplo: <code>EOMONTH(TODAY(), -1) + 1</code>.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Fecha de fin de mes actual:</strong><br>
+                    <code>EOMONTH(TODAY(), 0)</code><br>
+                    <em>Resultado:</em> Si hoy es 9 de Diciembre, devuelve "31/12/2025".
+                </li>
+                <li>
+                    <strong>Calcular vencimiento a 30 días (fin de mes siguiente):</strong><br>
+                    <code>EOMONTH([Fecha_Emision], 1)</code><br>
+                    <em>Resultado:</em> El último día del mes siguiente a la emisión.
+                </li>
+                <li>
+                    <strong>Slice para filtrar "Este Mes":</strong><br>
+                    <code>AND([Fecha] >= (EOMONTH(TODAY(), -1) + 1), [Fecha] <= EOMONTH(TODAY(), 0))</code><br>
+                    <em>Explicación:</em> Filtra las filas cuya fecha esté entre el 1° de este mes y el último día de este mes.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función LIST() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>LIST()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>LIST()</strong> toma uno o varios valores individuales y los "empaqueta" en una estructura de tipo Lista. Es la forma manual de crear una lista desde cero.</p>
+            
+            <p>Es muy útil para definir opciones fijas en validaciones, comparar un valor contra un grupo pequeño de opciones (usando <code>IN()</code>) o para agregar un elemento nuevo a una lista existente.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                LIST( Valor1, [Valor2], [Valor3]... )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Valor1, Valor2...</code>: Los elementos que quieres incluir. Pueden ser textos, números, fechas o referencias a columnas.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Regla de Oro:</strong> 
+                Intenta que todos los valores dentro de la función sean del <strong>mismo tipo de dato</strong> (por ejemplo, todos Textos o todos Números). AppSheet puede confundirse si mezclas tipos (ej: <code>LIST("Hola", 123)</code>).
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Crear opciones permitidas (Valid_If):</strong><br>
+                    <code>LIST("Pendiente", "En Proceso", "Completado")</code><br>
+                    <em>Uso:</em> Restringe una columna para que el usuario solo pueda elegir uno de esos tres valores exactos.
+                </li>
+                <li>
+                    <strong>Comparar contra múltiples estados (más limpio que OR):</strong><br>
+                    <code>IN([Estado], LIST("Aprobado", "Facturado", "Enviado"))</code><br>
+                    <em>Explicación:</em> Devuelve TRUE si el estado es cualquiera de los tres mencionados. Es más corto que escribir <code>OR([Estado]="Aprobado", [Estado]="Facturado"...)</code>.
+                </li>
+                <li>
+                    <strong>Agregar un elemento a una lista existente (EnumList):</strong><br>
+                    <code>[Columna_EnumList] + LIST("Nuevo Valor")</code><br>
+                    <em>Uso:</em> Se usa mucho en Acciones (Actions) para añadir una etiqueta o un usuario a una lista sin borrar los que ya estaban.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

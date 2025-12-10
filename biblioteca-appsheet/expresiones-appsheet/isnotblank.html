@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función ISNOTBLANK() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>ISNOTBLANK()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>ISNOTBLANK()</strong> comprueba si una columna, celda o lista <strong>tiene contenido</strong>. Devuelve <code>TRUE</code> si hay algún valor presente y <code>FALSE</code> si está vacío.</p>
+            
+            <p>Es la forma más limpia y directa de filtrar registros incompletos, asegurar que un campo obligatorio se haya rellenado o mostrar elementos de la interfaz solo cuando ya existe información previa.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                ISNOTBLANK( Valor )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Valor</code>: La columna, expresión o lista que deseas evaluar.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Equivalencia:</strong> 
+                Esta función es exactamente igual a escribir <code>NOT(ISBLANK(Valor))</code>, pero es mucho más legible y rápida de escribir.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Slice para clientes con correo electrónico (Filtro):</strong><br>
+                    <code>ISNOTBLANK([Email])</code><br>
+                    <em>Uso:</em> Crea una vista donde solo aparezcan los clientes contactables por email, ignorando los que tienen ese campo vacío.
+                </li>
+                <li>
+                    <strong>Mostrar fecha de finalización solo si el trabajo terminó (Show_If):</strong><br>
+                    <code>ISNOTBLANK([Fecha_Fin])</code><br>
+                    <em>Uso:</em> Puedes usar esto para mostrar u ocultar secciones enteras dependiendo de si un paso previo se ha completado.
+                </li>
+                <li>
+                    <strong>Identificar Padres con Hijos (Relaciones):</strong><br>
+                    <code>ISNOTBLANK([Related Pedidos])</code><br>
+                    <em>Resultado:</em> Devuelve TRUE solo para los Clientes que han realizado al menos un pedido.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

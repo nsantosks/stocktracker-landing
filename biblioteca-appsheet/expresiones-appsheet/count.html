@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función COUNT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>COUNT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>COUNT()</strong> es una función matemática y de listas que simplemente cuenta el número de elementos contenidos dentro de una lista. Devuelve un valor numérico.</p>
+            
+            <p>Es extremadamente común usarla para contar registros relacionados (ej: cuántos pedidos tiene un cliente) o para contar el resultado de una consulta compleja hecha con <code>SELECT</code> o <code>FILTER</code>.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                COUNT( Lista )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Lista</code>: Puede ser una columna de tipo List/EnumList, una columna virtual de registros relacionados (Related...), o el resultado de una función que devuelve una lista (como SELECT).</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Comportamiento con vacíos:</strong> 
+                Si la lista está vacía, <code>COUNT()</code> devuelve 0. No devuelve error ni nulo, lo cual es muy seguro para realizar cálculos matemáticos posteriores.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Contar registros hijos (Columna Virtual):</strong><br>
+                    <code>COUNT([Related Pedidos])</code><br>
+                    <em>Resultado:</em> El número total de pedidos asociados a ese cliente específico.
+                </li>
+                <li>
+                    <strong>Contar elementos filtrados (Combinado con SELECT):</strong><br>
+                    <code>COUNT(SELECT(Empleados[ID], [Departamento] = "Ventas"))</code><br>
+                    <em>Explicación:</em> Primero obtiene la lista de empleados de ventas y luego los cuenta.
+                </li>
+                <li>
+                    <strong>Contar elementos únicos:</strong><br>
+                    <code>COUNT(UNIQUE(Pedidos[Cliente]))</code><br>
+                    <em>Uso común:</em> Saber cuántos clientes <em>diferentes</em> han hecho pedidos, ignorando si un cliente compró varias veces.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función USEREMAIL() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>USEREMAIL()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>USEREMAIL()</strong> devuelve la dirección de correo electrónico del usuario que ha iniciado sesión y está utilizando la aplicación en ese momento.</p>
+            
+            <p>Es la piedra angular de la seguridad en AppSheet. Se utiliza para filtrar datos (Security Filters), personalizar vistas (Slices) o registrar auditorías de "quién hizo qué" (CreatedBy / LastEditedBy).</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                USEREMAIL()
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li>Esta función no requiere parámetros.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Nota Importante:</strong> 
+                Para que esta función devuelva un valor real, la aplicación debe requerir inicio de sesión (Sign-In Required). Si la app es pública, <code>USEREMAIL()</code> podría devolver un valor vacío o genérico.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Filtro de Seguridad (Security Filter):</strong><br>
+                    <code>[EmailEmpleado] = USEREMAIL()</code><br>
+                    <em>Uso:</em> Colocado en la configuración de seguridad de una tabla, asegura que el usuario SOLO descargue y vea sus propios registros.
+                </li>
+                <li>
+                    <strong>Valor Inicial (Registrar creador):</strong><br>
+                    <code>USEREMAIL()</code><br>
+                    <em>Uso:</em> En el <em>Initial Value</em> de una columna oculta para guardar quién creó el registro.
+                </li>
+                <li>
+                    <strong>Control de Visibilidad (Show_If):</strong><br>
+                    <code>USEREMAIL() = "admin@gammaliel.com"</code><br>
+                    <em>Uso:</em> Mostrar un botón o una vista administrativa solo si el usuario es el administrador específico.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

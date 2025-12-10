@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función NOW() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>NOW()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>NOW()</strong> devuelve la fecha y la hora actuales (DateTime) según el dispositivo del usuario. A diferencia de <code>TODAY()</code>, esta función captura el momento preciso con horas, minutos y segundos.</p>
+            
+            <p>Es fundamental para crear registros de auditoría (timestamps), sistemas de fichaje (check-in/check-out) o para calcular tiempos de ejecución.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                NOW()
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li>Al igual que <code>TODAY()</code>, esta función no requiere parámetros.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Tipo de Dato:</strong> 
+                El resultado es siempre un tipo <strong>DateTime</strong>. Si intentas guardar este valor en una columna configurada solo como "Date" o solo como "Time", AppSheet podría dar error o recortar la información.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Registro de "Última Modificación":</strong><br>
+                    <code>NOW()</code><br>
+                    <em>Uso:</em> Colocado en la propiedad "AppFormula" (no Initial Value) de una columna, se actualizará cada vez que se edite y guarde el registro.
+                </li>
+                <li>
+                    <strong>Calcular tiempo transcurrido (Duración):</strong><br>
+                    <code>NOW() - [Hora_Inicio]</code><br>
+                    <em>Resultado:</em> Devuelve una "Duration" (ej: "03:15:00") que indica cuánto tiempo ha pasado desde la hora de inicio hasta el momento actual.
+                </li>
+                <li>
+                    <strong>Validar si un plazo ha expirado:</strong><br>
+                    <code>IF(NOW() > [FechaHora_Limite], "Vencido", "A tiempo")</code><br>
+                    <em>Explicación:</em> Compara el instante actual contra una fecha límite precisa.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función SWITCH() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>SWITCH()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>SWITCH()</strong> busca un valor específico dentro de una columna o expresión y devuelve un resultado basado en esa coincidencia exacta.</p>
+            
+            <p>A diferencia de <code>IFS()</code>, donde puedes escribir condiciones complejas y diferentes en cada línea, <code>SWITCH()</code> siempre evalúa la <strong>misma</strong> variable contra una lista de posibles valores. Es ideal para "traducir" valores o asignar categorías fijas. Además, exige un valor "por defecto" obligatorio si no hay coincidencias.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                SWITCH( Expresión, Valor1, Resultado1, [Valor2, Resultado2]..., Resultado_Por_Defecto )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Expresión</code>: El valor o columna que queremos evaluar (ej: [Estado]).</li>
+                <li><code>Valor1</code>: El primer valor posible que buscamos.</li>
+                <li><code>Resultado1</code>: Lo que devuelve si encuentra el Valor1.</li>
+                <li><code>Resultado_Por_Defecto</code>: El valor que devuelve si NO encuentra ninguna coincidencia anterior.</li>
+            </ul>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Traducir o renombrar estados:</strong><br>
+                    <code>SWITCH([Status],<br>
+                    &nbsp;&nbsp;"Open", "Abierto",<br>
+                    &nbsp;&nbsp;"Closed", "Cerrado",<br>
+                    &nbsp;&nbsp;"Pending", "Pendiente",<br>
+                    &nbsp;&nbsp;"Desconocido"<br>
+                    )</code>
+                </li>
+                <li>
+                    <strong>Asignar colores HEX según prioridad (para Format Rules):</strong><br>
+                    <code>SWITCH([Prioridad],<br>
+                    &nbsp;&nbsp;"Alta", "#FF0000",<br>
+                    &nbsp;&nbsp;"Media", "#FFFF00",<br>
+                    &nbsp;&nbsp;"Baja", "#00FF00",<br>
+                    &nbsp;&nbsp;"#808080" <br>
+                    )</code><br>
+                    <em>Nota:</em> Si la prioridad no es Alta, Media o Baja, devuelve gris (#808080).
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+               <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

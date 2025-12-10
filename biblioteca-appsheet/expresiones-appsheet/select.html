@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función SELECT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>SELECT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La función <strong>SELECT()</strong> es una de las más potentes en AppSheet. Se utiliza para devolver una <strong>lista de valores</strong> de una columna específica en una tabla (o slice), filtrando esos valores basándose en una condición.</p>
+            
+            <p>Es fundamental para crear listas desplegables dependientes, realizar cálculos sobre subconjuntos de datos (como sumas condicionales) o buscar información específica en otras tablas.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                SELECT( Tabla[Columna], [Condición], [Solo_Distintos] )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Tabla[Columna]</code>: La columna de la cual quieres obtener la lista de valores (ej: <code>Pedidos[ID_Pedido]</code>).</li>
+                <li><code>[Condición]</code> <em>(Opcional)</em>: Una expresión Sí/No que filtra qué filas se incluirán. Si se omite, devuelve todas las filas.</li>
+                <li><code>[Solo_Distintos]</code> <em>(Opcional)</em>: <code>TRUE</code> para eliminar duplicados, <code>FALSE</code> (por defecto) para incluir todos.</li>
+            </ul>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Obtener todos los correos de clientes activos:</strong><br>
+                    <code>SELECT(Clientes[Email], [Estado] = "Activo")</code><br>
+                    <em>Resultado:</em> Una lista de emails de clientes cuyo estado es "Activo".
+                </li>
+                <li>
+                    <strong>Calcular el total de ventas de un producto específico:</strong><br>
+                    <code>SUM(SELECT(Ventas[Total], [Producto] = [_THISROW].[Producto]))</code><br>
+                    <em>Explicación:</em> Primero obtiene la lista de totales de venta para el producto actual y luego los suma.
+                </li>
+                <li>
+                    <strong>Obtener una lista de categorías únicas (sin repetidos):</strong><br>
+                    <code>SELECT(Productos[Categoría], TRUE, TRUE)</code><br>
+                    <em>Explicación:</em> La primera condición <code>TRUE</code> significa "todas las filas", y el segundo <code>TRUE</code> elimina los duplicados.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

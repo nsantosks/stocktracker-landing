@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función TODAY() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>TODAY()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>TODAY()</strong> devuelve la fecha actual del dispositivo del usuario (o del servidor en caso de automatizaciones). El resultado es un valor de tipo <strong>Date</strong> (Fecha) que incluye día, mes y año, pero <strong>no</strong> incluye la hora.</p>
+            
+            <p>Es la función estándar para registrar cuándo sucede algo o para calcular duraciones en días (por ejemplo, antigüedad o retrasos).</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                TODAY()
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li>Esta función no requiere ningún parámetro dentro de los paréntesis.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Nota Importante:</strong> 
+                Si necesitas la fecha Y la hora exacta (para un registro de entrada/salida muy preciso), utiliza <code>NOW()</code> en su lugar. <code>TODAY()</code> es más útil cuando la hora exacta no importa.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Valor Inicial (Initial Value):</strong><br>
+                    <code>TODAY()</code><br>
+                    <em>Uso:</em> Poner esto en la configuración de una columna "Fecha_Pedido" para que aparezca la fecha de hoy automáticamente al abrir el formulario.
+                </li>
+                <li>
+                    <strong>Validación (No permitir fechas pasadas):</strong><br>
+                    <code>[_THIS] >= TODAY()</code><br>
+                    <em>Uso:</em> En la casilla <strong>Valid_If</strong> de una columna de "Cita_Proxima", para asegurar que el usuario no agende citas en el pasado.
+                </li>
+                <li>
+                    <strong>Calcular días de retraso:</strong><br>
+                    <code>TODAY() - [Fecha_Vencimiento]</code><br>
+                    <em>Resultado:</em> Devuelve una "Duración". Si el resultado es positivo, la tarea está vencida hace esos días.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función FILTER() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>FILTER()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La función <strong>FILTER()</strong> se utiliza para recuperar una lista de filas de una tabla que cumplen con una condición específica. A diferencia de <code>SELECT()</code>, esta función <strong>siempre devuelve la columna Clave (Key)</strong> de la tabla.</p>
+            
+            <p>Es muy utilizada dentro de expresiones <code>LINKTOFILTEREDVIEW()</code> o cuando necesitamos obtener referencias (Refs) a filas completas para usarlas en columnas virtuales o acciones.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                FILTER("NombreTabla", [Condición])
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>"NombreTabla"</code>: El nombre de la tabla o slice donde buscarás. <strong>Importante:</strong> Debe ser un texto entre comillas (ej: <code>"Clientes"</code>).</li>
+                <li><code>[Condición]</code>: Una expresión Sí/No (Boolean) que determina qué filas se seleccionan.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Diferencia con SELECT:</strong> 
+                Usa <code>FILTER("Tabla", ...)</code> cuando quieras obtener las llaves primarias (IDs) de las filas. 
+                Usa <code>SELECT(Tabla[Columna], ...)</code> cuando quieras obtener una lista de valores de cualquier otra columna específica (ej: Precios, Nombres, Correos).
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Obtener todos los pedidos pendientes:</strong><br>
+                    <code>FILTER("Pedidos", [Estado] = "Pendiente")</code><br>
+                    <em>Resultado:</em> Una lista de IDs de pedidos (ej: <code>{"a123", "b456"}</code>) que están pendientes.
+                </li>
+                <li>
+                    <strong>Filtrar tareas asignadas al usuario actual:</strong><br>
+                    <code>FILTER("Tareas", [EmailAsignado] = USEREMAIL())</code><br>
+                    <em>Uso común:</em> Ideal para crear Vistas (Slices) o reportes personalizados por usuario.
+                </li>
+                <li>
+                    <strong>Enlazar a una vista filtrada (Acción):</strong><br>
+                    <code>LINKTOFILTEREDVIEW("Vista_Detalle_Clientes", [Provincia] = "Madrid")</code><br>
+                    <em>Nota:</em> Aunque aquí no se escribe "FILTER" explícitamente, la lógica interna funciona igual.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

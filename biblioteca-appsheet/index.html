@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Expresiones AppSheet | Gammaliel Analytics</title>
+    
+     <!-- Enlace al archivo CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="#" class="logo">
+                        <img src="../img/logo-header.png" alt="" class="logo-img">
+                        <span class="logo-text">Gammaliel Analytics</span>
+                    </a>
+                    <ul class="nav-links">
+                                                
+                        <!-- INICIO DEL MENÚ DESPLEGABLE SERVICIOS -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Servicios ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../index.html#servicios">Desarrollo de Apps en Google Cloud</a></li>
+                                <li><a href="../index.html#servicios">Business Intelligence (BI)</a></li>
+                                <li><a href="../index.html#servicios">Formación y Asesoría</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE SERVICIOS -->
+
+                        <!-- INICIO DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Biblioteca ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">AppSheet</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+
+                        <!-- INICIO DEL MENÚ DESPLEGABLE CONTACTO -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Contacto ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://wa.me/+584128672845">Whatsapp</a></li>
+                                <li><a href="https://www.linkedin.com/in/ingnsantos/">Linkedin</a></li>
+                                <li><a href="mailto:info@gammalielanalytics.com">Correo Electrónico</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+                         
+                        <li class="nav-cta"><a href="https://wa.me/+584128672845">Consultoría Estratégica</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-section" style="padding: 60px 0; background: #f4f7f6;">
+            <div class="container" style="text-align: center;">
+                <h1 style="margin-bottom: 10px;">Expresiones de AppSheet</h1>
+                <p>Diccionario completo y ejemplos prácticos para dominar las fórmulas.</p>
+            </div>
+        </section>
+
+        <div class="library-container">
+            
+            <aside class="sidebar-filters">
+                <div class="sidebar-title">Categorías</div>
+                <div class="filter-group">
+                    <label><input type="checkbox" value="texto" class="category-filter"> Texto</label>
+                    <label><input type="checkbox" value="logica" class="category-filter"> Lógica / Condicional</label>
+                    <label><input type="checkbox" value="matem" class="category-filter"> Matemáticas</label>
+                    <label><input type="checkbox" value="tiempo" class="category-filter"> Fecha y Hora</label>
+                    <label><input type="checkbox" value="listas" class="category-filter"> Listas</label>
+                    <label><input type="checkbox" value="yesno" class="category-filter"> Yes/No</label>
+                    <label><input type="checkbox" value="otras" class="category-filter"> Otras (DeepLink, UI)</label>
+                </div>
+            </aside>
+
+            <main class="library-content">
+                
+                <div class="search-bar-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar expresiones (ej: SELECT, IF, USEREMAIL)...">
+                </div>
+
+                <div class="expressions-grid" id="expressionsGrid">
+                    <a href="expresiones-appsheet/if.html" class="exp-card" data-category="logica" data-name="IF">
+                        <span class="exp-name">IF</span>
+                        <span class="exp-tag tag-logica">Lógica</span>
+                    </a>
+                    <a href="expresiones-appsheet/ifs.html" class="exp-card" data-category="logica" data-name="IFS">
+                        <span class="exp-name">IFS</span>
+                        <span class="exp-tag tag-logica">Lógica</span>
+                    </a>
+                    <a href="expresiones-appsheet/switch.html" class="exp-card" data-category="logica" data-name="SWITCH">
+                        <span class="exp-name">SWITCH</span>
+                        <span class="exp-tag tag-logica">Lógica</span>
+                    </a>
+
+                    <a href="expresiones-appsheet/select.html" class="exp-card" data-category="listas" data-name="SELECT">
+                        <span class="exp-name">SELECT</span>
+                        <span class="exp-tag tag-listas">Listas</span>
+                    </a>
+                    <a href="expresiones-appsheet/filter.html" class="exp-card" data-category="listas" data-name="FILTER">
+                        <span class="exp-name">FILTER</span>
+                        <span class="exp-tag tag-listas">Listas</span>
+                    </a>
+                    <a href="expresiones-appsheet/orderby.html" class="exp-card" data-category="listas" data-name="ORDERBY">
+                        <span class="exp-name">ORDERBY</span>
+                        <span class="exp-tag tag-listas">Listas</span>
+                    </a>
+                    <a href="expresiones-appsheet/count.html" class="exp-card" data-category="listas" data-name="COUNT">
+                        <span class="exp-name">COUNT</span>
+                        <span class="exp-tag tag-listas">Listas</span>
+                    </a>
+
+                    <a href="expresiones-appsheet/concatenate.html" class="exp-card" data-category="texto" data-name="CONCATENATE">
+                        <span class="exp-name">CONCATENATE</span>
+                        <span class="exp-tag tag-texto">Texto</span>
+                    </a>
+                    <a href="expresiones-appsheet/extract.html" class="exp-card" data-category="texto" data-name="EXTRACT">
+                        <span class="exp-name">EXTRACT</span>
+                        <span class="exp-tag tag-texto">Texto</span>
+                    </a>
+                    <a href="expresiones-appsheet/split.html" class="exp-card" data-category="texto" data-name="SPLIT">
+                        <span class="exp-name">SPLIT</span>
+                        <span class="exp-tag tag-texto">Texto</span>
+                    </a>
+
+                    <a href="expresiones-appsheet/today.html" class="exp-card" data-category="tiempo" data-name="TODAY">
+                        <span class="exp-name">TODAY</span>
+                        <span class="exp-tag tag-tiempo">Tiempo</span>
+                    </a>
+                    <a href="expresiones-appsheet/now.html" class="exp-card" data-category="tiempo" data-name="NOW">
+                        <span class="exp-name">NOW</span>
+                        <span class="exp-tag tag-tiempo">Tiempo</span>
+                    </a>
+                     <a href="expresiones-appsheet/eomonth.html" class="exp-card" data-category="tiempo" data-name="EOMONTH">
+                        <span class="exp-name">EOMONTH</span>
+                        <span class="exp-tag tag-tiempo">Tiempo</span>
+                    </a>
+
+                     <a href="expresiones-appsheet/useremail.html" class="exp-card" data-category="otras" data-name="USEREMAIL">
+                        <span class="exp-name">USEREMAIL</span>
+                        <span class="exp-tag">Sistema</span>
+                    </a>
+                    <a href="expresiones-appsheet/context.html" class="exp-card" data-category="otras" data-name="CONTEXT">
+                        <span class="exp-name">CONTEXT</span>
+                        <span class="exp-tag">Sistema</span>
+                    </a>
+                    <a href="expresiones-appsheet/sum.html" class="exp-card" data-category="matem" data-name="SUM">
+                        <span class="exp-name">SUM</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/list.html" class="exp-card" data-category="listas" data-name="LIST">
+                        <span class="exp-name">LIST</span>
+                        <span class="exp-tag tag-listas">Listas</span>
+                    </a>
+                    <a href="expresiones-appsheet/average.html" class="exp-card" data-category="matem" data-name="AVERAGE">
+                        <span class="exp-name">AVERAGE</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/min.html" class="exp-card" data-category="matem" data-name="MIN">
+                        <span class="exp-name">MIN</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/max.html" class="exp-card" data-category="matem" data-name="MAX">
+                        <span class="exp-name">MAX</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/round.html" class="exp-card" data-category="matem" data-name="ROUND">
+                        <span class="exp-name">ROUND</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/isblank.html" class="exp-card" data-category="logica" data-name="ISBLANK">
+                        <span class="exp-name">ISBLANK</span>
+                        <span class="exp-tag tag-logica">Lógica</span>
+                    </a>
+                    <a href="expresiones-appsheet/isnotblank.html" class="exp-card" data-category="logica" data-name="ISNOTBLANK">
+                        <span class="exp-name">ISNOTBLANK</span>
+                        <span class="exp-tag tag-logica">Lógica</span>
+                    </a>
+                    <a href="expresiones-appsheet/and.html" class="exp-card" data-category="yesno" data-name="AND">
+                        <span class="exp-name">AND</span>
+                        <span class="exp-tag tag-logica">Yes/No</span>
+                    </a>
+                    <a href="expresiones-appsheet/or.html" class="exp-card" data-category="yesno" data-name="OR">
+                        <span class="exp-name">OR</span>
+                        <span class="exp-tag tag-logica">Yes/No</span>
+                    </a>
+                    <a href="expresiones-appsheet/not.html" class="exp-card" data-category="yesno" data-name="NOT">
+                        <span class="exp-name">NOT</span>
+                        <span class="exp-tag tag-logica">Yes/No</span>
+                    </a>
+                    <a href="expresiones-appsheet/floor.html" class="exp-card" data-category="matem" data-name="FLOOR">
+                        <span class="exp-name">FLOOR</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+                    <a href="expresiones-appsheet/ceiling.html" class="exp-card" data-category="matem" data-name="CEILING">
+                        <span class="exp-name">CEILING</span>
+                        <span class="exp-tag tag-matem">Matemáticas</span>
+                    </a>
+
+                </div>
+                <div id="noResults" class="no-results">No se encontraron expresiones con ese criterio.</div>
+            </main>
+        </div>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+    <script src="../main.js"></script>
+    <script>
+        // Subimos un nivel (../) para encontrar la carpeta components
+        loadComponent('footer-placeholder', '../components/footer.html');
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const checkboxes = document.querySelectorAll('.category-filter');
+            const cards = document.querySelectorAll('.exp-card');
+            const noResultsMsg = document.getElementById('noResults');
+
+            function filterCards() {
+                const searchText = searchInput.value.toLowerCase();
+                // Obtener categorías seleccionadas
+                const checkedCategories = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name').toLowerCase();
+                    const category = card.getAttribute('data-category');
+                    
+                    // Condición 1: Coincide con texto
+                    const matchesText = name.includes(searchText);
+                    
+                    // Condición 2: Coincide con categoría (si hay alguna seleccionada)
+                    // Si no hay categorías seleccionadas, mostramos todas (matchesCategory = true)
+                    const matchesCategory = checkedCategories.length === 0 || checkedCategories.includes(category);
+
+                    if (matchesText && matchesCategory) {
+                        card.style.display = 'flex'; // Flex para mantener el diseño interno
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Mostrar mensaje si no hay resultados
+                noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+
+            // Event Listeners
+            searchInput.addEventListener('input', filterCards);
+            checkboxes.forEach(cb => cb.addEventListener('change', filterCards));
+        });
+    </script>
+</body>
+</html>

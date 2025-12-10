@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función NOT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>NOT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>NOT()</strong> invierte el valor lógico de una condición. Si la condición es <code>TRUE</code>, la convierte en <code>FALSE</code>, y viceversa.</p>
+            
+            <p>Es fundamental para crear condiciones de exclusión (ej: "mostrar todos los pedidos que <strong>NO</strong> estén cancelados") o para negar permisos a usuarios específicos.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                NOT( Condición_Logica )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Condición_Logica</code>: Cualquier expresión que devuelva Sí/No (Boolean).</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Consejo de Lectura:</strong> 
+                Léelo como "NO es cierto que...".
+                <br>
+                Por ejemplo: <code>NOT([Estado] = "Cancelado")</code> se lee como "No es cierto que el estado sea Cancelado" (es decir, el estado es cualquier otra cosa excepto Cancelado).
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Filtrar registros activos (Slice):</strong><br>
+                    <code>NOT([Status] = "Archivado")</code><br>
+                    <em>Resultado:</em> Muestra todo lo que esté abierto, pendiente, en proceso, etc., excluyendo solo lo archivado.
+                </li>
+                <li>
+                    <strong>Lista negra de usuarios (Seguridad):</strong><br>
+                    <code>NOT(IN(USEREMAIL(), Lista_Bloqueados[Email]))</code><br>
+                    <em>Explicación:</em> Permite el acceso solo si el email del usuario NO está en la lista de bloqueados.
+                </li>
+                <li>
+                    <strong>Validación de duplicados (Valid_If):</strong><br>
+                    <code>NOT(IN([_THIS], SELECT(Tabla[Columna], [ID] <> [_THISROW].[ID])))</code><br>
+                    <em>Uso:</em> "No es cierto que este valor ya exista en la lista". (Validación típica para evitar duplicados).
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

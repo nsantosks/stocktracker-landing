@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función MIN() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>MIN()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>MIN()</strong> (Mínimo) examina una lista de valores y devuelve el <strong>menor</strong> de todos ellos. Funciona con números, precios, pero también es extremadamente útil con <strong>Fechas</strong> y <strong>Horas</strong>.</p>
+            
+            <p>Se utiliza frecuentemente para encontrar la fecha más antigua (ej: la primera vez que un cliente compró), el precio más bajo entre varios proveedores o la tarea más urgente (fecha de vencimiento más próxima).</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                MIN( Lista_Valores )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Lista_Valores</code>: Una lista de elementos comparables (Números, Fechas, Horas, Precios).</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Comportamiento con Fechas:</strong> 
+                En el contexto de fechas, "Mínimo" significa "La más antigua" o "La más lejana en el pasado". <br>
+                Por ejemplo, entre <em>01/01/2023</em> y <em>01/01/2025</em>, el MIN es <strong>01/01/2023</strong>.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Encontrar la mejor oferta (Precio más bajo):</strong><br>
+                    <code>MIN([Related Cotizaciones][Precio])</code><br>
+                    <em>Resultado:</em> Devuelve el precio más económico de todas las cotizaciones recibidas.
+                </li>
+                <li>
+                    <strong>Fecha de la primera compra (Cliente antiguo):</strong><br>
+                    <code>MIN(SELECT(Pedidos[Fecha], [Cliente] = [_THISROW].[ID]))</code><br>
+                    <em>Uso:</em> Ideal para saber desde cuándo es cliente una persona.
+                </li>
+                <li>
+                    <strong>La tarea pendiente más antigua:</strong><br>
+                    <code>MIN(FILTER("Tareas", [Estado]="Pendiente")[FechaCreacion])</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función FLOOR() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>FLOOR()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>FLOOR()</strong> (Suelo) redondea un número decimal hacia abajo al <strong>entero inferior más cercano</strong>. A diferencia de <code>ROUND()</code>, no importa si el decimal es alto (ej: 0.9), <code>FLOOR()</code> siempre cortará hacia abajo.</p>
+            
+            <p>Es muy útil en logística para calcular "cajas completas", en presupuestos conservadores o para eliminar decimales sin riesgo de que el valor aumente.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                FLOOR( Valor_Numerico )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Valor_Numerico</code>: Un número, precio o decimal.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Comparación Rápida:</strong> <br>
+                Valor: <strong>4.8</strong><br>
+                <code>ROUND(4.8)</code> = 5 (Redondeo normal)<br>
+                <code>FLOOR(4.8)</code> = 4 (Redondeo hacia abajo)<br>
+                <code>CEILING(4.8)</code> = 5 (Redondeo hacia arriba)
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Calcular cajas completas (Logística):</strong><br>
+                    <code>FLOOR([Total_Unidades] / 12)</code><br>
+                    <em>Explicación:</em> Si tienes 50 unidades y caben 12 por caja (4.16 cajas), esto devuelve 4 cajas llenas. (Los sobrantes se calculan aparte).
+                </li>
+                <li>
+                    <strong>Calcular edad (Años cumplidos):</strong><br>
+                    <code>FLOOR(HOUR(TODAY() - [Fecha_Nacimiento]) / 24 / 365)</code><br>
+                    <em>Nota:</em> Aunque es más fácil usar fórmulas de fecha, conceptualmente así funciona la edad: no tienes 30 años hasta que cumples el día exacto, siempre redondeas hacia abajo.
+                </li>
+                <li>
+                    <strong>Presupuestos (Eliminar centavos):</strong><br>
+                    <code>FLOOR([Costo_Total])</code><br>
+                    <em>Resultado:</em> Asegura que el costo reportado no exceda el valor real por redondeo.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

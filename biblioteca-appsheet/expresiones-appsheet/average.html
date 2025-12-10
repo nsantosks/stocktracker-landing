@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función AVERAGE() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>AVERAGE()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>AVERAGE()</strong> calcula el promedio aritmético (media) de una lista de valores numéricos. Suma todos los elementos de la lista y divide el resultado entre la cantidad de elementos.</p>
+            
+            <p>Es fundamental para crear indicadores de rendimiento (KPIs), como el ticket promedio de venta, la calificación promedio de satisfacción del cliente o el tiempo promedio de entrega.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                AVERAGE( Lista_Numerica )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Lista_Numerica</code>: Una lista que contiene valores de tipo Number, Decimal o Price.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Comportamiento con vacíos:</strong> 
+                Si la lista está vacía (no hay registros), <code>AVERAGE()</code> devuelve 0 para evitar errores de división por cero.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Calificación Promedio (Sistema de estrellas):</strong><br>
+                    <code>AVERAGE([Related Reseñas][Estrellas])</code><br>
+                    <em>Uso:</em> Calcula el promedio de estrellas que ha recibido un producto o servicio basado en sus registros hijos.
+                </li>
+                <li>
+                    <strong>Ticket Promedio de Ventas del mes:</strong><br>
+                    <code>AVERAGE(SELECT(Ventas[Total], [Mes] = MONTH(TODAY())))</code><br>
+                    <em>Resultado:</em> El valor promedio de lo que gastan los clientes en cada compra este mes.
+                </li>
+                <li>
+                    <strong>Promedio de una lista manual:</strong><br>
+                    <code>AVERAGE(LIST(10, 20, 0))</code><br>
+                    <em>Resultado:</em> 10 (Suma 30, dividido entre 3 elementos).
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

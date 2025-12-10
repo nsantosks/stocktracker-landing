@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función CONCATENATE() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>CONCATENATE()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>CONCATENATE()</strong> une (concatena) dos o más fragmentos de texto o valores de columnas para formar una única cadena de texto continua.</p>
+            
+            <p>Es esencial para crear "Nombre Completos" uniendo nombre y apellido, generar IDs únicos combinando fechas y códigos, o construir direcciones completas a partir de calles y números.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                CONCATENATE( Texto1, [Texto2], [Texto3]... )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Texto1, Texto2...</code>: Las partes que deseas unir. Pueden ser columnas (ej: <code>[Nombre]</code>), texto fijo entre comillas (ej: <code>" - "</code>) o resultados de otras fórmulas.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Consejo Pro:</strong> 
+                También puedes usar el operador <code>&</code> para hacer lo mismo de forma más corta. <br>
+                <code>[Nombre] & " " & [Apellido]</code> es exactamente lo mismo que <code>CONCATENATE([Nombre], " ", [Apellido])</code>.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Crear Nombre Completo:</strong><br>
+                    <code>CONCATENATE([Nombre], " ", [Apellido])</code><br>
+                    <em>Resultado:</em> "Juan Pérez" (El espacio en medio es importante para que no queden pegados).
+                </li>
+                <li>
+                    <strong>Generar un ID único personalizado:</strong><br>
+                    <code>CONCATENATE("ORD-", [ID_Cliente], "-", TEXT(TODAY(), "ddmmyy"))</code><br>
+                    <em>Resultado:</em> "ORD-105-091223"
+                </li>
+                <li>
+                    <strong>Crear un mensaje dinámico para notificaciones:</strong><br>
+                    <code>CONCATENATE("Hola ", [Nombre], ", tu pedido #", [ID_Pedido], " ha sido enviado.")</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

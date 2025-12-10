@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función EXTRACT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>EXTRACT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>EXTRACT()</strong> de AppSheet permite identificar y extraer partes específicas de un texto basándose en patrones reconocibles.</p>
+            
+            <p>Es extremadamente útil para procesar datos desordenados. Puedes elegir extraer objetivos como:</p>
+            <ul>
+                <li><strong>NUMBERS</strong> (Números)</li>
+                <li><strong>EMAILS</strong> (Correos electrónicos)</li>
+                <li><strong>PRICES</strong> (Precios)</li>
+                <li><strong>DATES</strong> (Fechas)</li>
+                <li><strong>PHONENUMBERS</strong> (Teléfonos)</li>
+            </ul>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                EXTRACT( "Objetivo", [Columna o Texto] )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Objetivo</code>: El tipo de dato que deseas buscar (ej: "EMAILS", "NUMBERS").</li>
+                <li><code>Texto</code>: La columna o cadena de texto donde se buscará.</li>
+            </ul>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Extraer correos de una nota:</strong><br>
+                    <code>EXTRACT("EMAILS", "Contactar a soporte@gammaliel.com para ayuda")</code><br>
+                    <em>Resultado:</em> Una lista que contiene "soporte@gammaliel.com".
+                </li>
+                <li>
+                    <strong>Obtener precios de una factura escaneada (OCR):</strong><br>
+                    <code>EXTRACT("PRICES", [TextoOCR])</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+                <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

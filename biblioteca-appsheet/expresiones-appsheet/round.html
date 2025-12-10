@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función ROUND() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>ROUND()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>ROUND()</strong> toma un valor numérico decimal y lo redondea al <strong>número entero más cercano</strong>. Sigue las reglas matemáticas estándar: si la parte decimal es 0.5 o mayor, redondea hacia arriba; si es menor a 0.5, redondea hacia abajo.</p>
+            
+            <p>Es muy útil para simplificar visualizaciones de datos, eliminar centavos en reportes generales o realizar cálculos aproximados.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                ROUND( Valor_Numerico )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Valor_Numerico</code>: Un número o columna de tipo Decimal o Price.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Diferencia clave con Excel:</strong> 
+                En AppSheet, <code>ROUND()</code> <strong>NO</strong> permite especificar el número de decimales (ej: redondear a 2 decimales). Siempre devuelve un entero.
+                <br><br>
+                <em>Truco para 2 decimales:</em> Multiplica por 100, redondea y divide entre 100.0.<br>
+                <code>ROUND([Total] * 100) / 100.0</code>
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Redondeo básico:</strong><br>
+                    <code>ROUND(4.7)</code> → Resultado: 5<br>
+                    <code>ROUND(4.2)</code> → Resultado: 4
+                </li>
+                <li>
+                    <strong>Calcular cantidades de cajas (Enteros):</strong><br>
+                    <code>ROUND([TotalUnidades] / 12)</code><br>
+                    <em>Uso:</em> Estima cuántas docenas se necesitan (aproximadamente).
+                </li>
+                <li>
+                    <strong>Forzar redondeo a 2 decimales (Truco matemático):</strong><br>
+                    <code>ROUND([Subtotal] * 1.16 * 100) / 100.0</code><br>
+                    <em>Explicación:</em> Calcula el IVA, convierte los centavos en enteros para redondearlos bien, y luego vuelve a convertir a decimales.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

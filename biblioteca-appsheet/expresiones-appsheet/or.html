@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función OR() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>OR()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>OR()</strong> (O lógico) evalúa múltiples condiciones y devuelve <code>TRUE</code> si <strong>al menos una</strong> de ellas es verdadera. Solo devuelve <code>FALSE</code> cuando absolutamente todas las condiciones fallan.</p>
+            
+            <p>Es muy útil para dar flexibilidad: permitir el acceso a dos tipos de usuarios diferentes (ej: Admin O Gerente), o validar que un estado sea cualquiera de los permitidos para avanzar (ej: Pendiente O En Proceso).</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                OR( Condición1, [Condición2], ... )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Condición1, Condición2...</code>: Expresiones lógicas que resultan en Sí/No.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Consejo de Optimización:</strong> 
+                Si estás comprobando la <strong>misma columna</strong> contra muchos valores diferentes, es mejor usar la función <code>IN()</code>.
+                <br>
+                En lugar de escribir: <code>OR([Estado]="Nuevo", [Estado]="Abierto", [Estado]="Pendiente")</code><br>
+                Escribe: <code>IN([Estado], LIST("Nuevo", "Abierto", "Pendiente"))</code>. Es más limpio y fácil de leer.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Visibilidad para varios roles (Show_If):</strong><br>
+                    <code>OR(USERROLE() = "Admin", USEREMAIL() = [Jefe_Proyecto])</code><br>
+                    <em>Explicación:</em> Muestra el botón si eres el administrador general O si eres el jefe específico de ese proyecto.
+                </li>
+                <li>
+                    <strong>Alerta de reposición (Format Rules):</strong><br>
+                    <code>OR([Stock] < 5, [Fecha_Vencimiento] < TODAY())</code><br>
+                    <em>Uso:</em> Pone el texto en rojo si queda poco stock O si el producto ya venció (cualquiera de los dos problemas es grave).
+                </li>
+                <li>
+                    <strong>Validar estados de cierre:</strong><br>
+                    <code>OR([Status] = "Completado", [Status] = "Cancelado")</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

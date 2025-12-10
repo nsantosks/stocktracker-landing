@@ -9,39 +9,84 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
     <!-- End Google Tag Manager -->
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gammaliel Analytics, más allá de los datos...">
-    <title>Gammaliel Analytics | Optimización y BI en Tiempo Real</title>
-
-    <!-- Enlace al nuevo archivo CSS -->
+    
+    <meta name="description" content="Gammaliel Analytics: Expertos en Business Intelligence, AppSheet y Automatización de Procesos. Transforme sus datos en sistemas multiusuario y tome decisiones en tiempo real. ¡Solicite su consultoría estratégica!">
+    <title>Gammaliel Analytics | AppSheet, Business Intelligence & Optimización de Procesos</title>
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <link rel="icon" type="image/png" href="/stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/stocktracker-favicon/favicon.svg" />
-
-    <!-- Enlace al favicon -->
     <link rel="shortcut icon" href="/stocktracker-favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/stocktracker-favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="StockTracker" />
     <link rel="manifest" href="/stocktracker-favicon/site.webmanifest" />
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 </head>
 <body>
-
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="landing-page-wrapper">
 
         <header class="header">
             <div class="container">
                 <nav class="navbar">
-                    <a href="#" class="logo">GAMMALIEL ANALYTICS</a>
+                    <a href="#" class="logo">
+                        <img src="img/logo-header.png" alt="" class="logo-img">
+                        <span class="logo-text">Gammaliel Analytics</span>
+                    </a>
                     <ul class="nav-links">
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#contenido">Contenido</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                        <li class="nav-cta"><a href="#consultoria">Consultoría Estratégica</a></li>
+
+                        <!-- INICIO DEL MENÚ DESPLEGABLE SERVICIOS -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Servicios ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#servicios">Desarrollo de Apps en Google Cloud</a></li>
+                                <li><a href="#servicios">Business Intelligence (BI)</a></li>
+                                <li><a href="#servicios">Formación y Asesoría</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE SERVICIOS -->
+
+                        <!-- INICIO DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Biblioteca ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="biblioteca-appsheet/">AppSheet</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+
+                        <!-- INICIO DEL MENÚ DESPLEGABLE CONTACTO -->
+                        <li class="dropdown-item">
+                            <a href="#" class="dropdown-trigger">Contacto ▾</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://wa.me/+584128672845">Whatsapp</a></li>
+                                <li><a href="https://www.linkedin.com/in/ingnsantos/">Linkedin</a></li>
+                                <li><a href="mailto:info@gammalielanalytics.com">Correo Electrónico</a></li>
+                                <!-- En el futuro descomenta estas líneas:
+                                <li><a href="#">Expresiones Excel</a></li>
+                                <li><a href="#">Expresiones Google Sheets</a></li>
+                                -->
+                            </ul>
+                        </li>
+                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
+                         
+                        <li class="nav-cta"><a href="https://wa.me/+584128672845">Consultoría Estratégica</a></li>
                     </ul>
                 </nav>
             </div>
@@ -50,9 +95,9 @@
         <section class="hero-section">
             <div class="container hero-content">
                 <h1>Optimización de Procesos y Toma de Decisiones en Tiempo Real</h1>
-                <p>Transformamos la complejidad de sus datos en **sistemas automatizados multiusuario** y **tableros de indicadores estratégicos**.</p>
+                <p>Transformamos la complejidad de sus datos en <strong>sistemas automatizados multiusuario</strong> y <strong>tableros de indicadores estratégicos</strong>.</p>
                 <div class="hero-actions">
-                    <a href="#consultoria" class="btn btn-primary">➡️ Solicitar una Consultoría Estratégica</a>
+                    <a href="https://wa.me/+584128672845" class="btn btn-primary">➡️ Solicitar una Consultoría Estratégica</a>
                     <a href="#servicios" class="btn btn-secondary">Ver Nuestros Servicios Clave</a>
                 </div>
             </div>
@@ -60,30 +105,132 @@
 
         <section id="servicios" class="services-section">
             <div class="container">
-                <h2>Nuestra Oferta Integral para PYMES y Corporaciones</h2>
+                <h2>Servicios Clave: AppSheet, BI (Power BI/Looker) y Automatización de Datos</h2>
                 <div class="services-grid">
                     
                     <div class="service-card">
                         <h3>Desarrollo de Apps y Automatización</h3>
-                        <p>Creación de soluciones a medida usando **AppSheet + Google Cloud/AppScript** para digitalizar sus operaciones y permitir el trabajo colaborativo multiusuario.</p>
+                        <p>Creación de soluciones a medida usando <strong>AppSheet + Google Cloud/AppScript</strong> para digitalizar sus operaciones y permitir el trabajo colaborativo multiusuario.</p>
                         <a href="#" class="service-link">Ver Casos de Éxito &rarr;</a>
                     </div>
 
                     <div class="service-card">
                         <h3>Business Intelligence (BI)</h3>
-                        <p>Diseño e implementación de **Dashboards Estratégicos** con **Power BI** y **Looker Studio** para monitorear indicadores clave (KPIs) en tiempo real.</p>
+                        <p>Diseño e implementación de <strong>Dashboards Estratégicos</strong> con <strong>Power BI</strong> y <strong>Looker Studio</strong> para monitorear indicadores clave (KPIs) en tiempo real.</p>
                         <a href="#" class="service-link">Solicitar Propuesta de BI &rarr;</a>
                     </div>
 
                     <div class="service-card">
                         <h3>Formación y Asesoría Especializada</h3>
-                        <p>Consultoría por hora (1, 4 u 8 horas) y capacitación avanzada para potenciar a su equipo interno en AppSheet y optimización de datos en Excel/Sheets.</p>
-                        <a href="#consultoria" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
+                        <p>Consultoría por hora <strong>(1, 4 u 8 horas)</strong> y capacitación avanzada para potenciar a su equipo interno en AppSheet y optimización de datos en Excel/Sheets.</p>
+                        <a href="https://wa.me/+584128672845" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
                     </div>
 
                 </div>
             </div>
         </section>
 
-    </div> </body>
+        <section class="credibility-section">
+        <div class="container">
+            <h2>Resultados y Experiencia: La Credibilidad de Gammaliel Analytics en Optimización</h2>
+            
+            <div class="metrics-bar">
+                <div class="metric-item">
+                    <span class="metric-number">5.000+</span>
+                    <p class="metric-label">Horas de Procesos Optimizados</p>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">12+</span>
+                    <p class="metric-label">Sistemas Multi-Usuario Implementados</p>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-number">95%</span>
+                    <p class="metric-label">Tasa de Satisfacción del Cliente</p>
+                </div>
+            </div>
+
+            <div class="testimonial-container">
+                <h3>Lo que dicen nuestros clientes</h3>
+                <div class="testimonial-card">
+                    <p class="quote-text">
+                        <span class="comilla-grande izquierda">“</span>
+                        Gammaliel Analytics transformó nuestras hojas de cálculo obsoletas en una aplicación de gestión de inventario en tiempo real. La toma de decisiones ahora es instantánea y el equipo colabora sin fricciones. Un socio estratégico invaluable.
+                        <span class="comilla-grande derecha">”</span>
+                    </p>
+                    <p class="quote-author">— Ing. Leandro Marrugo, Gerente General de Operaciones Logísticas - Grupo La Abastecedora Venezuela</p>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <section id="contenido" class="content-section">
+            <div class="container">
+                <h2>Recursos Avanzados: Guías y Tutoriales Gratuitos de AppSheet y Business Intelligence</h2>
+                <p class="content-intro">Acceda a nuestra biblioteca de guías avanzadas, tutoriales y recursos esenciales en AppSheet y automatización de datos. El conocimiento técnico que necesita para la independencia operativa.</p>
+
+                <div class="content-grid">
+                    
+                    <article class="content-card">
+                        <div class="card-body">
+                            <h3>Guía Avanzada: Uso Estratégico de Expresiones IF() en AppSheet</h3>
+                            <p>Descubra cómo anidar y optimizar sus sentencias IF para crear lógica de negocio compleja sin código. Incluye ejemplos y casos de uso avanzados.</p>
+                            <a href="#" class="content-link">Leer Guía Completa &rarr;</a>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tag">AppSheet</span>
+                            <span class="tag">Intermedio</span>
+                            <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link">Ver Tutorial en Video <i class="fab fa-youtube"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="content-card">
+                        <div class="card-body">
+                            <h3>Dashboard de Rendimiento: Conectando Power Bi con Google Sheet mediante Appscript</h3>
+                            <p>Aprenda a configurar su fuente de datos y a crear visualizaciones dinámicas de KPIs financieros y operativos en Looker Studio (Data Studio).</p>
+                            <a href="#" class="content-link">Leer Guía Completa &rarr;</a>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">BI</span>
+                            <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link">Ver Tutorial en Video <i class="fab fa-youtube"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="content-card">
+                        <div class="card-body">
+                            <h3>Automatización con AppScript: Generación de Informes PDF</h3>
+                            <p>Implemente scripts para generar y enviar automáticamente informes basados en datos de su AppSheet o Google Sheets. Ahorre tiempo en tareas repetitivas.</p>
+                            <a href="#" class="content-link">Leer Guía Completa &rarr;</a>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tag">AppScript</span>
+                            <span class="tag">Avanzado</span>
+                            <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link">Ver Tutorial en Video <i class="fab fa-youtube"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+                <a href="#" class="btn btn-secondary content-cta">Explorar la Biblioteca Completa de Recursos</a>
+            </div>
+        </section>
+        
+        <section class="cta-footer-section">
+            <div class="container">
+                <h2>¿Listo para digitalizar y optimizar la toma de decisiones en su empresa?</h2>
+                <p>Trabajemos juntos para transformar sus datos complejos en soluciones multiusuario y estratégicas.</p>
+                <a href="https://wa.me/+584128672845" class="btn btn-primary btn-large">AGENDE SU CONSULTORÍA ESTRATÉGICA HOY</a>
+            </div>
+        </section>
+        
+        <div id="footer-placeholder"></div>
+
+    </div> 
+
+    <script src="main.js"></script>
+    <script>
+        loadComponent('footer-placeholder', 'components/footer.html');
+    </script>
+
+</body>
+
 </html>

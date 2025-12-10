@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función SPLIT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>SPLIT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>SPLIT()</strong> toma un texto y lo divide en múltiples fragmentos, creando una <strong>Lista</strong>. La división se realiza cada vez que encuentra un carácter delimitador específico que tú definas.</p>
+            
+            <p>Es muy útil para procesar datos importados (como CSVs), separar nombres y apellidos, o extraer partes específicas de un código complejo.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                SPLIT( Texto_Origen, Delimitador )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Texto_Origen</code>: La cadena de texto o columna que quieres dividir.</li>
+                <li><code>Delimitador</code>: El carácter (o caracteres) que AppSheet usará como "tijera" para cortar el texto.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Nota:</strong> 
+                El resultado siempre es una <strong>Lista de Texto</strong>. Esto significa que puedes usarla dentro de funciones como <code>COUNT()</code>, <code>INDEX()</code> o para rellenar una columna tipo <em>EnumList</em>.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Convertir lista separada por comas:</strong><br>
+                    <code>SPLIT("Manzana, Pera, Uva", ", ")</code><br>
+                    <em>Resultado:</em> Una lista con tres elementos: {"Manzana", "Pera", "Uva"}.
+                </li>
+                <li>
+                    <strong>Extraer el dominio de un correo (Usando INDEX):</strong><br>
+                    <code>INDEX(SPLIT([Email], "@"), 2)</code><br>
+                    <em>Explicación:</em> Divide "usuario@empresa.com" en {"usuario", "empresa.com"} y con INDEX toma la segunda parte (el dominio).
+                </li>
+                <li>
+                    <strong>Obtener el primer nombre (si hay varios):</strong><br>
+                    <code>INDEX(SPLIT([NombreCompleto], " "), 1)</code><br>
+                    <em>Resultado:</em> Si el nombre es "Juan Carlos Pérez", devuelve "Juan".
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función CONTEXT() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>CONTEXT()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>CONTEXT()</strong> proporciona información sobre el entorno en el que se está ejecutando la aplicación en ese momento preciso. Permite saber, por ejemplo, en qué vista está el usuario o qué tipo de vista es.</p>
+            
+            <p>Es fundamental para crear lógica de interfaz de usuario (UI), como ocultar columnas innecesarias en los formularios de edición pero mostrarlas en el detalle.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                CONTEXT( "Opción" )
+            </div>
+            
+            <p><strong>Parámetros (Opciones más comunes):</strong></p>
+            <ul>
+                <li><code>"View"</code>: Devuelve el nombre exacto de la vista actual (ej: "Clientes_Detail").</li>
+                <li><code>"ViewType"</code>: Devuelve el tipo de vista (ej: "Form", "Detail", "Table", "Deck").</li>
+                <li><code>"Device"</code>: Devuelve un ID único del dispositivo (útil para logs).</li>
+                <li><code>"Host"</code>: Indica si se ejecuta en "Device" (App móvil) o "Browser" (Navegador).</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Uso más frecuente:</strong> 
+                La combinación más poderosa es usar <code>CONTEXT("ViewType")</code> dentro de la propiedad <strong>Show_If</strong> de una columna para controlar cuándo debe ser visible.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Ocultar una columna en el Formulario (Show_If):</strong><br>
+                    <code>CONTEXT("ViewType") <> "Form"</code><br>
+                    <em>Resultado:</em> La columna (por ejemplo, un cálculo complejo o ID interno) se verá en la tabla y el detalle, pero no molestará al usuario cuando esté editando o creando datos.
+                </li>
+                <li>
+                    <strong>Acción visible solo en una vista específica:</strong><br>
+                    <code>CONTEXT("View") = "Aprobar_Pedidos_Detail"</code><br>
+                    <em>Uso:</em> En la condición <em>Only if this condition is true</em> de una Acción, para que el botón solo aparezca en esa pantalla exacta.
+                </li>
+                <li>
+                    <strong>Detectar si el usuario está en PC o Móvil:</strong><br>
+                    <code>CONTEXT("Host") = "Browser"</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

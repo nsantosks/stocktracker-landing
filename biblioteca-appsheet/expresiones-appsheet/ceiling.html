@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función CEILING() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>CEILING()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>CEILING()</strong> (Techo) redondea un número decimal hacia arriba al <strong>entero superior más cercano</strong>. No importa si la parte decimal es muy pequeña (ej: 4.1), <code>CEILING()</code> siempre forzará el número al siguiente entero.</p>
+            
+            <p>Es esencial para cálculos de aprovisionamiento o capacidad. Si necesitas cajas para guardar productos y te sale que ocupas 4.1 cajas, físicamente necesitas 5 cajas, no 4. Ahí es donde entra CEILING.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                CEILING( Valor_Numerico )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Valor_Numerico</code>: Un número, precio o decimal.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Comparación Rápida:</strong> <br>
+                Valor: <strong>4.1</strong><br>
+                <code>ROUND(4.1)</code> = 4 (Redondeo normal)<br>
+                <code>FLOOR(4.1)</code> = 4 (Redondeo hacia abajo)<br>
+                <code>CEILING(4.1)</code> = 5 (Redondeo hacia arriba)
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Calcular vehículos necesarios (Capacidad):</strong><br>
+                    <code>CEILING([Total_Pasajeros] / 4)</code><br>
+                    <em>Explicación:</em> Si tienes 13 pasajeros y caben 4 por auto (resultado 3.25), necesitas 4 autos para llevarlos a todos, no 3.
+                </li>
+                <li>
+                    <strong>Estrategia de precios (Redondear a favor):</strong><br>
+                    <code>CEILING([Costo_Producto] * 1.30)</code><br>
+                    <em>Uso:</em> Asegura que el precio de venta siempre sea un número entero y siempre redondeado hacia arriba para maximizar el margen.
+                </li>
+                <li>
+                    <strong>Paginación (Total de páginas):</strong><br>
+                    <code>CEILING(COUNT([Pedidos]) / 20.0)</code><br>
+                    <em>Uso:</em> Si muestras 20 pedidos por página, calcula cuántas páginas totales necesitas para mostrar todos los registros.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función ORDERBY() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>ORDERBY()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>ORDERBY()</strong> toma una lista de claves (Keys/Refs) y las ordena basándose en los valores de una o más columnas de la tabla referenciada.</p>
+            
+            <p>Es fundamental entender que esta función no ordena listas de textos simples o números sueltos (como <code>{1, 5, 2}</code>), sino que ordena <strong>filas</strong> (referencias) basándose en sus atributos.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                ORDERBY( Lista_De_Ids, [Columna_Criterio], [Descendente_Bool], ... )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Lista_De_Ids</code>: Una lista de valores tipo Ref o Key (generalmente proveniente de un <code>SELECT</code>, <code>FILTER</code> o una columna <code>[Related...]</code>).</li>
+                <li><code>[Columna_Criterio]</code>: La columna por la cual quieres ordenar las filas.</li>
+                <li><code>[Descendente_Bool]</code>: (Opcional) <code>TRUE</code> para ordenar de mayor a menor (Z-A). <code>FALSE</code> (o omitido) para menor a mayor (A-Z).</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Nota Importante:</strong> 
+                Para que ORDERBY funcione, la lista inicial debe ser de <strong>Referencias</strong> a una tabla. AppSheet necesita saber a qué tabla pertenecen los IDs para poder buscar la columna de criterio.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Ordenar pedidos relacionados por fecha (el más reciente primero):</strong><br>
+                    <code>ORDERBY([Related Pedidos], [FechaPedido], TRUE)</code><br>
+                    <em>Uso común:</em> Muy útil en columnas virtuales para mostrar historiales en orden cronológico inverso.
+                </li>
+                <li>
+                    <strong>Ordenar clientes por País (A-Z) y luego por Ventas (Mayor a menor):</strong><br>
+                    <code>ORDERBY(FILTER("Clientes", TRUE), [Pais], FALSE, [VentasTotales], TRUE)</code><br>
+                    <em>Explicación:</em> Primero agrupa alfabéticamente por país, y dentro de cada país pone primero a los que más han comprado.
+                </li>
+                <li>
+                    <strong>Ordenar una selección manual:</strong><br>
+                    <code>ORDERBY(SELECT(Productos[ID], [Stock] > 0), [Precio], FALSE)</code><br>
+                    <em>Resultado:</em> Una lista de productos con stock, ordenados del más barato al más caro.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

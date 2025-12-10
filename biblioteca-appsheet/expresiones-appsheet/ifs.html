@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función IFS() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>IFS()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>IFS()</strong> evalúa una serie de pares condición-valor. Revisa cada condición en orden y devuelve el valor correspondiente a la <strong>primera</strong> condición que sea verdadera.</p>
+            
+            <p>Es mucho más limpia y fácil de leer que anidar múltiples funciones <code>IF(IF(IF(...)))</code>. Si ninguna condición se cumple, la expresión devuelve un valor nulo (blank), a menos que establezcas una condición final como <code>TRUE</code> para actuar como "por defecto".</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                IFS( Condición1, Valor1, [Condición2, Valor2], ... )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Condición1</code>: La primera prueba lógica.</li>
+                <li><code>Valor1</code>: El resultado si la Condición1 es verdadera.</li>
+                <li><code>Condición2, Valor2...</code>: Pares adicionales opcionales.</li>
+            </ul>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Categorizar edades:</strong><br>
+                    <code>IFS([Edad] < 12, "Niño", [Edad] < 18, "Adolescente", [Edad] >= 18, "Adulto")</code><br>
+                    <em>Nota:</em> AppSheet se detiene en la primera coincidencia.
+                </li>
+                <li>
+                    <strong>Estado de Prioridad según días de retraso:</strong><br>
+                    <code>IFS(<br>
+                    &nbsp;&nbsp;[Dias_Retraso] > 30, "Crítica",<br>
+                    &nbsp;&nbsp;[Dias_Retraso] > 15, "Alta",<br>
+                    &nbsp;&nbsp;[Dias_Retraso] > 7, "Media",<br>
+                    &nbsp;&nbsp;TRUE, "Baja"<br>
+                    )</code><br>
+                    <em>Truco:</em> Usar <code>TRUE</code> al final sirve como un "else" (si nada de lo anterior se cumple, pon "Baja").
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+              <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

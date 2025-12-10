@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función SUM() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>SUM()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>SUM()</strong> calcula la suma aritmética total de todos los valores numéricos contenidos en una lista. Devuelve un valor de tipo <em>Number</em> (Número), <em>Decimal</em> o <em>Price</em> (Precio), dependiendo de los datos de entrada.</p>
+            
+            <p>Es la función por excelencia para calcular totales en facturas (sumando los detalles), balances de cuentas o agregaciones en reportes.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                SUM( Lista_Numerica )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Lista_Numerica</code>: Una lista de valores. Usualmente proviene de una columna relacionada (ej: <code>[Related Detalles][Monto]</code>) o de una expresión <code>SELECT()</code> que devuelve una columna numérica.</li>
+            </ul>
+            
+            <div class="note">
+                <strong>Diferencia con Excel:</strong> 
+                En AppSheet no puedes hacer <code>SUM([Columna1], [Columna2])</code> sumando celdas individuales directamente. 
+                Para sumar dos columnas de la <strong>mismo fila</strong>, simplemente usa el operador más: <code>[Precio] + [Impuesto]</code>.
+                Usa <code>SUM()</code> solo cuando tengas una <strong>Lista</strong> de registros.
+            </div>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Total de una Orden de Compra (Padre-Hijo):</strong><br>
+                    <code>SUM([Related Detalles][Subtotal])</code><br>
+                    <em>Uso:</em> En una columna virtual del registro "Padre" (Pedido) para sumar todos los subtotales de los registros "Hijos" (Detalles).
+                </li>
+                <li>
+                    <strong>Calcular ventas totales del día de hoy:</strong><br>
+                    <code>SUM(SELECT(Ventas[TotalPagado], [Fecha] = TODAY()))</code><br>
+                    <em>Explicación:</em> Primero filtra las ventas de hoy y luego suma la columna "TotalPagado".
+                </li>
+                <li>
+                    <strong>Suma de una lista manual:</strong><br>
+                    <code>SUM(LIST(10, 20, 30))</code><br>
+                    <em>Resultado:</em> 60.
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

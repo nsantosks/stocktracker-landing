@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función IF() | Gammaliel Analytics</title> 
+    
+    <!-- Enlace al archivo CSS -->
+    <link href="../../style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    
+</head>
+<body>
+
+    <div class="landing-page-wrapper">
+        
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../index.html" class="logo">GAMMALIEL ANALYTICS</a>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">← Volver a Biblioteca</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="exp-detail-header">
+            <div class="container">
+                <h1>IF()</h1>
+            </div>
+        </section>
+
+        <main class="exp-content">
+            
+            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            
+            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+
+            <h2>Sintaxis de la expresión</h2>
+            <div class="syntax-box">
+                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+            </div>
+            
+            <p><strong>Parámetros:</strong></p>
+            <ul>
+                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
+                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
+                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+            </ul>
+
+            <h2>Ejemplos Prácticos</h2>
+            <ul class="example-list">
+                <li>
+                    <strong>Estado de inventario:</strong><br>
+                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
+                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                </li>
+                <li>
+                    <strong>Precios con descuento VIP:</strong><br>
+                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
+                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                </li>
+                <li>
+                    <strong>Evitar división por cero:</strong><br>
+                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                </li>
+            </ul>
+
+            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+
+        </main>
+
+                <div id="footer-placeholder"></div>
+
+    </div>
+
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<script src="../../main.js"></script>
+<script>
+    // Subimos dos niveles (../../) para encontrar la carpeta components
+    loadComponent('footer-placeholder', '../../components/footer.html');
+</script>
+</body>
+</html>

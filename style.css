@@ -1245,3 +1245,52 @@ body {
 .dropdown-trigger {
     cursor: default; /* Mantiene el cursor normal */
 }
+
+/* =========================================
+   NUEVOS ESTILOS PARA HEADER FIJO Y LOGO
+   ========================================= */
+
+/* 1. Hacemos que el encabezado se quede fijo (Sticky Header) */
+.landing-page-wrapper .header {
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Aseguramos que el header esté por encima de todo (incluyendo el dropdown z-index: 1000) */
+    background-color: var(--color-background); /* Usamos el color de fondo definido para el landing (asumo blanco) */
+    /* La sombra añade un efecto de "elevación" sobre el contenido */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+.landing-page-wrapper .logo {
+    /* Hacemos que el enlace se comporte como un contenedor flexible */
+    display: flex; 
+    /* Alineamos los ítems (imagen y texto) verticalmente al centro */
+    align-items: center;
+    /* Espacio entre el logo (imagen) y el texto */
+    gap: 8px; 
+    
+    /* Mantenemos tus estilos de texto originales si la imagen falla */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Redefinimos el tamaño para la imagen del logo */
+.landing-page-wrapper .logo-img {
+    height: 40px; /* Tamaño del icono */
+    width: auto;
+    /* Quitamos el 'display: block;' que no es necesario con flex */
+}
+
+/* Opcional: Estilo específico para el texto, si es necesario */
+.landing-page-wrapper .logo-text {
+    /* Asegura que el texto mantenga el tamaño y color de .logo (si no lo hereda bien) */
+    font-size: 1em; /* 1em relativo al padre .logo */
+    color: var(--color-primary);
+}
+
+/* 3. Ajuste para el contenedor de la navbar */
+.landing-page-wrapper .navbar {
+    /* Eliminamos el borde inferior que ya no es necesario gracias a la sombra del header */
+    border-bottom: none; 
+}

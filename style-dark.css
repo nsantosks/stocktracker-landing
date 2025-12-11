@@ -1,0 +1,572 @@
+/* =============================================================
+   STYLE-DARK.CSS - GAMMALIEL ANALYTICS (CYBER TECH EDITION)
+   ============================================================= */
+
+/* ============================================================= */
+/* == 1. CONFIGURACIÓN GLOBAL Y VARIABLES (NEON PALETTE) == */
+/* ============================================================= */
+
+:root {
+    /* --- PALETA CYBER TECH --- */
+    /* Fondo principal: Un azul muy oscuro casi negro (Void) */
+    --bg-main: #0B0E14;
+    /* Fondo secundario: Un tono más elevado para secciones */
+    --bg-secondary: #111827; 
+    /* Superficies de tarjetas (Glassmorphism) */
+    --bg-card: rgba(30, 41, 59, 0.7);
+    
+    /* --- COLORES DE ACENTO (GLOW) --- */
+    /* Azul Neón (Cian Eléctrico) para reemplazar el azul corporativo */
+    --primary-color: #00E5FF;       
+    --primary-dark: #00B8D4;        
+    --primary-glow: rgba(0, 229, 255, 0.4);
+
+    /* Naranja Neón (Amber) para llamadas a la acción */
+    --accent-color: #FFAB00;        
+    --accent-glow: rgba(255, 171, 0, 0.4);
+
+    /* --- TEXTOS --- */
+    --text-main: #E2E8F0;           /* Blanco humo para lectura cómoda */
+    --text-muted: #94A3B8;          /* Gris azulado metálico */
+    --text-dark: #0B0E14;           /* Para textos sobre fondo neón */
+
+    /* --- BORDES Y SEPARADORES --- */
+    --border-tech: rgba(255, 255, 255, 0.1);
+    
+    /* --- TIPOGRAFÍA --- */
+    --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    /* Fondo de malla sutil para dar textura Tech */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ============================================================= */
+/* == 2. UTILIDADES (PUENTE CON TAILWIND & GENERALES) == */
+/* ============================================================= */
+
+/* Adaptación de utilidades al modo oscuro */
+.bg-primary { background-color: var(--primary-color) !important; color: var(--text-dark) !important; }
+.text-primary { color: var(--primary-color) !important; text-shadow: 0 0 10px var(--primary-glow); }
+.border-primary { border-color: var(--primary-color) !important; }
+.bg-secondary { background-color: var(--bg-secondary) !important; }
+
+.hover\:bg-blue-700:hover { 
+    background-color: var(--primary-color) !important; 
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+.hover\:text-primary:hover { color: var(--primary-color) !important; }
+
+.scroll-smooth { scroll-behavior: smooth; }
+
+/* ============================================================= */
+/* == 3. COMPONENTES COMPARTIDOS (HERO, CARDS) == */
+/* ============================================================= */
+
+/* --- HERO PATTERN (CYBER GRID) --- */
+/* Reemplazamos el patrón geométrico por un gradiente radial oscuro */
+.hero-pattern {
+    background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 50%);
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- TARJETAS DE CARACTERÍSTICAS (TECH STYLE) --- */
+.feature-card {
+    transition: all 0.3s ease;
+    height: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-tech);
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15); /* Resplandor azul */
+}
+.feature-card .feature-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    color: var(--primary-color);
+}
+.feature-card:hover .feature-icon {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+/* --- TESTIMONIOS (Comillas) --- */
+.comilla-grande {
+    font-family: serif; font-size: 3rem; line-height: 0;
+    color: var(--border-tech); /* Gris oscuro */
+    font-weight: 900; display: inline-block;
+}
+.comilla-grande.izquierda { margin-right: 0.5rem; transform: translateY(10px); }
+.comilla-grande.derecha { margin-left: 0.5rem; transform: translateY(20px); }
+
+/* --- SWIPER SLIDER (Neon Controls) --- */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-color) !important;
+    background-color: rgba(11, 14, 20, 0.8);
+    border: 1px solid var(--primary-color);
+    width: 45px; height: 45px; border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: var(--primary-color);
+    color: var(--text-dark) !important;
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+.swiper-pagination-bullet { background-color: #555; opacity: 1; }
+.swiper-pagination-bullet-active { 
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+/* ============================================================= */
+/* == 4. FOOTER (DARK TECH) == */
+/* ============================================================= */
+
+.main-footer {
+    background-color: #05070a; /* Aún más oscuro que el fondo */
+    border-top: 1px solid var(--border-tech);
+    color: var(--text-muted);
+    padding-top: 60px; font-size: 0.95rem;
+}
+.main-footer .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.footer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; padding-bottom: 50px;
+}
+.footer-col h3 {
+    color: var(--text-main); font-size: 1.2rem; margin-bottom: 20px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+}
+.footer-logo-text {
+    font-size: 1.5rem !important; color: var(--primary-color) !important;
+    text-shadow: 0 0 15px var(--primary-glow);
+}
+.footer-links, .contact-list { list-style: none; padding: 0; margin: 0; }
+.footer-links li, .contact-list li { margin-bottom: 12px; }
+.footer-links a, .contact-list a {
+    color: var(--text-muted); text-decoration: none; transition: all 0.3s;
+}
+.footer-links a:hover, .contact-list a:hover {
+    color: var(--primary-color); padding-left: 5px; text-shadow: 0 0 5px var(--primary-glow);
+}
+.contact-list i { color: var(--accent-color); margin-top: 4px; }
+.social-links { display: flex; gap: 15px; margin-top: 20px; }
+.social-links a {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%; color: var(--text-main);
+    transition: all 0.3s; border: 1px solid transparent;
+}
+.social-links a:hover {
+    border-color: var(--primary-color); color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-glow); transform: translateY(-3px);
+}
+.footer-bottom {
+    background-color: #000; padding: 20px 0; text-align: center;
+    font-size: 0.85rem; color: #555; border-top: 1px solid #111;
+}
+
+/* ============================================================= */
+/* == 5. ENCAPSULADO (MAIN LANDING & BIBLIOTECA) == */
+/* ============================================================= */
+
+.landing-page-wrapper {
+    /* MAPEO DE VARIABLES DARK */
+    --color-primary: var(--primary-color);
+    --color-secondary: var(--accent-color);
+    --color-text: var(--text-main);
+    --color-background: var(--bg-main);
+    --color-light-gray: var(--bg-secondary);
+    
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.landing-page-wrapper .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- 5.1 TIPOGRAFÍA Y ENCABEZADOS --- */
+.landing-page-wrapper .section-header {
+    text-align: center; max-width: 800px; margin: 0 auto 60px auto;
+}
+.landing-page-wrapper h2 {
+    font-size: 2.8rem; font-weight: 800; color: #fff; /* Blanco puro para contraste */
+    line-height: 1.2; margin-bottom: 15px; letter-spacing: -0.5px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.1); /* Brillo sutil */
+}
+.landing-page-wrapper .section-subtitle {
+    font-size: 1.25rem; color: var(--text-muted); font-weight: 400; margin: 0;
+}
+
+/* --- 5.2 NAVBAR (GLASSMORPHISM) --- */
+.landing-page-wrapper .header {
+    background-color: rgba(11, 14, 20, 0.85); /* Fondo semitransparente oscuro */
+    backdrop-filter: blur(12px); /* Efecto Blur */
+    border-bottom: 1px solid var(--border-tech);
+    position: sticky; top: 0; z-index: 1000;
+}
+.landing-page-wrapper .navbar {
+    display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
+}
+.landing-page-wrapper .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.3em; font-weight: 800; color: #fff; text-decoration: none;
+    letter-spacing: 1px;
+}
+.landing-page-wrapper .logo-img { height: 40px; width: auto; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
+
+.landing-page-wrapper .nav-links {
+    list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center;
+}
+.landing-page-wrapper .nav-links a {
+    text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 0.95em; transition: color 0.3s;
+}
+.landing-page-wrapper .nav-links a:hover { 
+    color: var(--primary-color); text-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* Botón CTA Navbar */
+.landing-page-wrapper .nav-cta a {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    padding: 10px 25px; border-radius: 50px; font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);
+    transition: all 0.3s;
+}
+.landing-page-wrapper .nav-cta a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-dark) !important;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* Dropdown Dark */
+.landing-page-wrapper .dropdown-item { position: relative; }
+.landing-page-wrapper .dropdown-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #1e293b; min-width: 240px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid var(--border-tech);
+    padding: 10px 0; z-index: 1000; list-style: none; margin-top: 15px;
+}
+.landing-page-wrapper .dropdown-menu::before {
+    content: ""; position: absolute; top: -20px; left: 0;
+    width: 100%; height: 20px; background-color: transparent; display: block;
+}
+.landing-page-wrapper .dropdown-item:hover .dropdown-menu { display: block; animation: fadeIn 0.3s ease; }
+.landing-page-wrapper .dropdown-menu li a {
+    display: block; padding: 12px 25px; color: var(--text-main); font-size: 0.95em;
+}
+.landing-page-wrapper .dropdown-menu li a:hover {
+    background-color: rgba(0, 229, 255, 0.1); color: var(--primary-color); padding-left: 30px;
+}
+
+/* --- 5.3 HERO SECTION (NEON STYLE) --- */
+.landing-page-wrapper .hero-section {
+    background-color: var(--bg-main);
+    padding: 120px 0 100px; text-align: center; position: relative; overflow: hidden;
+}
+.landing-page-wrapper .hero-content h1 {
+    font-size: 3.5em; font-weight: 800; color: #fff;
+    line-height: 1.15; margin-bottom: 25px; letter-spacing: -1px;
+    text-shadow: 0 0 30px rgba(0, 229, 255, 0.3); /* Resplandor de fondo en el título */
+}
+/* Hacer que parte del título brille en azul */
+.landing-page-wrapper .hero-content h1 strong, 
+.landing-page-wrapper .hero-content h1 span {
+    color: var(--primary-color);
+}
+
+.landing-page-wrapper .hero-content p {
+    font-size: 1.3em; max-width: 750px; margin: 0 auto 50px;
+    color: var(--text-muted); font-weight: 400; line-height: 1.6;
+}
+.landing-page-wrapper .hero-content p strong { color: #fff; font-weight: 600; }
+.landing-page-wrapper .hero-actions { 
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; 
+}
+
+/* --- 5.4 BOTONES Y CTAS (CYBER STYLE) --- */
+.landing-page-wrapper .btn-hero {
+    padding: 16px 35px; font-size: 1.1em; border-radius: 50px;
+    display: inline-flex; align-items: center; gap: 10px;
+    text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;
+}
+
+/* Botón Primario: Relleno Neón */
+.landing-page-wrapper .btn-primary.btn-hero {
+    background: var(--primary-color); 
+    color: var(--text-dark);
+    font-weight: 800; border: none;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+.landing-page-wrapper .btn-primary.btn-hero:hover {
+    background: #fff;
+    box-shadow: 0 0 30px var(--primary-glow);
+    transform: translateY(-3px);
+}
+
+/* Botón Secundario: Borde Neón */
+.landing-page-wrapper .btn-secondary.btn-hero {
+    background-color: transparent;
+    border: 1px solid var(--border-tech);
+    color: var(--text-main);
+}
+.landing-page-wrapper .btn-secondary.btn-hero:hover {
+    border-color: var(--primary-color); color: var(--primary-color);
+    background-color: rgba(0, 229, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Botón Explorar Recursos */
+.landing-page-wrapper .content-cta-wrapper { text-align: center; margin-top: 60px; margin-bottom: 20px; }
+.landing-page-wrapper .btn-explore {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 16px 40px; border: 1px solid var(--primary-color); border-radius: 50px;
+    color: var(--primary-color); font-size: 1em; font-weight: 700; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1px; background-color: rgba(0, 229, 255, 0.05);
+    transition: all 0.3s ease;
+}
+.landing-page-wrapper .btn-explore:hover {
+    background-color: var(--primary-color); color: var(--text-dark);
+    box-shadow: 0 0 20px var(--primary-glow); padding-right: 50px;
+}
+.landing-page-wrapper .btn-explore i { transition: transform 0.3s; }
+.landing-page-wrapper .btn-explore:hover i { transform: translateX(5px); }
+
+
+/* --- 5.5 GRIDS Y TARJETAS (DARK CARDS) --- */
+.landing-page-wrapper .services-section,
+.landing-page-wrapper .content-section,
+.landing-page-wrapper .products-section,
+.landing-page-wrapper .credibility-section { padding: 100px 0; }
+
+.landing-page-wrapper .products-section { background-color: #0d1117; } /* Un poco más claro que el main */
+
+.landing-page-wrapper .services-grid, 
+.landing-page-wrapper .content-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
+}
+.landing-page-wrapper .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px;
+    max-width: 1000px; margin: 0 auto;
+}
+
+/* Estilo Base Tarjetas (Dark Glass) */
+.landing-page-wrapper .service-card, 
+.landing-page-wrapper .content-card,
+.landing-page-wrapper .product-card {
+    background: rgba(30, 41, 59, 0.4); /* Semitransparente */
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-tech);
+    border-radius: 16px; transition: all 0.3s ease;
+    display: flex; flex-direction: column; overflow: hidden;
+}
+.landing-page-wrapper .service-card:hover, 
+.landing-page-wrapper .content-card:hover,
+.landing-page-wrapper .product-card:hover {
+    transform: translateY(-10px); 
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+}
+
+/* Títulos de Tarjetas */
+.landing-page-wrapper .service-card h3,
+.landing-page-wrapper .content-card h3,
+.landing-page-wrapper .product-content h3 {
+    color: #fff; font-size: 1.5em; margin-bottom: 15px; font-weight: 700;
+}
+/* Párrafos de Tarjetas */
+.landing-page-wrapper .service-card p,
+.landing-page-wrapper .content-card p,
+.landing-page-wrapper .product-description {
+    color: var(--text-muted);
+}
+
+/* Links en tarjetas */
+.landing-page-wrapper .service-link, 
+.landing-page-wrapper .content-link {
+    color: var(--primary-color); font-weight: 700; text-decoration: none;
+    text-transform: uppercase; font-size: 0.85em; letter-spacing: 0.5px;
+}
+
+/* Estilo Específico Productos */
+.landing-page-wrapper .product-logo-area {
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border-tech);
+}
+.landing-page-wrapper .product-badge {
+    background-color: var(--accent-color); color: #000;
+    font-weight: 800; border-radius: 4px; /* Más cuadrado = más tech */
+}
+.landing-page-wrapper .product-features {
+    background: rgba(0,0,0,0.3); border: 1px solid var(--border-tech);
+}
+.landing-page-wrapper .btn-product {
+    background-color: var(--primary-color); color: #000; font-weight: bold;
+}
+.landing-page-wrapper .btn-product:hover {
+    background-color: #fff; box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Tags y Footer de Content Card */
+.landing-page-wrapper .card-footer {
+    background-color: rgba(0,0,0,0.3); border-top: 1px solid var(--border-tech);
+}
+.landing-page-wrapper .tag {
+    background-color: rgba(0, 229, 255, 0.1); color: var(--primary-color);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+/* --- 5.6 MÉTRICAS Y TESTIMONIOS (DARK) --- */
+.landing-page-wrapper .metrics-bar {
+    background: rgba(30, 41, 59, 0.4); border: 1px solid var(--border-tech);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.landing-page-wrapper .metric-number {
+    color: var(--primary-color); text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.landing-page-wrapper .testimonial-card {
+    background-color: rgba(30, 41, 59, 0.4);
+    border: 1px solid var(--border-tech);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+.landing-page-wrapper .quote-icon { color: var(--primary-color); opacity: 0.2; }
+.landing-page-wrapper .quote-text { color: #d1d5db; }
+.landing-page-wrapper .author-block { border-top: 1px solid var(--border-tech); }
+.landing-page-wrapper .quote-author { color: var(--primary-color); }
+
+/* --- 5.7 CTA FOOTER SECTION (GLOW GRADIENT) --- */
+.landing-page-wrapper .cta-footer-section {
+    padding: 100px 0;
+    /* Gradiente oscuro con toque de color */
+    background: linear-gradient(180deg, var(--bg-main) 0%, #001e2b 100%);
+    position: relative;
+    border-top: 1px solid var(--border-tech);
+}
+/* Efecto de luz superior */
+.landing-page-wrapper .cta-footer-section::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    box-shadow: 0 0 30px var(--primary-color);
+}
+.landing-page-wrapper .cta-footer-section h2 { 
+    color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.5); 
+}
+.landing-page-wrapper .btn-large {
+    background-color: var(--accent-color); color: #000;
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+.landing-page-wrapper .btn-large:hover {
+    background-color: #fff; box-shadow: 0 0 30px #fff;
+}
+
+
+/* ============================================================= */
+/* == 6. BIBLIOTECA APPSHEET (DARK MODE) == */
+/* ============================================================= */
+
+.sidebar-filters {
+    background: var(--bg-card); border: 1px solid var(--border-tech);
+}
+.sidebar-title { color: var(--primary-color); border-bottom: 1px solid var(--border-tech); }
+.filter-group label { color: var(--text-muted); }
+.filter-group input { accent-color: var(--primary-color); }
+
+.search-input {
+    background-color: var(--bg-card); color: #fff;
+    border: 1px solid var(--border-tech);
+}
+.search-input:focus { 
+    border-color: var(--primary-color); box-shadow: 0 0 10px var(--primary-glow); 
+}
+
+.exp-card {
+    background: var(--bg-card); border: 1px solid var(--border-tech);
+}
+.exp-card:hover {
+    border-color: var(--primary-color); background: rgba(0, 229, 255, 0.05);
+}
+.exp-name { color: #fff; }
+
+/* Tags Brillantes */
+.tag-listas { background-color: var(--primary-color); color: #000; box-shadow: 0 0 10px var(--primary-glow); }
+.tag-logica { background-color: #00c853; color: #000; box-shadow: 0 0 10px rgba(0, 200, 83, 0.4); }
+.tag-texto { background-color: var(--accent-color); color: #000; box-shadow: 0 0 10px var(--accent-glow); }
+.tag-tiempo { background-color: #d500f9; color: #fff; box-shadow: 0 0 10px rgba(213, 0, 249, 0.4); }
+.tag-matem { background-color: #ff1744; color: #fff; box-shadow: 0 0 10px rgba(255, 23, 68, 0.4); }
+
+/* ============================================================= */
+/* == 7. DETALLE DE ARTÍCULO == */
+/* ============================================================= */
+
+.exp-detail-header {
+    background-color: transparent; 
+    border-bottom: 1px solid var(--border-tech);
+    position: relative;
+}
+.exp-detail-header::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
+    background: linear-gradient(0deg, var(--bg-main) 0%, transparent 100%);
+}
+.exp-detail-header h1 { 
+    color: var(--primary-color); text-shadow: 0 0 20px var(--primary-glow); 
+}
+
+.exp-content { color: var(--text-main); }
+.exp-content h2 { color: var(--primary-color); border-bottom: 1px solid var(--border-tech); }
+.syntax-box {
+    background-color: #0d1117; border-left: 4px solid var(--primary-color);
+    color: #a5d6ff; border: 1px solid var(--border-tech);
+}
+.exp-content code {
+    background-color: rgba(255,255,255,0.1); color: var(--accent-color);
+}
+.btn-back {
+    color: var(--text-muted); border-color: var(--border-tech);
+}
+.btn-back:hover {
+    color: var(--primary-color); border-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* ============================================================= */
+/* == 8. RESPONSIVE DESIGN == */
+/* ============================================================= */
+
+@media (max-width: 768px) {
+    .menu-toggle .bar { background-color: var(--primary-color); }
+    
+    .landing-page-wrapper .nav-links {
+        background: #0b0e14; border-bottom: 1px solid var(--primary-color);
+    }
+    .landing-page-wrapper .hero-content h1 { font-size: 2.5em; }
+    
+    .landing-page-wrapper .btn-hero { width: 100%; justify-content: center; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

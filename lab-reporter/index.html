@@ -33,46 +33,49 @@
     <!-- Librerías Externas (Tailwind, Fuentes, Swiper) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
-    <style>
-        /* Estas reglas solo se aplicarán en esta página */
-        :root {
-            --primary-color: #005A9C; /* Azul Primario de LAB Reporter */
-            --secondary-color: #00AEEF; /* Azul Secundario de LAB Reporter */
-        }
-    </style>
-
-
 </head>
-<body class="bg-white">
+<body>
+    <!-- Abrimos el contenedor maestro para que apliquen los estilos unificados -->
+    <div class="landing-page-wrapper">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="../img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo de LAB Reporter" class="h-10 w-10">
-                <span class="text-2xl font-bold text-gray-800">LAB Reporter</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Funciones</a>
-                <a href="#modules" class="text-gray-600 hover:text-primary transition-colors">Módulos</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors font-medium">Reseñas</a>
-                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors font-medium">Demo</a>
-                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Cotizar</a>
-                <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">F&Q</a>
-                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
-            </div>
-            <div class="md:hidden">
-                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
-            </div>
-        </nav>
+    <!-- Header Unificado -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <a href="../" class="logo">
+                    <img src="../img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo Lab Reporter" class="logo-img">
+                    <span class="logo-text">LAB Reporter</span>
+                </a>
+
+                <!-- Botón Hamburguesa (Móvil) -->
+                <div class="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+                <!-- Enlaces de Navegación -->
+                <ul class="nav-links">
+                    <li><a href="#features">Funciones</a></li>
+                    <li><a href="#modules">Módulos</a></li>
+                    <li><a href="#testimonials">Reseñas</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#faq">F&Q</a></li>
+                    <!-- Botón de Acción (CTA) -->
+                    <li class="nav-cta"><a href="#pricing">Cotizar Ahora</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         <!-- HERO SECTION -->
         <section class="relative pt-20 pb-24 text-center overflow-hidden">
-             <div class="hero-pattern" style="background-image: linear-gradient(135deg, #005A9C 25%, transparent 25%), linear-gradient(225deg, #005A9C 25%, transparent 25%), linear-gradient(45deg, #005A9C 25%, transparent 25%), linear-gradient(315deg, #005A9C 25%, #ffffff 25%);"></div>
+             <div class="hero-pattern"></div>
              <div class="container mx-auto px-6 z-10">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">Deja de emitir reportes manuales. Profesionaliza tus informes de laboratorio.</h1>
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">LAB Reporter es la planitlla inteligente en MS Excel que te permite gestionar pacientes, registrar resultados y emitir informes en PDF de forma segura, rápida y sin errores.</p>
@@ -409,19 +412,14 @@
         
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-auto">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <img src="../img/lab-reporter/logo-footer.png" alt="Logo de LAB Reporter" class="h-16 w-16 mx-auto mb-4">
-            <p class="text-blue-200 text-sm mb-2 italic">Hecho con pasión por un profesional dedicado a simplificar la vida de las Pymes.</p>
-            <p class="mb-4">LAB Reporter por Gammaliel Analytics</p>
-            <div class="mb-4">
-                <a href="/politica-de-privacidad/" class="text-sm text-gray-400 hover:text-white underline">Política de Privacidad</a>
-            </div>
-            <p class="text-gray-400 text-sm">© 2025 Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
+<!-- Footer Centralizado -->
+    <div id="footer-placeholder"></div>
+ </div> 
+    <!-- Scripts -->
+    <script src="../main.js"></script>
+    <script>
+        loadComponent('footer-placeholder', '../components/footer.html');
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         // ---- SMOOTH SCROLL ----
@@ -610,5 +608,6 @@
             </form>
         </div>
     </div>
+
 </body>
 </html>

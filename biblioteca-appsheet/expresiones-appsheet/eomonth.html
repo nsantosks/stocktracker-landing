@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Función EOMONTH() | Gammaliel Analytics</title> 
     
+    <!-- Enlace al archivo CSS -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <link href="../../style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
+    <!-- Enlace al favicon -->
+    <link rel="shortcut icon" href="../../stocktracker-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="StockTracker" />
+    <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
 <body>
 
@@ -31,53 +46,47 @@
 
         <main class="exp-content">
             
-            <p>La expresión <strong>EOMONTH()</strong> (End Of Month) devuelve la fecha correspondiente al <strong>último día</strong> de un mes específico, calculado a partir de una fecha base y un número de meses a sumar o restar.</p>
+            <p>La función <strong>EOMONTH()</strong> (End Of Month) devuelve la fecha correspondiente al último día del mes, calculado a partir de una fecha inicial y un número específico de meses hacia adelante o hacia atrás.</p>
             
-            <p>Es esencial para cálculos financieros (cierres de mes), establecer fechas límite de pago, o calcular rangos de fechas para reportes mensuales.</p>
+            <p>Es extremadamente útil para cálculos financieros, cierres de periodo, vencimientos de facturas o para encontrar el primer día de un mes (combinándola con aritmética básica).</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                EOMONTH( Fecha_Base, Meses_A_Sumar )
+                EOMONTH( Fecha, Meses_Desplazamiento )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Fecha_Base</code>: Una fecha o fecha-hora de partida (ej: <code>TODAY()</code> o <code>[FechaFactura]</code>).</li>
-                <li><code>Meses_A_Sumar</code>: Un número entero.
+                <li><code>Fecha</code>: Un valor de tipo Date o DateTime desde el cual comenzar el cálculo.</li>
+                <li><code>Meses_Desplazamiento</code>: Un número entero (Number).
                     <ul>
-                        <li><code>0</code>: Devuelve el fin del mes actual de la fecha base.</li>
-                        <li><code>1</code> (o positivo): Suma meses hacia el futuro.</li>
-                        <li><code>-1</code> (o negativo): Resta meses hacia el pasado.</li>
+                        <li><code>0</code>: El mismo mes de la fecha dada.</li>
+                        <li><code>> 0</code> (Positivo): Meses en el futuro.</li>
+                        <li><code>< 0</code> (Negativo): Meses en el pasado.</li>
                     </ul>
                 </li>
             </ul>
-            
-            <div class="note">
-                <strong>Truco Pro:</strong> 
-                Para obtener el <strong>primer día del mes</strong>, usa EOMONTH para ir al fin del mes anterior y suma 1 día. <br>
-                Ejemplo: <code>EOMONTH(TODAY(), -1) + 1</code>.
-            </div>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Fecha de fin de mes actual:</strong><br>
+                    <strong>Fin del mes actual:</strong><br>
                     <code>EOMONTH(TODAY(), 0)</code><br>
-                    <em>Resultado:</em> Si hoy es 9 de Diciembre, devuelve "31/12/2025".
+                    <em>Explicación:</em> Si hoy es 15/05/2024, devuelve 31/05/2024.
                 </li>
                 <li>
-                    <strong>Calcular vencimiento a 30 días (fin de mes siguiente):</strong><br>
-                    <code>EOMONTH([Fecha_Emision], 1)</code><br>
-                    <em>Resultado:</em> El último día del mes siguiente a la emisión.
+                    <strong>Calcular el primer día del mes actual:</strong><br>
+                    <code>EOMONTH(TODAY(), -1) + 1</code><br>
+                    <em>Explicación:</em> Encuentra el último día del mes <em>pasado</em> y le suma un día. Es la técnica estándar para obtener el "1ro" del mes corriente.
                 </li>
                 <li>
-                    <strong>Slice para filtrar "Este Mes":</strong><br>
-                    <code>AND([Fecha] >= (EOMONTH(TODAY(), -1) + 1), [Fecha] <= EOMONTH(TODAY(), 0))</code><br>
-                    <em>Explicación:</em> Filtra las filas cuya fecha esté entre el 1° de este mes y el último día de este mes.
+                    <strong>Vencimiento a fin del próximo mes:</strong><br>
+                    <code>EOMONTH([Fecha_Factura], 1)</code><br>
+                    <em>Explicación:</em> Si la factura es del 10 de Enero, devuelve el último día de Febrero (considerando si es bisiesto o no automáticamente).
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
@@ -85,10 +94,9 @@
 
     </div>
 
-<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
+<!-- Scripts -->
 <script src="../../main.js"></script>
 <script>
-    // Subimos dos niveles (../../) para encontrar la carpeta components
     loadComponent('footer-placeholder', '../../components/footer.html');
 </script>
 </body>

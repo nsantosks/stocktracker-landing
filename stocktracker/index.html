@@ -22,6 +22,8 @@
     <!-- Enlace al archivo CSS -->
     <link href="../style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <link rel="icon" type="image/png" href="../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../stocktracker-favicon/favicon.svg" />
     <!-- Enlace al favicon -->
@@ -32,32 +34,43 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 </head>
-<body class="bg-white">
+<body>
+    <!-- Abrimos el contenedor maestro para que apliquen los estilos unificados -->
+    <div class="landing-page-wrapper">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="../img/logo-header.png" alt="Logo de StockTracker" class="h-10 w-10">
-                <span class="text-2xl font-bold text-gray-800">StockTracker</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">Funciones</a>
-                <a href="#modules" class="text-gray-600 hover:text-primary transition-colors">Módulos</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors font-medium">Reseñas</a>
-                <a href="#exploracion" class="text-gray-600 hover:text-primary transition-colors font-medium">Explorar</a>
-                <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">Cotizar</a>
-                <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">F&Q</a>
-                <a href="#cta" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Obtener Plantilla</a>
-            </div>
-            <div class="md:hidden">
-                <a href="#pricing" class="bg-primary text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">Comprar</a>
-            </div>
-        </nav>
+    <!-- Header Unificado -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo: Apunta al inicio de la página o al home general -->
+                <a href="../" class="logo">
+                    <img src="../img/logo-header.png" alt="Logo StockTracker" class="logo-img">
+                    <span class="logo-text">StockTracker</span>
+                </a>
+
+                <!-- Botón Hamburguesa (Móvil) -->
+                <div class="menu-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+
+                <!-- Enlaces de Navegación -->
+                <ul class="nav-links">
+                    <li><a href="#features">Funciones</a></li>
+                    <li><a href="#modules">Módulos</a></li>
+                    <li><a href="#testimonials">Reseñas</a></li>
+                    <li><a href="#exploracion">Explorar</a></li>
+                    <li><a href="#faq">F&Q</a></li>
+                    <!-- Botón de Acción (CTA) -->
+                    <li class="nav-cta"><a href="#pricing">Obtener Plantilla</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -445,7 +458,7 @@
                             <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Roles de usuario pre-configurados.</li>
                         </ul>
 
-                        <a href="https://wa.link/650405" data-plan="Esencial" class="bg-primary w-full mt-auto bg-gray-200 text-primary font-bold py-3 px-6 rounded-full text-lg hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg text-center">
+                        <a href="https://wa.link/650405" data-plan="Esencial" class="bg-primary w-full mt-auto bg-primary text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">
                             Obtener Plantilla
                         </a>
                     </div>
@@ -562,23 +575,19 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-auto">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <img src="../img/logo-footer.png" alt="Logo de StockTracker" class="h-16 w-16 mx-auto mb-4">
-            <p class="text-blue-200 text-sm mb-2 italic">Hecho con pasión por un profesional dedicado a simplificar la vida de las Pymes.</p>
-            <p class="mb-4">StockTracker por Gammaliel Analytics</p>
-            
-            <!-- === politica de privacidad === -->
-            <div class="mb-4">
-                <a href="../politica-de-privacidad/" class="text-sm text-gray-400 hover:text-white underline">Política de Privacidad</a>
-            </div>
-            
-            <p class="text-gray-400 text-sm">© 2025 Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <!-- Footer Centralizado -->
+    <div id="footer-placeholder"></div>
+    </div>
 
+    <!-- Scripts -->
+    <!-- Cargamos el main.js subiendo un nivel -->
+    <script src="../main.js"></script>
     <script>
+        // Cargamos el footer desde la carpeta components
+        loadComponent('footer-placeholder', '../components/footer.html');
+    </script>
+
+     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // ---- LÓGICA SMOOTH SCROLL ----
         const anchorLinks = document.querySelectorAll('a[href^="#"]');

@@ -15,9 +15,10 @@
     
     <meta name="description" content="Gammaliel Analytics: Expertos en Business Intelligence, AppSheet y Automatización de Procesos. Transforme sus datos en sistemas multiusuario y tome decisiones en tiempo real. ¡Solicite su consultoría estratégica!">
     <title>Gammaliel Analytics | AppSheet, Business Intelligence & Optimización de Procesos</title>
-    <link href="style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="/stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/stocktracker-favicon/favicon.svg" />
@@ -25,8 +26,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/stocktracker-favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="StockTracker" />
     <link rel="manifest" href="/stocktracker-favicon/site.webmanifest" />
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body>
@@ -41,6 +47,12 @@
                         <img src="img/logo-header.png" alt="" class="logo-img">
                         <span class="logo-text">Gammaliel Analytics</span>
                     </a>
+
+                    <div class="menu-toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
                     <ul class="nav-links">
 
                         <!-- INICIO DEL MENÚ DESPLEGABLE SERVICIOS -->
@@ -94,24 +106,42 @@
 
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Optimización de Procesos y Toma de Decisiones en Tiempo Real</h1>
-                <p>Transformamos la complejidad de sus datos en <strong>sistemas automatizados multiusuario</strong> y <strong>tableros de indicadores estratégicos</strong>.</p>
+                <h1>Optimización de Procesos y<br>Toma de Decisiones en Tiempo Real</h1>
+                
+                <p>
+                    Transformamos la complejidad de sus datos y materializamos sus flujos de procesos en 
+                    <strong>sistemas automatizados multiusuario</strong> y 
+                    <strong>tableros de indicadores estratégicos</strong>.
+                </p>
+                
                 <div class="hero-actions">
-                    <a href="https://wa.me/+584128672845" class="btn btn-primary">➡️ Solicitar una Consultoría Estratégica</a>
-                    <a href="#servicios" class="btn btn-secondary">Ver Nuestros Servicios Clave</a>
+                    <!-- Botón Primario con Icono -->
+                    <a href="https://wa.me/+584128672845" class="btn btn-primary btn-hero">
+                        <i class="fas fa-arrow-right"></i> Solicitar una Consultoría
+                    </a>
+                    
+                    <!-- Botón Secundario con Icono -->
+                    <a href="#servicios" class="btn btn-secondary btn-hero">
+                        Ver Servicios Clave
+                    </a>
                 </div>
             </div>
         </section>
 
         <section id="servicios" class="services-section">
             <div class="container">
-                <h2>Servicios Clave: AppSheet, BI (Power BI/Looker) y Automatización de Datos</h2>
+                <!-- AGREGAMOS LA CLASE 'section-header' al contenedor del título -->
+                <div class="section-header">
+                    <h2>Servicios Clave</h2>
+                    <p class="section-subtitle">AppSheet, BI (Power BI/Looker) y Automatización de Datos</p>
+                </div>
+                
                 <div class="services-grid">
                     
                     <div class="service-card">
                         <h3>Desarrollo de Apps y Automatización</h3>
                         <p>Creación de soluciones a medida usando <strong>AppSheet + Google Cloud/AppScript</strong> para digitalizar sus operaciones y permitir el trabajo colaborativo multiusuario.</p>
-                        <a href="#" class="service-link">Ver Casos de Éxito &rarr;</a>
+                        <a href="#productos" class="service-link">Ver Nuestras Soluciones &rarr;</a>
                     </div>
 
                     <div class="service-card">
@@ -130,9 +160,75 @@
             </div>
         </section>
 
+        <!-- =========================================
+            SECCIÓN DE PRODUCTOS (NUEVA)
+            ========================================= -->
+        <section id="productos" class="products-section">
+            <div class="container">
+                
+                <div class="section-header">
+                    <h2>Nuestras Soluciones Digitales</h2>
+                    <p class="section-subtitle">Software especializado listo para implementar en su empresa hoy mismo.</p>
+                </div>
+
+                <div class="products-grid">
+                    
+                    <!-- PRODUCTO 1: STOCKTRACKER -->
+                    <article class="product-card">
+                        <div class="product-badge">Top Ventas</div>
+                        <div class="product-logo-area">
+                            <!-- Ajusta la ruta si es necesario -->
+                            <img src="img/logo-header.png" alt="Logo StockTracker" class="product-logo">
+                        </div>
+                        <div class="product-content">
+                            <h3>StockTracker</h3>
+                            <p class="product-tagline">Gestión de Inventarios y Activos</p>
+                            <p class="product-description">
+                                Deje atrás el Excel. Controle entradas, salidas, ubicaciones y auditorías desde su móvil con nuestra plantilla premium de AppSheet.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Escaneo de Códigos QR/Barras</li>
+                                <li><i class="fas fa-check"></i> Control Multi-Almacén</li>
+                                <li><i class="fas fa-check"></i> Alertas de Stock Bajo</li>
+                            </ul>
+                            <!-- Enlace a la carpeta del producto -->
+                            <a href="stocktracker/index.html" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCTO 2: LAB REPORTER -->
+                    <article class="product-card">
+                        <div class="product-badge new">Especializado</div>
+                        <div class="product-logo-area">
+                            <!-- Ajusta la ruta si es necesario -->
+                            <img src="img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo Lab Reporter" class="product-logo">
+                        </div>
+                        <div class="product-content">
+                            <h3>LAB Reporter</h3>
+                            <p class="product-tagline">Gestión para Laboratorios Clínicos</p>
+                            <p class="product-description">
+                                Profesionalice sus reportes. Gestione pacientes, resultados y envíe informes PDF firmados automáticamente y sin errores.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Generación de PDFs Automática</li>
+                                <li><i class="fas fa-check"></i> Historial de Pacientes</li>
+                                <li><i class="fas fa-check"></i> Base de Datos Segura</li>
+                            </ul>
+                            <!-- Enlace a la carpeta del producto -->
+                            <a href="lab-reporter/index.html" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
         <section class="credibility-section">
-        <div class="container">
-            <h2>Resultados y Experiencia: La Credibilidad de Gammaliel Analytics en Optimización</h2>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Resultados y Experiencia</h2>
+                    <p class="section-subtitle">La Credibilidad de Gammaliel Analytics en Optimización</p>
+                </div>
             
             <div class="metrics-bar">
                 <div class="metric-item">
@@ -149,24 +245,42 @@
                 </div>
             </div>
 
-            <div class="testimonial-container">
-                <h3>Lo que dicen nuestros clientes</h3>
-                <div class="testimonial-card">
-                    <p class="quote-text">
-                        <span class="comilla-grande izquierda">“</span>
-                        Gammaliel Analytics transformó nuestras hojas de cálculo obsoletas en una aplicación de gestión de inventario en tiempo real. La toma de decisiones ahora es instantánea y el equipo colabora sin fricciones. Un socio estratégico invaluable.
-                        <span class="comilla-grande derecha">”</span>
-                    </p>
-                    <p class="quote-author">— Ing. Leandro Marrugo, Gerente General de Operaciones Logísticas - Grupo La Abastecedora Venezuela</p>
+            <section class="credibility-section">
+                <div class="container">
+                    
+                    <!-- TÍTULO MEJORADO Y CENTRADO -->
+                    <div class="section-header">
+                        <h2>Lo que dicen nuestros clientes</h2>
+                        <!-- Si quieres un subtítulo opcional, puedes ponerlo aquí, si no, bórralo -->
+                    </div>
+
+                    <div class="testimonial-container">
+                        <div class="testimonial-card">
+                            <!-- Icono de comillas decorativo grande -->
+                            <div class="quote-icon">“</div>
+                            
+                            <p class="quote-text">
+                                Gammaliel Analytics transformó nuestras hojas de cálculo obsoletas en una aplicación de gestión de inventario en tiempo real. La toma de decisiones ahora es instantánea y el equipo colabora sin fricciones. Un socio estratégico invaluable.
+                            </p>
+                            
+                            <!-- AUTOR Y CARGO SEPARADOS -->
+                            <div class="author-block">
+                                <p class="quote-author">Ing. Juan Marcano</p>
+                                <p class="quote-role">Gerente General de Operaciones Logísticas</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
         </section>
 
         <section id="contenido" class="content-section">
             <div class="container">
-                <h2>Recursos Avanzados: Guías y Tutoriales Gratuitos de AppSheet y Business Intelligence</h2>
-                <p class="content-intro">Acceda a nuestra biblioteca de guías avanzadas, tutoriales y recursos esenciales en AppSheet y automatización de datos. El conocimiento técnico que necesita para la independencia operativa.</p>
+                <div class="section-header">
+                    <h2>Recursos Avanzados</h2>
+                    <p class="section-subtitle">Guías y Tutoriales Gratuitos de AppSheet y BI. El conocimiento técnico para su independencia operativa.</p>
+                </div>
 
                 <div class="content-grid">
                     
@@ -210,7 +324,11 @@
                     </article>
 
                 </div>
-                <a href="#" class="btn btn-secondary content-cta">Explorar la Biblioteca Completa de Recursos</a>
+                <div class="content-cta-wrapper">
+                    <a href="biblioteca-appsheet/" class="btn-explore">
+                        Explorar la Biblioteca Completa de Recursos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
         

@@ -20,8 +20,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
+    <!--Estrutura del Favicon-->
     <link rel="icon" type="image/png" href="/stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/stocktracker-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/stocktracker-favicon/favicon.ico" />
@@ -29,9 +29,13 @@
     <meta name="apple-mobile-web-app-title" content="StockTracker" />
     <link rel="manifest" href="/stocktracker-favicon/site.webmanifest" />
 
-    <link href="style.css" rel="stylesheet">
+    <!--Estructura de Estilos-->
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="stylesheet" href="/style-dark.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,72 +44,18 @@
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <div class="landing-page-wrapper">
 
-        <header class="header">
-            <div class="container">
-                <nav class="navbar">
-                    <a href="#" class="logo">
-                        <img src="img/logo-header.png" alt="Logo Gammaliel Analytics - Expertos en AppSheet y BI" class="logo-img">
-                        <span class="logo-text">Gammaliel Analytics</span>
-                    </a>
+        <!-- =========================================
+            HEADER
+        ========================================= -->
 
-                    <div class="menu-toggle" id="mobile-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
-                    <ul class="nav-links">
-
-                        <!-- INICIO DEL MENÚ DESPLEGABLE SERVICIOS -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Servicios ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#servicios">Desarrollo de Apps en Google Cloud</a></li>
-                                <li><a href="#servicios">Business Intelligence (BI)</a></li>
-                                <li><a href="#servicios">Formación y Asesoría</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE SERVICIOS -->
-
-                        <!-- INICIO DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Biblioteca ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="biblioteca-appsheet/">AppSheet</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-
-                        <!-- INICIO DEL MENÚ DESPLEGABLE CONTACTO -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Contacto ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://wa.me/+584128672845">Whatsapp</a></li>
-                                <li><a href="https://www.linkedin.com/in/ingnsantos/">Linkedin</a></li>
-                                <li><a href="mailto:info@gammalielanalytics.com">Correo Electrónico</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-                         
-                        <li class="nav-cta"><a href="https://wa.me/+584128672845">Consultoría Estratégica</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
+        <div id="header-placeholder"></div>
+    
+        <!-- =========================================
+            SECCIÓN HERO
+        ========================================= -->
         <section class="hero-section">
             <div class="container hero-content">
                 <h1>Optimización de Procesos y<br>Toma de Decisiones en Tiempo Real</h1>
@@ -130,7 +80,29 @@
             </div>
         </section>
 
-        <section id="servicios" class="services-section">
+        <section class="metrics-section">
+            <div class="metrics-container">
+                <div class="metric-item">
+                    <span class="metric-number">5.000+</span>
+                    <p class="metric-label">Horas de Procesos Optimizados</p>
+                </div>
+                <div class="metric-separator"></div>
+                <div class="metric-item">
+                    <span class="metric-number">12+</span>
+                    <p class="metric-label">Sistemas Multi-Usuario Implementados</p>
+                </div>
+                <div class="metric-separator"></div>
+                <div class="metric-item">
+                    <span class="metric-number">97%</span>
+                    <p class="metric-label">Tasa de Satisfacción del Cliente</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+            SECCIÓN DE SERVICIO
+        ========================================= -->
+        <section id="servicios" class="services-section bg-blue-dark">
             <div class="container">
                 <!-- AGREGAMOS LA CLASE 'section-header' al contenedor del título -->
                 <div class="section-header">
@@ -143,7 +115,7 @@
                     <div class="service-card">
                         <h3>Desarrollo de Apps y Automatización</h3>
                         <p>Creación de soluciones a medida usando <strong>AppSheet + Google Cloud/AppScript</strong> para digitalizar sus operaciones y permitir el trabajo colaborativo multiusuario.</p>
-                        <a href="#productos" class="service-link">Ver Nuestras Soluciones &rarr;</a>
+                        <a href="/catalogo/" class="service-link">Ver Nuestras Soluciones &rarr;</a>
                     </div>
 
                     <div class="service-card">
@@ -154,8 +126,8 @@
 
                     <div class="service-card">
                         <h3>Formación y Asesoría Especializada</h3>
-                        <p>Consultoría por hora <strong>(1, 4 u 8 horas)</strong> y capacitación avanzada para potenciar a su equipo interno en AppSheet y optimización de datos en Excel/Sheets.</p>
-                        <a href="https://wa.me/+584128672845" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
+                        <p>Consultoría por hora <strong>(1, 4 u 8 horas)</strong> y capacitación avanzada para potenciar a su equipo interno en sus procesos de negocio.</p>
+                        <a href="#consultoria-estrategica" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
                     </div>
 
                 </div>
@@ -163,8 +135,8 @@
         </section>
 
         <!-- =========================================
-            SECCIÓN DE PRODUCTOS (NUEVA)
-            ========================================= -->
+            SECCIÓN DE PRODUCTOS
+        ========================================= -->
         <section id="productos" class="products-section">
             <div class="container">
                 
@@ -180,7 +152,7 @@
                         <div class="product-badge">Top Ventas</div>
                         <div class="product-logo-area">
                             <!-- Ajusta la ruta si es necesario -->
-                            <img src="img/logo-header.png" alt="StockTracker: Aplicación AppSheet para Gestión de Inventarios" class="product-logo">
+                            <img src="/img/logo-header.png" alt="StockTracker: Aplicación AppSheet para Gestión de Inventarios" class="product-logo">
                         </div>
                         <div class="product-content">
                             <h3>StockTracker</h3>
@@ -194,7 +166,7 @@
                                 <li><i class="fas fa-check"></i> Alertas de Stock Bajo</li>
                             </ul>
                             <!-- Enlace a la carpeta del producto -->
-                            <a href="stocktracker/index.html" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
+                            <a href="/catalogo/stocktracker/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
                         </div>
                     </article>
 
@@ -203,7 +175,7 @@
                         <div class="product-badge new">Especializado</div>
                         <div class="product-logo-area">
                             <!-- Ajusta la ruta si es necesario -->
-                            <img src="img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo Lab Reporter" class="product-logo">
+                            <img src="/img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo Lab Reporter" class="product-logo">
                         </div>
                         <div class="product-content">
                             <h3>LAB Reporter</h3>
@@ -217,7 +189,31 @@
                                 <li><i class="fas fa-check"></i> Base de Datos Segura</li>
                             </ul>
                             <!-- Enlace a la carpeta del producto -->
-                            <a href="lab-reporter/index.html" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
+                            <a href="/catalogo/lab-reporter/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
+                        </div>
+                    </article>
+
+                    <!-- PRODUCTO 3: CROMO -->
+                    <article class="product-card">
+                        <div class="product-badge new">Especializado</div>
+                        <div class="product-logo-area">
+                            <!-- Ajusta la ruta si es necesario -->
+                            <img src="/img/cromo/logo-gammaliel-solid.png" alt="Logo CROMO" class="product-logo">
+                        </div>
+                        <div class="product-content">
+                            <h3>CROMO Manufacturing</h3>
+                            <p class="product-tagline">Gestión de control de lotes de producción</p>
+                            <p class="product-description">
+                                Si su rentabilidad depende de la precisión en la dosificación y la trazabilidad impecable, no puede permitirse el error del papel o de la vulneravilidad de hojas de calculo. Las desviaciones en la materia prima o los cuellos de botella no detectados matan su margen.
+                            </p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Manejo simplificado de Stock</li>
+                                <li><i class="fas fa-check"></i> Monitoriza tus operaciones en tiempo real</li>
+                                <li><i class="fas fa-check"></i> Generación automaticas de Informes profesionales</li>
+                                <li><i class="fas fa-check"></i> Base de Datos Segura</li>
+                            </ul>
+                            <!-- Enlace a la carpeta del producto -->
+                            <a href="/catalogo/cromo/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
                         </div>
                     </article>
 
@@ -225,59 +221,95 @@
             </div>
         </section>
 
-        <section class="credibility-section">
-            <div class="container">
+          <!-- =========================================
+            SECCIÓN DE CONSULTORES
+        ========================================= -->
+         <section id="consultoria-estrategica" class="landing-page-wrapper team-section">
+            <div class="consultants-container">
+
                 <div class="section-header">
-                    <h2>Resultados y Experiencia</h2>
-                    <p class="section-subtitle">La Credibilidad de Gammaliel Analytics en Optimización</p>
+                    <h2 class="section-title">Nuestros Aliados y Consultores Estratégicos</h2>
+                    <p class="section-subtitle">Conoce al equipo de expertos listos para impulsar tu negocio.</p>
                 </div>
-            
-            <div class="metrics-bar">
-                <div class="metric-item">
-                    <span class="metric-number">5.000+</span>
-                    <p class="metric-label">Horas de Procesos Optimizados</p>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-number">12+</span>
-                    <p class="metric-label">Sistemas Multi-Usuario Implementados</p>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-number">95%</span>
-                    <p class="metric-label">Tasa de Satisfacción del Cliente</p>
+
+                <div class="team-layout">
+                    
+                    <aside class="sidebar-filters">
+                        <div class="sidebar-title">Especialidad</div>
+                        <div class="filter-group" id="consultant-filters">
+                            <label><input type="checkbox" value="appsheet" class="consultant-filter"> Desarrollo AppSheet</label>
+                            <label><input type="checkbox" value="datos" class="consultant-filter"> Análisis de Datos (BI)</label>
+                            <label><input type="checkbox" value="empresas" class="consultant-filter"> Desarrollo Empresarial</label>
+                            <label><input type="checkbox" value="procesos" class="consultant-filter"> Optimización de Procesos</label>
+                            <label><input type="checkbox" value="medicina" class="consultant-filter"> Sector salud</label>
+                            <label><input type="checkbox" value="finanzas" class="consultant-filter"> Finanzas</label>
+                            <label><input type="checkbox" value="cloud" class="consultant-filter"> Google Cloud / Workspace</label>
+                        </div>
+                    </aside>
+
+                    <main class="team-content">
+                        <div class="search-bar-container">
+                            <input type="text" id="consultantSearchInput" class="search-input" placeholder="Buscar consultor por nombre o área...">
+                        </div>
+
+                        <div class="consultants-grid" id="consultantsGrid">
+                            <a href="/consultores/nestor-santos.html" class="consultant-card" 
+                            data-category="appsheet empresas datos procesos finanzas cloud" data-name="Ing. Nestor Santos"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-nestor-santos.png" alt="Foto de Nestor Santos" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Ing. Nestor Santos</span>
+                                    <span class="consultant-title">Consultor de Negocios | Gammaliel Analytics</span>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-appsheet">AppSheet</span>
+                                        <span class="tag tag-datos">Datos</span>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/javier-silverio-figueroa-reyes-235aab102/" class="consultant-card" 
+                            data-category="appsheet empresas procesos finanzas" data-name="Lcdo. Javier Figueroa"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-javier-figueroa.png" alt="Foto de Javier Figueroa" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Lcdo. Javier Figueroa</span>
+                                    <span class="consultant-title">Consultor Financiero | Smart Solutions</span>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-appsheet">Finanzas</span>
+                                        <span class="tag tag-datos">empresas</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="https://wa.me/+584124518035" class="consultant-card" 
+                            data-category="empresas procesos medicina salud ecografia" data-name="Dra. Jessika Larez"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-jessika-larez.jpg" alt="Foto de Jessika Larez" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Dra. Jessika Larez</span>
+                                    <span class="consultant-title">Desarrollo de servicios médicos y APS</span>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-appsheet">Medicina</span>
+                                        <span class="tag tag-datos">empresas</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div id="noConsultantsResults" class="no-results">No se encontraron consultores con ese criterio.</div>
+                    </main>
                 </div>
             </div>
-
-            <section class="credibility-section">
-                <div class="container">
-                    
-                    <!-- TÍTULO MEJORADO Y CENTRADO -->
-                    <div class="section-header">
-                        <h2>Lo que dicen nuestros clientes</h2>
-                        <!-- Si quieres un subtítulo opcional, puedes ponerlo aquí, si no, bórralo -->
-                    </div>
-
-                    <div class="testimonial-container">
-                        <div class="testimonial-card">
-                            <!-- Icono de comillas decorativo grande -->
-                            <div class="quote-icon">“</div>
-                            
-                            <p class="quote-text">
-                                Gammaliel Analytics transformó nuestras hojas de cálculo obsoletas en una aplicación de gestión de inventario en tiempo real. La toma de decisiones ahora es instantánea y el equipo colabora sin fricciones. Un socio estratégico invaluable.
-                            </p>
-                            
-                            <!-- AUTOR Y CARGO SEPARADOS -->
-                            <div class="author-block">
-                                <p class="quote-author">Ing. Juan Marcano</p>
-                                <p class="quote-role">Gerente General de Operaciones Logísticas</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
         </section>
 
-        <section id="contenido" class="content-section">
+         <!-- =========================================
+            Contenido Especializado
+        ========================================= -->
+
+        <section id="contenido" class="content-section bg-secondary">
             <div class="container">
                 <div class="section-header">
                     <h2>Recursos Avanzados</h2>
@@ -327,13 +359,70 @@
 
                 </div>
                 <div class="content-cta-wrapper">
-                    <a href="biblioteca-appsheet/" class="btn-explore">
+                    <a href="/biblioteca-appsheet/" class="btn-explore">
                         Explorar la Biblioteca Completa de Recursos <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </section>
-        
+
+         <!-- ================================================== --> 
+        <!-- =========== TESTIMONIOS (PRUEBA SOCIAL) ========== -->
+        <!-- ================================================== -->
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="section-header">
+                    <h2>¡Todos nuestros clientes ya han optimizado sus procesos!</h2>
+                </div>
+
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+
+                    <!-- Testimonio 1 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md"> 
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/laboratorio-jireh.jpg" alt="Foto de laboraotrio clinico Jireh">
+                            <div>
+                                <p class="font-bold text-gray-900">Leidy Hernandez</p>
+                                <p class="text-sm text-gray-500">Laboratorio Clinico "Jireh" - Rep. Dominicana</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6  m-5"><span class="comilla-grande izquierda">“</span>... ¡Muy bien!, ¡puedo pasar los resultados de forma automatizada y se genera una base de datos que es lo mas importante!...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/gracia-y-fe-laboratorios.PNG" alt="Laboratorio Clinico Gracia y Fe">
+                            <div>
+                                <p class="font-bold text-gray-900">Yasibell Dominguez</p>
+                                <p class="text-sm text-gray-500">Laboratorio clinico "Gracia y Fé" - Ecuador</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>... me encanta que puedo tener todo ordenado y poder guardar los pacientes...<span class="comilla-grande derecha">”</span></p>
+
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="bg-secondary p-8 rounded-lg shadow-md">
+                        <div class="flex items-center">
+                            <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/alofer-lab.PNG" alt="Laboratorio clinico Alofer Lab">
+                            <div>
+                                <p class="font-bold text-gray-900">Jesus Espejo</p>
+                                <p class="text-sm text-gray-500">Laboratorio Clinico, "Alofer Lab" - Perú</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>...desde que implementamos LAB Reporter no he dejado de usarlo...  ...esta a la par o incluso mejor que otros sistemas caros que hay a la venta por alli, en ese sentido muchas gracias por este aporte grande que has hecho...<span class="comilla-grande derecha">”</span></p>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+       
+
+        <!-- =========================================
+            CTA
+        ========================================= -->
         <section class="cta-footer-section">
             <div class="container">
                 <h2>¿Listo para digitalizar y optimizar la toma de decisiones en su empresa?</h2>
@@ -342,14 +431,29 @@
             </div>
         </section>
         
+        <!-- =========================================
+            FOOTER
+        ========================================= -->
         <div id="footer-placeholder"></div>
 
     </div> 
 
-    <script src="main.js"></script>
+    <script src="/main.js"></script>
     <script>
+        loadComponent('header-placeholder', 'components/header.html'); 
         loadComponent('footer-placeholder', 'components/footer.html');
     </script>
+
+    <a 
+        href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20el%20desarrollo%20de%20una%20AppSheet%20para%20mi%20negocio." 
+        class="whatsapp-float" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+        
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        
+    </a>
 
 </body>
 

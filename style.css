@@ -2,21 +2,21 @@
    HOJA DE ESTILOS PRINCIPAL - GAMMALIEL ANALYTICS
    =============================================================
    Índice de Contenido:
-   1. Configuración Global y Variables
-   2. Utilidades (Puente Tailwind)
-   3. Componentes Compartidos (Patrones, Cards, Swiper, Video)
-   4. Footer Centralizado
-   5. Encapsulado Landing Page (Estilos Específicos del Home)
-      5.1. Variables Locales y Base
-      5.2. Navbar y Menú
-      5.3. Hero Section (Principal)
-      5.4. Botones y CTAs
-      5.5. Grids y Tarjetas (Servicios, Contenido, Productos)
-      5.6. Métricas y Testimonios
-      5.7. CTA Footer
-   6. Biblioteca AppSheet (Sidebar y Grid)
-   7. Detalle de Artículos (Páginas Internas)
-   8. Responsive Design (Móvil)
+   1.  Configuración Global y Variables
+   2.  Utilidades y Elementos Flotantes (WhatsApp)
+   3.  Componentes UI Compartidos (Patterns, Swiper, Video)
+   4.  Encapsulado Landing Page (Home)
+       4.1. Navbar y Menú
+       4.2. Hero Section
+       4.3. Botones y CTAs
+       4.4. Grids y Tarjetas (Servicios, Blog, Productos)
+       4.5. Secciones Especiales (Acordeón, Métricas, Testimonios)
+       4.6. CTA Footer
+   5.  Módulo: Biblioteca AppSheet (Sidebar y Grid)
+   6.  Módulo: Consultoría y Equipo (Grid y Perfil Detallado)
+   7.  Módulo: Detalle de Artículos (Blog)
+   8.  Footer Global
+   9.  Responsive Design (Navegación Móvil)
    ============================================================= */
 
 /* ============================================================= */
@@ -24,10 +24,11 @@
 /* ============================================================= */
 
 :root {
-    /* --- COLOR DE MARCA UNIFICADO (STOCKTRACKER BLUE) --- */
+    /* --- COLOR DE MARCA UNIFICADO --- */
     --primary-color: #1976D2;       
     --primary-dark: #1565C0;        
     --primary-light: #BBDEFB;
+    --text-on-dark: #ffffff;
     
     /* --- COLORES DE ACENTO Y NEUTROS --- */
     --accent-color: #FFA726;        /* Naranja */
@@ -53,27 +54,63 @@ body {
 }
 
 /* ============================================================= */
-/* == 2. UTILIDADES (PUENTE CON TAILWIND & GENERALES) == */
+/* == 2. UTILIDADES Y ELEMENTOS FLOTANTES == */
 /* ============================================================= */
 
-/* Forzamos el uso de las variables CSS sobre las clases de Tailwind */
+/* --- Puente con Tailwind (Utilidades) --- */
 .bg-primary { background-color: var(--primary-color) !important; }
 .text-primary { color: var(--primary-color) !important; }
 .border-primary { border-color: var(--primary-color) !important; }
 .bg-secondary { background-color: var(--bg-secondary) !important; }
+.scroll-smooth { scroll-behavior: smooth; }
 
 /* Hovers consistentes */
 .hover\:bg-blue-700:hover { background-color: var(--primary-dark) !important; }
 .hover\:text-primary:hover { color: var(--primary-color) !important; }
 
-/* Utilidad de scroll suave */
-.scroll-smooth { scroll-behavior: smooth; }
+/* --- Botón Flotante WhatsApp --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px; height: 60px;
+    bottom: 40px; right: 40px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    transform: scale(0.9);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.7);
+    animation: none;
+}
+
+.whatsapp-icon { font-size: 30px; }
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    .whatsapp-icon { font-size: 25px; }
+    .whatsapp-float:hover { transform: scale(1.05); }
+}
 
 /* ============================================================= */
-/* == 3. COMPONENTES COMPARTIDOS (HERO, CARDS, SWIPER) == */
+/* == 3. COMPONENTES UI COMPARTIDOS == */
 /* ============================================================= */
 
-/* --- HERO PATTERN (Fondo Geométrico Unificado) --- */
+/* --- Fondos Geométricos --- */
 .hero-pattern {
     background-color: #ffffff;
     opacity: 0.08;
@@ -85,43 +122,43 @@ body {
     background-position: 10px 0, 10px 0, 0 0, 0 0;
     background-size: 20px 20px;
     background-repeat: repeat;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
 }
 
-/* --- TARJETAS DE CARACTERÍSTICAS (Para Landing de Productos) --- */
+.hero-pattern-binary {
+    background-color: #1565C0;
+    opacity: 0.09;   
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 38px, #ffffff 38px, #ffffff  40px),
+        repeating-linear-gradient(0deg, transparent, transparent 38px, #ffffff  38px, #ffffff  40px);
+    background-size: 40px 40px;
+    background-repeat: repeat;
+    position: absolute; inset: 0; z-index: -1; pointer-events: none;
+}
+
+/* --- Feature Cards (Generic) --- */
 .feature-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;
 }
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 .feature-card .feature-icon {
-    transition: transform 0.3s ease, color 0.3s ease;
-    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease; display: inline-block;
 }
 .feature-card:hover .feature-icon {
-    transform: scale(1.2);
-    color: var(--primary-color);
+    transform: scale(1.2); color: var(--primary-color);
 }
 
-/* --- TESTIMONIOS (Comillas Clásicas) --- */
+/* --- Comillas Testimonios --- */
 .comilla-grande {
-    font-family: serif;
-    font-size: 3rem; 
-    line-height: 0;
-    color: #e0e0e0;
-    font-weight: 900;
-    display: inline-block;
+    font-family: serif; font-size: 3rem; line-height: 0;
+    color: #e0e0e0; font-weight: 900; display: inline-block;
 }
 .comilla-grande.izquierda { margin-right: 0.5rem; transform: translateY(10px); }
 .comilla-grande.derecha { margin-left: 0.5rem; transform: translateY(20px); }
 
-/* --- SWIPER SLIDER (Controles del Carrusel) --- */
+/* --- Swiper Slider --- */
 .swiper-button-next, .swiper-button-prev {
     color: var(--primary-color) !important;
     background-color: rgba(255, 255, 255, 0.9);
@@ -131,16 +168,12 @@ body {
     transition: all 0.3s ease;
 }
 .swiper-button-next:hover, .swiper-button-prev:hover {
-    background-color: var(--primary-color);
-    color: #ffffff !important;
-    transform: scale(1.1);
+    background-color: var(--primary-color); color: #ffffff !important; transform: scale(1.1);
 }
-.swiper-button-next::after, .swiper-button-prev::after {
-    font-size: 18px !important; font-weight: bold;
-}
+.swiper-button-next::after, .swiper-button-prev::after { font-size: 18px !important; font-weight: bold; }
 .swiper-pagination-bullet-active { background-color: var(--primary-color) !important; }
 
-/* --- VIDEO PLACEHOLDER (YouTube) --- */
+/* --- Video Components --- */
 .youtube-placeholder {
     position: relative; cursor: pointer; overflow: hidden;
     border-radius: 0.75rem; background-color: #000; aspect-ratio: 16/9;
@@ -167,80 +200,11 @@ body {
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 /* ============================================================= */
-/* == 4. ESTILOS DEL FOOTER CENTRALIZADO == */
-/* ============================================================= */
-
-.main-footer {
-    background-color: var(--bg-dark);
-    color: #cbd5e1; /* Gris azulado claro */
-    padding-top: 60px;
-    font-size: 0.95rem;
-}
-
-.main-footer .container {
-    max-width: 1200px; margin: 0 auto; padding: 0 20px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    padding-bottom: 50px;
-}
-
-.footer-col h3 {
-    color: #ffffff;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.footer-logo-text {
-    font-size: 1.5rem !important;
-    color: var(--primary-light) !important;
-}
-
-.footer-links, .contact-list {
-    list-style: none; padding: 0; margin: 0;
-}
-
-.footer-links li, .contact-list li { margin-bottom: 12px; }
-
-.footer-links a, .contact-list a {
-    color: #cbd5e1; text-decoration: none; transition: color 0.3s, padding-left 0.3s;
-}
-
-.footer-links a:hover, .contact-list a:hover {
-    color: var(--accent-color); padding-left: 5px;
-}
-
-.contact-list li { display: flex; align-items: flex-start; gap: 10px; }
-.contact-list i { color: var(--accent-color); margin-top: 4px; }
-
-.social-links { display: flex; gap: 15px; margin-top: 20px; }
-.social-links a {
-    display: flex; align-items: center; justify-content: center;
-    width: 40px; height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%; color: #ffffff;
-    transition: background 0.3s, transform 0.3s;
-    text-decoration: none;
-}
-.social-links a:hover {
-    background-color: var(--primary-color); transform: translateY(-3px);
-}
-
-.footer-bottom {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px 0; text-align: center; font-size: 0.85rem; color: #94a3b8;
-}
-
-/* ============================================================= */
-/* == 5. ENCAPSULADO (MAIN LANDING & BIBLIOTECA) == */
+/* == 4. ENCAPSULADO LANDING PAGE (HOME) == */
 /* ============================================================= */
 
 .landing-page-wrapper {
-    /* MAPEO DE VARIABLES LOCALES */
+    /* Variables Locales Mapeadas */
     --color-primary: var(--primary-color);
     --color-secondary: var(--accent-color);
     --color-text: var(--text-main);
@@ -256,34 +220,23 @@ body {
     max-width: 1200px; margin: 0 auto; padding: 0 20px;
 }
 
-/* --- 5.1 TIPOGRAFÍA DE SECCIONES --- */
+/* --- Tipografía Secciones Landing --- */
 .landing-page-wrapper .section-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 60px auto;
+    text-align: center; max-width: 800px; margin: 0 auto 60px auto;
 }
-
 .landing-page-wrapper h2 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1.2;
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
+    font-size: 2.8rem; font-weight: 800; color: var(--color-primary);
+    line-height: 1.2; margin-bottom: 15px; letter-spacing: -0.5px;
 }
-
 .landing-page-wrapper .section-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin: 0;
+    font-size: 1.25rem; color: var(--text-muted); font-weight: 400; margin: 0;
 }
 
-/* --- 5.2 NAVBAR Y MENÚ --- */
+/* --- 4.1 Navbar y Menú --- */
 .landing-page-wrapper .header {
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    position: sticky; top: 0; z-index: 1000;
+    position: fixed; top: 0; z-index: 1000; width: 100%;
 }
 .landing-page-wrapper .navbar {
     display: flex; justify-content: space-between; align-items: center; padding: 15px 0;
@@ -313,7 +266,7 @@ body {
     box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
 }
 
-/* Dropdown Menu con Fix de "Puente Invisible" */
+/* Dropdown Menu */
 .landing-page-wrapper .dropdown-item { position: relative; }
 .landing-page-wrapper .dropdown-menu {
     display: none; position: absolute; top: 100%; left: 0;
@@ -322,12 +275,10 @@ body {
     padding: 15px 0; z-index: 1000; border-top: 4px solid var(--color-primary);
     list-style: none; margin-top: 15px;
 }
-/* Fix para que no se cierre al bajar el mouse */
 .landing-page-wrapper .dropdown-menu::before {
     content: ""; position: absolute; top: -20px; left: 0;
     width: 100%; height: 20px; background-color: transparent; display: block;
 }
-
 .landing-page-wrapper .dropdown-item:hover .dropdown-menu { display: block; animation: fadeIn 0.3s ease; }
 .landing-page-wrapper .dropdown-menu li a {
     display: block; padding: 12px 25px; color: var(--text-main); font-size: 0.95em; font-weight: 500;
@@ -336,7 +287,7 @@ body {
     background-color: #f0f7ff; color: var(--color-primary); padding-left: 30px;
 }
 
-/* --- 5.3 HERO SECTION (PRINCIPAL) --- */
+/* --- 4.2 Hero Section --- */
 .landing-page-wrapper .hero-section {
     background-color: var(--color-light-gray); 
     padding: 120px 0 100px;
@@ -355,12 +306,12 @@ body {
     display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; 
 }
 
-/* --- 5.4 BOTONES Y CTAS --- */
+/* --- 4.3 Botones y CTAs --- */
 .landing-page-wrapper .btn {
     display: inline-block; padding: 15px 30px; border-radius: 8px;
     text-decoration: none; font-weight: bold; transition: all 0.3s; border: 2px solid transparent;
 }
-/* Botones Hero (Píldora) */
+/* Botones Hero */
 .landing-page-wrapper .btn-hero {
     padding: 16px 35px; font-size: 1.1em; border-radius: 50px;
     display: inline-flex; align-items: center; gap: 10px;
@@ -386,8 +337,7 @@ body {
     border-color: var(--color-primary); color: var(--color-primary);
     background-color: #fff; transform: translateY(-3px);
 }
-
-/* Botón Explorar Recursos (Fantasma) */
+/* Botón Explorar Recursos */
 .landing-page-wrapper .content-cta-wrapper {
     text-align: center; margin-top: 60px; margin-bottom: 20px;
 }
@@ -406,17 +356,15 @@ body {
 .landing-page-wrapper .btn-explore i { transition: transform 0.3s; }
 .landing-page-wrapper .btn-explore:hover i { transform: translateX(5px); }
 
-/* --- 5.5 GRIDS Y TARJETAS --- */
+/* --- 4.4 Grids y Tarjetas --- */
 .landing-page-wrapper .services-section,
 .landing-page-wrapper .content-section,
 .landing-page-wrapper .products-section,
-.landing-page-wrapper .credibility-section {
-    padding: 100px 0;
-}
-/* Productos Específico */
+.landing-page-wrapper .credibility-section { padding: 100px 0; }
+
 .landing-page-wrapper .products-section { background-color: #f8fafc; }
 
-/* Grid General */
+/* Grids */
 .landing-page-wrapper .services-grid, 
 .landing-page-wrapper .content-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
@@ -426,7 +374,7 @@ body {
     max-width: 1000px; margin: 0 auto;
 }
 
-/* Tarjetas Base */
+/* Base Tarjetas */
 .landing-page-wrapper .service-card, 
 .landing-page-wrapper .content-card,
 .landing-page-wrapper .product-card {
@@ -439,7 +387,7 @@ body {
     transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
-/* Estilo Tarjeta Servicios */
+/* Estilo Servicios */
 .landing-page-wrapper .service-card {
     text-align: center; padding: 40px 30px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 5px solid var(--color-primary);
@@ -450,11 +398,19 @@ body {
 .landing-page-wrapper .service-link {
     display: inline-block; color: var(--color-primary); font-weight: 700; text-decoration: none;
 }
-
-/* Estilo Tarjeta Contenido (Blog) */
-.landing-page-wrapper .content-card {
-    text-align: left; border: 1px solid #eee;
+/* Modificador Dark Mode para Servicios */
+.services-section.bg-blue-dark {
+    background-color: var(--primary-color);
+    color: var(--text-on-dark);
+    padding: 60px 20px;
 }
+.services-section.bg-blue-dark .section-header h2 { color: var(--text-on-dark); }
+.services-section.bg-blue-dark .section-subtitle,
+.services-section.bg-blue-dark p { color: rgba(255,255,255,0.9); }
+.services-section.bg-blue-dark .service-card p { color: var(--text-muted); }
+
+/* Estilo Contenido (Blog) */
+.landing-page-wrapper .content-card { text-align: left; border: 1px solid #eee; }
 .landing-page-wrapper .content-card h3 {
     color: var(--text-main); font-size: 1.3em; font-weight: 800; margin-bottom: 10px; line-height: 1.4;
 }
@@ -476,7 +432,7 @@ body {
 }
 .landing-page-wrapper .video-link:hover { color: #ff0000; }
 
-/* Estilo Tarjeta Productos (StockTracker/Lab) */
+/* Estilo Productos */
 .landing-page-wrapper .product-card {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.04); position: relative;
 }
@@ -514,20 +470,123 @@ body {
 .landing-page-wrapper .product-features li i { color: var(--color-primary); }
 .landing-page-wrapper .btn-product { width: 100%; margin-top: auto; padding: 12px; }
 
-/* --- 5.6 MÉTRICAS Y TESTIMONIOS --- */
-/* Métricas */
+/* --- 4.5 Secciones Especiales (Acordeón, Métricas, Testimonios) --- */
+
+/* Acordeón (Tipos de Apps) */
+.apps-accordion-section {
+    padding: 100px 0; background-color: var(--color-background); color: var(--color-text);
+}
+.accordion-container { max-width: 900px; margin: 0 auto; }
+.accordion-item {
+    border-bottom: 1px solid var(--bg-secondary); overflow: hidden; transition: background-color 0.3s ease;
+}
+.accordion-item:first-child { border-top: 1px solid var(--bg-secondary); }
+.accordion-item:hover { background-color: #f7f9fc; }
+.accordion-title {
+    display: flex; justify-content: space-between; align-items: center; padding: 20px 0;
+    cursor: pointer; font-size: 1.25rem; font-weight: 700; color: var(--text-main); transition: color 0.3s ease;
+}
+.accordion-title:hover { color: var(--primary-color); }
+.accordion-title::after {
+    content: '+'; font-size: 1.5rem; font-weight: 400; color: var(--primary-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.accordion-item.active .accordion-title { color: var(--primary-color); }
+.accordion-item.active .accordion-title::after { content: '−'; }
+.accordion-content {
+    max-height: 0; padding: 0 0; transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+.accordion-item.active .accordion-content { max-height: 500px; padding: 0 0 20px 0; }
+.accordion-content p {
+    margin-bottom: 15px; line-height: 1.6; color: var(--text-muted); padding-right: 20px;
+}
+.accordion-link {
+    color: var(--primary-color); text-decoration: none; font-weight: 700;
+    display: inline-block; transition: color 0.3s ease;
+}
+.accordion-link:hover { color: var(--primary-dark); text-decoration: underline; }
+
+/* Asesorías Personalizadas (Integrada) */
+.asesorias-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    padding: 100px 0;
+}
+.asesorias-section .section-header { margin-bottom: 50px; text-align: center; }
+.asesorias-section h2 { color: white; font-size: 2.5rem; font-weight: 800; }
+.greeting-message {
+    color: var(--accent-color); font-size: 1.2rem; font-weight: 600; margin-top: 20px;
+}
+.greeting-message .icon-accent-color { color: var(--accent-color); margin-right: 8px; }
+
+.packages-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; max-width: 1000px; margin: 0 auto;
+}
+.package-card {
+    background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center; padding: 30px 20px; display: flex; flex-direction: column;
+    height: 100%; transition: transform 0.3s ease;
+}
+.package-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+.package-header h3 {
+    color: var(--text-main); font-size: 1.3rem; font-weight: 800; margin: 15px 0;
+}
+.package-icon {
+    width: 120px; height: 120px; border-radius: 50%; object-fit: contain; margin: 0 auto;
+    border: 4px solid #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.package-body { flex-grow: 1; margin-bottom: 25px; }
+.package-body p { color: var(--text-muted); line-height: 1.7; font-size: 0.95em; }
+.package-footer { border-top: 1px solid var(--bg-secondary); padding-top: 25px; }
+.package-duration {
+    display: block; font-size: 3.5em; font-weight: 900; color: var(--primary-color); line-height: 1; margin-bottom: 25px;
+}
+.btn-agenda {
+    border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent;
+    padding: 10px 25px; border-radius: 50px; font-size: 1em; font-weight: 700;
+    width: 100%; display: inline-block; transition: all 0.3s;
+}
+.btn-agenda:hover {
+    background-color: var(--primary-color); color: white;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3); transform: translateY(-2px);
+}
+@media (max-width: 768px) { .packages-grid { grid-template-columns: 1fr; } }
+
+/* Social Proof & Metrics */
+.metrics-section {
+    background-color: #ffffff; padding: 30px 20px;
+    border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0;
+}
+.metrics-container {
+    max-width: 1200px; margin: 0 auto; display: flex;
+    justify-content: space-around; align-items: center; text-align: center;
+}
+.metric-item { flex-grow: 1; padding: 0 15px; }
+.metric-number {
+    display: block; font-size: 2.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 5px; line-height: 1.1;
+}
+.metric-label { font-size: 1rem; color: #555; font-weight: 500; margin: 0; }
+.metric-separator {
+    width: 1px; height: 60px; background-color: #e0e0e0; flex-shrink: 0;
+}
+/* Landing Page Specific Metrics Bar */
 .landing-page-wrapper .metrics-bar {
     display: flex; justify-content: space-around; 
     padding: 50px; background: #fff; border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04); border: 1px solid #f0f0f0;
     margin: 0 auto 60px; max-width: 1000px; flex-wrap: wrap; gap: 30px;
 }
-.landing-page-wrapper .metric-item { text-align: center; }
-.landing-page-wrapper .metric-number {
+.landing-page-wrapper .metric-item-lp { text-align: center; } /* Renamed to avoid conflict */
+.landing-page-wrapper .metric-number-lp {
     display: block; font-size: 3.5em; font-weight: 900; color: var(--color-primary); line-height: 1; margin-bottom: 10px;
 }
-.landing-page-wrapper .metric-label { 
+.landing-page-wrapper .metric-label-lp { 
     font-size: 0.95em; text-transform: uppercase; letter-spacing: 1px; color: #888; font-weight: 600;
+}
+@media (max-width: 768px) {
+    .metrics-container { flex-direction: column; gap: 30px; }
+    .metric-separator { width: 80px; height: 1px; }
+    .metric-number { font-size: 2rem; }
 }
 
 /* Testimonios */
@@ -555,7 +614,7 @@ body {
     font-size: 0.95em; color: #9ca3af; margin-top: 5px; font-weight: 400;
 }
 
-/* --- 5.7 CTA FOOTER SECTION --- */
+/* --- 4.6 CTA Footer Section --- */
 .landing-page-wrapper .cta-footer-section {
     padding: 100px 0; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white; text-align: center;
@@ -572,9 +631,8 @@ body {
 }
 .landing-page-wrapper .btn-large:hover { background-color: #f57c00; transform: translateY(-3px); }
 
-
 /* ============================================================= */
-/* == 6. BIBLIOTECA APPSHEET (SIDEBAR & GRID) == */
+/* == 5. MÓDULO: BIBLIOTECA APPSHEET == */
 /* ============================================================= */
 
 .library-container {
@@ -588,7 +646,8 @@ body {
     background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0; height: fit-content;
 }
 .sidebar-title {
-    color: var(--primary-color); font-size: 1.2em; margin-bottom: 15px; font-weight: bold; border-bottom: 2px solid #eee; padding-bottom: 10px;
+    color: var(--primary-color); font-size: 1.2em; margin-bottom: 15px; font-weight: bold;
+    border-bottom: 2px solid #eee; padding-bottom: 10px;
 }
 .filter-group label {
     display: flex; align-items: center; margin-bottom: 10px; cursor: pointer; color: #555;
@@ -599,7 +658,8 @@ body {
 .library-content { flex: 3 1 600px; }
 .search-bar-container { margin-bottom: 30px; }
 .search-input {
-    width: 100%; padding: 15px; font-size: 1.1em; border: 2px solid #e0e0e0; border-radius: 5px; outline: none; transition: border 0.3s;
+    width: 100%; padding: 15px; font-size: 1.1em; border: 2px solid #e0e0e0; border-radius: 5px;
+    outline: none; transition: border 0.3s;
 }
 .search-input:focus { border-color: var(--primary-color); }
 .no-results { display: none; color: #777; margin-top: 20px; font-style: italic; }
@@ -622,8 +682,7 @@ body {
 .exp-tag {
     align-self: flex-end; padding: 4px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; color: white;
 }
-
-/* Tags de Colores */
+/* Tags Colores Biblioteca */
 .tag-listas { background-color: var(--primary-color); }
 .tag-logica { background-color: #2e7d32; }
 .tag-texto { background-color: var(--accent-color); }
@@ -631,7 +690,101 @@ body {
 .tag-matem { background-color: #c62828; }
 
 /* ============================================================= */
-/* == 7. DETALLE DE ARTÍCULO (PÁGINAS INTERNAS) == */
+/* == 6. MÓDULO: CONSULTORÍA Y EQUIPO == */
+/* ============================================================= */
+
+/* Layout General */
+.consultants-container {
+    max-width: 1200px; margin: 0 auto; padding: 60px 20px;
+}
+.team-layout {
+    display: flex; gap: 40px; margin-top: 40px;
+}
+.team-content { flex: 1; min-width: 0; }
+
+/* Grid de Consultores */
+.consultants-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;
+}
+.consultant-card {
+    display: block; text-align: center; padding: 20px;
+    border-radius: 12px; background-color: #f7f9fc; border: 1px solid #eee;
+    transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit;
+}
+.consultant-card:hover {
+    transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+.consultant-photo-placeholder {
+    width: 120px; height: 120px; margin: 0 auto 15px;
+    border-radius: 50%; overflow: hidden; border: 3px solid var(--primary-color);
+}
+.consultant-photo { width: 100%; height: 100%; object-fit: cover; }
+.consultant-name {
+    display: block; font-size: 1.25rem; font-weight: 700; color: #333; margin-bottom: 5px;
+}
+.consultant-title {
+    display: block; font-size: 0.95rem; color: #666; margin-bottom: 15px;
+}
+.consultant-tags { display: flex; justify-content: center; gap: 8px; }
+
+/* Tags de Especialidad */
+.tag-appsheet { background-color: #4CAF50; }
+.tag-datos { background-color: #2196F3; }
+.tag-procesos { background-color: #FF9800; }
+.tag-uiux { background-color: #9C27B0; }
+.tag-cloud { background-color: #F44336; }
+
+/* Perfil Detallado (Página Individual) */
+.consultant-detail-container {
+    max-width: 900px; margin: 80px auto 120px; padding: 0 20px;
+}
+.profile-header {
+    display: flex; align-items: flex-start; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee;
+}
+.profile-photo-wrapper {
+    flex-shrink: 0; width: 200px; height: 200px; border-radius: 50%;
+    overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.profile-photo { width: 100%; height: 100%; object-fit: cover; }
+.profile-summary { flex-grow: 1; }
+.contact-info { margin-bottom: 20px; }
+.contact-link {
+    display: inline-block; margin-right: 15px; color: var(--primary-color);
+    text-decoration: none; font-weight: 500; transition: color 0.2s;
+}
+.contact-link:hover { color: var(--primary-dark); }
+.profile-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+.profile-content { margin-top: 40px; line-height: 1.7; }
+.profile-content h2, .profile-content h3 {
+    color: #333; margin-top: 30px; margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color); padding-left: 15px;
+}
+.experience-list { list-style: none; padding-left: 0; }
+.experience-list li {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%231976D2" stroke="none"><circle cx="12" cy="12" r="10"/></svg>') no-repeat left 6px;
+    background-size: 8px; padding-left: 20px; margin-bottom: 8px;
+}
+.testimonial-quote {
+    margin: 40px 0; padding: 20px 30px; border-left: 5px solid var(--primary-color);
+    background-color: #f9f9ff; font-style: italic; color: #555; font-size: 1.1rem;
+}
+.quote-source { display: block; margin-top: 10px; font-style: normal; color: #333; font-weight: 500; }
+
+@media (max-width: 900px) {
+    .team-layout { flex-direction: column; }
+    .sidebar-filters { flex: 0 0 auto; padding-bottom: 20px; border-bottom: 1px solid #eee; width: 100%; }
+    .consultants-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+@media (max-width: 768px) {
+    .profile-header { flex-direction: column; align-items: center; text-align: center; }
+    .profile-summary { text-align: center; }
+    .profile-photo-wrapper { margin-bottom: 20px; }
+    .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .contact-link { margin-right: 0; }
+}
+
+/* ============================================================= */
+/* == 7. MÓDULO: DETALLE DE ARTÍCULOS (BLOG) == */
 /* ============================================================= */
 
 .exp-detail-header {
@@ -643,7 +796,8 @@ body {
     max-width: 800px; margin: 50px auto; padding: 0 20px; font-size: 1.1em; color: #333;
 }
 .exp-content h2 {
-    color: var(--primary-color); font-size: 1.8em; margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 10px;
+    color: var(--primary-color); font-size: 1.8em; margin-top: 40px;
+    border-bottom: 2px solid #eee; padding-bottom: 10px;
 }
 .exp-content ul, .exp-content p { margin-bottom: 20px; line-height: 1.8; }
 
@@ -663,7 +817,55 @@ body {
 .btn-back:hover { color: var(--primary-color); border-color: var(--primary-color); }
 
 /* ============================================================= */
-/* == 8. RESPONSIVE DESIGN (MÓVIL) == */
+/* == 8. FOOTER GLOBAL == */
+/* ============================================================= */
+
+.main-footer {
+    background-color: var(--bg-dark); color: #cbd5e1; padding-top: 60px; font-size: 0.95rem;
+}
+.main-footer .container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+}
+.footer-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; padding-bottom: 50px;
+}
+.footer-col h3 {
+    color: #ffffff; font-size: 1.2rem; margin-bottom: 20px; font-weight: 700;
+}
+.footer-logo-text {
+    font-size: 1.5rem !important; color: var(--primary-light) !important;
+}
+.footer-links, .contact-list { list-style: none; padding: 0; margin: 0; }
+.footer-links li, .contact-list li { margin-bottom: 12px; }
+.footer-links a, .contact-list a {
+    color: #cbd5e1; text-decoration: none; transition: color 0.3s, padding-left 0.3s;
+}
+.footer-links a:hover, .contact-list a:hover {
+    color: var(--accent-color); padding-left: 5px;
+}
+.contact-list li { display: flex; align-items: flex-start; gap: 10px; }
+.contact-list i { color: var(--accent-color); margin-top: 4px; }
+
+.social-links { display: flex; gap: 15px; margin-top: 20px; }
+.social-links a {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%; color: #ffffff;
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+.social-links a:hover {
+    background-color: var(--primary-color); transform: translateY(-3px);
+}
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 0; text-align: center; font-size: 0.85rem; color: #94a3b8;
+}
+
+/* ============================================================= */
+/* == 9. RESPONSIVE DESIGN (NAVEGACIÓN MÓVIL) == */
 /* ============================================================= */
 
 @media (max-width: 768px) {
@@ -679,7 +881,7 @@ body {
     .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
 
-    /* Navegación Móvil */
+    /* Despliegue Navegación */
     .landing-page-wrapper .nav-links {
         display: none; flex-direction: column; position: absolute;
         top: 100%; left: 0; width: 100%; background: #fff;
@@ -695,12 +897,9 @@ body {
     .landing-page-wrapper .btn-hero { width: 100%; justify-content: center; }
     
     .library-container { padding: 30px 20px; }
-    .sidebar-filters { width: 100%; max-width: none; }
 }
 
-/* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-

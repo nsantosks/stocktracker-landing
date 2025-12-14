@@ -11,7 +11,7 @@
      
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca de Expresiones AppSheet | Gammaliel Analytics</title>
+    <title>AppSheet | Gammaliel Analytics</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,236 +28,402 @@
     <!-- Enlace al archivo CSS -->
     <link href="../style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
 
 </head>
+
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="landing-page-wrapper">
-        <header class="header">
-            <div class="container">
-                <nav class="navbar">
-                    <a href="../../" class="logo">
-                        <img src="../img/logo-header.png" alt="" class="logo-img">
-                        <span class="logo-text">Gammaliel Analytics</span>
-                    </a>
-                    <ul class="nav-links">
-                                                
-                        <!-- INICIO DEL MENÚ DESPLEGABLE SERVICIOS -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Servicios ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="../index.html#servicios">Desarrollo de Apps en Google Cloud</a></li>
-                                <li><a href="../index.html#servicios">Business Intelligence (BI)</a></li>
-                                <li><a href="../index.html#servicios">Formación y Asesoría</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE SERVICIOS -->
+        
+        <!-- =========================================
+            HEADER
+        ========================================= -->
 
-                        <!-- INICIO DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Biblioteca ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">AppSheet</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-
-                        <!-- INICIO DEL MENÚ DESPLEGABLE CONTACTO -->
-                        <li class="dropdown-item">
-                            <a href="#" class="dropdown-trigger">Contacto ▾</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://wa.me/+584128672845">Whatsapp</a></li>
-                                <li><a href="https://www.linkedin.com/in/ingnsantos/">Linkedin</a></li>
-                                <li><a href="mailto:info@gammalielanalytics.com">Correo Electrónico</a></li>
-                                <!-- En el futuro descomenta estas líneas:
-                                <li><a href="#">Expresiones Excel</a></li>
-                                <li><a href="#">Expresiones Google Sheets</a></li>
-                                -->
-                            </ul>
-                        </li>
-                        <!-- FIN DEL MENÚ DESPLEGABLE BIBLIOTECA -->
-                         
-                        <li class="nav-cta"><a href="https://wa.me/+584128672845">Consultoría Estratégica</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
+    
+        <!-- =========================================
+            SECCIÓN HERO
+        ========================================= --> 
 
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Expresiones de AppSheet</h1>
-                <p>
-                    Diccionario completo y <strong>ejemplos prácticos</strong> para dominar las fórmulas. 
+                <h1>AppSheet</h1>
+                <p class="section-subtitle">
+                    <strong>La Plataforma No-Code para la Eficiencia Operativa.</strong> Potentes funcionalidades que impulsan el desarrollo de aplicaciones empresariales profesionales y escalables.
                 </p>
             </div>
         </section>
 
-        <div class="library-container">
-            
-            <aside class="sidebar-filters">
-                <div class="sidebar-title">Categorías</div>
-                <div class="filter-group">
-                    <label><input type="checkbox" value="texto" class="category-filter"> Texto</label>
-                    <label><input type="checkbox" value="logica" class="category-filter"> Lógica / Condicional</label>
-                    <label><input type="checkbox" value="matem" class="category-filter"> Matemáticas</label>
-                    <label><input type="checkbox" value="tiempo" class="category-filter"> Fecha y Hora</label>
-                    <label><input type="checkbox" value="listas" class="category-filter"> Listas</label>
-                    <label><input type="checkbox" value="yesno" class="category-filter"> Yes/No</label>
-                    <label><input type="checkbox" value="otras" class="category-filter"> Otras (DeepLink, UI)</label>
-                </div>
-            </aside>
+        <section id="caracteristicas-appsheet" class="landing-page-wrapper services-section">
+            <div class="container">
 
-            <main class="library-content">
+                <div class="section-header">
+                    <h2>Características Clave de AppSheet</h2>
+                    <p class="section-subtitle"> AppSheet permite a empresas de cualquier tamaño <strong>automatizar y optimizar sus flujos de trabajo</strong> a través del desarrollo de aplicaciones 100% personalizadas permitiendole a tu equipo <strong>crear aplicaciones empresariales robustas</strong> en minutos, no meses..</p>
+                </div>
+
+                <div class="services-grid">
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fas fa-magic text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Desarrollo Sin Código (No-Code)</h3>
+                        <p class="text-muted">Crea aplicaciones móviles y web complejas basadas en datos sin necesidad de escribir una sola línea de código, acelerando la transformación digital de tu negocio.</p>
+                    </div>
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fas fa-mobile-alt text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Multiplataforma y Web</h3>
+                        <p class="text-muted">Despliega tus soluciones inmediatamente. Funciona en cualquier dispositivo (iOS, Android) y navegadores web, permitiendo el acceso universal a tu equipo.</p>
+                    </div>
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fab fa-google text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Integración Nativa con Google Workspace</h3>
+                        <p class="text-muted">Conéctate instantáneamente con Sheets, Drive, Gmail, Docs y toda la suite de Google, además de otras fuentes de datos como SQL, Salesforce y bases de datos en la nube.</p>
+                    </div>
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fas fa-wifi text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Funcionalidad Offline First</h3>
+                        <p class="text-muted">Tus equipos pueden trabajar sin conexión a internet en campo, registrar datos y ejecutar flujos de trabajo; toda la información se sincroniza automáticamente cuando se restablece la conexión.</p>
+                    </div>
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fas fa-shield-alt text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Seguridad a Nivel Empresarial</h3>
+                        <p class="text-muted">Asegura tus datos con autenticación robusta, permisos granulares basados en roles de usuario y cumplimiento normativo, protegiendo la información sensible de tu empresa.</p>
+                    </div>
+                    
+                    <div class="feature-card service-card p-6 text-left">
+                        <i class="fas fa-chart-line text-primary feature-icon" style="font-size: 2.5rem;"></i>
+                        <h3>Escalabilidad sin Límites</h3>
+                        <p class="text-muted">Desde la prueba piloto con un equipo pequeño hasta la implementación en miles de usuarios a nivel corporativo, AppSheet está diseñada para crecer al ritmo de tu negocio.</p>
+                    </div>
+
+                </div> </div>
+        </section>
+
+        <section id="tipos-apps" class="apps-accordion-section">
+            <div class="container">
                 
-                <div class="search-bar-container">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar expresiones (ej: SELECT, IF, USEREMAIL)...">
+                <div class="section-header">
+                    <h2>Tipos de Aplicaciones que Podemos Desarrollar con AppSheet</h2>
+                    <p class="section-subtitle"> Digitaliza procesos críticos como la <strong>gestión de activos, el control de calidad, el seguimiento de la fuerza de ventas o la administración de RR.HH.</strong> Acelera tu operación, reduce errores manuales y conecta tus fuentes de datos existentes, todo gracias a su intuitiva interfaz No-Code.</p>
                 </div>
 
-                <div class="expressions-grid" id="expressionsGrid">
-                    <a href="expresiones-appsheet/if.html" class="exp-card" data-category="logica" data-name="IF">
-                        <span class="exp-name">IF</span>
-                        <span class="exp-tag tag-logica">Lógica</span>
-                    </a>
-                    <a href="expresiones-appsheet/ifs.html" class="exp-card" data-category="logica" data-name="IFS">
-                        <span class="exp-name">IFS</span>
-                        <span class="exp-tag tag-logica">Lógica</span>
-                    </a>
-                    <a href="expresiones-appsheet/switch.html" class="exp-card" data-category="logica" data-name="SWITCH">
-                        <span class="exp-name">SWITCH</span>
-                        <span class="exp-tag tag-logica">Lógica</span>
-                    </a>
+                <div class="accordion-container">
 
-                    <a href="expresiones-appsheet/select.html" class="exp-card" data-category="listas" data-name="SELECT">
-                        <span class="exp-name">SELECT</span>
-                        <span class="exp-tag tag-listas">Listas</span>
-                    </a>
-                    <a href="expresiones-appsheet/filter.html" class="exp-card" data-category="listas" data-name="FILTER">
-                        <span class="exp-name">FILTER</span>
-                        <span class="exp-tag tag-listas">Listas</span>
-                    </a>
-                    <a href="expresiones-appsheet/orderby.html" class="exp-card" data-category="listas" data-name="ORDERBY">
-                        <span class="exp-name">ORDERBY</span>
-                        <span class="exp-tag tag-listas">Listas</span>
-                    </a>
-                    <a href="expresiones-appsheet/count.html" class="exp-card" data-category="listas" data-name="COUNT">
-                        <span class="exp-name">COUNT</span>
-                        <span class="exp-tag tag-listas">Listas</span>
-                    </a>
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Inventarios</h3>
+                        <div class="accordion-content">
+                            <p>Sistemas completos de control de stock con alertas de reabastecimiento automático, lectura de códigos QR y de barras, gestión de múltiples ubicaciones y almacenes, trazabilidad de productos, integración con proveedores y reportes en tiempo real para optimizar tu inventario.</p>
+                            <a href="../catalogo/stocktracker/" class="accordion-link">Ver Solución StockTracker &rarr;</a>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Manufactura y Producción</h3>
+                        <div class="accordion-content">
+                            <p>Seguimiento de órdenes de trabajo, control de calidad en línea de producción, registro de tiempos muertos y gestión de insumos, mejorando la visibilidad del piso de planta.</p>
+                            <a href="../catalogo/cromo/" class="accordion-link">Ver Solución CROMO &rarr;</a>
+                        </div>
+                    </div>
 
-                    <a href="expresiones-appsheet/concatenate.html" class="exp-card" data-category="texto" data-name="CONCATENATE">
-                        <span class="exp-name">CONCATENATE</span>
-                        <span class="exp-tag tag-texto">Texto</span>
-                    </a>
-                    <a href="expresiones-appsheet/extract.html" class="exp-card" data-category="texto" data-name="EXTRACT">
-                        <span class="exp-name">EXTRACT</span>
-                        <span class="exp-tag tag-texto">Texto</span>
-                    </a>
-                    <a href="expresiones-appsheet/split.html" class="exp-card" data-category="texto" data-name="SPLIT">
-                        <span class="exp-name">SPLIT</span>
-                        <span class="exp-tag tag-texto">Texto</span>
-                    </a>
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Ventas y CRM</h3>
+                        <div class="accordion-content">
+                            <p>Gestión integral de leads, clientes, seguimiento de oportunidades y registro de actividad de ventas. Permite a tu equipo de campo acceder y actualizar la información desde cualquier dispositivo.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
 
-                    <a href="expresiones-appsheet/today.html" class="exp-card" data-category="tiempo" data-name="TODAY">
-                        <span class="exp-name">TODAY</span>
-                        <span class="exp-tag tag-tiempo">Tiempo</span>
-                    </a>
-                    <a href="expresiones-appsheet/now.html" class="exp-card" data-category="tiempo" data-name="NOW">
-                        <span class="exp-name">NOW</span>
-                        <span class="exp-tag tag-tiempo">Tiempo</span>
-                    </a>
-                     <a href="expresiones-appsheet/eomonth.html" class="exp-card" data-category="tiempo" data-name="EOMONTH">
-                        <span class="exp-name">EOMONTH</span>
-                        <span class="exp-tag tag-tiempo">Tiempo</span>
-                    </a>
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicación de Toma de Pedidos</h3>
+                        <div class="accordion-content">
+                            <p>Sistema profesional para gestionar ventas y productos en tiempo real. Permite a tus vendedores tomar pedidos desde cualquier dispositivo, consultar inventario disponible, aplicar descuentos, generar cotizaciones instantáneas y sincronizar automáticamente con tu sistema de gestión. Ideal para empresas de distribución, representantes comerciales y negocios con equipos de ventas en campo.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
 
-                     <a href="expresiones-appsheet/useremail.html" class="exp-card" data-category="otras" data-name="USEREMAIL">
-                        <span class="exp-name">USEREMAIL</span>
-                        <span class="exp-tag">Sistema</span>
-                    </a>
-                    <a href="expresiones-appsheet/context.html" class="exp-card" data-category="otras" data-name="CONTEXT">
-                        <span class="exp-name">CONTEXT</span>
-                        <span class="exp-tag">Sistema</span>
-                    </a>
-                    <a href="expresiones-appsheet/sum.html" class="exp-card" data-category="matem" data-name="SUM">
-                        <span class="exp-name">SUM</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/list.html" class="exp-card" data-category="listas" data-name="LIST">
-                        <span class="exp-name">LIST</span>
-                        <span class="exp-tag tag-listas">Listas</span>
-                    </a>
-                    <a href="expresiones-appsheet/average.html" class="exp-card" data-category="matem" data-name="AVERAGE">
-                        <span class="exp-name">AVERAGE</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/min.html" class="exp-card" data-category="matem" data-name="MIN">
-                        <span class="exp-name">MIN</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/max.html" class="exp-card" data-category="matem" data-name="MAX">
-                        <span class="exp-name">MAX</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/round.html" class="exp-card" data-category="matem" data-name="ROUND">
-                        <span class="exp-name">ROUND</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/isblank.html" class="exp-card" data-category="logica" data-name="ISBLANK">
-                        <span class="exp-name">ISBLANK</span>
-                        <span class="exp-tag tag-logica">Lógica</span>
-                    </a>
-                    <a href="expresiones-appsheet/isnotblank.html" class="exp-card" data-category="logica" data-name="ISNOTBLANK">
-                        <span class="exp-name">ISNOTBLANK</span>
-                        <span class="exp-tag tag-logica">Lógica</span>
-                    </a>
-                    <a href="expresiones-appsheet/and.html" class="exp-card" data-category="yesno" data-name="AND">
-                        <span class="exp-name">AND</span>
-                        <span class="exp-tag tag-logica">Yes/No</span>
-                    </a>
-                    <a href="expresiones-appsheet/or.html" class="exp-card" data-category="yesno" data-name="OR">
-                        <span class="exp-name">OR</span>
-                        <span class="exp-tag tag-logica">Yes/No</span>
-                    </a>
-                    <a href="expresiones-appsheet/not.html" class="exp-card" data-category="yesno" data-name="NOT">
-                        <span class="exp-name">NOT</span>
-                        <span class="exp-tag tag-logica">Yes/No</span>
-                    </a>
-                    <a href="expresiones-appsheet/floor.html" class="exp-card" data-category="matem" data-name="FLOOR">
-                        <span class="exp-name">FLOOR</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
-                    <a href="expresiones-appsheet/ceiling.html" class="exp-card" data-category="matem" data-name="CEILING">
-                        <span class="exp-name">CEILING</span>
-                        <span class="exp-tag tag-matem">Matemáticas</span>
-                    </a>
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Logística y Distribución</h3>
+                        <div class="accordion-content">
+                            <p>Optimización de rutas de entrega, seguimiento de vehículos, control de flotas, registro de despachos y auditoría de recepción de mercancía, todo integrado para mejorar la eficiencia de tu cadena de suministro.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
 
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Recursos Humanos</h3>
+                        <div class="accordion-content">
+                            <p>Sistemas para gestión de asistencia y tiempo, vacaciones, solicitudes de permisos, evaluaciones de desempeño y gestión documental de empleados de forma segura y centralizada.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Mantenimiento y Activos</h3>
+                        <div class="accordion-content">
+                            <p>Planificación de mantenimiento preventivo/correctivo, registro de fallas, asignación de tareas a técnicos y seguimiento del historial de activos. Ideal para operaciones industriales y de infraestructura.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Gestión de Proyectos y Tareas</h3>
+                        <div class="accordion-content">
+                            <p>Herramientas colaborativas para la planificación, seguimiento de hitos, asignación de recursos y control de presupuestos. Permite a los equipos visualizar el progreso en tiempo real.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones de Inspecciones y Auditorías</h3>
+                        <div class="accordion-content">
+                            <p>Digitalice formularios de inspección de calidad y seguridad, con captura de fotos, ubicación GPS y generación automática de reportes PDF para cumplimiento normativo.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-title">Aplicaciones Financieras y Contables</h3>
+                        <div class="accordion-content">
+                            <p>Registro de gastos, control de caja chica, solicitud de viáticos, presupuestos y conciliaciones básicas, simplificando la recolección de datos financieros para el equipo contable.</p>
+                            <!--<a href="#" class="accordion-link">Ver demo en vivo &rarr;</a>-->
+                        </div>
+                    </div>
+
+                </div> </div>
+        </section>
+
+         <section id="asesorias" class="landing-page-wrapper asesorias-section">
+            <div class="container">
+                
+                <div class="section-header">
+                    <h2>Asesoría Técnica y Estratégica</h2>
+                    
+                    <p class="greeting-message">
+                        Elige el paquete que necesitas para desbloquear tu proyecto y avanzar más rápido
+                    </p>
                 </div>
-                <div id="noResults" class="no-results">No se encontraron expresiones con ese criterio.</div>
-            </main>
-        </div>
+
+                <div class="packages-grid">
+                    
+                    <div class="package-card feature-card">
+                        <div class="package-header">
+                            <img src="../img/asesorias/asesoria-1h.png" alt="Icono Paquete 1 Hora" class="package-icon">
+                            <h3>1 HORA: ASESORÍA EXPRESS</h3>
+                        </div>
+                        <div class="package-body">
+                            <p><strong>Solución precisa.</strong> Ideal para <strong>resolver una duda puntual</strong>, optimizar una función específica de tu app (nueva o existente) o recibir orientación técnica rápida sobre <strong>AppSheet, Apps Script o flujos de automatización clave.</strong></p>
+                        </div>
+                        <div class="package-footer">
+                            <span class="package-duration">1h</span>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20en%20agendar%20una%20asesoría%20de%20una%20hora." class="btn btn-secondary btn-agenda">AGENDAR</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card feature-card">
+                        <div class="package-header">
+                            <img src="../img/asesorias/asesoria-4h.png" alt="Icono Paquete 4 Horas" class="package-icon">
+                            <h3>4 HORAS: SESIÓN DE PROFUNDIZACIÓN</h3>
+                        </div>
+                        <div class="package-body">
+                            <p><strong>Desbloqueo de Proyectos.</strong> Sesión ideal para <strong>revisar el panorama completo de tu proyecto</strong>, diagnosticar y <strong>desbloquear flujos de negocio complejos</strong> o completar automatizaciones que te están frenando. Mayor tiempo de trabajo colaborativo.</p>
+                        </div>
+                        <div class="package-footer">
+                            <span class="package-duration">4h</span>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20en%20agendar%20una%20asesoría%20de%20cuatro%20horas." class="btn btn-secondary btn-agenda">AGENDAR</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card feature-card">
+                        <div class="package-header">
+                            <img src="../img/asesorias/asesoria-8h.png" alt="Icono Paquete 8 Horas" class="package-icon">
+                            <h3>8 HORAS: OPTIMIZACIÓN Y AUDITORÍA</h3>
+                        </div>
+                        <div class="package-body">
+                            <p><strong>Máximo Rendimiento Garantizado.</strong> El plan completo para abordar <strong>procesos robustos con reglas de negocio complejas.</strong> Incluye una <strong>auditoría detallada</strong> de tu aplicación, mejorando el rendimiento, optimizando fórmulas y aplicando mejoras estructurales para asegurar la escalabilidad y eficiencia a largo plazo..</p>
+                        </div>
+                        <div class="package-footer">
+                            <span class="package-duration">8h</span>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20en%20agendar%20una%20asesoría%20de%20ocho%20horas." class="btn btn-secondary btn-agenda">AGENDAR</a>
+                        </div>
+                    </div>
+
+                </div> </div>
+        </section>
+
+        <section id="biblioteca-expresiones" class="landing-page-wrapper services-section">
+            <div class="library-container">
+
+                <div class="section-header">
+                        <h2>Biblioteca de Expresiones y Formulas de Appsheet</h2>
+                        <p class="section-subtitle">Diccionario completo y <strong>ejemplos prácticos</strong> para dominar las fórmulas.</p>
+                </div>
+                
+                <aside class="sidebar-filters">
+                    <div class="sidebar-title">Categorías</div>
+                    <div class="filter-group">
+                        <label><input type="checkbox" value="texto" class="category-filter"> Texto</label>
+                        <label><input type="checkbox" value="logica" class="category-filter"> Lógica / Condicional</label>
+                        <label><input type="checkbox" value="matem" class="category-filter"> Matemáticas</label>
+                        <label><input type="checkbox" value="tiempo" class="category-filter"> Fecha y Hora</label>
+                        <label><input type="checkbox" value="listas" class="category-filter"> Listas</label>
+                        <label><input type="checkbox" value="yesno" class="category-filter"> Yes/No</label>
+                        <label><input type="checkbox" value="otras" class="category-filter"> Otras (DeepLink, UI)</label>
+                    </div>
+                </aside>
+
+                <main class="library-content">
+                    
+                    <div class="search-bar-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Buscar expresiones (ej: SELECT, IF, USEREMAIL)...">
+                    </div>
+
+                    <div class="expressions-grid" id="expressionsGrid">
+                        <a href="expresiones-appsheet/if.html" class="exp-card" data-category="logica" data-name="IF">
+                            <span class="exp-name">IF</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/ifs.html" class="exp-card" data-category="logica" data-name="IFS">
+                            <span class="exp-name">IFS</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/switch.html" class="exp-card" data-category="logica" data-name="SWITCH">
+                            <span class="exp-name">SWITCH</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+
+                        <a href="expresiones-appsheet/select.html" class="exp-card" data-category="listas" data-name="SELECT">
+                            <span class="exp-name">SELECT</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/filter.html" class="exp-card" data-category="listas" data-name="FILTER">
+                            <span class="exp-name">FILTER</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/orderby.html" class="exp-card" data-category="listas" data-name="ORDERBY">
+                            <span class="exp-name">ORDERBY</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/count.html" class="exp-card" data-category="listas" data-name="COUNT">
+                            <span class="exp-name">COUNT</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+
+                        <a href="expresiones-appsheet/concatenate.html" class="exp-card" data-category="texto" data-name="CONCATENATE">
+                            <span class="exp-name">CONCATENATE</span>
+                            <span class="exp-tag tag-texto">Texto</span>
+                        </a>
+                        <a href="expresiones-appsheet/extract.html" class="exp-card" data-category="texto" data-name="EXTRACT">
+                            <span class="exp-name">EXTRACT</span>
+                            <span class="exp-tag tag-texto">Texto</span>
+                        </a>
+                        <a href="expresiones-appsheet/split.html" class="exp-card" data-category="texto" data-name="SPLIT">
+                            <span class="exp-name">SPLIT</span>
+                            <span class="exp-tag tag-texto">Texto</span>
+                        </a>
+
+                        <a href="expresiones-appsheet/today.html" class="exp-card" data-category="tiempo" data-name="TODAY">
+                            <span class="exp-name">TODAY</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/now.html" class="exp-card" data-category="tiempo" data-name="NOW">
+                            <span class="exp-name">NOW</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/eomonth.html" class="exp-card" data-category="tiempo" data-name="EOMONTH">
+                            <span class="exp-name">EOMONTH</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+
+                        <a href="expresiones-appsheet/useremail.html" class="exp-card" data-category="otras" data-name="USEREMAIL">
+                            <span class="exp-name">USEREMAIL</span>
+                            <span class="exp-tag">Sistema</span>
+                        </a>
+                        <a href="expresiones-appsheet/context.html" class="exp-card" data-category="otras" data-name="CONTEXT">
+                            <span class="exp-name">CONTEXT</span>
+                            <span class="exp-tag">Sistema</span>
+                        </a>
+                        <a href="expresiones-appsheet/sum.html" class="exp-card" data-category="matem" data-name="SUM">
+                            <span class="exp-name">SUM</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/list.html" class="exp-card" data-category="listas" data-name="LIST">
+                            <span class="exp-name">LIST</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/average.html" class="exp-card" data-category="matem" data-name="AVERAGE">
+                            <span class="exp-name">AVERAGE</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/min.html" class="exp-card" data-category="matem" data-name="MIN">
+                            <span class="exp-name">MIN</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/max.html" class="exp-card" data-category="matem" data-name="MAX">
+                            <span class="exp-name">MAX</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/round.html" class="exp-card" data-category="matem" data-name="ROUND">
+                            <span class="exp-name">ROUND</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/isblank.html" class="exp-card" data-category="logica" data-name="ISBLANK">
+                            <span class="exp-name">ISBLANK</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/isnotblank.html" class="exp-card" data-category="logica" data-name="ISNOTBLANK">
+                            <span class="exp-name">ISNOTBLANK</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/and.html" class="exp-card" data-category="yesno" data-name="AND">
+                            <span class="exp-name">AND</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
+                        </a>
+                        <a href="expresiones-appsheet/or.html" class="exp-card" data-category="yesno" data-name="OR">
+                            <span class="exp-name">OR</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
+                        </a>
+                        <a href="expresiones-appsheet/not.html" class="exp-card" data-category="yesno" data-name="NOT">
+                            <span class="exp-name">NOT</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
+                        </a>
+                        <a href="expresiones-appsheet/floor.html" class="exp-card" data-category="matem" data-name="FLOOR">
+                            <span class="exp-name">FLOOR</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+                        <a href="expresiones-appsheet/ceiling.html" class="exp-card" data-category="matem" data-name="CEILING">
+                            <span class="exp-name">CEILING</span>
+                            <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+
+                    </div>
+                    <div id="noResults" class="no-results">No se encontraron expresiones con ese criterio.</div>
+                </main>
+            </div>
+        </section>
 
         <div id="footer-placeholder"></div>
-
     </div>
 
     <script src="../main.js"></script>
     <script>
-        // Subimos un nivel (../) para encontrar la carpeta components
+        // Esta página está en una subcarpeta, por lo que las rutas a 'components' deben subir un nivel (../)
+        // Carga del HEADER
+        loadComponent('header-placeholder', '../components/header.html'); 
+        // Carga del FOOTER
         loadComponent('footer-placeholder', '../components/footer.html');
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -302,5 +468,16 @@
             checkboxes.forEach(cb => cb.addEventListener('change', filterCards));
         });
     </script>
+
+    <a 
+    href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20el%20desarrollo%20de%20una%20AppSheet%20para%20mi%20negocio." 
+    class="whatsapp-float" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+    
+    <i class="fab fa-whatsapp whatsapp-icon"></i>
+    
+    </a>
 </body>
 </html>

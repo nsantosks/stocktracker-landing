@@ -688,6 +688,8 @@ body {
 .tag-texto { background-color: var(--accent-color); }
 .tag-tiempo { background-color: #7b1fa2; }
 .tag-matem { background-color: #c62828; }
+.tag-info { background-color: #3028c6; }
+.tag-tablas { background-color: #36acd6; }
 
 /* ============================================================= */
 /* == 6. MÓDULO: CONSULTORÍA Y EQUIPO == */

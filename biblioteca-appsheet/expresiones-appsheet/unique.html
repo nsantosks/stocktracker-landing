@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función UNIQUE() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,50 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>UNIQUE()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>UNIQUE()</strong> toma una lista que puede contener elementos repetidos y devuelve una nueva lista donde cada elemento aparece una sola vez (elimina los duplicados).</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es esencial para generar listas limpias para menús desplegables (Dropdowns), reportes de categorías o para contar cuántos elementos <em>distintos</em> existen en un conjunto de datos.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                UNIQUE( Lista )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Lista</code>: La lista original de valores (Texto, Números, Refs, etc.) que se desea depurar.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Eliminar duplicados simples:</strong><br>
+                    <code>UNIQUE(LIST("Rojo", "Azul", "Rojo", "Verde"))</code><br>
+                    <em>Explicación:</em> Devuelve una lista limpia: <code>LIST("Rojo", "Azul", "Verde")</code>.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Crear lista de Categorías (Valid_If):</strong><br>
+                    <code>UNIQUE(Productos[Categoria])</code><br>
+                    <em>Explicación:</em> Obtiene la columna completa de categorías de la tabla Productos (donde "Bebidas" puede aparecer 100 veces) y devuelve una lista con cada categoría solo una vez. Ideal para hacer un filtro o menú desplegable.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Contar clientes activos únicos:</strong><br>
+                    <code>COUNT(UNIQUE(Ventas[Cliente_ID]))</code><br>
+                    <em>Explicación:</em> Primero obtiene todos los IDs de clientes de la tabla Ventas. Luego <code>UNIQUE</code> elimina las repeticiones (si un cliente compró 5 veces, solo cuenta 1 vez). Finalmente, <code>COUNT</code> nos dice cuántos clientes individuales compraron.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

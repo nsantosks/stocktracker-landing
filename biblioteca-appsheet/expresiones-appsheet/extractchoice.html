@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función EXTRACTCHOICE() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,56 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>EXTRACTCHOICE()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>EXTRACTCHOICE()</strong> analiza una cadena de texto para encontrar palabras clave que indiquen una afirmación o negación ("Yes", "No", "True", "False").</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>A diferencia de la mayoría de las funciones <code>EXTRACT...</code> que devuelven una lista, esta función devuelve un <strong>único valor Yes/No</strong> (Verdadero/Falso). Es ideal para procesar respuestas automáticas por SMS o correo electrónico donde el usuario debe confirmar o rechazar una acción.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                EXTRACTCHOICE( Texto )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Texto</code>: La cadena donde se buscarán las palabras indicadoras.
+                    <ul>
+                        <li>Devuelve <strong>TRUE</strong> (Y) si la <em>primera</em> palabra clave encontrada es "Yes", "Y", "True", etc.</li>
+                        <li>Devuelve <strong>FALSE</strong> (N) si la <em>primera</em> palabra clave encontrada es "No", "N", "False", etc.</li>
+                        <li>Devuelve un valor en blanco si no encuentra ninguna coincidencia.</li>
+                    </ul>
+                </li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Procesar confirmación de SMS:</strong><br>
+                    <code>EXTRACTCHOICE("Sí, confirmo mi asistencia")</code><br>
+                    <em>Explicación:</em> Devuelve <strong>TRUE</strong> (o "Y") porque detecta una palabra afirmativa al inicio.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Detectar rechazo en comentarios:</strong><br>
+                    <code>EXTRACTCHOICE("No estoy interesado en este momento")</code><br>
+                    <em>Explicación:</em> Devuelve <strong>FALSE</strong> (o "N") al detectar el "No" al comienzo de la frase.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Validación de respuesta en formularios:</strong><br>
+                    <code>ISNOTBLANK(EXTRACTCHOICE([Respuesta_Usuario]))</code><br>
+                    <em>Explicación:</em> Se usa para verificar si el usuario escribió algo que el sistema pueda interpretar claramente como un Sí o un No, ignorando textos ambiguos como "Quizás mañana".
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

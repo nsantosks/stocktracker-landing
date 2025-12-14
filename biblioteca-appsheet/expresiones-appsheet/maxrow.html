@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función MAXROW() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,52 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>MAXROW()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>MAXROW()</strong> busca dentro de una tabla (o Slice) y devuelve la <strong>Referencia (Key)</strong> de la fila que contiene el valor más alto en una columna específica. Es la herramienta por excelencia para encontrar "el último pedido", "el precio más alto" o "la fecha más reciente".</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Al devolver una referencia, el resultado puede usarse directamente para conectar tablas o, mediante "dereference" (puntos), acceder a otros valores de esa fila ganadora.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                MAXROW( Tabla, Columna_Para_Maximizar, [Opcional_Condicion] )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Tabla</code>: El nombre de la Tabla o Slice donde buscar.</li>
+                <li><code>Columna_Para_Maximizar</code>: La columna cuyo valor se evaluará para encontrar el máximo (generalmente Fechas o Números).</li>
+                <li><code>[Opcional_Condicion]</code>: Una sub-expresión para filtrar las filas antes de buscar el máximo (ej. buscar solo pedidos de <em>este</em> cliente).</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Encontrar el último pedido de un cliente:</strong><br>
+                    <code>MAXROW("Pedidos", "Fecha_Pedido", [Cliente] = [_THISROW].[Cliente])</code><br>
+                    <em>Explicación:</em> Busca en la tabla "Pedidos" la fila con la "Fecha_Pedido" más reciente, pero considerando solo aquellas filas que pertenecen al mismo cliente que la fila actual.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Obtener el precio histórico más alto:</strong><br>
+                    <code>MAXROW("Historial_Precios", "Monto")</code><br>
+                    <em>Explicación:</em> Devuelve la llave de la fila que tiene el monto más alto registrado en toda la tabla.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Acceder a un dato de la última fila (Dereference):</strong><br>
+                    <code>MAXROW("Reportes", "Fecha").[Estado]</code><br>
+                    <em>Explicación:</em> Primero encuentra la fila del reporte más reciente y luego extrae el valor de la columna <code>[Estado]</code> de esa fila específica.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

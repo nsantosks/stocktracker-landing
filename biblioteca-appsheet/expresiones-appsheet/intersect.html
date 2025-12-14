@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función INTERSECT() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,52 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>INTERSECT()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>INTERSECT()</strong> compara dos listas y devuelve una nueva lista que contiene únicamente los elementos que aparecen en <strong>ambas</strong> listas originales (la intersección).</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es muy útil para encontrar coincidencias comunes, como verificar si un usuario tiene al menos uno de los roles requeridos o identificar productos comunes entre dos pedidos diferentes.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                INTERSECT( Lista1, Lista2 )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Lista1</code>: La primera lista de elementos a comparar.</li>
+                <li><code>Lista2</code>: La segunda lista de elementos a comparar.</li>
+                <li>Nota: Los elementos de ambas listas deben ser del mismo tipo (ej. ambos textos, o ambos números).</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Concepto básico (Colores):</strong><br>
+                    <code>INTERSECT(LIST("Rojo", "Azul", "Verde"), LIST("Azul", "Amarillo", "Rojo"))</code><br>
+                    <em>Explicación:</em> Devuelve una lista con los elementos <code>"Rojo", "Azul"</code>, ya que son los únicos que están presentes en ambos grupos.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Verificación de Roles (Seguridad):</strong><br>
+                    <code>ISNOTBLANK(INTERSECT(USERROLE(), LIST("Admin", "Gerente", "Supervisor")))</code><br>
+                    <em>Explicación:</em> Compara los roles del usuario actual con una lista de roles permitidos. Si la intersección no está vacía (<code>ISNOTBLANK</code>), significa que el usuario tiene al menos uno de los roles requeridos.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Productos disponibles en almacén:</strong><br>
+                    <code>INTERSECT([Materiales_Necesarios], [Materiales_En_Stock])</code><br>
+                    <em>Explicación:</em> Devuelve la lista de materiales que necesito y que <em>sí</em> tengo disponibles en el inventario en este momento.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

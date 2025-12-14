@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función EXTRACTDURATIONS() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,50 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>EXTRACTDURATIONS()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>EXTRACTDURATIONS()</strong> analiza una cadena de texto y extrae las partes que representan intervalos de tiempo. Devuelve el resultado como una <strong>Lista de Duraciones</strong> (List of Duration).</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Identifica formatos estándar como "HH:MM:SS" o incluso duraciones negativas si están formateadas correctamente. Es ideal para analizar registros de tiempos, bitácoras de tareas o comentarios técnicos.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                EXTRACTDURATIONS( Texto )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Texto</code>: La cadena de texto de donde se intentarán extraer las duraciones.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Extraer tiempo de un registro:</strong><br>
+                    <code>EXTRACTDURATIONS("Tiempo total invertido: 04:30:00 en el proyecto.")</code><br>
+                    <em>Explicación:</em> Devuelve una lista con un elemento: <code>04:30:00</code>.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Sumar tiempos mencionados en un texto:</strong><br>
+                    <code>SUM(EXTRACTDURATIONS([Bitacora]))</code><br>
+                    <em>Explicación:</em> Si la bitácora dice "Sesión 1: 01:00:00, Sesión 2: 00:30:00", la función extrae ambas duraciones y <code>SUM()</code> las totaliza en <code>01:30:00</code>.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Obtener la primera duración detectada:</strong><br>
+                    <code>ANY(EXTRACTDURATIONS([Comentario]))</code><br>
+                    <em>Explicación:</em> Extrae la lista de duraciones y devuelve solo el primer valor encontrado como un tipo de dato Duration simple, para poder guardarlo en una columna.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

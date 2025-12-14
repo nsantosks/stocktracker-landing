@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función MINROW() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,52 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>MINROW()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>MINROW()</strong> es la contraparte exacta de <code>MAXROW()</code>. Busca dentro de una tabla (o Slice) y devuelve la <strong>Referencia (Key)</strong> de la fila que contiene el valor más bajo en una columna específica.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es ideal para encontrar el registro más antiguo (basado en fechas), el producto más económico (basado en precio) o el inicio de una secuencia de eventos.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                MINROW( Tabla, Columna_Para_Minimizar, [Opcional_Condicion] )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Tabla</code>: El nombre de la Tabla o Slice donde se realizará la búsqueda.</li>
+                <li><code>Columna_Para_Minimizar</code>: La columna numérica o de fecha/hora que se evaluará para encontrar el mínimo.</li>
+                <li><code>[Opcional_Condicion]</code>: Una expresión lógica para filtrar las filas antes de buscar el mínimo (ej. buscar el precio más bajo solo de la categoría "Lácteos").</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Encontrar el primer pedido (Fecha más antigua):</strong><br>
+                    <code>MINROW("Pedidos", "Fecha_Pedido")</code><br>
+                    <em>Explicación:</em> Devuelve la llave (ID) del pedido más antiguo registrado en la tabla.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>El proveedor más barato para un producto:</strong><br>
+                    <code>MINROW("Cotizaciones", "Precio_Unitario", [Producto_ID] = [_THISROW].[ID])</code><br>
+                    <em>Explicación:</em> Busca entre todas las cotizaciones la que tenga el precio más bajo, filtrando solo aquellas que corresponden al producto que estamos viendo actualmente.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Dereference (Obtener dato del registro más antiguo):</strong><br>
+                    <code>MINROW("Historial_Cambios", "Fecha_Cambio").[Usuario]</code><br>
+                    <em>Explicación:</em> Encuentra la fila del primer cambio realizado (fecha mínima) y, mediante el punto, extrae el nombre del usuario que realizó esa acción.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

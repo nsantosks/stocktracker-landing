@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función DATETIME() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,54 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>DATETIME()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
-            
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>La función <strong>DATETIME()</strong> convierte un valor de entrada (como Texto o Fecha) en un tipo de dato <strong>DateTime</strong> (Fecha y Hora). Es fundamental cuando necesitas combinar columnas separadas de fecha y hora en un solo valor para cálculos de duración o registros cronológicos exactos.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                DATETIME( Valor )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Valor</code>: El dato a convertir. Puede ser:
+                    <ul>
+                        <li><strong>Texto:</strong> Una cadena con formato de fecha/hora reconocido (ej. "YYYY-MM-DD HH:MM:SS").</li>
+                        <li><strong>Fecha (Date):</strong> Añade automáticamente la hora "00:00:00".</li>
+                        <li><strong>Concatenación:</strong> La unión de una fecha y una hora.</li>
+                    </ul>
+                </li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Combinar columnas de Fecha y Hora:</strong><br>
+                    <code>DATETIME([Fecha] & " " & [Hora])</code><br>
+                    <em>Explicación:</em> Crea una marca de tiempo completa uniendo la columna <code>[Fecha]</code> y la columna <code>[Hora]</code> con un espacio en medio. Vital para calcular duraciones entre eventos.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Convertir fecha simple a DateTime:</strong><br>
+                    <code>DATETIME(TODAY())</code><br>
+                    <em>Explicación:</em> Toma la fecha actual y la convierte en un DateTime, resultando en algo como "14/12/2025 00:00:00".
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Texto literal a DateTime:</strong><br>
+                    <code>DATETIME("2024-01-01 12:30:00")</code><br>
+                    <em>Explicación:</em> Convierte una cadena de texto estática en un objeto de tiempo computable.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

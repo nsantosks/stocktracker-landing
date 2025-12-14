@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función UNIQUEID() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,53 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>UNIQUEID()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
-            
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>La función <strong>UNIQUEID()</strong> genera una secuencia de texto alfanumérica única pseudoaleatoria. Es la función estándar y recomendada para generar las <strong>Llaves Primarias (Keys)</strong> de las tablas en AppSheet, asegurando que cada fila tenga un identificador único sin riesgo de duplicados, incluso cuando varios usuarios crean datos sin conexión simultáneamente.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                UNIQUEID( [Tipo] )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>[Tipo]</code> (Opcional): Define el formato del ID generado.
+                    <ul>
+                        <li><strong>Sin parámetro (Vacío):</strong> Genera una cadena de 8 caracteres alfanuméricos (ej. "a1b2c3d4"). Es suficiente para la mayoría de aplicaciones.</li>
+                        <li><strong>"UUID":</strong> Genera un Identificador Único Universal estándar de 36 caracteres con guiones (ej. "123e4567-e89b-12d3-a456-426614174000").</li>
+                    </ul>
+                </li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Uso estándar (Valor Inicial):</strong><br>
+                    <code>UNIQUEID()</code><br>
+                    <em>Explicación:</em> Colocado en la propiedad <strong>Initial Value</strong> de la columna Key (generalmente llamada ID). Genera un código corto único automáticamente al crear un nuevo registro.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Generar un UUID largo:</strong><br>
+                    <code>UNIQUEID("UUID")</code><br>
+                    <em>Explicación:</em> Crea un identificador mucho más largo y robusto, útil si se necesita integración con sistemas externos que requieren el formato estándar UUID v4.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>ID con Prefijo (Concatenación):</strong><br>
+                    <code>"PED-" & UNIQUEID()</code><br>
+                    <em>Explicación:</em> Genera un ID personalizado como "PED-x7z9y2k1". Aunque se puede usar como Key, se recomienda dejar la Key pura y usar esto en una columna visual o Label.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

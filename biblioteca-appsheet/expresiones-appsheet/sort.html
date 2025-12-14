@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función SORT() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,56 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>SORT()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>SORT()</strong> toma una lista de elementos y devuelve una nueva lista con los mismos elementos ordenados. Por defecto, el orden es ascendente (A-Z, 0-9), pero se puede configurar para que sea descendente.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es muy útil para presentar datos de manera organizada en reportes, menús desplegables (Valid_If) o correos electrónicos, ya que AppSheet a menudo procesa las listas en el orden en que fueron creadas las filas.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                SORT( Lista, [Es_Descendente] )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Lista</code>: La lista de valores (Texto, Números, Fechas o Referencias) que deseas ordenar.</li>
+                <li><code>Es_Descendente</code> (Opcional): Valor lógico (Yes/No).
+                    <ul>
+                        <li><code>FALSE</code> (o omitido): Ordena de menor a mayor (A-Z, 1-10, Ene-Dic).</li>
+                        <li><code>TRUE</code>: Ordena de mayor a menor (Z-A, 10-1, Dic-Ene).</li>
+                    </ul>
+                </li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Orden alfabético simple:</strong><br>
+                    <code>SORT(LIST("Carlos", "Ana", "Beto"))</code><br>
+                    <em>Explicación:</em> Devuelve la lista ordenada: <code>"Ana", "Beto", "Carlos"</code>.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Fechas de la más reciente a la más antigua:</strong><br>
+                    <code>SORT(SELECT(Pedidos[Fecha], [Estado]="Entregado"), TRUE)</code><br>
+                    <em>Explicación:</em> Selecciona todas las fechas de pedidos entregados y las ordena de forma descendente (el parámetro <code>TRUE</code>) para mostrar primero lo más actual.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Ordenar precios (Números):</strong><br>
+                    <code>SORT([Related Ventas][Total_Venta], FALSE)</code><br>
+                    <em>Explicación:</em> Ordena los totales de venta de menor a mayor. Útil si quieres visualizar rápidamente la venta más pequeña al inicio de una lista generada.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

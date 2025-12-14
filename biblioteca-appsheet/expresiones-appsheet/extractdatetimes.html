@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función EXTRACTDATETIMES() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,50 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>EXTRACTDATETIMES()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>EXTRACTDATETIMES()</strong> examina una cadena de texto y encuentra todas las coincidencias que representen una fecha y hora válidas. Devuelve el resultado como una <strong>Lista de DateTime</strong>.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es particularmente potente cuando se integra con servicios de automatización o escaneo de texto (OCR), permitiendo capturar momentos exactos de citas o eventos mencionados en descripciones libres.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                EXTRACTDATETIMES( Texto )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Texto</code>: El texto de origen donde se buscarán los patrones de fecha y hora.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Capturar cita de un mensaje:</strong><br>
+                    <code>EXTRACTDATETIMES("Cita agendada para el 2024-10-25 14:30 sin falta.")</code><br>
+                    <em>Explicación:</em> Devuelve una lista conteniendo el valor DateTime <code>25/10/2024 14:30:00</code>.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Obtener el primer horario encontrado:</strong><br>
+                    <code>ANY(EXTRACTDATETIMES([Mensaje_Recibido]))</code><br>
+                    <em>Explicación:</em> Usa la función <code>ANY()</code> para extraer el primer elemento de la lista devuelta y convertirlo en un valor singular DateTime, listo para guardar en una columna.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Validar si existe una fecha y hora en la nota:</strong><br>
+                    <code>ISNOTBLANK(EXTRACTDATETIMES([Notas]))</code><br>
+                    <em>Explicación:</em> Devuelve TRUE si la columna [Notas] contiene al menos una mención válida de fecha y hora.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

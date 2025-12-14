@@ -12,6 +12,7 @@
     
     <link href="../../style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" href="../../stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../../stocktracker-favicon/favicon.svg" />
     <!-- Enlace al favicon -->
@@ -19,6 +20,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../stocktracker-favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="StockTracker" />
     <link rel="manifest" href="../../stocktracker-favicon/site.webmanifest" />
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -94,10 +96,11 @@
 
     </div>
 
-<!-- Scripts -->
+<!-- Scripts: Nota que subimos dos niveles para encontrar main.js -->
 <script src="../../main.js"></script>
 <script>
-    loadComponent('footer-placeholder', '../../components/footer.html');
+        loadComponent('header-placeholder', '../../components/header.html'); 
+        loadComponent('footer-placeholder', '../../components/footer.html');
 </script>
 </body>
 </html>

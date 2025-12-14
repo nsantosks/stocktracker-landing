@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función CONTAINS() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
+
     <link href="../../style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -42,51 +42,55 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>CONTAINS()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>CONTAINS()</strong> verifica si un valor "aguja" se encuentra dentro de un valor "pajar". Es una función lógica que devuelve <strong>TRUE</strong> (Verdadero/Yes) si encuentra coincidencia y <strong>FALSE</strong> (Falso/No) si no.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Funciona de dos maneras distintas dependiendo del tipo de datos:</p>
+            <ul>
+                <li><strong>Texto:</strong> Busca una coincidencia parcial (subcadena). Ejemplo: "¿Hay 'Sol' en 'Girasol'?"</li>
+                <li><strong>Listas:</strong> Busca una coincidencia exacta de un elemento. Ejemplo: "¿Está el ID '123' en la lista de IDs?"</li>
+            </ul>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                CONTAINS( Texto_Donde_Buscar, Texto_A_Encontrar )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Texto_Donde_Buscar</code>: El texto completo o la lista donde vamos a realizar la búsqueda.</li>
+                <li><code>Texto_A_Encontrar</code>: El fragmento de texto o el elemento específico que queremos hallar.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Búsqueda en direcciones (Texto):</strong><br>
+                    <code>CONTAINS([Direccion], "Madrid")</code><br>
+                    <em>Explicación:</em> Devuelve TRUE si la palabra "Madrid" aparece en cualquier parte de la columna Dirección (ej. "Calle Mayor 1, Madrid").
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Filtro de búsqueda dinámico (Dashboard):</strong><br>
+                    <code>OR(ISBLANK([Busqueda]), CONTAINS([Nombre_Cliente], [Busqueda]))</code><br>
+                    <em>Explicación:</em> Patrón común en Slices para buscadores. Si el campo de búsqueda está vacío, muestra todo; si no, muestra solo los clientes cuyo nombre contenga lo escrito.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Verificar selección múltiple (EnumList):</strong><br>
+                    <code>CONTAINS([Etiquetas], "Urgente")</code><br>
+                    <em>Explicación:</em> Si la columna [Etiquetas] es una EnumList que contiene "Rojo, Urgente, Pendiente", devuelve TRUE porque el elemento "Urgente" existe en la lista.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

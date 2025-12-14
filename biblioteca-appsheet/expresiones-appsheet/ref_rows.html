@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función REF_ROWS() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,51 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>REF_ROWS()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>REF_ROWS()</strong> es la encargada de crear las "Referencias Inversas" (Reverse References) en AppSheet. Generalmente, el sistema la genera automáticamente en una Columna Virtual oculta o visible (ej. <em>Related Pedidos</em>) cuando detecta una relación entre tablas.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Su propósito es devolver una <strong>Lista de Referencias</strong> (List of Ref) de todas las filas en una tabla "hija" que apuntan a la fila actual de la tabla "padre".</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                REF_ROWS( "Tabla_Hija", "Columna_Referencia" )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Tabla_Hija</code>: El nombre de la tabla (o Slice) donde se encuentran los registros relacionados.</li>
+                <li><code>Columna_Referencia</code>: El nombre de la columna en la <em>Tabla_Hija</em> que es de tipo <strong>Ref</strong> y apunta a la tabla actual.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Relación Pedidos -> Detalles (Automático):</strong><br>
+                    <code>REF_ROWS("Detalle_Pedidos", "Pedido_ID")</code><br>
+                    <em>Explicación:</em> Esta fórmula crea una lista con todos los ítems comprados que pertenecen a este pedido específico. AppSheet la crea sola al configurar la columna Ref en la tabla hija.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Contar registros relacionados:</strong><br>
+                    <code>COUNT([Related Detalle_Pedidos])</code><br>
+                    <em>Explicación:</em> Usamos la columna virtual generada por REF_ROWS (generalmente llamada "Related...") para contar cuántos ítems tiene el pedido.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Suma de valores relacionados:</strong><br>
+                    <code>SUM([Related Ventas][Monto])</code><br>
+                    <em>Explicación:</em> Accede a la lista de filas generada por REF_ROWS y suma la columna "Monto" de esas filas específicas. Ideal para calcular totales de un cliente o proyecto.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

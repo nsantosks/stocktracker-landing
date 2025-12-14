@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función TOP() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,51 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>TOP()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>TOP()</strong> extrae un número específico de elementos del inicio de una lista y devuelve una nueva sub-lista con esos elementos.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es importante notar que <code>TOP()</code> <strong>no ordena</strong> los datos por sí misma; simplemente toma los primeros "N" elementos tal como vienen. Por lo tanto, casi siempre se utiliza en combinación con funciones de ordenamiento como <code>SORT()</code> o <code>ORDERBY()</code> para obtener resultados significativos como "Los 5 mejores vendedores" o "Los 10 últimos pedidos".</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                TOP( Lista, Cantidad )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Lista</code>: La lista original de valores o referencias.</li>
+                <li><code>Cantidad</code>: Un número entero (Number) que indica cuántos elementos deseas conservar.</li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Uso básico:</strong><br>
+                    <code>TOP(LIST("A", "B", "C", "D", "E"), 3)</code><br>
+                    <em>Explicación:</em> Devuelve una lista con los primeros 3 elementos: <code>LIST("A", "B", "C")</code>.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Los 5 pedidos más recientes (Patrón común):</strong><br>
+                    <code>TOP(ORDERBY(Pedidos[ID], [Fecha], TRUE), 5)</code><br>
+                    <em>Explicación:</em> Primero, <code>ORDERBY</code> ordena todos los IDs de los pedidos por fecha descendente (del más nuevo al más viejo). Luego, <code>TOP</code> toma solo los primeros 5 de esa lista ordenada.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>TOP vs ANY:</strong><br>
+                    <code>TOP([Related Ventas], 1)</code><br>
+                    <em>Explicación:</em> Devuelve una <strong>Lista</strong> que contiene 1 solo elemento. A diferencia de <code>ANY()</code>, que devuelve el valor directo (ej. Texto o Ref), <code>TOP()</code> siempre devuelve una estructura de Lista, lo cual es útil si la columna destino espera una EnumList.
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

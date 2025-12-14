@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Función IF() | Gammaliel Analytics</title> 
+    <title>Función INDEX() | Gammaliel Analytics</title> 
     
     <!-- Enlace al archivo CSS -->
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,51 +42,57 @@
 
         <section class="exp-detail-header">
             <div class="container">
-                <h1>IF()</h1>
+                <h1>INDEX()</h1>
             </div>
         </section>
 
         <main class="exp-content">
             
-            <p>La expresión <strong>IF()</strong> es una de las funciones lógicas más fundamentales en AppSheet. Permite evaluar una condición y devolver un resultado específico si la condición es verdadera, y otro resultado diferente si es falsa.</p>
+            <p>La función <strong>INDEX()</strong> recupera un elemento específico de una lista basándose en su posición numérica. Es fundamental cuando necesitas extraer, por ejemplo, el primer, segundo o último valor de una lista de resultados.</p>
             
-            <p>Es ideal para crear columnas virtuales dinámicas, controlar la visibilidad de vistas (Show_If) o establecer valores iniciales condicionales.</p>
+            <p>Es muy común usarla en combinación con funciones que devuelven listas (como <code>EXTRACT...</code>, <code>SPLIT</code> o <code>SELECT</code>) para convertir una lista en un valor singular de texto o número.</p>
 
             <h2>Sintaxis de la expresión</h2>
             <div class="syntax-box">
-                IF( Condición, Valor_Si_Verdadero, Valor_Si_Falso )
+                INDEX( Lista, Numero )
             </div>
             
             <p><strong>Parámetros:</strong></p>
             <ul>
-                <li><code>Condición</code>: Una expresión que resulta en TRUE (Verdadero) o FALSE (Falso).</li>
-                <li><code>Valor_Si_Verdadero</code>: El valor que se devuelve si la condición se cumple.</li>
-                <li><code>Valor_Si_Falso</code>: El valor que se devuelve si la condición NO se cumple.</li>
+                <li><code>Lista</code>: La lista de valores de la cual queremos extraer un ítem.</li>
+                <li><code>Numero</code>: La posición del ítem a recuperar (Número entero).
+                    <ul>
+                        <li><strong>1</strong>: Recupera el primer elemento.</li>
+                        <li><strong>0</strong> o <strong>negativo</strong>: Devuelve un error o valor vacío.</li>
+                        <li>Si el número es mayor al tamaño de la lista, devuelve vacío.</li>
+                    </ul>
+                </li>
             </ul>
 
             <h2>Ejemplos Prácticos</h2>
             <ul class="example-list">
                 <li>
-                    <strong>Estado de inventario:</strong><br>
-                    <code>IF([Stock] > 0, "Disponible", "Agotado")</code><br>
-                    <em>Resultado:</em> Muestra "Disponible" si el número en la columna Stock es mayor a 0.
+                    <strong>Obtener el nombre del mes:</strong><br>
+                    <code>INDEX(LIST("Enero", "Febrero", "Marzo", ...), MONTH([Fecha]))</code><br>
+                    <em>Explicación:</em> Usa el número del mes de una fecha (ej. 2 para Febrero) como índice para seleccionar el nombre correcto de una lista manual.
                 </li>
                 <li>
-                    <strong>Precios con descuento VIP:</strong><br>
-                    <code>IF([Es_VIP] = TRUE, [Precio] * 0.90, [Precio])</code><br>
-                    <em>Explicación:</em> Si el cliente es VIP, aplica un 10% de descuento; de lo contrario, mantiene el precio original.
+                    <strong>Extraer el primer email encontrado:</strong><br>
+                    <code>INDEX(EXTRACTEMAILS([Texto_Largo]), 1)</code><br>
+                    <em>Explicación:</em> <code>EXTRACTEMAILS</code> devuelve una lista. Usamos INDEX con la posición <strong>1</strong> para obtener solo el primer correo y guardarlo en una columna de tipo Email.
                 </li>
                 <li>
-                    <strong>Evitar división por cero:</strong><br>
-                    <code>IF([Cantidad] > 0, [Total] / [Cantidad], 0)</code>
+                    <strong>Seleccionar parte de un código (Split):</strong><br>
+                    <code>INDEX(SPLIT("Producto-A-123", "-"), 2)</code><br>
+                    <em>Explicación:</em> Divide el texto por guiones creando la lista <code>{"Producto", "A", "123"}</code> y luego recupera el segundo elemento: "A".
                 </li>
             </ul>
 
-            <a href="../index.html"class="btn-back">« Regresar al listado de expresiones</a>
+            <a href="../index.html" class="btn-back">« Regresar al listado de expresiones</a>
 
         </main>
 
-                <div id="footer-placeholder"></div>
+        <div id="footer-placeholder"></div>
 
     </div>
 

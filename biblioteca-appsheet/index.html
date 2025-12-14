@@ -277,7 +277,9 @@
                         <label><input type="checkbox" value="matem" class="category-filter"> Matemáticas</label>
                         <label><input type="checkbox" value="tiempo" class="category-filter"> Fecha y Hora</label>
                         <label><input type="checkbox" value="listas" class="category-filter"> Listas</label>
+                        <label><input type="checkbox" value="tablas" class="category-filter"> Tablas</label>
                         <label><input type="checkbox" value="yesno" class="category-filter"> Yes/No</label>
+                        <label><input type="checkbox" value="info" class="category-filter"> Información</label>
                         <label><input type="checkbox" value="otras" class="category-filter"> Otras (DeepLink, UI)</label>
                     </div>
                 </aside>
@@ -289,6 +291,10 @@
                     </div>
 
                     <div class="expressions-grid" id="expressionsGrid">
+
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES LOGICAS
+                        ==============================-->
                         <a href="expresiones-appsheet/if.html" class="exp-card" data-category="logica" data-name="IF">
                             <span class="exp-name">IF</span>
                             <span class="exp-tag tag-logica">Lógica</span>
@@ -301,24 +307,131 @@
                             <span class="exp-name">SWITCH</span>
                             <span class="exp-tag tag-logica">Lógica</span>
                         </a>
+                        <a href="expresiones-appsheet/and.html" class="exp-card" data-category="logica" data-name="AND">
+                            <span class="exp-name">AND</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/or.html" class="exp-card" data-category="logica" data-name="OR">
+                            <span class="exp-name">OR</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
+                        <a href="expresiones-appsheet/not.html" class="exp-card" data-category="logica" data-name="NOT">
+                            <span class="exp-name">NOT</span>
+                            <span class="exp-tag tag-logica">Lógica</span>
+                        </a>
 
-                        <a href="expresiones-appsheet/select.html" class="exp-card" data-category="listas" data-name="SELECT">
-                            <span class="exp-name">SELECT</span>
-                            <span class="exp-tag tag-listas">Listas</span>
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES YES/NO
+                        ==============================-->
+                        <a href="expresiones-appsheet/contains.html" class="exp-card" data-category="logica" data-name="CONTAINS">
+                            <span class="exp-name">CONTAINS</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
                         </a>
-                        <a href="expresiones-appsheet/filter.html" class="exp-card" data-category="listas" data-name="FILTER">
-                            <span class="exp-name">FILTER</span>
-                            <span class="exp-tag tag-listas">Listas</span>
+                        <a href="expresiones-appsheet/extractchoice.html" class="exp-card" data-category="logica" data-name="EXTRACTCHOICE">
+                            <span class="exp-name">EXTRACTCHOICE</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
                         </a>
-                        <a href="expresiones-appsheet/orderby.html" class="exp-card" data-category="listas" data-name="ORDERBY">
-                            <span class="exp-name">ORDERBY</span>
+                         <a href="expresiones-appsheet/isblank.html" class="exp-card" data-category="logica" data-name="ISBLANK">
+                            <span class="exp-name">ISBLANK</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
+                        </a>
+                        <a href="expresiones-appsheet/isnotblank.html" class="exp-card" data-category="logica" data-name="ISNOTBLANK">
+                            <span class="exp-name">ISNOTBLANK</span>
+                            <span class="exp-tag tag-logica">Yes/No</span>
+                        </a>
+
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES LISTAS
+                        ==============================-->
+                        <a href="expresiones-appsheet/any.html" class="exp-card" data-category="listas" data-name="ANY">
+                            <span class="exp-name">ANY</span>
                             <span class="exp-tag tag-listas">Listas</span>
                         </a>
                         <a href="expresiones-appsheet/count.html" class="exp-card" data-category="listas" data-name="COUNT">
                             <span class="exp-name">COUNT</span>
                             <span class="exp-tag tag-listas">Listas</span>
                         </a>
+                        <a href="expresiones-appsheet/in.html" class="exp-card" data-category="listas" data-name="IN">
+                            <span class="exp-name">IN</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/index-funcion.html" class="exp-card" data-category="listas" data-name="INDEX">
+                            <span class="exp-name">INDEX</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/intersect.html" class="exp-card" data-category="listas" data-name="INTERSECT">
+                            <span class="exp-name">INTERSECT</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/list.html" class="exp-card" data-category="listas" data-name="LIST">
+                            <span class="exp-name">LIST</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/min.html" class="exp-card" data-category="listas" data-name="MIN">
+                            <span class="exp-name">MIN</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/max.html" class="exp-card" data-category="listas" data-name="MAX">
+                            <span class="exp-name">MAX</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/sort.html" class="exp-card" data-category="listas" data-name="SORT">
+                            <span class="exp-name">SORT</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/split.html" class="exp-card" data-category="listas" data-name="SPLIT">
+                            <span class="exp-name">SPLIT</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/top.html" class="exp-card" data-category="listas" data-name="TOP">
+                            <span class="exp-name">TOP</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
+                        <a href="expresiones-appsheet/unique.html" class="exp-card" data-category="listas" data-name="UNIQUE">
+                            <span class="exp-name">UNIQUE</span>
+                            <span class="exp-tag tag-listas">Listas</span>
+                        </a>
 
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES TABLAS
+                        ==============================-->
+                        <a href="expresiones-appsheet/filter.html" class="exp-card" data-category="tablas" data-name="FILTER">
+                            <span class="exp-name">FILTER</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/lookup.html" class="exp-card" data-category="tablas" data-name="LOOKUP">
+                            <span class="exp-name">LOOKUP</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/maxrow.html" class="exp-card" data-category="tablas" data-name="MAXROW">
+                            <span class="exp-name">MAXROW</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/minrow.html" class="exp-card" data-category="tablas" data-name="MINROW">
+                            <span class="exp-name">MINROW</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/orderby.html" class="exp-card" data-category="tablas" data-name="ORDERBY">
+                            <span class="exp-name">ORDERBY</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/ref_rows.html" class="exp-card" data-category="tablas" data-name="REF_ROWS">
+                            <span class="exp-name">REF_ROWS</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/select.html" class="exp-card" data-category="tablas" data-name="SELECT">
+                            <span class="exp-name">SELECT</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+                        <a href="expresiones-appsheet/uniqueid.html" class="exp-card" data-category="tablas" data-name="UNIQUEID">
+                            <span class="exp-name">UNIQUEID</span>
+                            <span class="exp-tag tag-tablas">Tablas</span>
+                        </a>
+
+
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES TEXTO
+                        ==============================-->
                         <a href="expresiones-appsheet/concatenate.html" class="exp-card" data-category="texto" data-name="CONCATENATE">
                             <span class="exp-name">CONCATENATE</span>
                             <span class="exp-tag tag-texto">Texto</span>
@@ -327,75 +440,70 @@
                             <span class="exp-name">EXTRACT</span>
                             <span class="exp-tag tag-texto">Texto</span>
                         </a>
-                        <a href="expresiones-appsheet/split.html" class="exp-card" data-category="texto" data-name="SPLIT">
-                            <span class="exp-name">SPLIT</span>
-                            <span class="exp-tag tag-texto">Texto</span>
-                        </a>
+                        
 
-                        <a href="expresiones-appsheet/today.html" class="exp-card" data-category="tiempo" data-name="TODAY">
-                            <span class="exp-name">TODAY</span>
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES TIEMPO
+                        ==============================-->
+                        <a href="expresiones-appsheet/date.html" class="exp-card" data-category="tiempo" data-name="DATE">
+                            <span class="exp-name">DATE</span>
                             <span class="exp-tag tag-tiempo">Tiempo</span>
                         </a>
-                        <a href="expresiones-appsheet/now.html" class="exp-card" data-category="tiempo" data-name="NOW">
-                            <span class="exp-name">NOW</span>
+                        <a href="expresiones-appsheet/datetime.html" class="exp-card" data-category="tiempo" data-name="DATETIME">
+                            <span class="exp-name">DATETIME</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/day.html" class="exp-card" data-category="tiempo" data-name="DAY">
+                            <span class="exp-name">DAY</span>
                             <span class="exp-tag tag-tiempo">Tiempo</span>
                         </a>
                         <a href="expresiones-appsheet/eomonth.html" class="exp-card" data-category="tiempo" data-name="EOMONTH">
                             <span class="exp-name">EOMONTH</span>
                             <span class="exp-tag tag-tiempo">Tiempo</span>
                         </a>
+                        <a href="expresiones-appsheet/extractdates.html" class="exp-card" data-category="tiempo" data-name="EXTRACTDATES">
+                            <span class="exp-name">EXTRACTDATES</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/extractdatetimes.html" class="exp-card" data-category="tiempo" data-name="EXTRACTDATETIMES">
+                            <span class="exp-name">EXTRACTDATETIMES</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/extractdurations.html" class="exp-card" data-category="tiempo" data-name="EXTRACTDURATIONS">
+                            <span class="exp-name">EXTRACTDURATIONS</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/extracttimes.html" class="exp-card" data-category="tiempo" data-name="EXTRACTTIMES">
+                            <span class="exp-name">EXTRACTTIMES</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/now.html" class="exp-card" data-category="tiempo" data-name="NOW">
+                            <span class="exp-name">NOW</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/today.html" class="exp-card" data-category="tiempo" data-name="TODAY">
+                            <span class="exp-name">TODAY</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
+                        <a href="expresiones-appsheet/timenow.html" class="exp-card" data-category="tiempo" data-name="TIMENOW">
+                            <span class="exp-name">TIMENOW</span>
+                            <span class="exp-tag tag-tiempo">Tiempo</span>
+                        </a>
 
-                        <a href="expresiones-appsheet/useremail.html" class="exp-card" data-category="otras" data-name="USEREMAIL">
-                            <span class="exp-name">USEREMAIL</span>
-                            <span class="exp-tag">Sistema</span>
-                        </a>
-                        <a href="expresiones-appsheet/context.html" class="exp-card" data-category="otras" data-name="CONTEXT">
-                            <span class="exp-name">CONTEXT</span>
-                            <span class="exp-tag">Sistema</span>
-                        </a>
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES MATEMATICAS
+                        ==============================-->
                         <a href="expresiones-appsheet/sum.html" class="exp-card" data-category="matem" data-name="SUM">
                             <span class="exp-name">SUM</span>
                             <span class="exp-tag tag-matem">Matemáticas</span>
-                        </a>
-                        <a href="expresiones-appsheet/list.html" class="exp-card" data-category="listas" data-name="LIST">
-                            <span class="exp-name">LIST</span>
-                            <span class="exp-tag tag-listas">Listas</span>
                         </a>
                         <a href="expresiones-appsheet/average.html" class="exp-card" data-category="matem" data-name="AVERAGE">
                             <span class="exp-name">AVERAGE</span>
                             <span class="exp-tag tag-matem">Matemáticas</span>
                         </a>
-                        <a href="expresiones-appsheet/min.html" class="exp-card" data-category="matem" data-name="MIN">
-                            <span class="exp-name">MIN</span>
-                            <span class="exp-tag tag-matem">Matemáticas</span>
-                        </a>
-                        <a href="expresiones-appsheet/max.html" class="exp-card" data-category="matem" data-name="MAX">
-                            <span class="exp-name">MAX</span>
-                            <span class="exp-tag tag-matem">Matemáticas</span>
-                        </a>
                         <a href="expresiones-appsheet/round.html" class="exp-card" data-category="matem" data-name="ROUND">
                             <span class="exp-name">ROUND</span>
                             <span class="exp-tag tag-matem">Matemáticas</span>
-                        </a>
-                        <a href="expresiones-appsheet/isblank.html" class="exp-card" data-category="logica" data-name="ISBLANK">
-                            <span class="exp-name">ISBLANK</span>
-                            <span class="exp-tag tag-logica">Lógica</span>
-                        </a>
-                        <a href="expresiones-appsheet/isnotblank.html" class="exp-card" data-category="logica" data-name="ISNOTBLANK">
-                            <span class="exp-name">ISNOTBLANK</span>
-                            <span class="exp-tag tag-logica">Lógica</span>
-                        </a>
-                        <a href="expresiones-appsheet/and.html" class="exp-card" data-category="yesno" data-name="AND">
-                            <span class="exp-name">AND</span>
-                            <span class="exp-tag tag-logica">Yes/No</span>
-                        </a>
-                        <a href="expresiones-appsheet/or.html" class="exp-card" data-category="yesno" data-name="OR">
-                            <span class="exp-name">OR</span>
-                            <span class="exp-tag tag-logica">Yes/No</span>
-                        </a>
-                        <a href="expresiones-appsheet/not.html" class="exp-card" data-category="yesno" data-name="NOT">
-                            <span class="exp-name">NOT</span>
-                            <span class="exp-tag tag-logica">Yes/No</span>
                         </a>
                         <a href="expresiones-appsheet/floor.html" class="exp-card" data-category="matem" data-name="FLOOR">
                             <span class="exp-name">FLOOR</span>
@@ -404,6 +512,18 @@
                         <a href="expresiones-appsheet/ceiling.html" class="exp-card" data-category="matem" data-name="CEILING">
                             <span class="exp-name">CEILING</span>
                             <span class="exp-tag tag-matem">Matemáticas</span>
+                        </a>
+
+                        <!-- ===========================
+                        SECCIÓN DE EXPRESIONES SISTEMA
+                        ==============================-->
+                        <a href="expresiones-appsheet/useremail.html" class="exp-card" data-category="info" data-name="USEREMAIL">
+                            <span class="exp-name">USEREMAIL</span>
+                            <span class="exp-tag tag-info">Información</span>
+                        </a>
+                        <a href="expresiones-appsheet/context.html" class="exp-card" data-category="info" data-name="CONTEXT">
+                            <span class="exp-name">CONTEXT</span>
+                            <span class="exp-tag tag-info">Información</span>
                         </a>
 
                     </div>

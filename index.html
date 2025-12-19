@@ -222,9 +222,9 @@
         </section>
 
           <!-- =========================================
-            SECCIÓN DE CONSULTORES
+            SECCIÓN DE CONSULTORES (Revisada y Ordenada)
         ========================================= -->
-         <section id="consultoria-estrategica" class="landing-page-wrapper team-section">
+        <section id="consultoria-estrategica" class="landing-page-wrapper team-section">
             <div class="consultants-container">
 
                 <div class="section-header">
@@ -234,6 +234,7 @@
 
                 <div class="team-layout">
                     
+                    <!-- SIDEBAR DE FILTROS -->
                     <aside class="sidebar-filters">
                         <div class="sidebar-title">Especialidad</div>
                         <div class="filter-group" id="consultant-filters">
@@ -241,14 +242,14 @@
                             <label><input type="checkbox" value="datos" class="consultant-filter"> Análisis de Datos (BI)</label>
                             <label><input type="checkbox" value="empresas" class="consultant-filter"> Desarrollo Empresarial</label>
                             <label><input type="checkbox" value="procesos" class="consultant-filter"> Optimización de Procesos</label>
-                            <label><input type="checkbox" value="calidad" class="consultant-filter"> Sistema de Gestión de Calidad</label>
+                            <label><input type="checkbox" value="calidad" class="consultant-filter"> Gestión de Calidad</label>
                             <label><input type="checkbox" value="sanidad" class="consultant-filter"> Saneamiento Industrial</label>
-                            <label><input type="checkbox" value="logistica" class="consultant-filter">Logística y Operaciones</label>
-                            <label><input type="checkbox" value="medicina" class="consultant-filter"> Sector salud</label>
+                            <label><input type="checkbox" value="logistica" class="consultant-filter"> Logística y Operaciones</label>
+                            <label><input type="checkbox" value="medicina" class="consultant-filter"> Sector Salud</label>
                             <label><input type="checkbox" value="finanzas" class="consultant-filter"> Finanzas</label>
                             <label><input type="checkbox" value="seguridad" class="consultant-filter"> Seguridad Industrial</label>
-                            <label><input type="checkbox" value="cloud" class="consultant-filter"> Google Cloud / Workspace</label>
-                            <label><input type="checkbox" value="ventas" class="consultant-filter"> Ventas</label>
+                            <label><input type="checkbox" value="cloud" class="consultant-filter"> Google Cloud</label>
+                            <label><input type="checkbox" value="ventas" class="consultant-filter"> Ventas y Retail</label>
                         </div>
                     </aside>
 
@@ -256,31 +257,78 @@
                         <div class="search-bar-container">
                             <input type="text" id="consultantSearchInput" class="search-input" placeholder="Buscar consultor por nombre o área...">
                         </div>
-                        <!-- Nestor Santos-->
+                        
                         <div class="consultants-grid" id="consultantsGrid">
-                            <a href="/consultores/nestor-santos.html" class="consultant-card" 
-                            data-category="appsheet empresas datos procesos finanzas cloud" data-name="Ing. Nestor Santos"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                            
+                            <!-- 1. Ing. Ana Tarazona -->
+                            <a href="https://wa.me/+584124801636" class="consultant-card" 
+                            data-category="empresas procesos calidad sanidad" data-name="Ing. Ana Tarazona">
                                 <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-nestor-santos.png" alt="Foto de Nestor Santos" class="consultant-photo">
+                                    <img src="/assets/img/staff-ana-tarazona.png" alt="Foto de Ing. Ana Tarazona" class="consultant-photo">
                                 </div>
                                 <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Nestor Santos</span>
-                                    <span class="consultant-title">Consultor de Negocios | Gammaliel Analytics</span>
+                                    <span class="consultant-name">Ing. Ana Tarazona</span>
+                                    <span class="consultant-title">Sistemas de Gestión de Calidad | Servicios INMESOT, C.A.</span>
                                     <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Visualización avanzada y analítica de datos en Power BI</li>
-                                        <li><i class="fas fa-check"></i> Digitalización de procesos con apps móviles en AppSheet</li>
-                                        <li><i class="fas fa-check"></i> Automatización inteligente mediante Google Apps Script</li>
-                                        <li><i class="fas fa-check"></i> Implementación de ecosistemas escalables en Google Cloud</li>
+                                        <li><i class="fas fa-check"></i> Higienización técnica de líneas industriales críticas</li>
+                                        <li><i class="fas fa-check"></i> Mantenimiento especializado de tanques grado alimenticio</li>
+                                        <li><i class="fas fa-check"></i> Estandarización de procesos (FSSC 22000 / ISO 22000)</li>
+                                        <li><i class="fas fa-check"></i> Protocolos de inocuidad para consumo masivo</li>
                                     </ul>
                                     <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">AppSheet</span>
-                                        <span class="tag tag-datos">Datos</span>
+                                        <span class="tag tag-calidad">Calidad</span>
+                                        <span class="tag tag-procesos">Procesos</span>
                                     </div>
                                 </div>
                             </a>
-                            <!-- Javier Figueroa-->
+
+                            <!-- 2. Dra. Jessika Larez -->
+                            <a href="https://wa.me/+584124518035" class="consultant-card" 
+                            data-category="empresas procesos medicina salud" data-name="Dra. Jessika Larez">
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-jessika-larez.jpg" alt="Foto de Jessika Larez" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Dra. Jessika Larez</span>
+                                    <span class="consultant-title">Consultor en Habilitación Sanitaria | Dra. Jessika Larez F.P.</span>
+                                    <ul class="product-features">
+                                        <li><i class="fas fa-check"></i> Diseño e implementación de Centros Diagnósticos</li>
+                                        <li><i class="fas fa-check"></i> Desarrollo de Servicios Médicos Ocupacionales</li>
+                                        <li><i class="fas fa-check"></i> Modelos de Atención Primaria de Salud (APS) corporativa</li>
+                                        <li><i class="fas fa-check"></i> Garantía de cumplimiento normativo sanitario</li>
+                                    </ul>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-medicina">Salud</span>
+                                        <span class="tag tag-empresas">Gestión</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- 3. Ing. José David Betancourt Pineda -->
+                            <a href="/consultores/david-bethancourt.html" class="consultant-card" 
+                            data-category="empresas procesos estrategia derecho" data-name="Ing. José David Betancourt Pineda">
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-jose-david-betancourt.jpeg" alt="Foto de Ing. José David Betancourt Pineda" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Ing. José David Betancourt P.</span>
+                                    <span class="consultant-title">General Manager | Estratega Corporativo</span>
+                                    <ul class="product-features">
+                                        <li><i class="fas fa-check"></i> Dirección estratégica de corporaciones y franquicias</li>
+                                        <li><i class="fas fa-check"></i> Transformación hacia economía circular y hábitat sostenible</li>
+                                        <li><i class="fas fa-check"></i> Consultoría integral: Ingeniería, Derecho y Psicología</li>
+                                        <li><i class="fas fa-check"></i> Gobernanza corporativa y marcos legales</li>
+                                    </ul>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-logica">Estrategia</span>
+                                        <span class="tag tag-info">Derecho</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- 4. Lcdo. Javier Figueroa -->
                             <a href="https://www.linkedin.com/in/javier-silverio-figueroa-reyes-235aab102/" class="consultant-card" 
-                            data-category="appsheet empresas procesos finanzas" data-name="Lcdo. Javier Figueroa"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                            data-category="finanzas empresas procesos" data-name="Lcdo. Javier Figueroa">
                                 <div class="consultant-photo-placeholder">
                                     <img src="/assets/img/staff-javier-figueroa.png" alt="Foto de Javier Figueroa" class="consultant-photo">
                                 </div>
@@ -291,101 +339,18 @@
                                         <li><i class="fas fa-check"></i> Optimización de flujo de caja y gestión de liquidez</li>
                                         <li><i class="fas fa-check"></i> Diseño y control de estructuras de costos operativos</li>
                                         <li><i class="fas fa-check"></i> Planificación financiera y presupuestaria estratégica</li>
-                                        <li><i class="fas fa-check"></i> Análisis de rentabilidad y evaluación de inversiones</li>
+                                        <li><i class="fas fa-check"></i> Análisis de rentabilidad de inversiones</li>
                                     </ul>
                                     <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Finanzas</span>
-                                        <span class="tag tag-datos">empresas</span>
+                                        <span class="tag tag-finanzas">Finanzas</span>
+                                        <span class="tag tag-empresas">Negocios</span>
                                     </div>
                                 </div>
                             </a>
-                            <!-- Jessika Larez-->
-                            <a href="https://wa.me/+584124518035" class="consultant-card" 
-                            data-category="empresas procesos medicina salud ecografia" data-name="Dra. Jessika Larez"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-jessika-larez.jpg" alt="Foto de Jessika Larez" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Dra. Jessika Larez</span>
-                                    <span class="consultant-title">Consultor en Habilitación Sanitaria y Modelos de Atención Médica | Dra. Jessika Larez F.P.</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Diseño e implementación de Centros Diagnósticos</li>
-                                        <li><i class="fas fa-check"></i> Desarrollo de Servicios Médicos Ocupacionales</li>
-                                        <li><i class="fas fa-check"></i> Modelos de Atención Primaria de Salud (APS) corporativa</li>
-                                        <li><i class="fas fa-check"></i> Garantía de cumplimiento normativo y habilitaciones sanitarias</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Medicina</span>
-                                        <span class="tag tag-datos">empresas</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- Mariam Castro-->
-                            <a href="https://wa.me/+584127269139" class="consultant-card" 
-                            data-category="empresas procesos seguridad industrial tramites permisologias caracas" data-name="Ing. Mariam Castro"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-mariam-castro.jpeg" alt="Foto de Ing. Mariam Castro" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Mariam Castro</span>
-                                    <span class="consultant-title">Consultoría Integral en Capital Humano y EHS | Autana Ingenieros Consultores, C.A.</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Consultoría integral en Seguridad y Salud en el Trabajo (SSST)</li>
-                                        <li><i class="fas fa-check"></i> Gestión estratégica de RRHH, nóminas y desarrollo organizacional</li>
-                                        <li><i class="fas fa-check"></i> Diplomados y programas de formación técnica especializada</li>
-                                        <li><i class="fas fa-check"></i> Asesoría en cumplimiento legal y programas de seguridad in-company</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Seguridad Industrial</span>
-                                        <span class="tag tag-datos">empresas</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- Roque Figueroa-->
-                            <a href="https://wa.me/+584128571075" class="consultant-card" 
-                            data-category="empresas procesos seguridad tramites permisologias carabobo" data-name="Ing. Roque Figuera"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-roque-figuera.png" alt="Foto de Ing. roque figuera" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Roque Figuera</span>
-                                    <span class="consultant-title">Consultor de Seguridad y Salud Ocupacional | Asesorías Empresariales Figuera</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Gestión integral de riesgos y seguridad ocupacional</li>
-                                        <li><i class="fas fa-check"></i> Control ágil de permisologías y cumplimiento legal</li>
-                                        <li><i class="fas fa-check"></i> Formación técnica y capacitaciones para equipos de alto riesgo</li>
-                                        <li><i class="fas fa-check"></i> Auditoría y diseño de planes de gestión preventiva</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Seguridad Industrial</span>
-                                        <span class="tag tag-datos">empresas</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- Ing. Ana Tarazona-->
-                            <a href="https://wa.me/+584124801636" class="consultant-card" 
-                            data-category="empresas procesos calidad sanidad carabobo" data-name="Ing. Ana Tarazona"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-ana-tarazona.png" alt="Foto de Ing. Ana Tarazona" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Ana Tarazona</span>
-                                    <span class="consultant-title">Sistemas de Gestión de Calidad | Servicios INMESOT, C.A.</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Higienización técnica de líneas industriales críticas</li>
-                                        <li><i class="fas fa-check"></i> Mantenimiento especializado de tanques grado alimenticio</li>
-                                        <li><i class="fas fa-check"></i> Estandarización de procesos de higiene y saneamiento alineados a requisitos de inocuidad alimentaria (FSSC 22000 / ISO 22000)</li>
-                                        <li><i class="fas fa-check"></i> Protocolos de inocuidad para industria de consumo masivo</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Gestión de Calidad</span>
-                                        <span class="tag tag-datos">empresas</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- Ing. Leandro Marrugo-->
+
+                            <!-- 5. Ing. Leandro Marrugo -->
                             <a href="https://wa.me/+584244285395" class="consultant-card" 
-                            data-category="empresas logistica operador transporte flota carga carabobo" data-name="Ing. Leandro Marrugo"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                            data-category="empresas logistica transporte" data-name="Ing. Leandro Marrugo">
                                 <div class="consultant-photo-placeholder">
                                     <img src="/assets/img/staff-leandro-marrugo.jpeg" alt="Foto de Ing. Leandro Marrugo" class="consultant-photo">
                                 </div>
@@ -396,53 +361,99 @@
                                         <li><i class="fas fa-check"></i> Optimización estratégica de flotas de transporte</li>
                                         <li><i class="fas fa-check"></i> Control y gestión técnica de carga portuaria</li>
                                         <li><i class="fas fa-check"></i> Sincronización de procesos operativos nacionales</li>
-                                        <li><i class="fas fa-check"></i> Reducción de costos mediante indicadores estadísticos</li>
+                                        <li><i class="fas fa-check"></i> Reducción de costos mediante estadística</li>
                                     </ul>
                                     <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Logística y Transporte</span>
-                                        <span class="tag tag-datos">empresas</span>
+                                        <span class="tag tag-logistica">Logística</span>
+                                        <span class="tag tag-procesos">Operaciones</span>
                                     </div>
                                 </div>
                             </a>
-                            <!-- Lcdo. Victor Zavala-->
+
+                            <!-- 6. Ing. Mariam Castro -->
+                            <a href="https://wa.me/+584127269139" class="consultant-card" 
+                            data-category="empresas procesos seguridad" data-name="Ing. Mariam Castro">
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-mariam-castro.jpeg" alt="Foto de Ing. Mariam Castro" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Ing. Mariam Castro</span>
+                                    <span class="consultant-title">Consultoría en Capital Humano y EHS | Autana Ingenieros</span>
+                                    <ul class="product-features">
+                                        <li><i class="fas fa-check"></i> Consultoría integral en Seguridad y Salud (SSST)</li>
+                                        <li><i class="fas fa-check"></i> Gestión estratégica de RRHH y nóminas</li>
+                                        <li><i class="fas fa-check"></i> Diplomados y programas de formación técnica</li>
+                                        <li><i class="fas fa-check"></i> Asesoría en cumplimiento legal in-company</li>
+                                    </ul>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-seguridad">Seguridad</span>
+                                        <span class="tag tag-empresas">RRHH</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- 7. Ing. Nestor Santos -->
+                            <a href="/consultores/nestor-santos.html" class="consultant-card" 
+                            data-category="appsheet empresas datos procesos cloud" data-name="Ing. Nestor Santos">
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-nestor-santos.png" alt="Foto de Nestor Santos" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Ing. Nestor Santos</span>
+                                    <span class="consultant-title">Consultor de Negocios | Gammaliel Analytics</span>
+                                    <ul class="product-features">
+                                        <li><i class="fas fa-check"></i> Visualización y analítica de datos en Power BI</li>
+                                        <li><i class="fas fa-check"></i> Digitalización de procesos con AppSheet</li>
+                                        <li><i class="fas fa-check"></i> Automatización mediante Google Apps Script</li>
+                                        <li><i class="fas fa-check"></i> Ecosistemas escalables en Google Cloud</li>
+                                    </ul>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-appsheet">AppSheet</span>
+                                        <span class="tag tag-datos">Datos</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- 8. Ing. Roque Figuera -->
+                            <a href="https://wa.me/+584128571075" class="consultant-card" 
+                            data-category="empresas procesos seguridad" data-name="Ing. Roque Figuera">
+                                <div class="consultant-photo-placeholder">
+                                    <img src="/assets/img/staff-roque-figuera.png" alt="Foto de Ing. roque figuera" class="consultant-photo">
+                                </div>
+                                <div class="consultant-info">
+                                    <span class="consultant-name">Ing. Roque Figuera</span>
+                                    <span class="consultant-title">Consultor de Seguridad y Salud | Asesorías Figuera</span>
+                                    <ul class="product-features">
+                                        <li><i class="fas fa-check"></i> Gestión integral de riesgos y seguridad ocupacional</li>
+                                        <li><i class="fas fa-check"></i> Control ágil de permisologías y cumplimiento legal</li>
+                                        <li><i class="fas fa-check"></i> Formación técnica para equipos de alto riesgo</li>
+                                        <li><i class="fas fa-check"></i> Auditoría y diseño de planes de gestión preventiva</li>
+                                    </ul>
+                                    <div class="consultant-tags">
+                                        <span class="tag tag-seguridad">Seguridad</span>
+                                        <span class="tag tag-procesos">Normativa</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- 9. Lcdo. Victor Zavala -->
                             <a href="https://wa.me/+584123485776" class="consultant-card" 
-                            data-category="ventas retail distribucion consumo masivo carabobo" data-name="Lcdo. Victor Zavala"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
+                            data-category="ventas retail empresas" data-name="Lcdo. Victor Zavala">
                                 <div class="consultant-photo-placeholder">
                                     <img src="/assets/img/staff-victor-zavala.png" alt="Foto de Lcdo. Victor Zavala" class="consultant-photo">
                                 </div>
                                 <div class="consultant-info">
                                     <span class="consultant-name">Lcdo. Victor Zavala</span>
-                                    <span class="consultant-title">Consultor de Ventas Especialista en Consumo Masivo y Estrategia Retail</span>
+                                    <span class="consultant-title">Consultor de Ventas | Especialista Retail</span>
                                     <ul class="product-features">
                                         <li><i class="fas fa-check"></i> Estrategias de expansión en canales Retail</li>
                                         <li><i class="fas fa-check"></i> Apertura y consolidación de redes de distribución</li>
-                                        <li><i class="fas fa-check"></i> Liderazgo y formación de equipos de ventas de alto impacto</li>
+                                        <li><i class="fas fa-check"></i> Formación de equipos de ventas de alto impacto</li>
                                         <li><i class="fas fa-check"></i> Posicionamiento de marca y ejecución en punto de venta</li>
                                     </ul>
                                     <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Ventas</span>
-                                        <span class="tag tag-datos">empresas</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- Ing. David Bethancourt-->
-                            <a href="https://wa.me/+584123485776" class="consultant-card" 
-                            data-category="ventas retail distribucion consumo masivo carabobo" data-name="Ing. José David Betancourt Pineda"><!-- EDITA EL data-category para poder FILTRAR con el checkbox según la especialidad-->
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-jose-david-betancourt.jpeg" alt="Foto de Ing. José David Betancourt Pineda" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. José David Betancourt Pineda</span>
-                                    <span class="consultant-title">General Manager | Estratega Corporativo | Especialista en Ingeniería & Derecho</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Dirección estratégica de corporaciones transnacionales y franquicias escalables</li>
-                                        <li><i class="fas fa-check"></i> Transformación de modelos tradicionales hacia economía circular y hábitat sostenible</li>
-                                        <li><i class="fas fa-check"></i> Consultoría integral con enfoque en Ingeniería de Procesos y Psicología Organizacional</li>
-                                        <li><i class="fas fa-check"></i> Liderazgo en gobernanza corporativa y marcos legales de Derecho Procesal</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">Dirección Estratégica</span>
-                                        <span class="tag tag-datos">empresas</span>
+                                        <span class="tag tag-ventas">Ventas</span>
+                                        <span class="tag tag-empresas">Retail</span>
                                     </div>
                                 </div>
                             </a>

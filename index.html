@@ -2,14 +2,11 @@
 <html lang="es">
 <head>
 
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
-    <!-- End Google Tag Manager -->
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -21,7 +18,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!--Estrutura del Favicon-->
     <link rel="icon" type="image/png" href="/stocktracker-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/stocktracker-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/stocktracker-favicon/favicon.ico" />
@@ -29,13 +25,11 @@
     <meta name="apple-mobile-web-app-title" content="StockTracker" />
     <link rel="manifest" href="/stocktracker-favicon/site.webmanifest" />
 
-    <!--Estructura de Estilos-->
     <link rel="stylesheet" href="/style.css"> 
     <link rel="stylesheet" href="/style-dark.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,15 +41,8 @@
 
     <div class="landing-page-wrapper">
 
-        <!-- =========================================
-            HEADER
-        ========================================= -->
-
         <div id="header-placeholder"></div>
     
-        <!-- =========================================
-            SECCIÓN HERO
-        ========================================= -->
         <section class="hero-section">
             <div class="container hero-content">
                 <h1>Optimización de Procesos y<br>Toma de Decisiones en Tiempo Real</h1>
@@ -67,13 +54,11 @@
                 </p>
                 
                 <div class="hero-actions">
-                    <!-- Botón Primario con Icono -->
                     <a href="https://wa.me/+584128672845" class="btn btn-primary btn-hero">
                         <i class="fas fa-arrow-right"></i> Solicitar una Consultoría
                     </a>
                     
-                    <!-- Botón Secundario con Icono -->
-                    <a href="#servicios" class="btn btn-secondary btn-hero">
+                    <a href="/#servicios" class="btn btn-secondary btn-hero">
                         Ver Servicios Clave
                     </a>
                 </div>
@@ -99,12 +84,8 @@
             </div>
         </section>
 
-        <!-- =========================================
-            SECCIÓN DE SERVICIO
-        ========================================= -->
         <section id="servicios" class="services-section bg-blue-dark">
             <div class="container">
-                <!-- AGREGAMOS LA CLASE 'section-header' al contenedor del título -->
                 <div class="section-header">
                     <h2>Servicios Clave: Desarrollo de Apps, BI y Automatización</h2>
                     <p class="section-subtitle">Implementación estratégica de <Strong>AppSheet</Strong>, <Strong>Business Intelligence</Strong> (Power BI/Looker Studio) y <Strong>Automatización de Procesos</Strong></p>
@@ -127,16 +108,13 @@
                     <div class="service-card">
                         <h3>Formación y Asesoría Especializada</h3>
                         <p>Consultoría por hora <strong>(1, 4 u 8 horas)</strong> y capacitación avanzada para potenciar a su equipo interno en sus procesos de negocio.</p>
-                        <a href="#consultoria-estrategica" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
+                        <a href="/directorio-consultores/" class="service-link">Reservar Sesión de Consultoría &rarr;</a>
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- =========================================
-            SECCIÓN DE PRODUCTOS
-        ========================================= -->
         <section id="productos" class="products-section">
             <div class="container">
                 
@@ -147,11 +125,9 @@
 
                 <div class="products-grid">
                     
-                    <!-- PRODUCTO 1: STOCKTRACKER -->
                     <article class="product-card">
                         <div class="product-badge">Top Ventas</div>
                         <div class="product-logo-area">
-                            <!-- Ajusta la ruta si es necesario -->
                             <img src="/img/logo-header.png" alt="StockTracker: Aplicación AppSheet para Gestión de Inventarios" class="product-logo">
                         </div>
                         <div class="product-content">
@@ -165,16 +141,13 @@
                                 <li><i class="fas fa-check"></i> Control Multi-Almacén</li>
                                 <li><i class="fas fa-check"></i> Alertas de Stock Bajo</li>
                             </ul>
-                            <!-- Enlace a la carpeta del producto -->
                             <a href="/catalogo/stocktracker/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
                         </div>
                     </article>
 
-                    <!-- PRODUCTO 2: LAB REPORTER -->
                     <article class="product-card">
                         <div class="product-badge new">Especializado</div>
                         <div class="product-logo-area">
-                            <!-- Ajusta la ruta si es necesario -->
                             <img src="/img/lab-reporter/logo-lab-reporter-transparente.png" alt="Logo Lab Reporter" class="product-logo">
                         </div>
                         <div class="product-content">
@@ -188,31 +161,27 @@
                                 <li><i class="fas fa-check"></i> Historial de Pacientes</li>
                                 <li><i class="fas fa-check"></i> Base de Datos Segura</li>
                             </ul>
-                            <!-- Enlace a la carpeta del producto -->
                             <a href="/catalogo/lab-reporter/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
                         </div>
                     </article>
 
-                    <!-- PRODUCTO 3: CROMO -->
                     <article class="product-card">
                         <div class="product-badge new">Especializado</div>
                         <div class="product-logo-area">
-                            <!-- Ajusta la ruta si es necesario -->
                             <img src="/img/cromo/logo-gammaliel-solid.png" alt="Logo CROMO" class="product-logo">
                         </div>
                         <div class="product-content">
                             <h3>CROMO Manufacturing</h3>
                             <p class="product-tagline">Gestión de control de lotes de producción</p>
                             <p class="product-description">
-                                Si su rentabilidad depende de la precisión en la dosificación y la trazabilidad impecable, no puede permitirse el error del papel o de la vulneravilidad de hojas de calculo. Las desviaciones en la materia prima o los cuellos de botella no detectados matan su margen.
+                                Si su rentabilidad depende de la precisión en la dosificación y la trazabilidad impecable, no puede permitirse el error del papel. Las desviaciones en la materia prima matan su margen.
                             </p>
                             <ul class="product-features">
                                 <li><i class="fas fa-check"></i> Manejo simplificado de Stock</li>
                                 <li><i class="fas fa-check"></i> Monitoriza tus operaciones en tiempo real</li>
-                                <li><i class="fas fa-check"></i> Generación automaticas de Informes profesionales</li>
+                                <li><i class="fas fa-check"></i> Generación automatica de Informes</li>
                                 <li><i class="fas fa-check"></i> Base de Datos Segura</li>
                             </ul>
-                            <!-- Enlace a la carpeta del producto -->
                             <a href="/catalogo/cromo/" class="btn btn-primary btn-product">Ver Demo y Detalles</a>
                         </div>
                     </article>
@@ -221,253 +190,85 @@
             </div>
         </section>
 
-          <!-- =========================================
-            SECCIÓN DE CONSULTORES (Revisada y Ordenada)
-        ========================================= -->
-        <section id="consultoria-estrategica" class="landing-page-wrapper team-section">
-            <div class="consultants-container">
-
-                <div class="section-header">
-                    <h2 class="section-title">Nuestros Aliados y Consultores Estratégicos</h2>
-                    <p class="section-subtitle">Conoce al equipo de expertos listos para impulsar tu negocio.</p>
+        <section id="consultoria-preview" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                
+                <div class="section-header text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Directorio de Aliados Estratégicos</h2>
+                    <p class="text-gray-600 mt-2 text-lg">Un ecosistema de expertos validado para cada área crítica de su empresa.</p>
                 </div>
 
-                <div class="team-layout">
-                    
-                    <!-- SIDEBAR DE FILTROS -->
-                    <aside class="sidebar-filters">
-                        <div class="sidebar-title">Especialidad</div>
-                        <div class="filter-group" id="consultant-filters">
-                            <label><input type="checkbox" value="appsheet" class="consultant-filter"> Desarrollo AppSheet</label>
-                            <label><input type="checkbox" value="datos" class="consultant-filter"> Análisis de Datos (BI)</label>
-                            <label><input type="checkbox" value="empresas" class="consultant-filter"> Desarrollo Empresarial</label>
-                            <label><input type="checkbox" value="procesos" class="consultant-filter"> Optimización de Procesos</label>
-                            <label><input type="checkbox" value="calidad" class="consultant-filter"> Gestión de Calidad</label>
-                            <label><input type="checkbox" value="sanidad" class="consultant-filter"> Saneamiento Industrial</label>
-                            <label><input type="checkbox" value="logistica" class="consultant-filter"> Logística y Operaciones</label>
-                            <label><input type="checkbox" value="medicina" class="consultant-filter"> Sector Salud</label>
-                            <label><input type="checkbox" value="finanzas" class="consultant-filter"> Finanzas</label>
-                            <label><input type="checkbox" value="seguridad" class="consultant-filter"> Seguridad Industrial</label>
-                            <label><input type="checkbox" value="cloud" class="consultant-filter"> Google Cloud</label>
-                            <label><input type="checkbox" value="ventas" class="consultant-filter"> Ventas y Retail</label>
-                        </div>
-                    </aside>
-
-                    <main class="team-content">
-                        <div class="search-bar-container">
-                            <input type="text" id="consultantSearchInput" class="search-input" placeholder="Buscar consultor por nombre o área...">
-                        </div>
+                <div class="swiper mySwiperTeam pb-14 px-4">
+                    <div class="swiper-wrapper">
                         
-                        <div class="consultants-grid" id="consultantsGrid">
-                            
-                            <!-- 1. Ing. Ana Tarazona -->
-                            <a href="https://wa.me/+584124801636" class="consultant-card" 
-                            data-category="empresas procesos calidad sanidad" data-name="Ing. Ana Tarazona">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-ana-tarazona.png" alt="Foto de Ing. Ana Tarazona" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Ana Tarazona</span>
-                                    <span class="consultant-title">Sistemas de Gestión de Calidad | Servicios INMESOT, C.A.</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Higienización técnica de líneas industriales críticas</li>
-                                        <li><i class="fas fa-check"></i> Mantenimiento especializado de tanques grado alimenticio</li>
-                                        <li><i class="fas fa-check"></i> Estandarización de procesos (FSSC 22000 / ISO 22000)</li>
-                                        <li><i class="fas fa-check"></i> Protocolos de inocuidad para consumo masivo</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-calidad">Calidad</span>
-                                        <span class="tag tag-procesos">Procesos</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 2. Dra. Jessika Larez -->
-                            <a href="https://wa.me/+584124518035" class="consultant-card" 
-                            data-category="empresas procesos medicina salud" data-name="Dra. Jessika Larez">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-jessika-larez.jpg" alt="Foto de Jessika Larez" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Dra. Jessika Larez</span>
-                                    <span class="consultant-title">Consultor en Habilitación Sanitaria | Dra. Jessika Larez F.P.</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Diseño e implementación de Centros Diagnósticos</li>
-                                        <li><i class="fas fa-check"></i> Desarrollo de Servicios Médicos Ocupacionales</li>
-                                        <li><i class="fas fa-check"></i> Modelos de Atención Primaria de Salud (APS) corporativa</li>
-                                        <li><i class="fas fa-check"></i> Garantía de cumplimiento normativo sanitario</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-medicina">Salud</span>
-                                        <span class="tag tag-empresas">Gestión</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 3. Ing. José David Betancourt Pineda -->
-                            <a href="/consultores/david-bethancourt.html" class="consultant-card" 
-                            data-category="empresas procesos estrategia derecho" data-name="Ing. José David Betancourt Pineda">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-jose-david-betancourt.jpeg" alt="Foto de Ing. José David Betancourt Pineda" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. José David Betancourt P.</span>
-                                    <span class="consultant-title">General Manager | Estratega Corporativo</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Dirección estratégica de corporaciones y franquicias</li>
-                                        <li><i class="fas fa-check"></i> Transformación hacia economía circular y hábitat sostenible</li>
-                                        <li><i class="fas fa-check"></i> Consultoría integral: Ingeniería, Derecho y Psicología</li>
-                                        <li><i class="fas fa-check"></i> Gobernanza corporativa y marcos legales</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-logica">Estrategia</span>
-                                        <span class="tag tag-info">Derecho</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 4. Lcdo. Javier Figueroa -->
-                            <a href="https://www.linkedin.com/in/javier-silverio-figueroa-reyes-235aab102/" class="consultant-card" 
-                            data-category="finanzas empresas procesos" data-name="Lcdo. Javier Figueroa">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-javier-figueroa.png" alt="Foto de Javier Figueroa" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Lcdo. Javier Figueroa</span>
-                                    <span class="consultant-title">Consultor Financiero | Smart Solutions</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Optimización de flujo de caja y gestión de liquidez</li>
-                                        <li><i class="fas fa-check"></i> Diseño y control de estructuras de costos operativos</li>
-                                        <li><i class="fas fa-check"></i> Planificación financiera y presupuestaria estratégica</li>
-                                        <li><i class="fas fa-check"></i> Análisis de rentabilidad de inversiones</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-finanzas">Finanzas</span>
-                                        <span class="tag tag-empresas">Negocios</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 5. Ing. Leandro Marrugo -->
-                            <a href="https://wa.me/+584244285395" class="consultant-card" 
-                            data-category="empresas logistica transporte" data-name="Ing. Leandro Marrugo">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-leandro-marrugo.jpeg" alt="Foto de Ing. Leandro Marrugo" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Leandro Marrugo</span>
-                                    <span class="consultant-title">Consultor de Logística y Cadena de Suministro</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Optimización estratégica de flotas de transporte</li>
-                                        <li><i class="fas fa-check"></i> Control y gestión técnica de carga portuaria</li>
-                                        <li><i class="fas fa-check"></i> Sincronización de procesos operativos nacionales</li>
-                                        <li><i class="fas fa-check"></i> Reducción de costos mediante estadística</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-logistica">Logística</span>
-                                        <span class="tag tag-procesos">Operaciones</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 6. Ing. Mariam Castro -->
-                            <a href="https://wa.me/+584127269139" class="consultant-card" 
-                            data-category="empresas procesos seguridad" data-name="Ing. Mariam Castro">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-mariam-castro.jpeg" alt="Foto de Ing. Mariam Castro" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Mariam Castro</span>
-                                    <span class="consultant-title">Consultoría en Capital Humano y EHS | Autana Ingenieros</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Consultoría integral en Seguridad y Salud (SSST)</li>
-                                        <li><i class="fas fa-check"></i> Gestión estratégica de RRHH y nóminas</li>
-                                        <li><i class="fas fa-check"></i> Diplomados y programas de formación técnica</li>
-                                        <li><i class="fas fa-check"></i> Asesoría en cumplimiento legal in-company</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-seguridad">Seguridad</span>
-                                        <span class="tag tag-empresas">RRHH</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 7. Ing. Nestor Santos -->
-                            <a href="/consultores/nestor-santos.html" class="consultant-card" 
-                            data-category="appsheet empresas datos procesos cloud" data-name="Ing. Nestor Santos">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-nestor-santos.png" alt="Foto de Nestor Santos" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Nestor Santos</span>
-                                    <span class="consultant-title">Consultor de Negocios | Gammaliel Analytics</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Visualización y analítica de datos en Power BI</li>
-                                        <li><i class="fas fa-check"></i> Digitalización de procesos con AppSheet</li>
-                                        <li><i class="fas fa-check"></i> Automatización mediante Google Apps Script</li>
-                                        <li><i class="fas fa-check"></i> Ecosistemas escalables en Google Cloud</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-appsheet">AppSheet</span>
-                                        <span class="tag tag-datos">Datos</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 8. Ing. Roque Figuera -->
-                            <a href="https://wa.me/+584128571075" class="consultant-card" 
-                            data-category="empresas procesos seguridad" data-name="Ing. Roque Figuera">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-roque-figuera.png" alt="Foto de Ing. roque figuera" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Ing. Roque Figuera</span>
-                                    <span class="consultant-title">Consultor de Seguridad y Salud | Asesorías Figuera</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Gestión integral de riesgos y seguridad ocupacional</li>
-                                        <li><i class="fas fa-check"></i> Control ágil de permisologías y cumplimiento legal</li>
-                                        <li><i class="fas fa-check"></i> Formación técnica para equipos de alto riesgo</li>
-                                        <li><i class="fas fa-check"></i> Auditoría y diseño de planes de gestión preventiva</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-seguridad">Seguridad</span>
-                                        <span class="tag tag-procesos">Normativa</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <!-- 9. Lcdo. Victor Zavala -->
-                            <a href="https://wa.me/+584123485776" class="consultant-card" 
-                            data-category="ventas retail empresas" data-name="Lcdo. Victor Zavala">
-                                <div class="consultant-photo-placeholder">
-                                    <img src="/assets/img/staff-victor-zavala.png" alt="Foto de Lcdo. Victor Zavala" class="consultant-photo">
-                                </div>
-                                <div class="consultant-info">
-                                    <span class="consultant-name">Lcdo. Victor Zavala</span>
-                                    <span class="consultant-title">Consultor de Ventas | Especialista Retail</span>
-                                    <ul class="product-features">
-                                        <li><i class="fas fa-check"></i> Estrategias de expansión en canales Retail</li>
-                                        <li><i class="fas fa-check"></i> Apertura y consolidación de redes de distribución</li>
-                                        <li><i class="fas fa-check"></i> Formación de equipos de ventas de alto impacto</li>
-                                        <li><i class="fas fa-check"></i> Posicionamiento de marca y ejecución en punto de venta</li>
-                                    </ul>
-                                    <div class="consultant-tags">
-                                        <span class="tag tag-ventas">Ventas</span>
-                                        <span class="tag tag-empresas">Retail</span>
-                                    </div>
-                                </div>
-                            </a>
-
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-ana-tarazona.png" alt="Ing. Ana Tarazona" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Ing. Ana Tarazona</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Calidad & Procesos</p>
+                                <p class="text-xs text-gray-500">Especialista en Normas ISO y FSSC 22000.</p>
+                            </div>
                         </div>
-                        <div id="noConsultantsResults" class="no-results">No se encontraron consultores con ese criterio.</div>
-                    </main>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-jose-david-betancourt.jpeg" alt="Ing. David Betancourt" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Ing. David Betancourt</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Estrategia Corporativa</p>
+                                <p class="text-xs text-gray-500">Gobernanza, Derecho y Psicología Organizacional.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-javier-figueroa.png" alt="Lcdo. Javier Figueroa" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Lcdo. Javier Figueroa</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Finanzas & Costos</p>
+                                <p class="text-xs text-gray-500">Optimización de flujo de caja y rentabilidad.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-mariam-castro.jpeg" alt="Ing. Mariam Castro" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Ing. Mariam Castro</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Seguridad & RRHH</p>
+                                <p class="text-xs text-gray-500">Gestión de riesgos, Salud Ocupacional y Talento Humano.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-nestor-santos.png" alt="Ing. Nestor Santos" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Ing. Nestor Santos</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Data & Cloud</p>
+                                <p class="text-xs text-gray-500">Consultoría en Power BI, AppSheet y Google Cloud.</p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="bg-white rounded-xl shadow-lg p-8 text-center h-full border-t-4 border-blue-600 flex flex-col items-center justify-center transition-transform hover:-translate-y-2">
+                                <img src="/assets/img/staff-telecoe.png" alt="Ing. Angelo Gonzalez" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-gray-100 shadow-sm">
+                                <h3 class="font-bold text-lg text-gray-900">Ing. Angelo Gonzalez</h3>
+                                <p class="text-sm text-blue-600 font-bold uppercase tracking-wider mb-2">Sistemas & Redes</p>
+                                <p class="text-xs text-gray-500">Infraestructura IT, Servidores y Telefonía VoIP.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
+
+                <div class="text-center mt-10">
+                    <a href="/directorio-consultores/" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold leading-6 text-white transition duration-150 ease-in-out bg-blue-700 rounded-full shadow-xl hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue md:py-4 md:text-lg md:px-10">
+                        Explorar el Directorio Completo de Expertos 
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <p class="mt-4 text-sm text-gray-500">Encuentre al especialista ideal para su sector.</p>
+                </div>
+
             </div>
         </section>
-
-         <!-- =========================================
-            Contenido Especializado
-        ========================================= -->
 
         <section id="contenido" class="content-section bg-secondary">
             <div class="container">
@@ -526,9 +327,6 @@
             </div>
         </section>
 
-         <!-- ================================================== --> 
-        <!-- =========== TESTIMONIOS (PRUEBA SOCIAL) ========== -->
-        <!-- ================================================== -->
         <section id="testimonials" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="section-header">
@@ -537,7 +335,6 @@
 
                 <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
 
-                    <!-- Testimonio 1 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md"> 
                         <div class="flex items-center">
                             <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/laboratorio-jireh.jpg" alt="Foto de laboraotrio clinico Jireh">
@@ -549,7 +346,6 @@
                         <p class="text-gray-600 italic text-lg mb-6  m-5"><span class="comilla-grande izquierda">“</span>... ¡Muy bien!, ¡puedo pasar los resultados de forma automatizada y se genera una base de datos que es lo mas importante!...<span class="comilla-grande derecha">”</span></p>
                     </div>
 
-                    <!-- Testimonio 2 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md">
                         <div class="flex items-center">
                             <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/gracia-y-fe-laboratorios.PNG" alt="Laboratorio Clinico Gracia y Fe">
@@ -559,10 +355,8 @@
                             </div>
                         </div>
                         <p class="text-gray-600 italic text-lg mb-6 m-5"><span class="comilla-grande izquierda">“</span>... me encanta que puedo tener todo ordenado y poder guardar los pacientes...<span class="comilla-grande derecha">”</span></p>
-
                     </div>
 
-                    <!-- Testimonio 3 -->
                     <div class="bg-secondary p-8 rounded-lg shadow-md">
                         <div class="flex items-center">
                             <img class="w-16 h-16 rounded-full object-cover mr-4" src="/img/lab-reporter/testimonials/alofer-lab.PNG" alt="Laboratorio clinico Alofer Lab">
@@ -578,11 +372,6 @@
             </div>
         </section>
 
-       
-
-        <!-- =========================================
-            CTA
-        ========================================= -->
         <section class="cta-footer-section">
             <div class="container">
                 <h2>¿Listo para digitalizar y optimizar la toma de decisiones en su empresa?</h2>
@@ -591,9 +380,6 @@
             </div>
         </section>
         
-        <!-- =========================================
-            FOOTER
-        ========================================= -->
         <div id="footer-placeholder"></div>
 
     </div> 
@@ -602,6 +388,40 @@
     <script>
         loadComponent('header-placeholder', 'components/header.html'); 
         loadComponent('footer-placeholder', 'components/footer.html');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var swiper = new Swiper(".mySwiperTeam", {
+                slidesPerView: 1, // 1 slide en móviles
+                spaceBetween: 20,
+                loop: true, // Carrusel infinito
+                grabCursor: true, // Cursor de manito
+                autoplay: {
+                    delay: 3500, // Tiempo de espera
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true, // Pausar si el usuario pone el mouse encima
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2, // 2 slides en tablets pequeñas
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3, // 3 slides en tablets
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 4, // 4 slides en escritorio
+                        spaceBetween: 30,
+                    },
+                },
+            });
+        });
     </script>
 
     <a 
@@ -616,5 +436,4 @@
     </a>
 
 </body>
-
 </html>

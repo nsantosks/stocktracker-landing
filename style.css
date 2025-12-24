@@ -631,6 +631,64 @@ body {
 }
 .landing-page-wrapper .btn-large:hover { background-color: #f57c00; transform: translateY(-3px); }
 
+/* --- 4.7 CTA Footer Section --- */
+
+/* Efecto de resplandor sutil para el Plan Profesional (Cloud) */
+.plan-cloud-premium {
+    position: relative;
+    border: 2px solid var(--primary-color) !important;
+    overflow: hidden;
+}
+
+.plan-cloud-premium::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(25, 118, 210, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Animación sutil de levitación para el banner "Más Popular" */
+.popular-badge-anim {
+    animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+    0%, 100% { transform: translate(-50%, -4px); }
+    50% { transform: translate(-50%, -8px); }
+}
+
+/* Estilo para los iconos de AppSheet en la tabla de precios */
+.pricing-icon-cloud {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #e0f2fe 100%);
+    color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-right: 12px;
+}
+
+/* Resalte de texto para beneficios Cloud */
+.text-cloud-feature {
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* Media Query para pantallas pequeñas en Pricing */
+@media (max-width: 1024px) {
+    .landing-page-wrapper .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+}
+
 /* ============================================================= */
 /* == 5. MÓDULO: BIBLIOTECA APPSHEET == */
 /* ============================================================= */

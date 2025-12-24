@@ -432,10 +432,54 @@ body {
 }
 .landing-page-wrapper .video-link:hover { color: #ff0000; }
 
-/* Estilo Productos */
-.landing-page-wrapper .product-card {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.04); position: relative;
+/* ============================================================= */
+/* == 4.4 GRIDS Y TARJETAS (VERSION CARRUSEL OPTIMIZADO) == */
+/* ============================================================= */
+
+.landing-page-wrapper .services-section,
+.landing-page-wrapper .content-section,
+.landing-page-wrapper .products-section,
+.landing-page-wrapper .credibility-section { padding: 100px 0; }
+
+.landing-page-wrapper .products-section { background-color: #f8fafc; }
+
+/* Grids (Para Servicios y Blog) */
+.landing-page-wrapper .services-grid, 
+.landing-page-wrapper .content-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;
 }
+
+/* --- ESTRUCTURA DEL CARRUSEL DE PRODUCTOS (SWIPER) --- */
+.mySwiperProducts {
+    padding-bottom: 50px !important; /* Espacio para los puntos de paginación */
+}
+
+.mySwiperProducts .swiper-slide {
+    display: flex;
+    height: auto; /* Permite que el carrusel se ajuste al contenido */
+}
+
+/* --- TARJETA DE PRODUCTO (CONSOLIDADA) --- */
+.landing-page-wrapper .product-card {
+    background: #fff; 
+    border-radius: 16px; 
+    transition: all 0.3s ease;
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    border: 1px solid rgba(0,0,0,0.04); 
+    position: relative;
+    width: 100%;
+    height: 100%; /* Obliga a todas las tarjetas a medir lo mismo */
+}
+
+.landing-page-wrapper .product-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Elementos Internos de la Tarjeta */
 .landing-page-wrapper .product-badge {
     position: absolute; top: 20px; right: 20px;
     background-color: var(--color-secondary); color: white;
@@ -443,32 +487,115 @@ body {
     text-transform: uppercase; z-index: 10;
 }
 .landing-page-wrapper .product-badge.new { background-color: #2e7d32; }
+
 .landing-page-wrapper .product-logo-area {
     background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
     padding: 40px 20px; text-align: center; border-bottom: 1px solid #f0f0f0;
 }
+
 .landing-page-wrapper .product-logo {
     height: 70px; width: auto; object-fit: contain; transition: transform 0.3s;
 }
 .landing-page-wrapper .product-card:hover .product-logo { transform: scale(1.1); }
+
 .landing-page-wrapper .product-content {
     padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: center;
 }
+
 .landing-page-wrapper .product-content h3 {
     font-size: 1.8em; color: var(--color-primary); margin: 0 0 5px 0; font-weight: 800;
 }
+
 .landing-page-wrapper .product-tagline {
     color: var(--color-secondary); font-weight: 700; font-size: 0.9em; text-transform: uppercase; margin-bottom: 20px;
 }
+
 .landing-page-wrapper .product-features {
     list-style: none; padding: 15px; margin: 0 0 30px 0; text-align: left;
     background: #f9f9f9; border-radius: 10px;
 }
+
 .landing-page-wrapper .product-features li {
     margin-bottom: 8px; font-size: 0.9em; color: #555; display: flex; align-items: center; gap: 10px;
 }
+
 .landing-page-wrapper .product-features li i { color: var(--color-primary); }
-.landing-page-wrapper .btn-product { width: 100%; margin-top: auto; padding: 12px; }
+
+.landing-page-wrapper .btn-product { 
+    width: 100%; 
+    margin-top: auto; /* Empuja el botón siempre al final */
+    padding: 12px; 
+}
+
+/* --- CONTROLES SWIPER PERSONALIZADOS PARA PRODUCTOS --- */
+.mySwiperProducts .swiper-button-next, 
+.mySwiperProducts .swiper-button-prev {
+    color: var(--primary-color) !important;
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.mySwiperProducts .swiper-button-next::after, 
+.mySwiperProducts .swiper-button-prev::after {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.mySwiperProducts .swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+}
+
+/* Estilo Servicios y Blog (Restante) */
+.landing-page-wrapper .service-card {
+    text-align: center; padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 5px solid var(--color-primary);
+    background: #fff; border-radius: 16px; transition: all 0.3s ease;
+}
+
+.landing-page-wrapper .service-card h3 {
+    margin-top: 15px; color: var(--text-main); font-size: 1.5em; font-weight: 800; margin-bottom: 15px;
+}
+
+.landing-page-wrapper .service-link {
+    display: inline-block; color: var(--color-primary); font-weight: 700; text-decoration: none;
+}
+
+/* Modificador Dark Mode para Servicios */
+.services-section.bg-blue-dark {
+    background-color: var(--primary-color);
+    color: var(--text-on-dark);
+    padding: 60px 20px;
+}
+.services-section.bg-blue-dark .section-header h2 { color: var(--text-on-dark); }
+.services-section.bg-blue-dark .section-subtitle,
+.services-section.bg-blue-dark p { color: rgba(255,255,255,0.9); }
+.services-section.bg-blue-dark .service-card p { color: var(--text-muted); }
+
+/* Estilo Contenido (Blog) */
+.landing-page-wrapper .content-card { text-align: left; border: 1px solid #eee; background: #fff; border-radius: 16px; transition: all 0.3s ease; }
+.landing-page-wrapper .content-card h3 {
+    color: var(--text-main); font-size: 1.3em; font-weight: 800; margin-bottom: 10px; line-height: 1.4;
+}
+.landing-page-wrapper .content-link {
+    display: inline-block; color: var(--color-primary); font-weight: 700; text-decoration: none; margin-top: auto;
+}
+.landing-page-wrapper .card-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+.landing-page-wrapper .card-footer {
+    padding: 15px 30px; background-color: #f9fafb; border-top: 1px solid #eee;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.landing-page-wrapper .tag {
+    background-color: rgba(255, 167, 38, 0.15); color: #e65100;
+    padding: 4px 10px; border-radius: 20px; font-size: 0.75em; font-weight: 700; text-transform: uppercase;
+}
+.landing-page-wrapper .video-link {
+    color: var(--text-muted); font-weight: 600; text-decoration: none; font-size: 0.85em;
+    display: flex; align-items: center; gap: 6px; transition: color 0.3s;
+}
+.landing-page-wrapper .video-link:hover { color: #ff0000; }
 
 /* --- 4.5 Secciones Especiales (Acordeón, Métricas, Testimonios) --- */
 

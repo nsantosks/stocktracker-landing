@@ -11,7 +11,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="/js/config.js"></script>
+    
 
     <style>
         /* == ESTILOS VISUALES == */
@@ -149,40 +151,47 @@
                 <button onclick="checkQuiz(3)" class="mt-8 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold w-full hover:bg-purple-600 transition-colors uppercase tracking-widest">Finalizar Certificación</button>
             </div>
 
-            <div id="finish-screen" class="module-content text-center py-12">
-                <div class="mb-6 medal-animation">
-                    <img src="/img/medal.png" alt="Logro Gammaliel" class="w-32 h-auto mx-auto drop-shadow-2xl" onerror="this.style.display='none'; document.getElementById('fallback-medal').style.display='flex'">
-                    <div id="fallback-medal" class="hidden w-28 h-28 bg-yellow-100 text-yellow-600 rounded-full items-center justify-center mx-auto border-4 border-yellow-300 shadow-xl"><i data-lucide="award" size="64"></i></div>
+            <div id="finish-screen" class="module-content py-12">
+                <div class="text-center mb-10">
+                    <div class="mb-6 medal-animation">
+                        <img src="/img/medal.png" alt="Logro" class="w-24 h-auto mx-auto drop-shadow-2xl">
+                    </div>
+                    <h2 class="text-4xl font-extrabold mb-2 text-blue-600 tracking-tight">¡Certificación Completada!</h2>
+                    <p class="text-slate-600">Has validado tu rigor analítico profesional.</p>
                 </div>
 
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-blue-600 tracking-tight">Certificación Completada</h2>
-                <p class="text-slate-600 mb-10 text-lg">Has validado tu rigor analítico profesional.</p>
-                
-                <div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-xl border mb-8 text-left">
-                    <label class="block text-sm font-bold mb-2 uppercase text-slate-500 text-xs tracking-widest">Nombre Completo:</label>
-                    <input type="text" id="user-name" class="w-full border-2 border-slate-200 p-3 rounded-xl mb-4 text-lg outline-none focus:border-blue-500 font-bold" placeholder="Ej. Eduardo Santos">
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch px-4">
                     
-                    <label class="block text-sm font-bold mb-2 uppercase text-slate-500 text-xs tracking-widest">Correo Electrónico:</label>
-                    <input type="email" id="user-email" class="w-full border-2 border-slate-200 p-3 rounded-xl mb-6 text-lg outline-none focus:border-blue-500" placeholder="Ej. contacto@empresa.com">
-                    
-                    <button onclick="processCompletion()" id="btn-complete" class="btn-action w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-lg mb-4 transition-all uppercase tracking-tighter">
-                        Generar Certificado Oficial
-                    </button>
-                    
-                    <div id="email-success-msg" class="hidden mt-4 p-3 bg-green-50 text-green-700 rounded-lg text-sm border border-green-200">
-                        <i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i> Toolkit enviado a tu correo exitosamente.
+                    <div id="form-container" class="bg-white p-8 rounded-3xl shadow-xl border transition-all duration-500 flex flex-col justify-center h-full">
+                        <div> <label class="block text-sm font-bold mb-2 uppercase text-slate-500 tracking-widest text-[10px]">Nombre Completo:</label>
+                            <input type="text" id="user-name" class="w-full border-2 border-slate-100 p-3 rounded-xl mb-4 text-lg outline-none focus:border-blue-500 font-bold" placeholder="Tu nombre">
+                            
+                            <label class="block text-sm font-bold mb-2 uppercase text-slate-500 tracking-widest text-[10px]">Correo Electrónico:</label>
+                            <input type="email" id="user-email" class="w-full border-2 border-slate-100 p-3 rounded-xl mb-6 text-lg outline-none focus:border-blue-500" placeholder="tu@correo.com">
+                            
+                            <button onclick="processCompletion()" id="btn-complete" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-lg transition-all uppercase tracking-tighter">
+                                Generar Certificado Oficial
+                            </button>
+                            
+                            <div id="email-success-msg" class="hidden mt-4 p-3 bg-green-50 text-green-700 rounded-lg text-sm border border-green-200 text-center">
+                                <i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i> Registro exitoso y toolkit enviado.
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mt-12 pt-8 border-t border-slate-200 text-center">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Su Insignia Digital para LinkedIn</p>
-                    <div id="badge-preview" class="mb-8 inline-block p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
-                        <canvas id="badgeCanvas" width="400" height="400" style="max-width: 200px; height: auto;" class="mx-auto drop-shadow-2xl"></canvas>
-                    </div>
-                    <div class="flex flex-col gap-3 max-w-xs mx-auto">
-                        <button onclick="downloadBadge()" class="flex items-center justify-center gap-2 bg-white text-blue-600 border-2 border-blue-600 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-sm">
-                            <i data-lucide="award" size="18"></i> Descargar Insignia
-                        </button>
+                    <div id="badge-section" class="hidden bg-white p-8 rounded-3xl shadow-xl border border-blue-100 text-center animate-in fade-in slide-in-from-right-8 duration-700 flex-col justify-center h-full">
+                        <div> <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">Recompensa Digital</p>
+                            
+                            <div class="mb-6 inline-block p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+                                <canvas id="badgeCanvas" width="400" height="400" style="max-width: 180px; height: auto;" class="mx-auto drop-shadow-xl"></canvas>
+                            </div>
+
+                            <button onclick="downloadBadge()" class="w-full flex items-center justify-center gap-2 bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-blue-600 transition-all shadow-lg">
+                                <i data-lucide="download" size="20"></i> Descargar Insignia
+                            </button>
+                            
+                            <p id="support-id-display" class="text-[10px] text-slate-400 font-mono mt-4 uppercase tracking-tighter"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,20 +202,41 @@
 
     <div id="certificate-placeholder" style="display:none;"></div>
 
+    <script src="/main.js"></script>
     <script>
         // === GESTIÓN DE COMPONENTES ===
         async function loadComponentRobust(id, path) {
             const el = document.getElementById(id);
             try {
                 const response = await fetch(path);
-                if (response.ok) { el.innerHTML = await response.text(); return true; }
-            } catch (err) { console.error(`Error: ${path}`); }
+                if (response.ok) { 
+                    // 1. Inyectamos el contenido
+                    el.innerHTML = await response.text(); 
+                    
+                    // 2. Lógica para el Menú (Si es el header)
+                    if (id === 'header-placeholder' && typeof initMobileMenu === 'function') {
+                        initMobileMenu(); 
+                    }
+
+                    // 3. Lógica para el Sello (Si es el certificado)
+                    if (id === 'certificate-placeholder') {
+                        const elSealYear = document.getElementById('cert-seal-year');
+                        if (elSealYear) {
+                            elSealYear.innerText = new Date().getFullYear();
+                        }
+                    }
+
+                    // 4. Ahora sí, retornamos éxito
+                    return true; 
+                }
+            } catch (err) { 
+                console.error(`Error cargando componente ${id}:`, err); 
+            }
             return false;
         }
 
         loadComponentRobust('header-placeholder', '/components/header.html'); 
         loadComponentRobust('footer-placeholder', '/components/footer.html');
-        // Pre-cargamos el certificado para que esté listo al imprimir
         loadComponentRobust('certificate-placeholder', '/components/certificate.html');
 
         // === LÓGICA DEL CURSO ===
@@ -256,12 +286,25 @@
             else { alert("Respuesta incorrecta. Revisa el contenido."); }
         }
 
+        // Variable global para persistir el ID una vez generado
+        let finalCertificateId = null;
+
         function finishCourse() {
             document.querySelectorAll('.module-content').forEach(m => m.classList.remove('active'));
             document.getElementById('finish-screen').classList.add('active');
             updateProgress(100);
-            createBadge(); // Generar insignia visual inicial
-            document.getElementById('user-name').addEventListener('input', createBadge); // Actualizar en tiempo real
+            
+            createBadge(); // Insignia inicial (VALIDATING...)
+            
+            // Listener para actualizar nombre en tiempo real
+            const nameInput = document.getElementById('user-name');
+            nameInput.addEventListener('input', () => {
+                // Solo actualizamos si aún no tenemos un ID definitivo
+                if (!finalCertificateId) {
+                    createBadge();
+                }
+            });
+            
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
@@ -270,77 +313,162 @@
             document.getElementById('progress-text').innerText = `Certificación: ${v}%`;
         }
 
-        // === INSIGNIA (CANVAS) ===
-        function createBadge() {
+        // === INSIGNIA (CANVAS) ACTUALIZADA CON ID ===
+        function createBadge(uniqueId = "VALIDATING...") {
             const canvas = document.getElementById('badgeCanvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            const name = document.getElementById('user-name').value.trim().split(' ')[0] || "PRO";
+            const name = document.getElementById('user-name').value.trim().split(' ')[0] || "EXPERT";
+            
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Fondo Circular Oscuro
             ctx.beginPath(); ctx.arc(200, 200, 190, 0, Math.PI * 2); ctx.fillStyle = '#0f172a'; ctx.fill();
+            
+            // Borde Dorado
             ctx.lineWidth = 14; ctx.strokeStyle = '#fbbf24'; ctx.stroke();
-            ctx.font = 'bold 22px sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'center'; ctx.fillText('• GAMMALIEL ACADEMY •', 200, 80);
-            ctx.font = 'bold 36px sans-serif'; ctx.fillStyle = '#ffffff'; ctx.fillText(name.toUpperCase(), 200, 235);
-            ctx.font = '600 18px sans-serif'; ctx.fillStyle = '#94a3b8'; ctx.fillText('PENSAMIENTO CRÍTICO', 200, 275);
-            ctx.font = 'bold 16px sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.fillText(`VALIDATED ${new Date().getFullYear()}`, 200, 320);
+            
+            // Textos
+            ctx.font = 'bold 22px sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'center'; 
+            ctx.fillText('• GAMMALIEL ACADEMY •', 200, 80);
+            
+            ctx.font = 'bold 36px sans-serif'; ctx.fillStyle = '#ffffff'; 
+            ctx.fillText(name.toUpperCase(), 200, 210); // Subimos un poco el nombre
+            
+            ctx.font = '600 18px sans-serif'; ctx.fillStyle = '#94a3b8'; 
+            ctx.fillText('PENSAMIENTO CRÍTICO', 200, 250);
+            
+            // ID DE VERIFICACIÓN (La clave para tu soporte)
+            ctx.font = 'bold 14px monospace'; ctx.fillStyle = '#fbbf24'; 
+            ctx.fillText(uniqueId, 200, 310);
+            
+            ctx.font = 'bold 12px sans-serif'; ctx.fillStyle = '#64748b'; 
+            ctx.fillText(`EMITIDO EN ${new Date().getFullYear()}`, 200, 340);
         }
 
+        // --- DESCARGA ROBUSTA ---
         function downloadBadge() {
             const canvas = document.getElementById('badgeCanvas');
+            const name = document.getElementById('user-name').value.trim() || "Expert";
             const link = document.createElement('a');
-            link.download = `Insignia_GA_${document.getElementById('user-name').value || 'Expert'}.png`;
-            link.href = canvas.toDataURL('image/png'); link.click();
+            link.download = `Certificacion_GA_${name.replace(/\s+/g, '_')}.png`;
+            link.href = canvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
-        // === PROCESO FINAL UNIFICADO ===
-        async function processCompletion() {
-            const name = document.getElementById('user-name').value.trim();
-            const email = document.getElementById('user-email').value.trim();
-            const btn = document.getElementById('btn-complete');
+        // --- FUNCIÓN DE CONFETI ---
+        function triggerConfetti() {
+            const duration = 3 * 1000;
+            const end = Date.now() + duration;
 
-            if (!name || !email) return alert("Por favor, ingresa tu nombre y correo.");
-
-            // Estado de carga visual
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
-            btn.disabled = true;
-
-            const uniqueId = 'GA-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
-            const fecha = new Date().toLocaleDateString();
-
-            // 1. Preparar Certificado (Frontend)
-            document.getElementById('cert-name').innerText = name.toUpperCase();
-            document.getElementById('cert-date').innerText = fecha;
-            document.getElementById('cert-id').innerText = "ID: " + uniqueId;
-            document.getElementById('cert-course-title').innerText = "Pensamiento Crítico en la Era de la IA";
-            
-            const qrContainer = document.getElementById("qrcode");
-            qrContainer.innerHTML = "";
-            new QRCode(qrContainer, { text: `https://gammalielanalytics.com/?id=${uniqueId}`, width: 85, height: 85, colorDark : "#0f172a", colorLight : "#ffffff" });
-
-            // 2. Enviar datos y correo (Backend) - Sin esperar respuesta para imprimir rápido
-            const scriptURL = GA_CONFIG.APPS_SCRIPT_URL; // Pega TU URL aquí si cambió
-            const datos = {
-                nombre: name, 
-                "email-participant": email,
-                curso: "Pensamiento Crítico e IA", 
-                "id-course": uniqueId };
-            
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(datos) })
-                .then(() => {
-                    document.getElementById('email-success-msg').classList.remove('hidden');
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.6 },
+                    colors: ['#2563eb', '#fbbf24', '#ffffff']
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.6 },
+                    colors: ['#2563eb', '#fbbf24', '#ffffff']
                 });
 
-            // 3. Imprimir Certificado
-            setTimeout(() => {
-                btn.innerHTML = 'Generar Certificado Oficial';
-                btn.disabled = false;
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+       // --- PROCESO DE COMPLETADO ---
+        async function processCompletion() {
+            const nameInput = document.getElementById('user-name');
+            const emailInput = document.getElementById('user-email');
+            const btn = document.getElementById('btn-complete');
+
+            if (!nameInput.value.trim() || !emailInput.value.trim()) return alert("Por favor, ingresa tus datos.");
+
+            // 1. BLOQUEO TOTAL (Anti-duplicados y post-edición)
+            nameInput.disabled = true;
+            emailInput.disabled = true;
+            btn.disabled = true;
+            
+            // Feedback visual de bloqueo
+            [nameInput, emailInput].forEach(el => el.classList.add('bg-slate-100', 'text-slate-400', 'cursor-not-allowed'));
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registrando...';
+
+            // 2. Generación de Identificadores
+            finalCertificateId = 'GA-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            
+            // 3. Preparar el Certificado (Contenido oculto para impresión)
+            // Nombre del participante
+            const certName = document.getElementById('cert-name');
+            if(certName) certName.innerText = nameInput.value.toUpperCase();
+            // Fecha de emisión
+            const fecha = new Date().toLocaleDateString();
+            const certDate = document.getElementById('cert-date');
+            if(certDate) certDate.innerText = fecha;
+            // ID del certificado
+            const certId = document.getElementById('cert-id');
+            if(certId) certId.innerText = "ID: " + finalCertificateId;
+            // Tipo de formación
+            const tipoFormacion = "Masterclass avanzada"; // Aquí puedes poner "Curso Profesional", "Taller Práctico", etc.
+            const elTrainingType = document.getElementById('cert-training-type');
+            if(elTrainingType) elTrainingType.innerText = tipoFormacion;
+            // Titulo del curso
+            const certCourseTitle = document.getElementById('cert-course-title');
+            if(certCourseTitle) certCourseTitle.innerText = "Pensamiento Crítico en la era de la IA";
+            // Generación de codigo QR
+            const qrContainer = document.getElementById("qrcode");
+            if(qrContainer) {
+                qrContainer.innerHTML = "";
+                new QRCode(qrContainer, { 
+                    text: `https://gammalielanalytics.com/?id=${finalCertificateId}`, 
+                    width: 85, height: 85, colorDark : "#0f172a", colorLight : "#ffffff" 
+                });
+            }
+            // 3.2 Actualizar el año en el Sello del Certificado
+            const currentYear = new Date().getFullYear(); // Captura el año actual (2025, 2026, etc.)
+            const elSealYear = document.getElementById('cert-seal-year');
+            if (elSealYear) elSealYear.innerText = currentYear;
+
+            // 4. Envío a Google Sheets
+            try {
+                await fetch(GA_CONFIG.APPS_SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify({
+                        nombre: nameInput.value,
+                        "email-participant": emailInput.value,
+                        curso: "Pensamiento Crítico en la era de la IA",
+                        "id-course": finalCertificateId
+                    }) 
+                });
+
+                // 5. CELEBRACIÓN Y DESBLOQUEO
+                document.getElementById('email-success-msg').classList.remove('hidden');
+                document.getElementById('badge-section').classList.replace('hidden', 'flex');
+                document.getElementById('support-id-display').innerText = `ID DE SOPORTE: ${finalCertificateId}`;
                 
-                // Mostrar contenedor del certificado SOLO para impresión
-                const certSlot = document.getElementById('certificate-placeholder');
-                certSlot.style.display = 'block'; // Necesario para que QRCode se renderice bien antes de imprimir
-                window.print();
-                // Ocultar de nuevo tras imprimir (opcional, el CSS ya lo maneja para pantalla normal)
-            }, 1000);
+                createBadge(finalCertificateId);
+                triggerConfetti(); // <--- ¡Confeti aquí!
+
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Certificado Emitido';
+                    window.print();
+                }, 1200);
+
+            } catch (e) {
+                alert("Error de red. Intenta de nuevo.");
+                btn.disabled = false;
+                nameInput.disabled = false;
+            }
         }
     </script>
 </body>

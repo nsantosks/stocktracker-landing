@@ -594,24 +594,24 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.nav-links');
 
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', function() {
-                    // Alterna la animación de las barras (X)
-                    this.classList.toggle('is-active');
-                    // Alterna la visibilidad del menú
-                    navLinks.classList.toggle('active');
-                });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                // Alterna la animación de las barras (X)
+                this.classList.toggle('is-active');
+                // Alterna la visibilidad del menú
+                navLinks.classList.toggle('active');
+            });
 
-                // Opcional: Cerrar el menú automáticamente al hacer clic en un enlace
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        menuToggle.classList.remove('is-active');
-                        navLinks.classList.remove('active');
-                    });
+            // Opcional: Cerrar el menú automáticamente al hacer clic en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('is-active');
+                    navLinks.classList.remove('active');
                 });
-            }
+            });
+        }
             
         // ---- LÓGICA SMOOTH SCROLL ----
         const anchorLinks = document.querySelectorAll('a[href^="#"]');

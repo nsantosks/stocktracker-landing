@@ -1,14 +1,13 @@
 <style>
-    /* Importación de fuentes premium */
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
+    /* 1. Importación de fuentes premium */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700;800&display=swap');
 
-    /* CONFIGURACIÓN CRÍTICA DE IMPRESIÓN */
+    /* 2. Configuración para Impresión */
     @media print {
         @page { 
             size: landscape; 
-            margin: 0; /* Elimina márgenes físicos del papel */
+            margin: 0; 
         }
-        
         html, body {
             margin: 0;
             padding: 0;
@@ -16,32 +15,25 @@
             width: 100%;
             background: #fff;
         }
-
         .cert-print-wrapper {
             visibility: visible !important;
             display: flex !important;
-            /* Usamos unidades absolutas de página para evitar el desfase de las imágenes */
             width: 100%;
             height: 100%;
             position: fixed;
             top: 0;
             left: 0;
-            margin: 0;
-            padding: 0;
             justify-content: center;
             align-items: center;
-            background: white;
             z-index: 9999;
-            box-sizing: border-box;
         }
-        
         .cert-print-wrapper * { visibility: visible !important; }
     }
 
-    /* Diseño Visual Refinado (Ajustado para ocupar el máximo espacio) */
+    /* 3. Estructura del Contenedor Principal */
     .cert-container {
-        width: 96%; /* Aumentamos ligeramente el ancho para reducir bordes */
-        height: 94%; /* Aumentamos ligeramente el alto */
+        width: 27cm; /* Estándar para Landscape */
+        height: 19cm;
         border: 4px solid #0f172a; 
         padding: 6px;
         box-sizing: border-box;
@@ -49,6 +41,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        margin: auto;
     }
 
     .cert-inner-frame {
@@ -62,9 +56,10 @@
         padding: 40px;
         text-align: center;
         box-sizing: border-box;
+        position: relative;
     }
 
-    /* Estilos de Texto según REV02.pdf */
+    /* 4. Estilos de Texto */
     .cert-title {
         font-family: 'Cinzel', serif;
         letter-spacing: 12px;
@@ -84,7 +79,7 @@
 
     .cert-recipient {
         font-family: 'Libre Baskerville', serif;
-        font-size: 4.5rem; /* Ajustado para mejor legibilidad */
+        font-size: 4.5rem;
         color: #1d4ed8; 
         font-weight: 700;
         margin: 15px 0;
@@ -95,7 +90,7 @@
 
     .cert-course-info {
         font-family: 'Inter', sans-serif;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         max-width: 800px;
         line-height: 1.6;
         color: #334155;
@@ -104,15 +99,16 @@
     .cert-course-title {
         font-family: 'Inter', sans-serif;
         font-weight: 800;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: #0f172a;
         display: block;
         margin-top: 5px;
         text-transform: uppercase;
     }
 
+    /* 5. Footer Layout (Firmas, QR y Sello) */
     .cert-footer-layout {
-        margin-top: 40px;
+        margin-top: 60px;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
@@ -120,6 +116,7 @@
     }
 
     .signature-box {
+        position: relative; /* Necesario para que el sello flote sobre esta caja */
         text-align: center;
         width: 260px;
     }
@@ -137,11 +134,73 @@
         color: #64748b;
     }
 
+    /* 6. ESTILO DEL SELLO (Derecha, Translúcido) */
+    .cert-seal {
+        position: absolute;
+        top: -85px; /* Ajustado para "pisar" la fecha ligeramente */
+        left: 50%;
+        transform: translateX(-50%) rotate(-12deg);
+        width: 130px;
+        height: 130px;
+        background: rgba(251, 191, 36, 0.35); /* Dorado suave translúcido */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        mix-blend-mode: multiply; /* Permite ver la fecha/ID a través del sello */
+        border: 2px solid rgba(180, 83, 9, 0.5);
+        z-index: 50;
+        pointer-events: none;
+    }
+
+    .seal-inner {
+        width: 110px;
+        height: 110px;
+        border: 2px dashed rgba(180, 83, 9, 0.4);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .seal-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 8px;
+        font-weight: 800;
+        color: rgba(146, 64, 14, 0.8);
+        letter-spacing: 1px;
+        line-height: 1;
+    }
+
+    .seal-icon {
+        font-family: 'Cinzel', serif;
+        font-size: 18px;
+        font-weight: 800;
+        color: rgba(120, 53, 15, 0.9);
+        margin: 3px 0;
+        text-transform: uppercase;
+    }
+
+    .seal-year {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        color: rgba(146, 64, 14, 0.8);
+        border-top: 1px solid rgba(146, 64, 14, 0.3);
+        margin-top: 2px;
+        padding-top: 2px;
+    }
+
     .qr-column {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
+    }
+
+    #qrcode img {
+        margin: 0 auto;
     }
 
     .qr-text {
@@ -152,12 +211,31 @@
         text-transform: uppercase;
         font-weight: 700;
     }
+
+    /* Estilo para la imagen de la firma */
+    .cert-signature-img {
+        position: absolute;
+        bottom: -15px; /* Ajusta este valor para que la firma "pise" la línea */
+        left: 50%;
+        transform: translateX(-50%);
+        height: 200px; /* Tamaño sugerido, ajústalo según tu firma */
+        width: auto;
+        z-index: 20;
+        
+        /* Efecto de mezcla para que parezca tinta real sobre papel */
+        mix-blend-mode: multiply;
+        
+        /* Evita que el usuario pueda arrastrar la imagen por error */
+        pointer-events: none; 
+    }
+
 </style>
 
-<div id="certificate-view" class="hidden cert-print-wrapper">
-    <div class="cert-container" style="width: 27cm; height: 19cm; margin: auto;">
+<div id="certificate-view" class="cert-print-wrapper">
+    <div class="cert-container">
         <div class="cert-inner-frame">
-            <img src="/img/logo-header.png" alt="Gammaliel Analytics" style="height: 75px; margin-bottom: 20px;">
+            
+            <img src="/img/logo-header.png" alt="Gammaliel Analytics" style="height: 175px; margin-bottom: -5px;">
             
             <h1 class="cert-title">Certificado de Realización</h1>
             
@@ -166,13 +244,15 @@
             <h2 id="cert-name" class="cert-recipient">NOMBRE</h2>
             
             <p class="cert-course-info">
-                Por haber completado satisfactoriamente y demostrado excelencia técnica en la Masterclass avanzada:
+                Por haber completado satisfactoriamente 
+                <span id="cert-training-type">la certificación</span>:
                 <strong id="cert-course-title" class="cert-course-title">CURSO</strong>
             </p>
-            
+
             <div class="cert-footer-layout">
                 <div class="signature-box">
-                    <div class="signature-line">Gammaliel Analytics</div>
+                    <img src="/img/nsantos-firm-ga.png" alt="Firma Nestor Santos" class="cert-signature-img">
+                    <div class="signature-line">Ing. Nestor E. Santos P. </br> Gammaliel Analytics</div>
                     <div class="signature-sub">Business Intelligence & Data Science</div>
                 </div>
 
@@ -182,9 +262,18 @@
                 </div>
 
                 <div class="signature-box">
-                    <div id="cert-date" style="font-family: 'Inter', sans-serif; font-weight: 700; color: #0f172a; margin-bottom: 5px;">24/12/2025</div>
+                    <div class="cert-seal">
+                        <div class="seal-inner">
+                            <span class="seal-text">GAMMALIEL ACADEMY</span>
+                            <div class="seal-icon">Aprobado</div>
+                            <span id="cert-seal-year" class="seal-year">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div id="cert-date" style="font-family: 'Inter', sans-serif; font-weight: 700; color: #0f172a; margin-bottom: 5px;">25/12/2025</div>
                     <div id="cert-id" class="signature-line" style="font-size: 0.85rem; font-family: 'Courier New', monospace;">ID: PENDIENTE</div>
                 </div>
+
             </div>
         </div>
     </div>

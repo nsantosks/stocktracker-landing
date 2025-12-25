@@ -1,0 +1,191 @@
+<style>
+    /* Importación de fuentes premium */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
+
+    /* CONFIGURACIÓN CRÍTICA DE IMPRESIÓN */
+    @media print {
+        @page { 
+            size: landscape; 
+            margin: 0; /* Elimina márgenes físicos del papel */
+        }
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background: #fff;
+        }
+
+        .cert-print-wrapper {
+            visibility: visible !important;
+            display: flex !important;
+            /* Usamos unidades absolutas de página para evitar el desfase de las imágenes */
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            z-index: 9999;
+            box-sizing: border-box;
+        }
+        
+        .cert-print-wrapper * { visibility: visible !important; }
+    }
+
+    /* Diseño Visual Refinado (Ajustado para ocupar el máximo espacio) */
+    .cert-container {
+        width: 96%; /* Aumentamos ligeramente el ancho para reducir bordes */
+        height: 94%; /* Aumentamos ligeramente el alto */
+        border: 4px solid #0f172a; 
+        padding: 6px;
+        box-sizing: border-box;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cert-inner-frame {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #0f172a; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Estilos de Texto según REV02.pdf */
+    .cert-title {
+        font-family: 'Cinzel', serif;
+        letter-spacing: 12px;
+        color: #1e293b;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    .cert-subtitle {
+        font-family: 'Libre Baskerville', serif;
+        font-style: italic;
+        font-size: 1.4rem;
+        margin-top: 20px;
+        color: #475569;
+    }
+
+    .cert-recipient {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 4.5rem; /* Ajustado para mejor legibilidad */
+        color: #1d4ed8; 
+        font-weight: 700;
+        margin: 15px 0;
+        border-bottom: 2px solid #e2e8f0;
+        display: inline-block;
+        padding: 0 40px;
+    }
+
+    .cert-course-info {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        max-width: 800px;
+        line-height: 1.6;
+        color: #334155;
+    }
+
+    .cert-course-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: #0f172a;
+        display: block;
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+
+    .cert-footer-layout {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 90%;
+    }
+
+    .signature-box {
+        text-align: center;
+        width: 260px;
+    }
+
+    .signature-line {
+        border-top: 1px solid #94a3b8;
+        padding-top: 10px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .signature-sub {
+        font-size: 0.8rem;
+        color: #64748b;
+    }
+
+    .qr-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .qr-text {
+        font-size: 0.6rem;
+        color: #94a3b8;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+</style>
+
+<div id="certificate-view" class="hidden cert-print-wrapper">
+    <div class="cert-container" style="width: 27cm; height: 19cm; margin: auto;">
+        <div class="cert-inner-frame">
+            <img src="/img/logo-header.png" alt="Gammaliel Analytics" style="height: 75px; margin-bottom: 20px;">
+            
+            <h1 class="cert-title">Certificado de Realización</h1>
+            
+            <p class="cert-subtitle">Se otorga con distinción académica a:</p>
+            
+            <h2 id="cert-name" class="cert-recipient">NOMBRE</h2>
+            
+            <p class="cert-course-info">
+                Por haber completado satisfactoriamente y demostrado excelencia técnica en la Masterclass avanzada:
+                <strong id="cert-course-title" class="cert-course-title">CURSO</strong>
+            </p>
+            
+            <div class="cert-footer-layout">
+                <div class="signature-box">
+                    <div class="signature-line">Gammaliel Analytics</div>
+                    <div class="signature-sub">Business Intelligence & Data Science</div>
+                </div>
+
+                <div class="qr-column">
+                    <div id="qrcode"></div>
+                    <span class="qr-text">Escanea para validar</span>
+                </div>
+
+                <div class="signature-box">
+                    <div id="cert-date" style="font-family: 'Inter', sans-serif; font-weight: 700; color: #0f172a; margin-bottom: 5px;">24/12/2025</div>
+                    <div id="cert-id" class="signature-line" style="font-size: 0.85rem; font-family: 'Courier New', monospace;">ID: PENDIENTE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

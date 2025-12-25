@@ -1,0 +1,184 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Libre+Baskerville:ital,wght@0,400;0,700&family=Inter:wght@300;400;600;700&display=swap');
+
+    @media print {
+        @page { size: portrait; margin: 0; }
+        body { margin: 0; padding: 0; background: white; }
+        .toolkit-print-wrapper {
+            visibility: visible !important;
+            display: block !important;
+            position: absolute;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: white;
+            z-index: 10000;
+        }
+        .toolkit-print-wrapper * { visibility: visible !important; }
+    }
+
+    .toolkit-container {
+        font-family: 'Inter', sans-serif;
+        color: #1e293b;
+        padding: 50px;
+        box-sizing: border-box;
+        height: 100%;
+        background: white;
+        border: 15px solid #f1f5f9; /* Marco estético sutil */
+    }
+
+    .toolkit-header {
+        border-bottom: 3px solid #0f172a;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .toolkit-header h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 1.6rem;
+        color: #0f172a;
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .meta-data {
+        font-size: 0.75rem;
+        color: #64748b;
+        text-align: right;
+        line-height: 1.4;
+    }
+
+    .toolkit-section {
+        margin-bottom: 22px;
+    }
+
+    .toolkit-section h4 {
+        background: #0f172a;
+        color: white;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+    }
+
+    .check-list {
+        padding-left: 5px;
+    }
+
+    .check-item {
+        display: flex;
+        gap: 12px;
+        margin: 10px 0;
+        align-items: flex-start;
+        font-size: 0.92rem;
+        line-height: 1.4;
+    }
+
+    .check-box {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #cbd5e1;
+        border-radius: 3px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        background: #f8fafc;
+    }
+
+    .highlight {
+        font-weight: 700;
+        color: #1d4ed8;
+    }
+
+    .toolkit-footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+    }
+
+    .quote {
+        font-family: 'Libre Baskerville', serif;
+        font-style: italic;
+        font-size: 1rem;
+        color: #475569;
+        margin-bottom: 15px;
+    }
+
+    .brand-footer {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        letter-spacing: 1px;
+    }
+</style>
+
+<div id="toolkit-view" class="hidden toolkit-print-wrapper">
+    <div class="toolkit-container" style="width: 19cm; height: 27cm; margin: auto;">
+        
+        <div class="toolkit-header">
+            <div>
+                <img src="/img/logo-header.png" alt="Gammaliel Analytics" style="height: 55px; margin-bottom: 10px;">
+                <h2>Toolkit de Auditoría Crítica</h2>
+            </div>
+            <div class="meta-data">
+                <strong>VERSIÓN:</strong> 2.0 (Consultoría)<br>
+                <strong>FECHA:</strong> 25/12/2025<br>
+                <strong>DOCUMENTO:</strong> Soporte a la Decisión
+            </div>
+        </div>
+
+        <div class="toolkit-section">
+            <h4>I. Integridad del Origen (Provenance)</h4>
+            <div class="check-list">
+                <div class="check-item"><div class="check-box"></div> <span>¿Cuál es el <span class="highlight">incentivo o sesgo</span> potencial de la entidad que recolectó el dato?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>¿La métrica está midiendo lo que dice medir o es una <span class="highlight">"métrica de vanidad"</span>?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>¿Existen <span class="highlight">"datos faltantes"</span> (missing data) sistemáticos en la población?</span></div>
+            </div>
+        </div>
+
+        <div class="toolkit-section">
+            <h4>II. Rigor Estadístico y Muestreo</h4>
+            <div class="check-list">
+                <div class="check-item"><div class="check-box"></div> <span>¿Es el tamaño de la muestra representativo para el <span class="highlight">nivel de confianza</span> requerido?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>¿Se ha confundido la <span class="highlight">correlación con la causalidad</span> en el análisis?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>¿Se han identificado y tratado correctamente los <span class="highlight">valores atípicos</span> (outliers)?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>¿La <span class="highlight">escala de las gráficas</span> es íntegra? (ej. el eje Y comienza en cero).</span></div>
+            </div>
+        </div>
+
+        <div class="toolkit-section">
+            <h4>III. Auditoría de Sesgos Cognitivos</h4>
+            <div class="check-list">
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Sesgo de Confirmación:</span> ¿He buscado activamente datos que contradigan mi hipótesis?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Sesgo de Disponibilidad:</span> ¿Priorizo datos recientes sobre datos significativos?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Efecto de Encuadre:</span> ¿La conclusión cambiaría si se presentara como "pérdida" en lugar de "ganancia"?</span></div>
+            </div>
+        </div>
+
+        <div class="toolkit-section">
+            <h4>IV. Filtro de Inteligencia Artificial (IA)</h4>
+            <div class="check-list">
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Sesgo de Automatización:</span> ¿Acepto el resultado solo por ser "tecnológico"?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Alucinación:</span> ¿He verificado las fuentes o hechos clave reportados por el modelo?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span><span class="highlight">Transparencia:</span> ¿Es explicable la lógica detrás de la recomendación de la IA?</span></div>
+            </div>
+        </div>
+
+        <div class="toolkit-section">
+            <h4>V. Conclusión de Rigor</h4>
+            <div class="check-list">
+                <div class="check-item"><div class="check-box"></div> <span>¿Cuál es el <span class="highlight">margen de error</span> aceptable para esta decisión?</span></div>
+                <div class="check-item"><div class="check-box"></div> <span>Si esta decisión falla, ¿cuál sería la <span class="highlight">causa raíz</span> más probable?</span></div>
+            </div>
+        </div>
+
+        <div class="toolkit-footer">
+            <p class="quote">"Un buen analista no busca tener la razón, busca encontrar la verdad en los datos."</p>
+            <p class="brand-footer">
+                Gammaliel Analytics | Validado por: Nestor Santos | ID: GA-2026-TK
+            </p>
+        </div>
+    </div>
+</div>

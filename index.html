@@ -33,6 +33,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/config.js"></script>
 
 </head>
 <body>
@@ -269,8 +270,24 @@
                 </div>
 
                 <div class="content-grid">
-                    
+
                     <article class="content-card">
+                        <div class="card-body">
+                            <h3 class="highlight-title">Masterclass: Pensamiento Crítico e IA — Alfabetización Epistémica</h3>
+                            <p>Domine la arquitectura del pensamiento analítico. Aprenda a identificar sesgos cognitivos, mitigar errores de automatización y auditar la integridad de sus datos en la era de la Inteligencia Artificial.</p>
+                            <a href="/recursos/masterclass-pensamiento-critico.html" class="content-link font-bold text-blue-600">Iniciar Certificación Gratuita &rarr;</a>
+                        </div>
+                        <div class="card-footer">
+                            <span class="tag">IA</span>
+                            <span class="tag">Pensamiento Crítico</span>
+                            <span class="tag">Avanzado</span>
+                            <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link">
+                                Ver Masterclass en Video <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!--<article class="content-card">
                         <div class="card-body">
                             <h3>Guía Avanzada: Uso Estratégico de Expresiones IF() en AppSheet</h3>
                             <p>Descubra cómo anidar y optimizar sus sentencias IF para crear lógica de negocio compleja sin código. Incluye ejemplos y casos de uso avanzados.</p>
@@ -281,7 +298,7 @@
                             <span class="tag">Intermedio</span>
                             <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link">Ver Tutorial en Video <i class="fab fa-youtube"></i></a>
                         </div>
-                    </article>
+                    </article>-->
                     
                     <article class="content-card">
                         <div class="card-body">
@@ -310,13 +327,42 @@
                     </article>
 
                 </div>
+
+                <div class="content-cta-wrapper">
+                </div>
+
+                <section id="validador-certificado" class="container py-20 no-print">
+                    <div class="max-w-2xl mx-auto text-center">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6">Validador de Certificados</h2>
+                        <p class="text-slate-600 mb-8">Ingresa el ID de verificación para validar la autenticidad de un diploma emitido por Gammaliel Academy.</p>
+                        
+                        <div class="course-glass-card p-8 shadow-xl">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <input type="text" id="search-id" 
+                                    class="flex-1 border-2 border-slate-100 p-4 rounded-xl outline-none focus:border-blue-500 font-mono tracking-widest" 
+                                    placeholder="Ej: GA-2025-X7Y2Z9">
+                                <button onclick="validateCert()" 
+                                        class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="search" size="20"></i> Verificar
+                                </button>
+                            </div>
+
+                            <div id="search-result" class="mt-8 hidden">
+                                </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div class="content-cta-wrapper">
                     <a href="/biblioteca-appsheet/" class="btn-explore">
                         Explorar la Biblioteca Completa de Recursos <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
+
         </section>
+
+        
 
         <section id="testimonials" class="py-20 bg-white">
             <div class="container mx-auto px-6">
@@ -432,6 +478,87 @@
                     },
                 },
             });
+        });
+    </script>
+
+    <script>
+        // 1. Función Principal de Validación (Se mantiene igual pero optimizada)
+        async function validateCert(autoId = null) {
+            const idInput = autoId || document.getElementById('search-id').value.trim();
+            const resultDiv = document.getElementById('search-result');
+            const scriptURL = GA_CONFIG.APPS_SCRIPT_URL;
+
+            if (!idInput) return alert("Por favor ingresa un ID.");
+
+            // Si es búsqueda manual, ponemos el ID en el input por si acaso
+            document.getElementById('search-id').value = idInput;
+
+            // Mostrar estado de carga
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = `
+                <div class="flex items-center justify-center gap-3 p-6 bg-blue-50 border-2 border-blue-100 rounded-2xl">
+                    <div class="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-blue-600 font-bold uppercase tracking-widest text-xs">Consultando base de datos oficial...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: "validate", id_to_search: idInput })
+                });
+                
+                const data = await response.json();
+
+                if (data.found) {
+                    resultDiv.innerHTML = `
+                        <div class="bg-green-50 border-2 border-green-200 p-6 rounded-2xl text-left animate-in fade-in zoom-in duration-300">
+                            <div class="flex items-center gap-3 text-green-700 mb-4">
+                                <i data-lucide="check-circle"></i>
+                                <span class="font-bold uppercase tracking-widest text-sm">Certificado Verificado</span>
+                            </div>
+                            <p class="text-slate-800 text-lg"><strong>Titular:</strong> ${data.nombre}</p>
+                            <p class="text-slate-700"><strong>Programa:</strong> ${data.curso}</p>
+                            <p class="text-slate-700"><strong>Emisión:</strong> ${data.fecha}</p>
+                            <div class="mt-4 pt-4 border-t border-green-100">
+                                <p class="text-xs text-slate-400 italic">Validado por Gammaliel Analytics. Este documento es auténtico y cumple con nuestros estándares de certificación.</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="bg-red-50 border-2 border-red-200 p-6 rounded-2xl text-left animate-in fade-in slide-in-from-top-4 duration-300">
+                            <div class="flex items-center gap-3 text-red-700">
+                                <i data-lucide="alert-triangle"></i>
+                                <span class="font-bold uppercase tracking-widest text-sm">Registro no encontrado</span>
+                            </div>
+                            <p class="text-slate-600 mt-2 text-sm">El ID <strong>${idInput}</strong> no existe en nuestros registros. Verifique que el código sea correcto.</p>
+                        </div>
+                    `;
+                }
+                if (window.lucide) lucide.createIcons();
+            } catch (e) {
+                resultDiv.innerHTML = `<p class="text-red-500 font-bold p-4">Error de comunicación con el servidor. Intente más tarde.</p>`;
+            }
+        }
+
+        // 2. Lógica de "Auto-Detección" vía URL (Para el QR)
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const certId = urlParams.get('id'); // Busca "?id=GA-XXXX" en la URL
+
+            if (certId) {
+                // Esperamos un segundo para que los componentes (header/footer) carguen
+                setTimeout(() => {
+                    // Hacemos scroll suave hasta el validador
+                    const target = document.getElementById('validador-certificado');
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // Ejecutamos la validación automática
+                        validateCert(certId);
+                    }
+                }, 800);
+            }
         });
     </script>
 

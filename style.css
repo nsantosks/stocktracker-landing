@@ -1090,3 +1090,69 @@ body {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================================= */
+/* == 10. MÓDULO: CURSOS INTERACTIVOS & SKELETONS == */
+/* ============================================================= */
+
+.course-wrapper {
+    min-height: 60vh;
+    padding: 40px 0;
+}
+
+/* --- Skeleton Screen --- */
+.skeleton {
+    background: #e2e8f0;
+    background-image: linear-gradient(
+        90deg, 
+        #e2e8f0 0px, 
+        #f8fafc 40px, 
+        #e2e8f0 80px
+    );
+    background-size: 600px;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.header-skeleton { height: 70px; width: 100%; margin-bottom: 20px; }
+.footer-skeleton { height: 300px; width: 100%; margin-top: 50px; }
+
+/* --- Tarjetas del Curso --- */
+.course-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 1);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.course-module {
+    display: none;
+}
+
+.course-module.active {
+    display: block;
+    animation: courseFadeIn 0.5s ease-out;
+}
+
+@keyframes courseFadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Impresión --- */
+@media print {
+    body * { visibility: hidden; }
+    #certificate-view, #certificate-view * { visibility: visible; }
+    #certificate-view {
+        position: absolute;
+        left: 0; top: 0; width: 100%;
+        display: block !important;
+        visibility: visible !important;
+    }
+}

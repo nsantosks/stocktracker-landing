@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: Pensamiento Crítico | Gammaliel Academy</title>
+
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="stylesheet" href="/style-dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="/js/config.js"></script>
+
+    <style>
+        /* == ESTILOS VISUALES == */
+        @keyframes shimmer { 0% { background-position: -400px 0; } 100% { background-position: 400px 0; } }
+        .skeleton {
+            background: #e2e8f0;
+            background-image: linear-gradient(90deg, #e2e8f0 0px, #f8fafc 40px, #e2e8f0 80px);
+            background-size: 600px;
+            animation: shimmer 1.5s infinite linear;
+            border-radius: 8px;
+        }
+        .header-skeleton { height: 75px; width: 100%; }
+        .footer-skeleton { height: 350px; width: 100%; margin-top: 50px; }
+
+        .course-glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 1);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+        .module-content { display: none; }
+        .module-content.active { display: block; animation: courseFadeIn 0.6s ease-out; }
+        @keyframes courseFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn-action:hover { transform: translateY(-2px); }
+        .medal-animation { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* == SOLUCIÓN DEFINITIVA DE IMPRESIÓN (SIN PANTALLA BLANCA) == */
+        @media print {
+            /* 1. Ocultar la estructura de la página web */
+            .landing-page-wrapper, .no-print, nav {
+                display: none !important;
+            }
+
+            /* 2. Asegurar que el BODY y HTML sean visibles y ocupen todo */
+            body, html {
+                visibility: visible !important;
+                background-color: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+
+            /* 3. Hacer visible el contenedor del certificado */
+            #certificate-placeholder {
+                display: block !important;
+                visibility: visible !important;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+            }
+
+            /* 4. Asegurar que los hijos del certificado sean visibles */
+            #certificate-placeholder * {
+                visibility: visible !important;
+            }
+
+            /* 5. Forzar orientación Horizontal */
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="landing-page-wrapper">
+        <div id="header-placeholder"><div class="skeleton header-skeleton"></div></div>
+
+        <nav class="bg-slate-900 text-white p-4 sticky top-0 z-50 no-print">
+            <div class="max-w-5xl mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="text-blue-400"></i> Gammaliel Academy
+                </h1>
+                <div class="flex items-center gap-4">
+                    <span id="progress-text" class="text-xs font-medium uppercase text-slate-400 tracking-widest">Progreso: 0%</span>
+                    <div class="w-24 md:w-48 bg-slate-700 h-2 rounded-full overflow-hidden">
+                        <div id="main-progress" class="bg-blue-500 h-full transition-all duration-700" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-4xl mx-auto p-6 md:py-16 no-print min-h-[60vh]">
+            
+            <div id="start-screen" class="text-center py-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Alfabetización Epistémica: <br><span class="text-blue-600">Pensamiento Crítico e IA</span></h2>
+                <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed text-justify md:text-center">
+                    Certificación avanzada para líderes en datos. Aprenda a auditar la arquitectura de su pensamiento y a mitigar sesgos en entornos automatizados.
+                </p>
+                <button onclick="startCourse()" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl transition-all transform hover:-translate-y-1">
+                    Iniciar Certificación
+                </button>
+            </div>
+
+            <div id="module-1" class="module-content course-glass-card p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Módulo 1</span>
+                    <h3 class="text-3xl font-bold text-slate-900">La Economía del Juicio</h3>
+                </div>
+                <div class="prose prose-slate max-w-none mb-10 text-lg leading-relaxed text-slate-700 text-justify">
+                    <p>Daniel Kahneman describe el <strong>Sistema 1</strong> como una máquina asociativa que crea coherencia automática. En BI, esto se traduce en aceptar visualizaciones atractivas sin cuestionar la distribución estadística subyacente.</p>
+                </div>
+                <div id="q1-content" class="space-y-6 bg-white p-8 rounded-2xl border shadow-inner"></div>
+                <button onclick="checkQuiz(1)" class="mt-8 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold w-full hover:bg-blue-600 transition-colors uppercase tracking-widest">Validar Módulo 1</button>
+            </div>
+
+            <div id="module-2" class="module-content course-glass-card p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="bg-indigo-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Módulo 2</span>
+                    <h3 class="text-3xl font-bold text-slate-900">Arquitecturas de Decisión</h3>
+                </div>
+                <div class="prose prose-slate max-w-none mb-10 text-lg text-slate-700 leading-relaxed text-justify">
+                    <p>Los algoritmos no son neutrales; utilizan el <strong>Sesgo de Confirmación</strong> para maximizar la retención. El "Sesgo de Disponibilidad" nos empuja a priorizar datos recientes sobre los estadísticamente significativos.</p>
+                </div>
+                <div id="q2-content" class="space-y-6 bg-white p-8 rounded-2xl border shadow-inner"></div>
+                <button onclick="checkQuiz(2)" class="mt-8 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold w-full hover:bg-indigo-600 transition-colors uppercase tracking-widest">Validar Módulo 2</button>
+            </div>
+
+            <div id="module-3" class="module-content course-glass-card p-8 md:p-12">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="bg-purple-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">Módulo 3</span>
+                    <h3 class="text-3xl font-bold text-slate-900">Ética de la Verdad e IA</h3>
+                </div>
+                <div class="prose prose-slate max-w-none mb-10 text-lg leading-relaxed text-slate-700 text-justify">
+                    <p>El <strong>Sesgo de Automatización</strong> es la tendencia a confiar en el juicio de una máquina por encima del propio. La <strong>Humildad Epistémica</strong> es vital para reconocer las fronteras de nuestros modelos predictivos.</p>
+                </div>
+                <div id="q3-content" class="space-y-6 bg-white p-8 rounded-2xl border shadow-inner"></div>
+                <button onclick="checkQuiz(3)" class="mt-8 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold w-full hover:bg-purple-600 transition-colors uppercase tracking-widest">Finalizar Certificación</button>
+            </div>
+
+            <div id="finish-screen" class="module-content text-center py-12">
+                <div class="mb-6 medal-animation">
+                    <img src="/img/medal.png" alt="Logro Gammaliel" class="w-32 h-auto mx-auto drop-shadow-2xl" onerror="this.style.display='none'; document.getElementById('fallback-medal').style.display='flex'">
+                    <div id="fallback-medal" class="hidden w-28 h-28 bg-yellow-100 text-yellow-600 rounded-full items-center justify-center mx-auto border-4 border-yellow-300 shadow-xl"><i data-lucide="award" size="64"></i></div>
+                </div>
+
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-blue-600 tracking-tight">Certificación Completada</h2>
+                <p class="text-slate-600 mb-10 text-lg">Has validado tu rigor analítico profesional.</p>
+                
+                <div class="max-w-md mx-auto bg-white p-10 rounded-3xl shadow-xl border mb-8 text-left">
+                    <label class="block text-sm font-bold mb-2 uppercase text-slate-500 text-xs tracking-widest">Nombre Completo:</label>
+                    <input type="text" id="user-name" class="w-full border-2 border-slate-200 p-3 rounded-xl mb-4 text-lg outline-none focus:border-blue-500 font-bold" placeholder="Ej. Eduardo Santos">
+                    
+                    <label class="block text-sm font-bold mb-2 uppercase text-slate-500 text-xs tracking-widest">Correo Electrónico:</label>
+                    <input type="email" id="user-email" class="w-full border-2 border-slate-200 p-3 rounded-xl mb-6 text-lg outline-none focus:border-blue-500" placeholder="Ej. contacto@empresa.com">
+                    
+                    <button onclick="processCompletion()" id="btn-complete" class="btn-action w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-lg mb-4 transition-all uppercase tracking-tighter">
+                        Generar Certificado Oficial
+                    </button>
+                    
+                    <div id="email-success-msg" class="hidden mt-4 p-3 bg-green-50 text-green-700 rounded-lg text-sm border border-green-200">
+                        <i data-lucide="check-circle" class="inline w-4 h-4 mr-1"></i> Toolkit enviado a tu correo exitosamente.
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-slate-200 text-center">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Su Insignia Digital para LinkedIn</p>
+                    <div id="badge-preview" class="mb-8 inline-block p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+                        <canvas id="badgeCanvas" width="400" height="400" style="max-width: 200px; height: auto;" class="mx-auto drop-shadow-2xl"></canvas>
+                    </div>
+                    <div class="flex flex-col gap-3 max-w-xs mx-auto">
+                        <button onclick="downloadBadge()" class="flex items-center justify-center gap-2 bg-white text-blue-600 border-2 border-blue-600 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-sm">
+                            <i data-lucide="award" size="18"></i> Descargar Insignia
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer-placeholder"><div class="skeleton footer-skeleton"></div></div>
+    </div>
+
+    <div id="certificate-placeholder" style="display:none;"></div>
+
+    <script>
+        // === GESTIÓN DE COMPONENTES ===
+        async function loadComponentRobust(id, path) {
+            const el = document.getElementById(id);
+            try {
+                const response = await fetch(path);
+                if (response.ok) { el.innerHTML = await response.text(); return true; }
+            } catch (err) { console.error(`Error: ${path}`); }
+            return false;
+        }
+
+        loadComponentRobust('header-placeholder', '/components/header.html'); 
+        loadComponentRobust('footer-placeholder', '/components/footer.html');
+        // Pre-cargamos el certificado para que esté listo al imprimir
+        loadComponentRobust('certificate-placeholder', '/components/certificate.html');
+
+        // === LÓGICA DEL CURSO ===
+        const quizData = {
+            1: [
+                { q: "¿Qué sistema busca la 'Facilidad Cognitiva' para ahorrar energía?", opts: ["Sistema 1", "Sistema 2"], c: 0 },
+                { q: "¿Qué heurística opera ante un Dashboard visualmente atractivo?", opts: ["Efecto Halo.", "Sustitución."], c: 0 }
+            ],
+            2: [
+                { q: "¿El 'Efecto de Verdad Ilusoria' nos hace creer algo por:", opts: ["Evidencia real", "Familiaridad por repetición"], c: 1 },
+                { q: "El scroll infinito maximiza la:", opts: ["Retención del usuario", "Calidad de información"], c: 0 }
+            ],
+            3: [
+                { q: "¿Qué implica la 'Humildad Epistémica'?", opts: ["Confianza total en la IA.", "Reconocer límites e incertidumbre"], c: 1 }
+            ]
+        };
+
+        window.onload = () => { if (typeof lucide !== 'undefined') lucide.createIcons(); };
+
+        function startCourse() { document.getElementById('start-screen').style.display = 'none'; showModule(1); }
+
+        function showModule(n) {
+            document.querySelectorAll('.module-content').forEach(m => m.classList.remove('active'));
+            document.getElementById('module-' + n).classList.add('active');
+            const container = document.getElementById('q' + n + '-content');
+            container.innerHTML = '';
+            quizData[n].forEach((item, i) => {
+                let html = `<div class="mb-8 text-left"><p class="font-bold text-lg mb-4 text-slate-900">${i+1}. ${item.q}</p>`;
+                item.opts.forEach((opt, oi) => {
+                    html += `<label class="flex items-center gap-3 p-4 border-2 rounded-xl mb-3 hover:bg-slate-50 border-slate-100 hover:border-blue-300 cursor-pointer transition-all"><input type="radio" name="q${n}_${i}" value="${oi}" class="w-5 h-5 text-blue-600"> <span class="text-slate-700">${opt}</span></label>`;
+                });
+                container.innerHTML += html + '</div>';
+            });
+            updateProgress(Math.round((n - 1) * 33.3));
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkQuiz(n) {
+            const answers = quizData[n];
+            let ok = true;
+            answers.forEach((it, i) => {
+                const s = document.querySelector(`input[name="q${n}_${i}"]:checked`);
+                if (!s || parseInt(s.value) !== it.c) ok = false;
+            });
+            if (ok) { (n < 3) ? showModule(n + 1) : finishCourse(); }
+            else { alert("Respuesta incorrecta. Revisa el contenido."); }
+        }
+
+        function finishCourse() {
+            document.querySelectorAll('.module-content').forEach(m => m.classList.remove('active'));
+            document.getElementById('finish-screen').classList.add('active');
+            updateProgress(100);
+            createBadge(); // Generar insignia visual inicial
+            document.getElementById('user-name').addEventListener('input', createBadge); // Actualizar en tiempo real
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function updateProgress(v) {
+            document.getElementById('main-progress').style.width = v + '%';
+            document.getElementById('progress-text').innerText = `Certificación: ${v}%`;
+        }
+
+        // === INSIGNIA (CANVAS) ===
+        function createBadge() {
+            const canvas = document.getElementById('badgeCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const name = document.getElementById('user-name').value.trim().split(' ')[0] || "PRO";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath(); ctx.arc(200, 200, 190, 0, Math.PI * 2); ctx.fillStyle = '#0f172a'; ctx.fill();
+            ctx.lineWidth = 14; ctx.strokeStyle = '#fbbf24'; ctx.stroke();
+            ctx.font = 'bold 22px sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'center'; ctx.fillText('• GAMMALIEL ACADEMY •', 200, 80);
+            ctx.font = 'bold 36px sans-serif'; ctx.fillStyle = '#ffffff'; ctx.fillText(name.toUpperCase(), 200, 235);
+            ctx.font = '600 18px sans-serif'; ctx.fillStyle = '#94a3b8'; ctx.fillText('PENSAMIENTO CRÍTICO', 200, 275);
+            ctx.font = 'bold 16px sans-serif'; ctx.fillStyle = '#fbbf24'; ctx.fillText(`VALIDATED ${new Date().getFullYear()}`, 200, 320);
+        }
+
+        function downloadBadge() {
+            const canvas = document.getElementById('badgeCanvas');
+            const link = document.createElement('a');
+            link.download = `Insignia_GA_${document.getElementById('user-name').value || 'Expert'}.png`;
+            link.href = canvas.toDataURL('image/png'); link.click();
+        }
+
+        // === PROCESO FINAL UNIFICADO ===
+        async function processCompletion() {
+            const name = document.getElementById('user-name').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const btn = document.getElementById('btn-complete');
+
+            if (!name || !email) return alert("Por favor, ingresa tu nombre y correo.");
+
+            // Estado de carga visual
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
+            btn.disabled = true;
+
+            const uniqueId = 'GA-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            const fecha = new Date().toLocaleDateString();
+
+            // 1. Preparar Certificado (Frontend)
+            document.getElementById('cert-name').innerText = name.toUpperCase();
+            document.getElementById('cert-date').innerText = fecha;
+            document.getElementById('cert-id').innerText = "ID: " + uniqueId;
+            document.getElementById('cert-course-title').innerText = "Pensamiento Crítico en la Era de la IA";
+            
+            const qrContainer = document.getElementById("qrcode");
+            qrContainer.innerHTML = "";
+            new QRCode(qrContainer, { text: `https://gammalielanalytics.com/validar?id=${uniqueId}`, width: 85, height: 85, colorDark : "#0f172a", colorLight : "#ffffff" });
+
+            // 2. Enviar datos y correo (Backend) - Sin esperar respuesta para imprimir rápido
+            const scriptURL = GA_CONFIG.APPS_SCRIPT_URL; // Pega TU URL aquí si cambió
+            const datos = {
+                nombre: name, 
+                "email-participant": email,
+                curso: "Pensamiento Crítico e IA", 
+                "id-course": uniqueId };
+            
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(datos) })
+                .then(() => {
+                    document.getElementById('email-success-msg').classList.remove('hidden');
+                });
+
+            // 3. Imprimir Certificado
+            setTimeout(() => {
+                btn.innerHTML = 'Generar Certificado Oficial';
+                btn.disabled = false;
+                
+                // Mostrar contenedor del certificado SOLO para impresión
+                const certSlot = document.getElementById('certificate-placeholder');
+                certSlot.style.display = 'block'; // Necesario para que QRCode se renderice bien antes de imprimir
+                window.print();
+                // Ocultar de nuevo tras imprimir (opcional, el CSS ya lo maneja para pantalla normal)
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

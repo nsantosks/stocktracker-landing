@@ -315,7 +315,7 @@
             
             const qrContainer = document.getElementById("qrcode");
             qrContainer.innerHTML = "";
-            new QRCode(qrContainer, { text: `https://gammalielanalytics.com/validar?id=${uniqueId}`, width: 85, height: 85, colorDark : "#0f172a", colorLight : "#ffffff" });
+            new QRCode(qrContainer, { text: `https://gammalielanalytics.com/?id=${uniqueId}`, width: 85, height: 85, colorDark : "#0f172a", colorLight : "#ffffff" });
 
             // 2. Enviar datos y correo (Backend) - Sin esperar respuesta para imprimir rápido
             const scriptURL = GA_CONFIG.APPS_SCRIPT_URL; // Pega TU URL aquí si cambió

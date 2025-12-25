@@ -33,6 +33,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="/js/config.js"></script>
 
 </head>
@@ -482,18 +483,22 @@
     </script>
 
     <script>
-        // 1. Función Principal de Validación (Se mantiene igual pero optimizada)
+        // 1. Función Principal de Validación
         async function validateCert(autoId = null) {
             const idInput = autoId || document.getElementById('search-id').value.trim();
             const resultDiv = document.getElementById('search-result');
+            
+            // Verificamos que GA_CONFIG exista (viene de /js/config.js)
+            if (typeof GA_CONFIG === 'undefined') {
+                return console.error("Error: GA_CONFIG no está definido.");
+            }
+            
             const scriptURL = GA_CONFIG.APPS_SCRIPT_URL;
 
             if (!idInput) return alert("Por favor ingresa un ID.");
 
-            // Si es búsqueda manual, ponemos el ID en el input por si acaso
             document.getElementById('search-id').value = idInput;
 
-            // Mostrar estado de carga
             resultDiv.classList.remove('hidden');
             resultDiv.innerHTML = `
                 <div class="flex items-center justify-center gap-3 p-6 bg-blue-50 border-2 border-blue-100 rounded-2xl">
@@ -505,6 +510,7 @@
             try {
                 const response = await fetch(scriptURL, {
                     method: 'POST',
+                    mode: 'cors', // Asegúrate de tener CORS habilitado en el Apps Script
                     body: JSON.stringify({ action: "validate", id_to_search: idInput })
                 });
                 
@@ -521,7 +527,7 @@
                             <p class="text-slate-700"><strong>Programa:</strong> ${data.curso}</p>
                             <p class="text-slate-700"><strong>Emisión:</strong> ${data.fecha}</p>
                             <div class="mt-4 pt-4 border-t border-green-100">
-                                <p class="text-xs text-slate-400 italic">Validado por Gammaliel Analytics. Este documento es auténtico y cumple con nuestros estándares de certificación.</p>
+                                <p class="text-xs text-slate-400 italic">Validado por Gammaliel Analytics. Este documento es auténtico.</p>
                             </div>
                         </div>
                     `;
@@ -532,38 +538,41 @@
                                 <i data-lucide="alert-triangle"></i>
                                 <span class="font-bold uppercase tracking-widest text-sm">Registro no encontrado</span>
                             </div>
-                            <p class="text-slate-600 mt-2 text-sm">El ID <strong>${idInput}</strong> no existe en nuestros registros. Verifique que el código sea correcto.</p>
+                            <p class="text-slate-600 mt-2 text-sm">El ID <strong>${idInput}</strong> no existe en nuestros registros.</p>
                         </div>
                     `;
                 }
+                // Renderizar iconos de Lucide después de inyectar el HTML
                 if (window.lucide) lucide.createIcons();
+                
             } catch (e) {
-                resultDiv.innerHTML = `<p class="text-red-500 font-bold p-4">Error de comunicación con el servidor. Intente más tarde.</p>`;
+                resultDiv.innerHTML = `<p class="text-red-500 font-bold p-4">Error de comunicación. Verifique su conexión.</p>`;
             }
         }
 
-        // 2. Lógica de "Auto-Detección" vía URL (Para el QR)
+        // 2. Detección automática (QR)
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const certId = urlParams.get('id'); // Busca "?id=GA-XXXX" en la URL
+            const certId = urlParams.get('id'); 
 
             if (certId) {
-                // Esperamos un segundo para que los componentes (header/footer) carguen
+                // Un ligero delay para asegurar que el DOM y estilos de Tailwind estén listos
                 setTimeout(() => {
-                    // Hacemos scroll suave hasta el validador
                     const target = document.getElementById('validador-certificado');
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        // Ejecutamos la validación automática
                         validateCert(certId);
                     }
-                }, 800);
+                }, 1000);
             }
+            
+            // Inicializar iconos de Lucide cargados estáticamente
+            if (window.lucide) lucide.createIcons();
         });
     </script>
 
     <a 
-        href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20el%20desarrollo%20de%20una%20AppSheet%20para%20mi%20negocio." 
+        href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20el%20desarrollo%20de%20una%20AppSheet%20para%20mi%20negocio."
         class="whatsapp-float" 
         target="_blank" 
         rel="noopener noreferrer"

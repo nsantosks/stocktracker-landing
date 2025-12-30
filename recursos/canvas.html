@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Builder | Gammaliel Analytics</title>
+
+    <!-- Fuentes e Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Estilos Oficiales y de Aplicación -->
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="stylesheet" href="/style-dark.css">
+    <link rel="stylesheet" href="/style-canvas.css">
+
+    <!-- Librerías de Exportación -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="/js/config.js"></script>
+
+    <style>
+        /* Ajuste de posición bajo el header fixed */
+        .app-section-container { min-height: 80vh; padding-top: 110px; padding-bottom: 80px; }
+        
+        /* Control de visibilidad */
+        #main-app { display: none; } 
+        body.logged-in #main-app { display: block; }
+        body.logged-in #auth-overlay { display: none; }
+
+        /* Estilos del modal de términos */
+        .terms-scroll-box {
+            background: #FAFAFA; border: 1px solid #ddd; border-radius: 6px;
+            padding: 20px; height: 350px; overflow-y: auto; text-align: left;
+            font-size: 0.85rem; color: #444; line-height: 1.6; margin-bottom: 20px;
+        }
+        .terms-scroll-box h3 { font-weight: bold; margin-top: 15px; color: #2C3E50; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="landing-page-wrapper">
+        <!-- HEADER OFICIAL (Se carga mediante main.js) -->
+        <div id="header-placeholder"></div>
+
+        <section class="app-section-container">
+            <!-- CARGANDO -->
+            <div id="loader" class="loader"><i class="fas fa-circle-notch fa-spin"></i> Procesando...</div>
+
+            <!-- LOGIN Y REGISTRO -->
+            <div id="auth-overlay">
+                <div class="auth-card">
+                    <!-- Login -->
+                    <div id="login-form">
+                        <div class="auth-logo"><i class="fas fa-chart-pie text-blue-600"></i> Gammaliel</div>
+                        <div class="auth-subtitle">Canvas Business Builder</div>
+                        <input type="email" id="login-email" class="auth-input" placeholder="Correo electrónico">
+                        <input type="password" id="login-pass" class="auth-input" placeholder="Contraseña">
+                        <button class="auth-btn" onclick="login()">Iniciar Sesión</button>
+                        <span class="auth-link" onclick="toggleAuth('register')">¿No tienes cuenta? Regístrate</span>
+                    </div>
+                    <!-- Registro -->
+                    <div id="register-form" style="display:none;">
+                        <div class="auth-logo">Registro</div>
+                        <div class="auth-subtitle">Crea tu cuenta de consultor</div>
+                        <input type="text" id="reg-name" class="auth-input" placeholder="Nombre completo">
+                        <input type="email" id="reg-email" class="auth-input" placeholder="Correo electrónico">
+                        <input type="password" id="reg-pass" class="auth-input" placeholder="Crear contraseña">
+                        <div class="text-[10px] my-3 text-gray-500 text-center">
+                            Al registrarte aceptas los <span class="term-link text-blue-600 cursor-pointer underline font-bold" onclick="openTerms()">Términos y Condiciones</span>.
+                        </div>
+                        <button class="auth-btn" onclick="register()">Registrarse</button>
+                        <span class="auth-link" onclick="toggleAuth('login')">¿Ya tienes cuenta? Inicia sesión</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APP PRINCIPAL -->
+            <div id="main-app" class="container mx-auto px-4">
+                <!-- TOOLBAR -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                    <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-3">
+                        <i class="fas fa-layer-group text-blue-600"></i> Canvas Builder
+                    </h2>
+                    <div class="controls flex gap-2 flex-wrap justify-center">
+                        <div id="user-display" class="flex items-center bg-gray-50 px-4 py-1 rounded-full border border-gray-200">
+                            <span class="text-xs font-bold text-gray-600 mr-3" id="user-name">Usuario</span>
+                            <button onclick="logout()" class="text-red-500 hover:text-red-700 transition" title="Cerrar Sesión"><i class="fas fa-power-off"></i></button>
+                        </div>
+                        <button class="btn-outline px-5 py-2.5 text-sm font-bold h-[42px] flex items-center gap-2 rounded-lg shadow-sm" onclick="nuevoCanvas()"><i class="fas fa-plus"></i> Nuevo</button>
+                        <button class="btn-primary px-5 py-2.5 text-sm font-bold h-[42px] flex items-center gap-2 rounded-lg shadow-sm" onclick="abrirModalLista()"><i class="fas fa-folder-open"></i> Abrir</button>
+                        <button class="btn-copy px-5 py-2.5 text-sm font-bold h-[42px] flex items-center gap-2 rounded-lg shadow-sm" onclick="copiarCanvas()"><i class="fas fa-copy"></i> Versión</button>
+                        <button class="btn-pdf px-5 py-2.5 text-sm font-bold h-[42px] flex items-center gap-2 rounded-lg shadow-sm" onclick="exportToPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
+                        <button class="btn-excel px-5 py-2.5 text-sm font-bold h-[42px] flex items-center gap-2 rounded-lg shadow-sm" onclick="exportToExcel()"><i class="fas fa-file-excel"></i> Excel</button>
+                    </div>
+                </div>
+
+                <!-- METADATOS -->
+                <div class="meta-bar bg-white p-6 rounded-xl mb-8 shadow-sm flex flex-wrap gap-6 border border-gray-100">
+                    <div class="input-group flex-[3] min-w-[250px]">
+                        <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Nombre del Negocio</label>
+                        <input type="text" id="negocio" class="w-full p-2 border-b-2 border-gray-100 outline-none focus:border-blue-500 text-lg font-medium" placeholder="Ej. Startup de Tecnología">
+                    </div>
+                    <div class="input-group flex-1">
+                        <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Versión</label>
+                        <input type="text" id="version" class="w-full p-2 border-b-2 border-gray-100 outline-none focus:border-blue-500" value="v1.0">
+                    </div>
+                    <div class="input-group flex-1">
+                        <label class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">ID Sistema</label>
+                        <input type="text" id="idCanvas" readonly class="w-full p-2 text-gray-400 bg-gray-50 text-xs font-mono" placeholder="Automático">
+                    </div>
+                </div>
+
+                <!-- LIENZO CANVAS -->
+                <div id="canvas-area" class="canvas-container shadow-2xl rounded-2xl overflow-hidden border-4 border-white bg-white">
+                    <div class="canvas-box c-partners" onclick="openEditModal(8)"><div class="box-number">8</div><div class="box-title"><i class="fas fa-handshake"></i> Socios Clave</div><div class="box-content" id="content-8"></div></div>
+                    <div class="canvas-box c-activities" onclick="openEditModal(7)"><div class="box-number">7</div><div class="box-title"><i class="fas fa-tools"></i> Actividades Clave</div><div class="box-content" id="content-7"></div></div>
+                    <div class="canvas-box c-resources" onclick="openEditModal(6)"><div class="box-number">6</div><div class="box-title"><i class="fas fa-truck-loading"></i> Recursos Clave</div><div class="box-content" id="content-6"></div></div>
+                    <div class="canvas-box c-value" onclick="openEditModal(1)"><div class="box-number">1</div><div class="box-title"><i class="fas fa-gift"></i> Propuesta de Valor</div><div class="box-content" id="content-1"></div></div>
+                    <div class="canvas-box c-relations" onclick="openEditModal(4)"><div class="box-number">4</div><div class="box-title"><i class="fas fa-heart"></i> Relación Clientes</div><div class="box-content" id="content-4"></div></div>
+                    <div class="canvas-box c-channels" onclick="openEditModal(3)"><div class="box-number">3</div><div class="box-title"><i class="fas fa-truck"></i> Canales</div><div class="box-content" id="content-3"></div></div>
+                    <div class="canvas-box c-segments" onclick="openEditModal(2)"><div class="box-number">2</div><div class="box-title"><i class="fas fa-users"></i> Segmentos de Clientes</div><div class="box-content" id="content-2"></div></div>
+                    <div class="canvas-box c-cost" onclick="openEditModal(9)"><div class="box-number">9</div><div class="box-title"><i class="fas fa-tags"></i> Estructura de Costos</div><div class="box-content" id="content-9"></div></div>
+                    <div class="canvas-box c-revenue" onclick="openEditModal(5)"><div class="box-number">5</div><div class="box-title"><i class="fas fa-cash-register"></i> Fuente de Ingresos</div><div class="box-content" id="content-5"></div></div>
+                </div>
+
+                <div class="mt-10 text-center text-gray-400 text-[10px] uppercase tracking-widest">
+                    © 2025 Gammaliel Analytics. Uso exclusivo para planeación estratégica.
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER OFICIAL -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- MODAL EDICIÓN -->
+    <div class="modal-overlay" id="modal-edit">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title" class="text-xl font-bold text-slate-800">Editar Bloque</h2>
+                <button class="btn-help-icon" onclick="toggleHelp()">?</button>
+            </div>
+            <div id="help-box" class="help-content-box">
+                <span class="font-bold text-blue-700 block mb-1">Tips de Experto:</span>
+                <span id="help-text" class="text-sm"></span>
+                <span id="help-example" class="block mt-2 italic text-gray-600 bg-white/50 p-2 rounded"></span>
+            </div>
+            <div id="modal-guide" class="p-3 bg-gray-50 border-l-4 border-blue-500 text-xs text-gray-600 mb-4 rounded-r"></div>
+            <textarea id="modal-input" class="w-full h-48 p-4 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500 font-sans" placeholder="Describe tus ideas aquí..."></textarea>
+            <div class="flex justify-end gap-3 mt-4">
+                <button class="btn-outline px-6" onclick="closeModals()">Cancelar</button>
+                <button class="btn-primary px-6" onclick="saveBlock()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LISTA DE PROYECTOS -->
+    <div class="modal-overlay" id="modal-list">
+        <div class="modal max-w-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Abrir Mis Proyectos</h2>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times fa-lg"></i></button>
+            </div>
+            <div class="flex gap-2 mb-4">
+                <input type="text" id="search-name" class="flex-1 p-2 border rounded text-sm" placeholder="Filtrar por nombre..." onkeyup="filtrarLista()">
+                <input type="text" id="search-id" class="w-32 p-2 border rounded text-sm font-mono" placeholder="ID..." onkeyup="filtrarLista()">
+            </div>
+            <div id="file-list-content" class="max-h-[400px] overflow-y-auto border border-gray-100 rounded-lg">
+                <!-- Se llena vía JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TÉRMINOS Y CONDICIONES -->
+    <div class="modal-overlay" id="modal-terms">
+        <div class="modal max-w-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">Términos y Condiciones</h2>
+                <button onclick="closeTerms()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="terms-scroll-box">
+                <h3>1. Aceptación de los Términos</h3>
+                <p>Al acceder y utilizar la herramienta "Canvas Builder" proporcionada por Gammaliel Analytics, usted acepta cumplir con estos Términos y Condiciones. Si no está de acuerdo, por favor no utilice la plataforma.</p>
+                <h3>2. Uso de la Herramienta</h3>
+                <p>Esta aplicación está diseñada para ayudar en la creación y estructuración de modelos de negocio. El usuario es responsable de la información ingresada.</p>
+                <h3>3. Cuentas de Usuario</h3>
+                <p>Usted es responsable de mantener la confidencialidad de su contraseña. Gammaliel Analytics se reserva el derecho de suspender cuentas que hagan un uso indebido.</p>
+                <h3>4. Propiedad Intelectual</h3>
+                <p>Los datos ingresados en los lienzos (Business Canvas) son propiedad exclusiva del usuario. Gammaliel Analytics no reclama propiedad sobre sus ideas.</p>
+                <h3>5. Limitación de Responsabilidad</h3>
+                <p>El servicio se ofrece "tal cual". No garantizamos servicio ininterrumpido. No seremos responsables por pérdidas accidentales de datos.</p>
+            </div>
+            <div class="text-right">
+                <button class="btn-primary w-full md:w-auto px-8" onclick="closeTerms()">Entendido y Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="/main.js"></script>
+    <script>
+        loadComponent('header-placeholder', '/components/header.html'); 
+        loadComponent('footer-placeholder', '/components/footer.html');
+
+        // URL DE TU BACKEND (Asegúrate de que termine en /exec)
+        const WEB_APP_URL = GA_CONFIG.APPS_SCRIPT_URL_CANVAS; 
+
+        let currentUser = null;
+        let currentBlock = 0;
+
+        // Datos de ayuda (Recuperados del original)
+        const titles = { 1: "Propuesta de Valor", 2: "Segmento de Clientes", 3: "Canales", 4: "Relación con Clientes", 5: "Fuente de Ingresos", 6: "Recursos Clave", 7: "Actividades Clave", 8: "Socios Clave", 9: "Estructura de Costos" };
+        const guides = { 
+            1: "¿Qué problema resuelves? ¿Qué valor entregas al cliente?", 
+            2: "¿Para quién creamos valor? ¿Quiénes son nuestros clientes más importantes?", 
+            3: "¿A través de qué canales quieren ser contactados nuestros segmentos?", 
+            4: "¿Qué tipo de relación espera cada segmento de clientes?", 
+            5: "¿Por qué valor están dispuestos a pagar? ¿Cómo pagan actualmente?", 
+            6: "¿Qué recursos clave requiere nuestra propuesta de valor?", 
+            7: "¿Qué actividades clave requiere nuestra propuesta de valor?", 
+            8: "¿Quiénes son nuestros socios clave? ¿Quiénes son nuestros proveedores?", 
+            9: "¿Cuáles son los costos más importantes inherentes a nuestro modelo?" 
+        };
+        const extendedHelp = {
+            1: { tip: "No describas tu producto, describe la SOLUCIÓN.", example: "Ej. Uber: 'Tu viaje, a un clic'. No venden taxis, venden conveniencia." },
+            2: { tip: "¿Para quién estás creando valor? Sé específico.", example: "Ej: Mujeres de 25-35 años que practican yoga." },
+            3: { tip: "¿Cómo se enteran y compran?", example: "Ej: Redes Sociales -> Web -> Correo." },
+            4: { tip: "¿Cómo interactúas con ellos?", example: "Ej: Asistencia personal vs Autoservicio." },
+            5: { tip: "¿Por qué pagan realmente?", example: "Ej: Suscripción mensual o pago único." },
+            6: { tip: "¿Qué activos NECESITAS sí o sí?", example: "Ej: Software, Desarrolladores y Servidores." },
+            7: { tip: "¿Qué acciones son críticas?", example: "Ej: Resolución de problemas complejos." },
+            8: { tip: "No puedes hacerlo todo solo.", example: "Ej: Proveedor de verduras orgánicas." },
+            9: { tip: "Lista los costos significativos.", example: "Ej: Combustible (Variable), Alquiler (Fijo)." }
+        };
+
+        // Puente API
+        async function apiRequest(action, extraData = {}) {
+            const payload = { action, ...extraData };
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                return await response.json();
+            } catch (e) {
+                console.error("Error:", e);
+                return { success: false, msg: "Error de comunicación con el servidor de Google." };
+            }
+        }
+
+        window.onload = () => {
+            const user = localStorage.getItem('canvasUser');
+            if(user) iniciarApp(JSON.parse(user));
+        };
+
+        function toggleAuth(view) {
+            document.getElementById('login-form').style.display = view === 'login' ? 'block' : 'none';
+            document.getElementById('register-form').style.display = view === 'register' ? 'block' : 'none';
+        }
+
+        function openTerms() { document.getElementById('modal-terms').style.display = 'flex'; }
+        function closeTerms() { document.getElementById('modal-terms').style.display = 'none'; }
+
+        async function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-pass').value;
+            if(!email || !password) return alert("Por favor, completa los datos.");
+            
+            showLoader(true);
+            const res = await apiRequest('loginUsuario', { email, password });
+            showLoader(false);
+
+            if(res.success) {
+                localStorage.setItem('canvasUser', JSON.stringify(res));
+                iniciarApp(res);
+            } else { alert(res.msg); }
+        }
+
+        async function register() {
+            const nombre = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-pass').value;
+            if(!nombre || !email || !password) return alert("Completa todos los campos.");
+
+            showLoader(true);
+            const res = await apiRequest('registrarUsuario', { nombre, email, password });
+            showLoader(false);
+
+            if(res.success) {
+                alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
+                toggleAuth('login');
+            } else { alert(res.msg); }
+        }
+
+        function iniciarApp(user) {
+            currentUser = user;
+            // Agregamos la clase al body
+            document.body.classList.add('logged-in');
+            
+            // Mostramos el nombre en la barra de la app
+            const userNameElement = document.getElementById('user-name');
+            if(userNameElement) userNameElement.innerText = user.nombre;
+            
+            // Opcional: Desplazar la pantalla hacia arriba al loguearse
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function logout() {
+            if(confirm("¿Estás seguro de que deseas cerrar sesión?")) {
+                localStorage.removeItem('canvasUser');
+                // Quitamos la clase para que vuelva a aparecer el login
+                document.body.classList.remove('logged-in');
+                // Redirigir o recargar para limpiar el estado
+                window.location.reload(); 
+            }
+        }
+
+        function openEditModal(id) {
+            if(!document.getElementById('negocio').value) {
+                alert("⚠️ Primero escribe un nombre para el negocio.");
+                document.getElementById('negocio').focus();
+                return;
+            }
+            currentBlock = id;
+            document.getElementById('modal-title').innerText = titles[id];
+            document.getElementById('modal-guide').innerText = guides[id];
+            document.getElementById('modal-input').value = document.getElementById('content-'+id).innerText;
+            document.getElementById('modal-edit').style.display = 'flex';
+            document.getElementById('modal-input').focus();
+        }
+
+        function toggleHelp() {
+            const box = document.getElementById('help-box');
+            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+            if(extendedHelp[currentBlock]) {
+                document.getElementById('help-text').innerText = extendedHelp[currentBlock].tip;
+                document.getElementById('help-example').innerText = extendedHelp[currentBlock].example;
+            }
+        }
+
+        async function saveBlock() {
+            const text = document.getElementById('modal-input').value;
+            const data = {
+                idCanvas: document.getElementById('idCanvas').value,
+                negocio: document.getElementById('negocio').value,
+                version: document.getElementById('version').value,
+                bloqueId: currentBlock,
+                bloqueNombre: titles[currentBlock],
+                respuesta: text,
+                usuario: currentUser.email
+            };
+            
+            document.getElementById('content-'+currentBlock).innerText = text;
+            closeModals();
+            showLoader(true);
+            const res = await apiRequest('guardarBloque', { data });
+            showLoader(false);
+            if(res.success && res.idCanvas) document.getElementById('idCanvas').value = res.idCanvas;
+        }
+
+        async function abrirModalLista() {
+            showLoader(true);
+            const lista = await apiRequest('obtenerListaCanvas', { email: currentUser.email });
+            showLoader(false);
+            if(!lista || lista.length === 0) return alert("No tienes proyectos guardados.");
+            
+            renderizarLista(lista);
+            document.getElementById('modal-list').style.display = 'flex';
+        }
+
+        function renderizarLista(lista) {
+            const container = document.getElementById('file-list-content');
+            container.innerHTML = "";
+            lista.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "p-4 border-b hover:bg-blue-50 cursor-pointer flex justify-between items-center transition-colors group";
+                div.innerHTML = `
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-800 group-hover:text-blue-700">${item.negocio}</span>
+                        <span class="text-[10px] text-gray-400 font-mono">${item.id}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-1 rounded-full font-bold">${item.version}</span>
+                        <div class="text-[10px] text-gray-400 mt-1">${item.fecha}</div>
+                    </div>
+                `;
+                div.onclick = () => { closeModals(); cargarCanvas(item.id); };
+                container.appendChild(div);
+            });
+        }
+
+        async function cargarCanvas(id) {
+            showLoader(true);
+            const res = await apiRequest('cargarCanvas', { idCanvas: id, usuarioEmail: currentUser.email });
+            showLoader(false);
+            if(!res.success) return alert(res.msg);
+            
+            document.getElementById('idCanvas').value = id;
+            document.getElementById('negocio').value = res.info.negocio;
+            document.getElementById('version').value = res.info.version;
+            for(let i=1;i<=9;i++) document.getElementById('content-'+i).innerText = (res.bloques && res.bloques[i]) ? res.bloques[i].respuesta : "";
+        }
+
+        async function copiarCanvas() {
+            const oldId = document.getElementById('idCanvas').value;
+            if (!oldId) return alert("Primero guarda el modelo actual.");
+            const nuevaVersion = prompt("Nombre de la nueva versión (ej. v2.0):", "v2.0");
+            if (nuevaVersion) {
+                showLoader(true);
+                const res = await apiRequest('duplicarCanvas', { oldId, nuevaVersion, usuarioEmail: currentUser.email });
+                showLoader(false);
+                if(res.success) {
+                    document.getElementById('idCanvas').value = res.newId;
+                    document.getElementById('version').value = nuevaVersion;
+                    alert("✅ Versión duplicada con éxito.");
+                }
+            }
+        }
+
+        function filtrarLista() {
+            const textName = document.getElementById('search-name').value.toLowerCase();
+            const textId = document.getElementById('search-id').value.toLowerCase();
+            document.querySelectorAll('#file-list-content > div').forEach(row => {
+                const name = row.querySelector('span.font-bold').innerText.toLowerCase();
+                const id = row.querySelector('span.font-mono').innerText.toLowerCase();
+                row.style.display = (name.includes(textName) && id.includes(textId)) ? 'flex' : 'none';
+            });
+        }
+
+        function showLoader(s) { document.getElementById('loader').style.display = s ? 'block' : 'none'; }
+        function closeModals() { 
+            document.getElementById('modal-edit').style.display = 'none';
+            document.getElementById('modal-list').style.display = 'none';
+            document.getElementById('help-box').style.display = 'none';
+        }
+        function nuevoCanvas() { if(confirm("¿Limpiar el lienzo para un nuevo proyecto?")) window.location.reload(); }
+        
+        function exportToPDF() {
+            const element = document.getElementById('canvas-area');
+            const nom = document.getElementById('negocio').value || 'Canvas';
+            html2pdf().set({
+                margin: 0.2, 
+                filename: `Canvas_${nom}.pdf`, 
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+            }).from(element).save();
+        }
+
+        function exportToExcel() {
+            const nom = document.getElementById('negocio').value || 'Negocio';
+            let d = [
+                ["REPORTE MODELO CANVAS", "", ""],
+                ["Negocio:", nom, ""],
+                ["Usuario:", currentUser.nombre, ""],
+                ["", "", ""],
+                ["BLOQUE", "PREGUNTA GUÍA", "RESPUESTA"]
+            ];
+            for(let i=1;i<=9;i++) d.push([titles[i], guides[i], document.getElementById('content-'+i).innerText]);
+            const ws = XLSX.utils.aoa_to_sheet(d);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Canvas");
+            XLSX.writeFile(wb, `Canvas_${nom}.xlsx`);
+        }
+    </script>
+    <a 
+        href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20en%20una%20consultoria%20para%20mi%20negocio."
+        class="whatsapp-float" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+        
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        
+    </a>
+
+</body>
+</html>

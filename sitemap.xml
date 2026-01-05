@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://gammalielanalytics.com/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://gammalielanalytics.com/directorio-consultores/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://gammalielanalytics.com/biblioteca-appsheet/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://gammalielanalytics.com/catalogo/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://gammalielanalytics.com/catalogo/stocktracker/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://gammalielanalytics.com/catalogo/lab-reporter/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://gammalielanalytics.com/catalogo/cromo/</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://gammalielanalytics.com/recursos/canvas.html</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://gammalielanalytics.com/recursos/masterclass-pensamiento-critico.html</loc>
+    <lastmod>2026-01-04</lastmod>
+    <priority>0.70</priority>
+  </url>
+</urlset>

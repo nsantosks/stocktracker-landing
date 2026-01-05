@@ -1,0 +1,16 @@
+# Grupo 1: Todos los buscadores (Google, Bing, etc.)
+User-agent: *
+
+# Bloquear carpetas de configuración o recursos internos
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /stocktracker-favicon/
+
+# Bloquear archivos de sistema o configuración
+Disallow: /config.js
+
+# Permitir el rastreo de todo lo demás
+Allow: /
+
+# Indicar la ubicación oficial del Sitemap para los buscadores
+Sitemap: https://gammalielanalytics.com/sitemap.xml

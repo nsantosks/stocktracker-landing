@@ -1,0 +1,12 @@
+{
+  "name": "gammaliel-analytics-web",
+  "version": "1.0.0",
+  "description": "Sitio web oficial de Gammaliel Analytics",
+  "main": "index.html",
+  "scripts": {
+    "sitemap": "node generate-sitemap.js"
+  },
+  "dependencies": {
+    "sitemap": "^9.0.0"
+  }
+}

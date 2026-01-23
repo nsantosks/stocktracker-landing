@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Transformación Digital - Procesadora Alfa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .phase-card {
+            transition: all 0.3s ease;
+        }
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom Scrollbar for sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Logo Cliente -->
+                <div class="flex items-center gap-4 order-2 md:order-1">
+                    <div class="h-16 w-16 bg-white rounded-lg shadow-sm border p-1 flex items-center justify-center overflow-hidden">
+                        <img src="https://i.imgur.com/debWQrl.jpeg" alt="Procesadora Alfa" class="object-contain h-full w-full">
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800 leading-tight">Procesadora Alfa, C.A.</h2>
+                        <p class="text-sm text-slate-500">CEO: Marianilis Bermudez</p>
+                    </div>
+                </div>
+
+                <!-- Title Center -->
+                <div class="text-center order-1 md:order-2 flex-1">
+                    <h1 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
+                        <span class="text-blue-600">Roadmap</span> de Transformación Digital & BI
+                    </h1>
+                    <div class="h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto mt-2 rounded-full"></div>
+                </div>
+
+                <!-- Logo Consultor -->
+                <div class="flex items-center gap-4 order-3 text-right">
+                    <div>
+                        <h2 class="text-sm font-bold text-slate-800">Gammaliel Analytics</h2>
+                        <p class="text-xs text-slate-500">Ing. Nestor Santos</p>
+                    </div>
+                    <div class="h-14 w-auto bg-white rounded-lg p-1 flex items-center justify-center">
+                        <img src="https://i.imgur.com/4kbN4Il.png" alt="Gammaliel" class="object-contain h-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content: The Path -->
+    <main class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        
+        <!-- Intro Text -->
+        <div class="text-center mb-12 max-w-3xl mx-auto">
+            <p class="text-lg text-slate-600">
+                Una ruta estructurada desde los cimientos de infraestructura hasta la inteligencia de negocios estratégica.
+            </p>
+        </div>
+
+        <!-- Timeline Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+            <!-- FASE 0 -->
+            <article class="phase-card bg-white rounded-2xl shadow border-t-4 border-yellow-500 p-6 relative overflow-hidden flex flex-col h-full">
+                <div class="absolute top-0 right-0 bg-yellow-100 text-yellow-800 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    EN PROCESO 🟡
+                </div>
+                <div class="mb-4">
+                    <div class="h-12 w-12 bg-yellow-50 rounded-full flex items-center justify-center text-yellow-600 mb-3">
+                        <i class="fa-solid fa-hard-hat text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Fase 0: Cimientos</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Infraestructura</p>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-laptop-code mt-1 text-yellow-500"></i>
+                        <span><strong>Hardware:</strong> Laptop Admin (i7).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-network-wired mt-1 text-yellow-500"></i>
+                        <span><strong>Conectividad:</strong> IP Pública/VPN (Acceso Remoto).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-download mt-1 text-yellow-500"></i>
+                        <span><strong>Instalación:</strong> Bonaventura + ODBC.</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FASE 1 -->
+            <article class="phase-card bg-white rounded-2xl shadow border-t-4 border-blue-500 p-6 flex flex-col h-full">
+                <div class="mb-4">
+                    <div class="h-12 w-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mb-3">
+                        <i class="fa-solid fa-faucet-drip text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Fase 1: Ingeniería</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">La "Tubería" de Datos</p>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-link mt-1 text-blue-500"></i>
+                        <span><strong>ODBC:</strong> Puente de lectura ERP-Excel.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-filter mt-1 text-blue-500"></i>
+                        <span><strong>Power Query:</strong> Limpieza de Ventas, Inventario y Bancos.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check-double mt-1 text-blue-500"></i>
+                        <span><strong>Validación:</strong> Cruzar datos vs PDF (Cuadre exacto).</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FASE 2 -->
+            <article class="phase-card bg-white rounded-2xl shadow border-t-4 border-green-500 p-6 flex flex-col h-full ring-2 ring-green-50">
+                <div class="mb-4">
+                    <div class="h-12 w-12 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-3">
+                        <i class="fa-solid fa-file-excel text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Fase 2: Operativo</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Excel "Quick Wins"</p>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-chart-line mt-1 text-green-500"></i>
+                        <span><strong>Finanzas:</strong> Saldos y CxC vs CxP.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-piggy-bank mt-1 text-green-500"></i>
+                        <span><strong>Comercial:</strong> Ventas diarias (Discos/Chorizos).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-file-export mt-1 text-green-500"></i>
+                        <span><strong>Entregable:</strong> Excel Maestro auto-actualizable.</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FASE 3 -->
+            <article class="phase-card bg-white rounded-2xl shadow border-t-4 border-indigo-600 p-6 flex flex-col h-full">
+                <div class="mb-4">
+                    <div class="h-12 w-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600 mb-3">
+                        <i class="fa-solid fa-chart-pie text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Fase 3: Estrategia</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Power BI Dashboard</p>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-bullseye mt-1 text-indigo-500"></i>
+                        <span><strong>KPIs:</strong> Presupuesto vs Realidad.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-arrow-trend-up mt-1 text-indigo-500"></i>
+                        <span><strong>Tendencias:</strong> Evolutivo de ventas mensual.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-sack-dollar mt-1 text-indigo-500"></i>
+                        <span><strong>Rentabilidad:</strong> Análisis visual de gastos.</span>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FASE 4 -->
+            <article class="phase-card bg-white rounded-2xl shadow border-t-4 border-orange-500 p-6 flex flex-col h-full">
+                <div class="mb-4">
+                    <div class="h-12 w-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 mb-3">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Fase 4: Entrega</h3>
+                    <p class="text-xs text-slate-500 uppercase tracking-wide font-semibold mt-1">Transferencia de Conocimiento</p>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-chalkboard-user mt-1 text-orange-500"></i>
+                        <span><strong>Entrenamiento:</strong> Reportes nativos ERP.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-table mt-1 text-orange-500"></i>
+                        <span><strong>Excel Avanzado:</strong> Tablas dinámicas y lectura de Dashboards.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-book mt-1 text-orange-500"></i>
+                        <span><strong>Final:</strong> Manuales y cierre de ciclo.</span>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+
+        <!-- Footer / Legend -->
+        <div class="mt-12 border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+            <p>© 2024 Gammaliel Analytics. Todos los derechos reservados.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <span class="flex items-center gap-2"><div class="w-3 h-3 bg-yellow-500 rounded-full"></div> En Progreso</span>
+                <span class="flex items-center gap-2"><div class="w-3 h-3 bg-slate-300 rounded-full"></div> Pendiente</span>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -10,14 +10,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* Estilos Carrusel */
-        .carousel-container { overflow: hidden; position: relative; border-radius: 1rem; }
-        .carousel-track { display: flex; transition: transform 0.7s ease-in-out; }
-        .carousel-slide { min-width: 100%; height: 500px; position: relative; }
-        .carousel-slide img { width: 100%; height: 100%; object-cover: cover; }
+        .carousel-container { overflow: hidden; position: relative; border-radius: 1.5rem; }
+        .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
+        .carousel-slide { min-width: 100%; height: 550px; position: relative; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
         
-        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilo para el botón seleccionado */
+        .unit-selected { border-color: #1a1a1a !important; background-color: #f9f9f9; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body class="bg-[#fcfcfc] text-stone-900">
@@ -28,101 +30,83 @@
         <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-stone-400">
             <a href="#" class="hover:text-stone-900">Inicio</a>
             <a href="#ventas" class="hover:text-stone-900">Inversión</a>
-            <!-- <a href="#detalles" class="hover:text-stone-900">Detalles</a> -->
         </div>
-        <button class="bg-[#1a1a1a] text-white px-5 py-2 rounded-full text-xs font-bold uppercase">Contactar Asesor</button>
+        <a href="https://wa.me/584144380768" target="_blank" class="bg-[#1a1a1a] text-white px-5 py-2 rounded-full text-xs font-bold uppercase hover:scale-105 transition-transform">Contactar Asesor</a>
     </nav>
 
     <!-- Hero / Galería Automática -->
     <section class="pt-32 pb-16 px-4 md:px-12 max-w-7xl mx-auto">
-        <div class="carousel-container shadow-2xl">
+        <div class="carousel-container shadow-2xl border border-stone-100">
             <div id="carouselTrack" class="carousel-track">
-                <!-- Imagen 1 -->
                 <div class="carousel-slide">
                     <img src="/assets/gerais/Gerais Residence-2-ld.png" alt="Fachada">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Arquitectura hecha Joya</h2>
-                    </div>
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Arquitectura hecha Joya</h2></div>
                 </div>
-                <!-- Imagen 2 -->
                 <div class="carousel-slide">
-                    <img src="/assets/gerais/Gerais Residence-0-ld.jpg" alt="Fachada">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Arquitectura hecha Joya</h2>
-                    </div>
+                    <img src="/assets/gerais/Gerais Residence-0-ld.jpg" alt="Fachada Atardecer">
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Diseño Minimalista</h2></div>
                 </div>
-                <!-- Imagen 4 -->
                 <div class="carousel-slide">
-                    <img src="/assets/gerais/Gerais Residence-3-ld.png" alt="Fachada">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Arquitectura hecha Joya</h2>
-                    </div>
+                    <img src="/assets/gerais/Gerais Residence-3-ld.png" alt="Estructura">
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Exclusividad en Las Mercedes</h2></div>
                 </div>
-                <!-- Imagen 5 -->
                 <div class="carousel-slide">
-                    <img src="/assets/gerais/Gerais Residence-4-ld.png" alt="Fachada">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Arquitectura hecha Joya</h2>
-                    </div>
+                    <img src="/assets/gerais/Gerais Residence-4-ld.png" alt="Noche">
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Estilo de Vida Único</h2></div>
                 </div>
-                <!-- Imagen 6 -->
                 <div class="carousel-slide">
                     <img src="/assets/gerais/Gerais Residence-6-ld.png" alt="Piscina">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Vistas Inimaginables</h2>
-                    </div>
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Vistas Inimaginables</h2></div>
                 </div>
-                <!-- Imagen 7 -->
                 <div class="carousel-slide">
                     <img src="/assets/gerais/lujo-cada-detalle.jpeg" alt="Interiores">
-                    <div class="absolute inset-0 bg-black/20 flex items-end p-12">
-                        <h2 class="text-white text-4xl font-light italic">Lujo en cada Detalle</h2>
-                    </div>
+                    <div class="absolute inset-0 bg-black/30 flex items-end p-12"><h2 class="text-white text-4xl font-light italic">Lujo en cada Detalle</h2></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Buscador / Estructura Versión 2 -->
+    <!-- Buscador -->
     <section id="ventas" class="py-12 px-4 md:px-12 max-w-7xl mx-auto">
         <div class="text-center mb-12">
-            <h3 class="text-3xl font-light mb-6 uppercase tracking-widest">Seleccione Nivel de Planta</h3>
-            <div class="inline-flex p-1 bg-stone-100 rounded-xl border border-stone-200">
-                <button onclick="changeRange('1-7')" id="btn-1-7" class="px-6 py-3 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm">Niveles 1 al 7</button>
-                <button onclick="changeRange('8-11')" id="btn-8-11" class="px-6 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400">Niveles 8 al 11</button>
-                <button onclick="changeRange('12-15')" id="btn-12-15" class="px-6 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400">Niveles 12 al 15</button>
+            <h3 class="text-3xl font-light mb-6 uppercase tracking-widest text-stone-400">Seleccione Nivel de Planta</h3>
+            <div class="inline-flex p-1 bg-stone-100 rounded-xl border border-stone-200 shadow-inner">
+                <button onclick="changeRange('1-7')" id="btn-1-7" class="px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm">Niveles 1 al 7</button>
+                <button onclick="changeRange('8-11')" id="btn-8-11" class="px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400 hover:text-stone-600">Niveles 8 al 11</button>
+                <button onclick="changeRange('12-15')" id="btn-12-15" class="px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400 hover:text-stone-600">Niveles 12 al 15</button>
             </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            <!-- Columna Izquierda -->
+            <!-- Sidebar Unidades -->
             <div class="lg:col-span-4 space-y-4">
-                <div class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
+                <div class="bg-white p-6 rounded-3xl border border-stone-100 shadow-sm">
                     <h4 class="text-[10px] font-bold uppercase text-stone-400 tracking-[0.2em] mb-6 flex items-center gap-2">
-                        <i data-lucide="layout-grid" class="w-3 h-3"></i> Unidades Disponibles
+                        <i data-lucide="layout-grid" class="w-3 h-3"></i> Inventario Disponible
                     </h4>
                     <div id="units-list" class="space-y-2">
-                        <!-- JS -->
+                        <!-- JS inserta aquí -->
                     </div>
                 </div>
 
-                <div class="bg-[#141414] p-8 rounded-2xl text-white shadow-xl">
-                    <p class="text-[10px] uppercase tracking-widest text-stone-500 mb-4 font-bold">Asesoría Comercial</p>
+                <div class="bg-[#141414] p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                    <p class="text-[10px] uppercase tracking-widest text-stone-500 mb-4 font-bold">Comercialización</p>
                     <p class="text-xl font-medium mb-1">Keyla Angulo M.</p>
                     <p class="text-sm text-stone-400 mb-6">Cel. 0414-4380768</p>
-                    <a href="https://wa.me/584144380768" class="block w-full text-center bg-white text-black py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors">Solicitar Cotización</a>
+                    <a href="https://wa.me/584144380768" target="_blank" class="block w-full text-center bg-white text-black py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors shadow-lg">Solicitar Cotización</a>
                 </div>
             </div>
 
-            <!-- Columna Derecha (Ficha de la Unidad) -->
+            <!-- Ficha Detallada -->
             <div class="lg:col-span-8" id="unit-detail">
-                <div class="bg-white rounded-3xl border border-stone-100 shadow-sm p-12 h-full flex flex-col items-center justify-center text-center">
-                    <i data-lucide="mouse-pointer-2" class="w-12 h-12 mb-4 text-stone-200"></i>
-                    <p class="text-stone-400 italic">Seleccione una tipología de la lista para ver el desglose comercial y visual.</p>
+                <div class="bg-white rounded-[2.5rem] border border-stone-100 shadow-sm p-12 h-full flex flex-col items-center justify-center text-center">
+                    <div class="w-20 h-20 bg-stone-50 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="mouse-pointer-2" class="w-8 h-8 text-stone-200"></i>
+                    </div>
+                    <p class="text-stone-400 italic max-w-xs">Seleccione una tipología para ver el desglose comercial y plano de planta.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -131,14 +115,13 @@
     </footer>
 
     <script>
-        // Datos de Apartamentos
         const apartmentData = {
             '1-7': [
                 { id: 'F', m2: 77, pM2: 4000, total: 308000, init: 92400, month: 7700, special: 3850, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-f.png' },
-                { id: 'B/C/D', m2: 90, pM2: 4250, total: 382500, init: 114750, month: 9562, special: 4781, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-b.png' },
-                { id: 'E', m2: 111, pM2: 4250, total: 471750, init: 141525, month: 11793, special: 5896, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-e.png' },
-                { id: 'G', m2: 130, pM2: 4250, total: 552500, init: 165750, month: 13812, special: 6906, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-g.png' },
-                { id: 'A', m2: 150, pM2: 4250, total: 637500, init: 191250, month: 15937, special: 7968, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-a.png' }
+                { id: 'B/C/D', m2: 90, pM2: 4250, total: 382500, init: 114750, month: 9562.50, special: 4781.25, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-b.png' },
+                { id: 'E', m2: 111, pM2: 4250, total: 471750, init: 141525, month: 11793.75, special: 5896.88, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-e.png' },
+                { id: 'G', m2: 130, pM2: 4250, total: 552500, init: 165750, month: 13812.50, special: 6906.25, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-g.png' },
+                { id: 'A', m2: 150, pM2: 4250, total: 637500, init: 191250, month: 15937.50, special: 7968.75, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-a.png' }
             ],
             '8-11': [
                 { id: 'D', m2: 77, pM2: 4500, total: 346500, init: 103950, month: 34650, special: 17325, hab: '1 HAB', img: '/assets/gerais/piso-02-plano-d.png' },
@@ -147,32 +130,34 @@
                 { id: 'C', m2: 205, pM2: 4500, total: 922500, init: 276750, month: 92250, special: 46125, hab: '2 HAB', img: '/assets/gerais/piso-02-plano-c.png' }
             ],
             '12-15': [
-                { id: 'A', m2: 90, pM2: 5500, total: 495000, init: 148500, month: 49500, special: 24750, hab: '1 HAB', img: 'img/plano_a12.jpg' },
-                { id: 'B', m2: 150, pM2: 5500, total: 825000, init: 247500, month: 82500, special: 41250, hab: '2 HAB', img: 'img/plano_b12.jpg' },
-                { id: 'C', m2: 200, pM2: 5500, total: 1100000, init: 330000, month: 110000, special: 55000, hab: '2 HAB', img: 'img/plano_c12.jpg' },
-                { id: 'D', m2: 360, pM2: 5500, total: 1980000, init: 594000, month: 198000, special: 99000, hab: 'PH', img: 'img/plano_d12.jpg' }
+                { id: 'A', m2: 90, pM2: 5500, total: 495000, init: 148500, month: 49500, special: 24750, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-b.png' },
+                { id: 'B', m2: 150, pM2: 5500, total: 825000, init: 247500, month: 82500, special: 41250, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-a.png' },
+                { id: 'C', m2: 200, pM2: 5500, total: 1100000, init: 330000, month: 110000, special: 55000, hab: '2 HAB', img: '/assets/gerais/piso-02-plano-a.png' },
+                { id: 'D', m2: 360, pM2: 5500, total: 1980000, init: 594000, month: 198000, special: 99000, hab: 'PH', img: '/assets/gerais/piso-02-plano-c.png' }
             ]
         };
 
         const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
         let currentRange = '1-7';
+        let selectedIdx = null;
 
-        // Lógica Carrusel Automático
+        // Carrusel Automático Dinámico
         let slideIndex = 0;
         const track = document.getElementById('carouselTrack');
-        const totalSlides = 6;
-
+        const slides = document.querySelectorAll('.carousel-slide');
+        
         function moveCarousel() {
-            slideIndex = (slideIndex + 1) % totalSlides;
+            slideIndex = (slideIndex + 1) % slides.length;
             track.style.transform = `translateX(-${slideIndex * 100}%)`;
         }
-        setInterval(moveCarousel, 4000); // 4 Segundos
+        setInterval(moveCarousel, 4000);
 
         function changeRange(range) {
             currentRange = range;
+            selectedIdx = null;
             ['1-7', '8-11', '12-15'].forEach(r => {
                 const btn = document.getElementById(`btn-${r}`);
-                btn.className = r === range ? "px-6 py-3 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm" : "px-6 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400";
+                btn.className = r === range ? "px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm text-black" : "px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400 hover:text-stone-600";
             });
             renderUnitsList();
         }
@@ -180,67 +165,74 @@
         function renderUnitsList() {
             const list = document.getElementById('units-list');
             list.innerHTML = apartmentData[currentRange].map((u, i) => `
-                <button onclick="showDetail(${i})" class="w-full flex justify-between items-center p-4 rounded-xl border border-stone-50 hover:border-stone-900 transition-all group bg-white">
+                <button onclick="showDetail(${i})" id="unit-btn-${i}" class="w-full flex justify-between items-center p-4 rounded-2xl border border-stone-50 hover:border-stone-900 transition-all group bg-white">
                     <div class="text-left">
                         <span class="block font-bold text-sm">Tipo ${u.id}</span>
                         <span class="text-[10px] text-stone-400 font-bold uppercase">${u.m2} M² · ${u.hab}</span>
                     </div>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-stone-100 group-hover:text-black"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-stone-100 group-hover:text-black group-hover:translate-x-1 transition-all"></i>
                 </button>
             `).join('');
             lucide.createIcons();
         }
 
         function showDetail(index) {
+            // Resaltar seleccionado
+            if(selectedIdx !== null) document.getElementById(`unit-btn-${selectedIdx}`)?.classList.remove('unit-selected');
+            selectedIdx = index;
+            document.getElementById(`unit-btn-${index}`).classList.add('unit-selected');
+
             const u = apartmentData[currentRange][index];
             const detail = document.getElementById('unit-detail');
             detail.innerHTML = `
-                <div class="bg-white rounded-[2.5rem] border border-stone-100 shadow-xl overflow-hidden fade-in h-full">
-                    <div class="p-10 border-b border-stone-50">
+                <div class="bg-white rounded-[2.5rem] border border-stone-100 shadow-2xl overflow-hidden fade-in h-full">
+                    <div class="p-10 border-b border-stone-50 bg-[#fafafa]/50">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
                                 <h4 class="text-3xl font-bold tracking-tight mb-1">Apartamento Tipo ${u.id}</h4>
-                                <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">Metraje Aprox: ${u.m2} M² · Precio por M²: ${currency.format(u.pM2)}</p>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">Niveles ${currentRange} · Precio por M²: ${currency.format(u.pM2)}</p>
                             </div>
                             <div class="text-right">
-                                <span class="text-[10px] font-bold text-stone-300 uppercase block mb-1 tracking-widest">Precio de Venta</span>
-                                <span class="text-4xl font-black">${currency.format(u.total)}</span>
+                                <span class="text-[10px] font-bold text-stone-300 uppercase block mb-1 tracking-widest">Inversión Total</span>
+                                <span class="text-4xl font-black text-[#1a1a1a]">${currency.format(u.total)}</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- AREA DE IMAGEN (Espacio marcado en rojo en tu captura) -->
-                    <div class="bg-[#fcfcfc] p-10 flex justify-center border-b border-stone-50">
-                         <img src="${u.img}" alt="Plano ${u.id}" class="max-h-[350px] object-contain drop-shadow-2xl">
+                    <div class="bg-[#fcfcfc] py-12 px-6 flex justify-center border-b border-stone-50 relative group">
+                         <img src="${u.img}" alt="Plano ${u.id}" class="max-h-[380px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute bottom-4 right-8 text-[10px] font-bold text-stone-300 uppercase tracking-widest italic">Planta Referencial</div>
                     </div>
 
                     <div class="p-10">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                            <div class="p-6 bg-[#f9f9f9] rounded-2xl">
+                            <div class="p-6 bg-[#f9f9f9] rounded-2xl border border-transparent hover:border-stone-100 transition-colors">
                                 <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-1">Inicial (30%)</span>
                                 <span class="text-xl font-bold">${currency.format(u.init)}</span>
                             </div>
-                            <div class="p-6 bg-[#f9f9f9] rounded-2xl">
+                            <div class="p-6 bg-[#f9f9f9] rounded-2xl border border-transparent hover:border-stone-100 transition-colors">
                                 <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-1">24 Mensualidades</span>
                                 <span class="text-xl font-bold">${currency.format(u.month)}</span>
                             </div>
-                            <div class="p-6 bg-[#f9f9f9] rounded-2xl">
+                            <div class="p-6 bg-[#f9f9f9] rounded-2xl border border-transparent hover:border-stone-100 transition-colors">
                                 <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-1">8 Giros Especiales</span>
                                 <span class="text-xl font-bold">${currency.format(u.special)}</span>
                             </div>
                         </div>
 
-                        <div class="bg-[#141414] text-white p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="bg-[#141414] text-white p-8 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
                             <div class="text-center md:text-left">
-                                <p class="text-lg font-medium mb-1 italic">¿Desea formalizar una reserva?</p>
-                                <p class="text-[10px] text-stone-500 font-bold uppercase tracking-widest">Plan de pago ajustable a conveniencia del inversor</p>
+                                <p class="text-lg font-medium mb-1 italic">Reserva disponible</p>
+                                <p class="text-[10px] text-stone-500 font-bold uppercase tracking-widest">Financiamiento adaptable a su conveniencia</p>
                             </div>
-                            <a href="https://wa.me/584144380768?text=Interes%20Nivel%20${currentRange}%20Tipo%20${u.id}" target="_blank" class="bg-white text-black px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-stone-200">Solicitar Cotización</a>
+                            <a href="https://wa.me/584144380768?text=Hola%20Keyla,%20me%20interesa%20Gerais%20Residence%20Nivel%20${currentRange}%20Tipo%20${u.id}" target="_blank" class="bg-white text-black px-10 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-lg hover:bg-stone-100">Solicitar Información</a>
                         </div>
                     </div>
                 </div>
             `;
             lucide.createIcons();
+            // Scroll suave hacia arriba de la ficha en móvil
+            if(window.innerWidth < 768) detail.scrollIntoView({behavior: 'smooth'});
         }
 
         window.onload = () => {

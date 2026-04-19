@@ -184,8 +184,11 @@
 
             const u = apartmentData[currentRange][index];
             const detail = document.getElementById('unit-detail');
+            
             detail.innerHTML = `
                 <div class="bg-white rounded-[2.5rem] border border-stone-100 shadow-2xl overflow-hidden fade-in h-full">
+                    
+                    <!-- 1. ENCABEZADO: Título y Precio -->
                     <div class="p-10 border-b border-stone-50 bg-[#fafafa]/50">
                         <div class="flex flex-col md:flex-row justify-between items-start gap-4">
                             <div>
@@ -199,13 +202,9 @@
                         </div>
                     </div>
 
-                    <div class="bg-[#fcfcfc] py-12 px-6 flex justify-center border-b border-stone-50 relative group">
-                         <img src="${u.img}" alt="Plano ${u.id}" class="max-h-[380px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                         <div class="absolute bottom-4 right-8 text-[10px] font-bold text-stone-300 uppercase tracking-widest italic">Planta Referencial</div>
-                    </div>
-
-                    <div class="p-10">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <!-- 2. NUEVA SECCIÓN: CUADROS DE APORTIZACIÓN (Ahora arriba) -->
+                    <div class="p-10 border-b border-stone-50">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-6 bg-[#f9f9f9] rounded-2xl border border-transparent hover:border-stone-100 transition-colors">
                                 <span class="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-1">Inicial (30%)</span>
                                 <span class="text-xl font-bold">${currency.format(u.init)}</span>
@@ -219,7 +218,16 @@
                                 <span class="text-xl font-bold">${currency.format(u.special)}</span>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- 3. IMAGEN / PLANO (Ahora en el medio) -->
+                    <div class="bg-[#fcfcfc] py-12 px-6 flex justify-center border-b border-stone-50 relative group">
+                        <img src="${u.img}" alt="Plano ${u.id}" class="max-h-[380px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-4 right-8 text-[10px] font-bold text-stone-300 uppercase tracking-widest italic">Planta Referencial</div>
+                    </div>
+
+                    <!-- 4. FOOTER: Botón de Acción -->
+                    <div class="p-10">
                         <div class="bg-[#141414] text-white p-8 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
                             <div class="text-center md:text-left">
                                 <p class="text-lg font-medium mb-1 italic">Reserva disponible</p>
@@ -231,7 +239,6 @@
                 </div>
             `;
             lucide.createIcons();
-            // Scroll suave hacia arriba de la ficha en móvil
             if(window.innerWidth < 768) detail.scrollIntoView({behavior: 'smooth'});
         }
 

@@ -5,6 +5,7 @@ User-agent: *
 Disallow: /assets/js/
 Disallow: /assets/css/
 Disallow: /stocktracker-favicon/
+Disallow: /favicon/
 
 # Bloquear archivos de sistema o configuración
 Disallow: /config.js

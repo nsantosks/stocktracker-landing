@@ -50,14 +50,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* Estilo Inmobiliario Premium (Emerald & Slate) */
-        .profile-hero { background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); padding-top: 140px; padding-bottom: 4rem; }
-        .section-title-profile { color: #064e3b; font-weight: 800; position: relative; display: inline-block; } 
-        .section-title-profile::after { content: ''; display: block; width: 60px; height: 4px; background: #10b981; margin-top: 0.5rem; } 
+        /* CORRECCIÓN DE PALETA: Estilo Elite / Inversión (Navy & Gold) */
+        .profile-hero { background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%); padding-top: 140px; padding-bottom: 4rem; }
+        .section-title-profile { color: #0f172a; font-weight: 800; position: relative; display: inline-block; } 
+        .section-title-profile::after { content: ''; display: block; width: 60px; height: 4px; background: #b45309; margin-top: 0.5rem; } /* Dorado / Ámbar Oscuro */
         .tag-pill { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.025em; }
-        .btn-primary-re { background-color: #064e3b; color: white; transition: all 0.3s; }
-        .btn-primary-re:hover { background-color: #065f46; transform: translateY(-2px); }
-        .metrika-accent { color: #10b981; font-weight: 800; }
+        .btn-primary-re { background-color: #0f172a; color: white; transition: all 0.3s; border: 1px solid #b45309; }
+        .btn-primary-re:hover { background-color: #1e293b; transform: translateY(-2px); }
+        .metrika-accent { color: #b45309; font-weight: 800; }
+        .testimonial-quote { border-left: 4px solid #b45309; background-color: #fffbeb; padding: 1.5rem; font-style: italic; border-radius: 0 0.5rem 0.5rem 0; }
     </style>
 </head>
 <body>
@@ -77,14 +78,15 @@
                         </div>
                         <div class="profile-header flex flex-wrap md:flex-nowrap gap-8">
                             <div class="profile-photo-wrapper">
-                                <img src="/img/consultores/staff-keyla-angulo.png" alt="Keyla Angulo - Real Estate Broker & Advisor" class="profile-photo" loading="eager">
+                                <img src="/img/consultores/staff-keyla-angulo.jpeg" alt="Keyla Angulo - Real Estate Broker & Advisor" class="profile-photo" loading="eager">
                             </div>
                             <div class="profile-summary text-left">
                                 <div class="mb-2">
-                                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3 py-1 rounded">CEO METRIKA Real Estate</span>
+                                    <!-- Cambiado a Slate 900 para estilo corporativo -->
+                                    <span class="bg-slate-900 text-white text-xs font-bold uppercase px-3 py-1 rounded">CEO METRIKA Real Estate</span>
                                 </div>
                                 <h1 style="color: #1e293b; font-size: 2.2rem; font-weight: 800; margin: 0; line-height: 1.2;">Keyla Angulo Martínez</h1>
-                                <p style="font-size: 1.1rem; color: #10b981; font-weight: 600; margin-top: 10px; margin-bottom: 15px;">
+                                <p style="font-size: 1.1rem; color: #b45309; font-weight: 600; margin-top: 10px; margin-bottom: 15px;">
                                     Real Estate Broker & Advisor | Especialista en Activos Industriales y Lujo
                                 </p>
                                 
@@ -134,6 +136,10 @@
                                 <li><strong>Ética y Transparencia:</strong> Compromiso innegociable con el profesionalismo y el debido proceso (Due Diligence) en cada negociación.</li>
                             </ul>
                         </div>
+                        <blockquote class="testimonial-quote">
+                            "Mi gestión va más allá del corretaje tradicional; me enfoco en que cada propiedad aporte valor real al patrimonio de mis clientes mediante una comercialización inteligente."
+                            <footer class="mt-4 font-bold not-italic text-gray-900">— Keyla Angulo Martínez</footer>
+                        </blockquote>
                     </div>
                 </section>
 
@@ -144,24 +150,25 @@
                             <p class="mt-4 text-gray-600">Asesoría de alto nivel para activos de alto valor.</p>
                         </div>
 
+                        <!-- Colores de iconos modificados al estilo "corporativo" -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                             <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                                <div class="w-12 h-12 bg-emerald-900 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-industry"></i></div>
+                                <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-industry"></i></div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-2">Activos Industriales & Retail</h3>
                                 <p class="text-gray-600">Especialista en galpones, locales comerciales y activos corporativos. Análisis de ubicación estratégica y flujo de caja.</p>
                             </div>
                             <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                                <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-gem"></i></div>
+                                <div class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-gem"></i></div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-2">Residencial de Lujo</h3>
                                 <p class="text-gray-600">Comercialización exclusiva de propiedades premium, enfocada en clientes de alto perfil que buscan exclusividad y seguridad.</p>
                             </div>
                             <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                                <div class="w-12 h-12 bg-emerald-400 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-bullhorn"></i></div>
+                                <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-bullhorn"></i></div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-2">Comercialización 360°</h3>
                                 <p class="text-gray-600">Implementación de estrategias de vanguardia en mercadeo digital y tradicional para acelerar la rotación de inventarios inmobiliarios.</p>
                             </div>
                             <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                                <div class="w-12 h-12 bg-emerald-800 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-handshake"></i></div>
+                                <div class="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center text-white text-xl mb-4"><i class="fas fa-handshake"></i></div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-2">Estructuración & Due Diligence</h3>
                                 <p class="text-gray-600">Acompañamiento en el análisis técnico-legal previo a la compra o venta para mitigar riesgos y asegurar la transparencia.</p>
                             </div>
@@ -169,23 +176,24 @@
                     </div>
                 </section>
 
-                <section id="gammaliel-integracion" class="py-16 bg-emerald-900 text-white">
+                <!-- Fondo cambiado de emerald a slate -->
+                <section id="gammaliel-integracion" class="py-16 bg-slate-900 text-white">
                     <div class="container mx-auto px-4 text-center">
                         <h2 class="text-3xl font-bold mb-6">Real Estate Intelligence</h2>
-                        <p class="text-xl text-emerald-100 mb-12 max-w-3xl mx-auto">La visión de Keyla Angulo y METRIKA se potencia con la analítica de <strong>Gammaliel Analytics</strong>.</p>
+                        <p class="text-xl text-slate-300 mb-12 max-w-3xl mx-auto">La visión de Keyla Angulo y METRIKA se potencia con la analítica de <strong>Gammaliel Analytics</strong>.</p>
 
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
-                            <div class="bg-emerald-800 p-6 rounded-lg border border-emerald-700">
-                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-emerald-300 mr-2"></i>Mapas de Mercado</h4>
-                                <p class="text-sm text-emerald-100">Análisis geográfico y de precios por zona para identificar las mejores oportunidades de inversión industrial y comercial.</p>
+                            <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-amber-500 mr-2"></i>Mapas de Mercado</h4>
+                                <p class="text-sm text-slate-300">Análisis geográfico y de precios por zona para identificar las mejores oportunidades de inversión industrial y comercial.</p>
                             </div>
-                            <div class="bg-emerald-800 p-6 rounded-lg border border-emerald-700">
-                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-emerald-300 mr-2"></i>Predicción de ROI</h4>
-                                <p class="text-sm text-emerald-100">Modelos matemáticos para proyectar el retorno de inversión y plusvalía de activos residenciales premium.</p>
+                            <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-amber-500 mr-2"></i>Predicción de ROI</h4>
+                                <p class="text-sm text-slate-300">Modelos matemáticos para proyectar el retorno de inversión y plusvalía de activos residenciales premium.</p>
                             </div>
-                            <div class="bg-emerald-800 p-6 rounded-lg border border-emerald-700">
-                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-emerald-300 mr-2"></i>Marketing Automatizado</h4>
-                                <p class="text-sm text-emerald-100">Integración de CRM y analítica para segmentar leads de alta calidad en la comercialización de proyectos de lujo.</p>
+                            <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+                                <h4 class="font-bold text-lg mb-2"><i class="fas fa-check-circle text-amber-500 mr-2"></i>Marketing Automatizado</h4>
+                                <p class="text-sm text-slate-300">Integración de CRM y analítica para segmentar leads de alta calidad en la comercialización de proyectos de lujo.</p>
                             </div>
                         </div>
                     </div>
@@ -199,8 +207,8 @@
                         </div>
 
                          <div class="content-grid">
-                            <!-- Recurso ACTIVO: Gerais Residence -->
-                            <article class="content-card border-t-4 border-emerald-600 shadow-lg">
+                            <!-- Recurso ACTIVO: Gerais Residence con estilo amber -->
+                            <article class="content-card border-t-4 border-slate-900 shadow-lg">
                                 <div class="card-body">
                                     <h3 class="highlight-title text-xl font-bold text-slate-800">
                                         Proyecto: Gerais Residence
@@ -208,20 +216,20 @@
                                     <p class="text-gray-600 mt-2">
                                         Comercialización exclusiva de este desarrollo residencial premium. Conozca los detalles arquitectónicos, ubicación estratégica y planes de inversión.
                                     </p>
-                                    <a href="/directorio-consultores/keyla-angulo/gerais-residence/" class="content-link font-bold text-emerald-600 mt-4 inline-block hover:underline">
+                                    <a href="/directorio-consultores/keyla-angulo/gerais-residence/" class="content-link font-bold text-amber-700 mt-4 inline-block hover:underline">
                                         Ver Proyecto &rarr;
                                     </a>
                                 </div>
                                 <div class="card-footer flex flex-wrap items-center gap-2 border-t border-gray-100 p-4">
-                                    <span class="tag bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Luxury</span>
-                                    <span class="tag bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Residencial</span>
+                                    <span class="tag bg-slate-100 text-slate-900 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Luxury</span>
+                                    <span class="tag bg-slate-100 text-slate-900 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Residencial</span>
                                     <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link ml-auto text-red-600 hover:text-red-700 font-medium text-xs">
                                         Market Insight <i class="fab fa-youtube"></i>
                                     </a>
                                 </div>
                             </article>
-                            <!-- Recurso 2: Industrial -->
-                            <article class="content-card border-t-4 border-emerald-600 shadow-lg">
+                            <!-- Recurso 2: Industrial con estilo amber -->
+                            <article class="content-card border-t-4 border-slate-900 shadow-lg">
                                 <div class="card-body">
                                     <h3 class="highlight-title text-xl font-bold text-slate-800">
                                         Inversión en Activos Industriales
@@ -234,7 +242,7 @@
                                     </span>
                                 </div>
                                 <div class="card-footer flex flex-wrap items-center gap-2 border-t border-gray-100 p-4">
-                                    <span class="tag bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Industrial</span>
+                                    <span class="tag bg-slate-100 text-slate-900 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Industrial</span>
                                     <span class="tag bg-yellow-50 text-yellow-600 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Próximamente</span>
                                     <a href="https://www.youtube.com/@GammalielAnalytics" target="_blank" class="video-link ml-auto text-red-600 hover:text-red-700 font-medium text-xs">
                                         Market Insight <i class="fab fa-youtube"></i>

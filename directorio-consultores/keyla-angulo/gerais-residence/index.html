@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Invierta en Gerais Residence: Apartamentos de lujo en Las Mercedes, Caracas. Planes de financiamiento de 24 meses. Precios desde $308,000.">
+    <meta property="og:title" content="Gerais Residence | Lujo y Exclusividad en Las Mercedes">
+    <meta property="og:description" content="Conozca el plan de inversión y planos de los apartamentos más exclusivos de Caracas.">
+    <meta property="og:image" content="/assets/gerais/Gerais Residence-2-ld.png">
+
     <title>Gerais Residence | Plan de Ventas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,6 +26,34 @@
         /* Estilo para el botón seleccionado */
         .unit-selected { border-color: #1a1a1a !important; background-color: #f9f9f9; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     </style>
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org/",
+        "@type": "ApartmentComplex",
+        "name": "Gerais Residence",
+        "description": "Exclusivos apartamentos de lujo en preventa ubicados en Las Mercedes, Caracas. Arquitectura moderna y sustentable.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle California",
+            "addressLocality": "Las Mercedes",
+            "addressRegion": "Caracas",
+            "addressCountry": "VE"
+        },
+        "amenityFeature": [
+            "Piscina infinita",
+            "Gimnasio",
+            "Valet Parking",
+            "Vigilancia privada"
+        ],
+        "offers": {
+            "@type": "AggregateOffer",
+            "lowPrice": "308000",
+            "highPrice": "1980000",
+            "priceCurrency": "USD"
+        }
+        }
+        </script>
+
 </head>
 <body class="bg-[#fcfcfc] text-stone-900">
 
@@ -69,7 +102,10 @@
     <!-- Buscador -->
     <section id="ventas" class="py-12 px-4 md:px-12 max-w-7xl mx-auto">
         <div class="text-center mb-12">
-            <h3 class="text-3xl font-light mb-6 uppercase tracking-widest text-stone-400">Seleccione Nivel de Planta</h3>
+            <h2 class="text-3xl font-light mb-6 uppercase tracking-widest text-stone-800">
+            Venta de Apartamentos en <span class="font-bold text-black">Las Mercedes, Caracas</span>
+            </h2>
+            <p class="text-stone-400 mb-6 text-sm uppercase tracking-widest">Seleccione el nivel de planta para ver el Plan de Inversión</p>
             <div class="inline-flex p-1 bg-stone-100 rounded-xl border border-stone-200 shadow-inner">
                 <button onclick="changeRange('1-7')" id="btn-1-7" class="px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm">Niveles 1 al 7</button>
                 <button onclick="changeRange('8-11')" id="btn-8-11" class="px-8 py-3 rounded-lg text-xs font-bold uppercase transition-all text-stone-400 hover:text-stone-600">Niveles 8 al 11</button>
@@ -89,11 +125,11 @@
                     </div>
                 </div>
 
-                <div class="bg-[#141414] p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
-                    <p class="text-[10px] uppercase tracking-widest text-stone-500 mb-4 font-bold">Comercialización</p>
-                    <p class="text-xl font-medium mb-1">Keyla Angulo M.</p>
-                    <p class="text-sm text-stone-400 mb-6">Cel. 0414-4380768</p>
+                <div class="bg-[#141414] p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group" itemscope itemtype="https://schema.org/RealEstateAgent">
+                    <p class="text-[10px] uppercase tracking-widest text-stone-500 mb-4 font-bold">Comercialización Exclusiva</p>
+                    <p class="text-xl font-medium mb-1" itemprop="name">Keyla Angulo M.</p>
+                    <p class="text-sm text-stone-400 mb-6" itemprop="telephone">Cel. 0414-4380768</p>
+                    <link itemprop="url" href="https://gammalielanalytics.com/directorio-consultores/keyla-angulo/gerais-residence/">
                     <a href="https://wa.me/584144380768" target="_blank" class="block w-full text-center bg-white text-black py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-stone-200 transition-colors shadow-lg">Solicitar Cotización</a>
                 </div>
             </div>
@@ -222,7 +258,7 @@
 
                     <!-- 3. IMAGEN / PLANO (Ahora en el medio) -->
                     <div class="bg-[#fcfcfc] py-12 px-6 flex justify-center border-b border-stone-50 relative group">
-                        <img src="${u.img}" alt="Plano ${u.id}" class="max-h-[380px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                        <img src="${u.img}" alt="Plano de Apartamento de Lujo Tipo ${u.id} en Gerais Residence Las Mercedes" title="Distribución Apartamento Tipo ${u.id}" class="max-h-[380px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute bottom-4 right-8 text-[10px] font-bold text-stone-300 uppercase tracking-widest italic">Planta Referencial</div>
                     </div>
 

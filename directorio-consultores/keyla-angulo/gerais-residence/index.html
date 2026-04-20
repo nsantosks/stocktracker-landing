@@ -23,6 +23,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
+
     <link rel="stylesheet" href="/assets/css/style.css"> 
     <link rel="stylesheet" href="/assets/css/style-dark.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"> 
@@ -74,6 +80,8 @@
 
 </head>
 <body class="bg-[#fcfcfc] text-stone-900">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Navigation -->
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-white/90 backdrop-blur-md border border-stone-100 px-6 py-2 rounded-full flex items-center gap-8 shadow-sm w-[95%] md:w-auto">
@@ -171,23 +179,23 @@
     <script>
         const apartmentData = {
             '1-7': [
-                { id: 'F', m2: 77, pM2: 4000, total: 308000, init: 92400, month: 7700, special: 3850, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-f.png' },
-                { id: 'B/C/D', m2: 90, pM2: 4250, total: 382500, init: 114750, month: 9562.50, special: 4781.25, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-b.png' },
-                { id: 'E', m2: 111, pM2: 4250, total: 471750, init: 141525, month: 11793.75, special: 5896.88, hab: '1 HAB', img: '/assets/gerais/piso-01-plano-e.png' },
-                { id: 'G', m2: 130, pM2: 4250, total: 552500, init: 165750, month: 13812.50, special: 6906.25, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-g.png' },
-                { id: 'A', m2: 150, pM2: 4250, total: 637500, init: 191250, month: 15937.50, special: 7968.75, hab: '2 HAB', img: '/assets/gerais/piso-01-plano-a.png' }
+                { id: 'F', m2: 77, pM2: 4000, total: 308000, init: 92400, month: 7700, special: 3850, hab: '1 hab | 1 baño | 1 medio baño', img: '/assets/gerais/piso-01-plano-f.png' },
+                { id: 'B/C/D', m2: 90, pM2: 4250, total: 382500, init: 114750, month: 9562.50, special: 4781.25, hab: '1 hab | 1 baño | 1 medio baño', img: '/assets/gerais/piso-01-plano-b.png' },
+                { id: 'E', m2: 111, pM2: 4250, total: 471750, init: 141525, month: 11793.75, special: 5896.88, hab: '1 hab | 1 baño | 1 medio baño', img: '/assets/gerais/piso-01-plano-e.png' },
+                { id: 'G', m2: 130, pM2: 4250, total: 552500, init: 165750, month: 13812.50, special: 6906.25, hab: '2 hab | 2 baños | 2 medios baños', img: '/assets/gerais/piso-01-plano-g.png' },
+                { id: 'A', m2: 150, pM2: 4250, total: 637500, init: 191250, month: 15937.50, special: 7968.75, hab: '3 hab | 3 baños', img: '/assets/gerais/piso-01-plano-a.png' }
             ],
             '8-11': [
-                { id: 'D', m2: 77, pM2: 4500, total: 346500, init: 103950, month: 34650, special: 17325, hab: '1 HAB', img: '/assets/gerais/piso-02-plano-d.png' },
-                { id: 'B/E', m2: 130, pM2: 4500, total: 585000, init: 175500, month: 58500, special: 29250, hab: '2 HAB', img: '/assets/gerais/piso-02-plano-b.png' },
-                { id: 'A', m2: 190, pM2: 4500, total: 855000, init: 256500, month: 85500, special: 42750, hab: '2 HAB', img: '/assets/gerais/piso-02-plano-a.png' },
-                { id: 'C', m2: 205, pM2: 4500, total: 922500, init: 276750, month: 92250, special: 46125, hab: '2 HAB', img: '/assets/gerais/piso-02-plano-c.png' }
+                { id: 'D', m2: 77, pM2: 4500, total: 346500, init: 103950, month: 34650, special: 17325, hab: '1 hab | 1 baño | 1 medio baño', img: '/assets/gerais/piso-02-plano-d.png' },
+                { id: 'B/E', m2: 130, pM2: 4500, total: 585000, init: 175500, month: 58500, special: 29250, hab: '2 hab | 2 baños | 1 medio baño | family room', img: '/assets/gerais/piso-02-plano-b.png' },
+                { id: 'A', m2: 190, pM2: 4500, total: 855000, init: 256500, month: 85500, special: 42750, hab: '2 hab | 2 baños | 1 medio baño | pantry exterior', img: '/assets/gerais/piso-02-plano-a.png' },
+                { id: 'C', m2: 205, pM2: 4500, total: 922500, init: 276750, month: 92250, special: 46125, hab: '2 hab | 2 baños | 1 medio baño | Estudio', img: '/assets/gerais/piso-02-plano-c.png' }
             ],
             '12-15': [
-                { id: 'A', m2: 90, pM2: 5500, total: 495000, init: 148500, month: 49500, special: 24750, hab: '1 HAB', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
-                { id: 'B', m2: 150, pM2: 5500, total: 825000, init: 247500, month: 82500, special: 41250, hab: '2 HAB', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
-                { id: 'C', m2: 200, pM2: 5500, total: 1100000, init: 330000, month: 110000, special: 55000, hab: '2 HAB', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
-                { id: 'D', m2: 360, pM2: 5500, total: 1980000, init: 594000, month: 198000, special: 99000, hab: 'PH', img: '/assets/gerais/gerais-residence-0-ld.jpg' }
+                { id: 'A', m2: 90, pM2: 5500, total: 495000, init: 148500, month: 49500, special: 24750, hab: '1 hab | 1 baño | 1 medio baño', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
+                { id: 'B', m2: 150, pM2: 5500, total: 825000, init: 247500, month: 82500, special: 41250, hab: '2 hab | 3 baños', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
+                { id: 'C', m2: 200, pM2: 5500, total: 1100000, init: 330000, month: 110000, special: 55000, hab: '2 hab | 2 baños | 1 medio baño | Estudio | hab y baño serv.', img: '/assets/gerais/gerais-residence-0-ld.jpg' },
+                { id: 'D', m2: 360, pM2: 5500, total: 1980000, init: 594000, month: 198000, special: 99000, hab: '3 hab | 3 baños  | 1 medio baño | family room | hab y baño serv.', img: '/assets/gerais/gerais-residence-0-ld.jpg' }
             ]
         };
 

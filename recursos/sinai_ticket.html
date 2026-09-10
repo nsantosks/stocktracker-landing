@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impresión de Ticket</title>
+    <title>Impresión de Ticket - MP80-05</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Carga de html2canvas para rasterización de alta resolución -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         body { font-family: 'Courier New', Courier, monospace; background: #555; margin: 0; padding: 0; }
         #control-panel { position: fixed; top: 0; width: 100%; background: #1a2a40; padding: 10px; display: flex; justify-content: center; gap: 10px; z-index: 100; flex-wrap: wrap; box-sizing: border-box; }
@@ -41,7 +43,7 @@
 
     <div class="ticket-wrapper" id="ticketContent" style="display:none;">
         <div class="text-center">
-            <img id="imgLogo" class="logo" src="">
+            <img id="imgLogo" class="logo" src="" crossorigin="anonymous">
             <div class="header-emisor" id="emisorNombre"></div>
         </div>
 
@@ -156,65 +158,102 @@
             document.getElementById('status').innerText = "Listo para conectar por Bluetooth";
         }
 
-        class EscPosEncoder {
+        // --- ENCODER DE MAPA DE BIT RÁSTER ESC/POS (GS v 0) ---
+        class EscPosRasterEncoder {
             constructor() { this.buffer = []; }
-            init() { this.buffer.push(0x1B, 0x40); return this; }
-            align(a) { this.buffer.push(0x1B, 0x61, a); return this; }
-            style(bold = false, doubleHeight = false, doubleWidth = false) {
-                let size = 0;
-                if (doubleWidth) size |= 0x20;
-                if (doubleHeight) size |= 0x10;
-                this.buffer.push(0x1B, 0x45, bold ? 1 : 0);
-                this.buffer.push(0x1D, 0x21, size);
+
+            init() {
+                this.buffer.push(0x1B, 0x40); // Reset
                 return this;
             }
-            text(str) {
-                const encoder = new TextEncoder();
-                const bytes = encoder.encode(str);
-                for (let b of bytes) this.buffer.push(b);
-                return this;
-            }
-            line(str = '') { this.text(str + '\n'); return this; }
-            row48(leftStr, rightStr) {
-                const width = 48;
-                const spaces = width - (leftStr.length + rightStr.length);
-                if (spaces > 0) {
-                    this.line(leftStr + ' '.repeat(spaces) + rightStr);
-                } else {
-                    this.line(leftStr);
-                    this.line(' '.repeat(Math.max(0, width - rightStr.length)) + rightStr);
+
+            drawCanvas(canvas) {
+                const ctx = canvas.getContext('2d');
+                const width = canvas.width;
+                const height = canvas.height;
+                const imgData = ctx.getImageData(0, 0, width, height).data;
+
+                const widthBytes = Math.ceil(width / 8);
+
+                // Comando ESC/POS GS v 0 (Impresión ráster)
+                const xL = widthBytes & 0xFF;
+                const xH = (widthBytes >> 8) & 0xFF;
+                const yL = height & 0xFF;
+                const yH = (height >> 8) & 0xFF;
+
+                this.buffer.push(0x1D, 0x76, 0x30, 0x00, xL, xH, yL, yH);
+
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < widthBytes; x++) {
+                        let byteVal = 0;
+                        for (let bit = 0; bit < 8; bit++) {
+                            const pixelX = x * 8 + bit;
+                            if (pixelX < width) {
+                                const idx = (y * width + pixelX) * 4;
+                                const r = imgData[idx];
+                                const g = imgData[idx + 1];
+                                const b = imgData[idx + 2];
+                                const alpha = imgData[idx + 3];
+
+                                const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
+                                if (alpha > 128 && luminance < 180) {
+                                    byteVal |= (128 >> bit);
+                                }
+                            }
+                        }
+                        this.buffer.push(byteVal);
+                    }
                 }
                 return this;
             }
-            feed(lines = 3) { this.buffer.push(0x1B, 0x64, lines); return this; }
-            encode() { return new Uint8Array(this.buffer); }
+
+            feed(lines = 4) {
+                this.buffer.push(0x1B, 0x64, lines);
+                return this;
+            }
+
+            encode() {
+                return new Uint8Array(this.buffer);
+            }
         }
 
         async function imprimirDirectoBT() {
             const btn = document.getElementById('btnBT');
             const status = document.getElementById('status');
-        
+            const ticketElement = document.getElementById('ticketContent');
+
             if (!navigator.bluetooth) {
                 alert("Web Bluetooth no está disponible en este navegador. Usa Google Chrome en Android.");
                 return;
             }
-        
+
             try {
                 btn.disabled = true;
-                status.innerText = "Buscando impresora...";
-        
+                status.innerText = "Procesando imagen del ticket...";
+
+                // 1. Convertimos el contenedor HTML exacto a Canvas Monocromo (576 px = Ancho 80mm @ 203 DPI)
+                const canvas = await html2canvas(ticketElement, {
+                    scale: 2,
+                    width: 384,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff'
+                });
+
+                status.innerText = "Buscando impresora MP80-05...";
+
+                // 2. Conexión por Bluetooth BLE
                 const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
                     optionalServices: CANDIDATE_SERVICES
                 });
-        
-                status.innerText = `Conectando a ${device.name || 'Impresora Portatil'}...`;
-        
+
+                status.innerText = `Conectando a ${device.name || 'MP80-05'}...`;
+
                 const server = await device.gatt.connect();
-                
                 let writeChar = null;
                 const primaryServices = await server.getPrimaryServices();
-        
+
                 for (const service of primaryServices) {
                     try {
                         const characteristics = await service.getCharacteristics();
@@ -227,76 +266,24 @@
                         }
                     } catch (e) {}
                 }
-        
+
                 if (!writeChar) {
-                    throw new Error("No se encontró puerto de escritura BLE en la impresora.");
+                    throw new Error("No se encontró canal de escritura BLE en la impresora.");
                 }
-        
-                status.innerText = "Generando ticket ESC/POS...";
-        
-                // --- CONSTRUCCIÓN DEL TICKET CON FORMATO EXACTO APROBADO ---
-                const esc = new EscPosEncoder();
-                const SEPARADOR = '-'.repeat(48);
-        
-                esc.init()
-                   // Cabecera Centrada
-                   .align(1)
-                   .style(true, true, false) // Negrita y Doble Alto
-                   .line(datosGlobales.emisor.nombre || '')
-                   .style(false, false, false)
-                   .feed(1)
-                   
-                   // Bloque Datos del Documento (Izquierda)
-                   .align(0)
-                   .style(true, false, false)
-                   .line(`${datosGlobales.tituloDoc || 'COTIZACION'}: ${datosGlobales.id}`)
-                   .style(false, false, false)
-                   .line(`Fecha de Emisión: ${datosGlobales.fecha}`)
-                   .feed(1)
-        
-                   // Bloque Cliente (En Mayúsculas como la plantilla)
-                   .line(`NOMBRE O RAZÓN SOCIAL: ${datosGlobales.cliente.nombre.toUpperCase()}`)
-                   .line(`CI/RIF: ${datosGlobales.cliente.rif} | SUNAGRO: ${datosGlobales.cliente.sunagro || ''}`)
-                   .line(`Telf: ${datosGlobales.cliente.telefono || ''}`)
-                   .line(`Dir: ${(datosGlobales.cliente.direccion || '').toUpperCase()}`)
-                   .line(SEPARADOR);
-        
-                // Tabla de Productos (Estructura de 2 filas por ítem)
-                datosGlobales.items.forEach(item => {
-                    const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
-                    
-                    // Fila 1: Título del producto en Negrita
-                    esc.style(true, false, false)
-                       .line(item.producto)
-                       .style(false, false, false);
-                    
-                    // Fila 2: Cantidad x Precio (Izquierda) y Subtotal (Derecha)
-                    const detalle = `${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`;
-                    esc.row48(detalle, `$${subtotal}`);
-                });
-        
-                // Totales y Notas
-                esc.line(SEPARADOR)
-                   .align(2)
-                   .style(true, true, false) // Negrita y Doble Alto para el Total
-                   .line(`TOTAL ref.: ${datosGlobales.total.toFixed(2)}`)
-                   .style(false, false, false)
-                   .align(0)
-                   .line(`Peso Total: ${(datosGlobales.pesoTotal || 0).toFixed(2)} Kg`)
-                   .line(`Notas: ${datosGlobales.notas || ''}`)
-                   .line(SEPARADOR)
-                   
-                   // Nota Legal al Pie (Centrada)
-                   .align(1)
-                   .line('*** La firma y sello de este documento implica')
-                   .line('que el producto fue recibido en')
-                   .line('perfectas condiciones. ***')
-                   .feed(4);
-        
-                status.innerText = "Imprimiendo...";
-        
-                const dataBytes = esc.encode();
-                const chunkSize = 100;
+
+                status.innerText = "Traduciendo a matriz de puntos...";
+
+                // 3. Generación de matriz gráfica de puntos (GS v 0)
+                const rasterEncoder = new EscPosRasterEncoder();
+                rasterEncoder.init()
+                             .drawCanvas(canvas)
+                             .feed(4);
+
+                status.innerText = "Imprimiendo ticket...";
+
+                // 4. Envío por bloques de bytes a la impresora
+                const dataBytes = rasterEncoder.encode();
+                const chunkSize = 120;
                 
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
                     const chunk = dataBytes.slice(i, i + chunkSize);
@@ -306,14 +293,14 @@
                         await writeChar.writeValue(chunk);
                     }
                 }
-        
-                status.innerText = "¡Impresión completada!";
-                setTimeout(() => device.gatt.disconnect(), 1000);
-        
+
+                status.innerText = "¡Impresión completada con éxito!";
+                setTimeout(() => device.gatt.disconnect(), 1200);
+
             } catch (err) {
                 console.error(err);
                 status.innerText = "Error: " + err.message;
-                alert("Error de conexión: " + err.message);
+                alert("Error durante la impresión: " + err.message);
             } finally {
                 btn.disabled = false;
             }

@@ -13,7 +13,10 @@
         .btn { padding: 8px 12px; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 12px; }
         .btn-bt { background: #0284c7; color: white; }
         .status-bar { width: 100%; text-align: center; color: #cbd5e1; font-size: 11px; margin-top: 4px; font-family: sans-serif; }
+        
+        /* El ancho por defecto es 72mm; la función lo redimensiona dinámicamente si recibe 'ancho' en la URL */
         .ticket-wrapper { width: 72mm; margin: 80px auto 20px auto; background: #fff; padding: 3mm 1mm; box-sizing: border-box; font-size: 10px; line-height: 1.2; }
+        
         .text-center { text-align: center; }
         .text-right { text-align: right; }
         .bold { font-weight: bold; }
@@ -99,12 +102,16 @@
         ];
 
         let datosGlobales = null;
+        let ANCHO_MM = 80; // Ancho predeterminado en milímetros
 
         window.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
             const idgs = params.get('idgs');
             const idcot = params.get('idcot');
             const hdid = params.get('hdid') || 'COTIZACIÓN';
+            
+            // Lectura parametrizada del ancho del papel enviado por AppSheet/URL
+            ANCHO_MM = parseFloat(params.get('ancho')) || 80;
 
             if (!idgs || !idcot) {
                 document.getElementById('status').innerText = "⚠️ Faltan parámetros en la URL (idgs, idcot)";
@@ -127,6 +134,11 @@
         });
 
         function renderizarTicket() {
+            // Reajuste del contenedor según el ancho en mm recibido
+            const ticketElement = document.getElementById('ticketContent');
+            const anchoImprimibleMm = Math.round(ANCHO_MM * 0.9);
+            ticketElement.style.width = `${anchoImprimibleMm}mm`;
+
             document.getElementById('imgLogo').src = datosGlobales.emisor.logo || '';
             document.getElementById('emisorNombre').innerText = datosGlobales.emisor.nombre || '';
             document.getElementById('lblTituloDoc').innerText = (datosGlobales.tituloDoc || 'COTIZACIÓN') + ':';
@@ -154,8 +166,8 @@
             document.getElementById('docPeso').innerText = (datosGlobales.pesoTotal || 0).toFixed(2);
             document.getElementById('docNotas').innerText = datosGlobales.notas || '';
 
-            document.getElementById('ticketContent').style.display = 'block';
-            document.getElementById('status').innerText = "Listo para conectar por Bluetooth";
+            ticketElement.style.display = 'block';
+            document.getElementById('status').innerText = `Listo para conectar por Bluetooth (${ANCHO_MM}mm)`;
         }
 
         // --- ENCODER DE MAPA DE BIT RÁSTER ESC/POS (GS v 0) ---
@@ -229,18 +241,21 @@
 
             try {
                 btn.disabled = true;
-                status.innerText = "Procesando imagen del ticket...";
+                status.innerText = `Procesando imagen (${ANCHO_MM}mm)...`;
 
-                // 1. Convertimos el contenedor HTML exacto a Canvas Monocromo (576 px = Ancho 80mm @ 203 DPI)
+                // Conversión aritmética: Factor ~4.8 px/mm para cabezal de 203 DPI
+                const canvasWidthPx = Math.round(ANCHO_MM * 4.8);
+
+                // 1. Captura del HTML ajustada dinámicamente según el ancho parametrizado
                 const canvas = await html2canvas(ticketElement, {
                     scale: 2,
-                    width: 384,
+                    width: canvasWidthPx,
                     useCORS: true,
                     logging: false,
                     backgroundColor: '#ffffff'
                 });
 
-                status.innerText = "Buscando impresora MP80-05...";
+                status.innerText = "Buscando impresora Bluetooth...";
 
                 // 2. Conexión por Bluetooth BLE
                 const device = await navigator.bluetooth.requestDevice({
@@ -248,7 +263,7 @@
                     optionalServices: CANDIDATE_SERVICES
                 });
 
-                status.innerText = `Conectando a ${device.name || 'MP80-05'}...`;
+                status.innerText = `Conectando a ${device.name || 'Impresora Portatil'}...`;
 
                 const server = await device.gatt.connect();
                 let writeChar = null;

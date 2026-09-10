@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresión de Ticket - MP80-05</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body { font-family: 'Courier New', Courier, monospace; background: #555; margin: 0; padding: 0; }
+        #control-panel { position: fixed; top: 0; width: 100%; background: #1a2a40; padding: 10px; display: flex; justify-content: center; gap: 10px; z-index: 100; flex-wrap: wrap; box-sizing: border-box; }
+        .btn { padding: 8px 12px; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; font-size: 12px; }
+        .btn-bt { background: #0284c7; color: white; }
+        .status-bar { width: 100%; text-align: center; color: #cbd5e1; font-size: 11px; margin-top: 4px; font-family: sans-serif; }
+        .ticket-wrapper { width: 72mm; margin: 80px auto 20px auto; background: #fff; padding: 3mm 1mm; box-sizing: border-box; font-size: 10px; line-height: 1.2; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .bold { font-weight: bold; }
+        .logo { max-width: 50mm; max-height: 25mm; margin: 0 auto 4px auto; display: block; filter: grayscale(100%); }
+        .divider { border-top: 1px dashed #000; margin: 4px 0; }
+        .header-emisor { font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        table { width: 100%; border-collapse: collapse; margin-top: 3px; }
+        td { padding: 2px 0; font-size: 9.5px; vertical-align: top; }
+        .prod-title { font-size: 10px; padding-top: 3px; }
+        .prod-detail { color: #222; padding-bottom: 3px; }
+        .border-bottom { border-bottom: 1px dotted #888; }
+        .total-box { font-size: 13px; margin-top: 6px; text-align: right; }
+        @media print { body { background: none; } #control-panel { display: none; } .ticket-wrapper { width: 72mm; margin: 0; padding: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="control-panel">
+        <button id="btnBT" onclick="imprimirDirectoBT()" class="btn btn-bt">
+            <span class="material-icons">bluetooth</span> Imprimir MP80-05
+        </button>
+        <button onclick="window.print()" class="btn" style="background: white;">
+            <span class="material-icons">print</span> Imprimir (PC)
+        </button>
+        <div id="status" class="status-bar">Cargando datos del ticket...</div>
+    </div>
+
+    <div class="ticket-wrapper" id="ticketContent" style="display:none;">
+        <div class="text-center">
+            <img id="imgLogo" class="logo" src="">
+            <div class="header-emisor" id="emisorNombre"></div>
+        </div>
+
+        <div style="margin-top: 4px;">
+            <div><strong id="lblTituloDoc">COTIZACIÓN:</strong> <span id="docId"></span></div>
+            <div><strong>Fecha de Emisión:</strong> <span id="docFecha"></span></div>
+        </div>
+
+        <div style="font-size: 10px; text-transform: uppercase; margin-top: 4px;">
+            <div><strong>NOMBRE O RAZÓN SOCIAL:</strong> <span id="cliNombre"></span></div>
+            <div><strong>CI/RIF:</strong> <span id="cliRif"></span> | <strong>SUNAGRO:</strong> <span id="cliSunagro"></span></div>
+            <div><strong>Telf:</strong> <span id="cliTlf"></span></div>
+            <div><strong>Dir:</strong> <span id="cliDir"></span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <table>
+            <tbody id="tblItems"></tbody>
+        </table>
+
+        <div class="divider"></div>
+
+        <div class="total-box bold">
+            TOTAL ref.: <span id="docTotal"></span>
+        </div>
+
+        <div style="font-size: 9px; margin-top: 4px;">
+            <strong>Peso Total:</strong> <span id="docPeso"></span> Kg
+        </div>
+
+        <div style="font-size: 8.5px; margin-top: 4px;">
+            <strong>Notas:</strong> <span id="docNotas"></span>
+        </div>
+
+        <div class="divider"></div>
+        <div class="divider"></div>
+
+        <div class="text-center bold" style="margin-top: 8px; font-size: 10px;">
+            *** La firma y sello de este documento implica que el producto fue recibido en perfectas condiciones. ***
+        </div>
+    </div>
+
+    <script>
+        // URL de tu WebApp de Apps Script publicada
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec";
+        const SPP_SERVICE_UUID = '00001101-0000-1000-8000-00805f9b34fb';
+        let datosGlobales = null;
+
+        // Carga inicial de datos desde la API
+        window.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const idgs = params.get('idgs');
+            const idcot = params.get('idcot');
+            const hdid = params.get('hdid') || 'COTIZACIÓN';
+
+            if (!idgs || !idcot) {
+                document.getElementById('status').innerText = "⚠️ Faltan parámetros en la URL (idgs, idcot)";
+                return;
+            }
+
+            try {
+                const response = await fetch(`${APPS_SCRIPT_URL}?action=getDatos&idgs=${idgs}&idcot=${idcot}&hdid=${encodeURIComponent(hdid)}`);
+                datosGlobales = await response.json();
+
+                if (datosGlobales.error) {
+                    document.getElementById('status').innerText = "❌ " + datosGlobales.error;
+                    return;
+                }
+
+                renderizarTicket();
+            } catch (err) {
+                document.getElementById('status').innerText = "Error al conectar con el servidor: " + err.message;
+            }
+        });
+
+        function renderizarTicket() {
+            document.getElementById('imgLogo').src = datosGlobales.emisor.logo || '';
+            document.getElementById('emisorNombre').innerText = datosGlobales.emisor.nombre || '';
+            document.getElementById('lblTituloDoc').innerText = (datosGlobales.tituloDoc || 'COTIZACIÓN') + ':';
+            document.getElementById('docId').innerText = datosGlobales.id;
+            document.getElementById('docFecha').innerText = datosGlobales.fecha;
+            document.getElementById('cliNombre').innerText = datosGlobales.cliente.nombre;
+            document.getElementById('cliRif').innerText = datosGlobales.cliente.rif;
+            document.getElementById('cliSunagro').innerText = datosGlobales.cliente.sunagro || '';
+            document.getElementById('cliTlf').innerText = datosGlobales.cliente.telefono || '';
+            document.getElementById('cliDir').innerText = datosGlobales.cliente.direccion || '';
+
+            let itemsHtml = '';
+            datosGlobales.items.forEach(item => {
+                const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
+                itemsHtml += `
+                    <tr><td colspan="2" class="prod-title"><strong>${item.producto}</strong></td></tr>
+                    <tr class="border-bottom">
+                        <td class="prod-detail">${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}</td>
+                        <td style="text-align:right">$${subtotal}</td>
+                    </tr>`;
+            });
+
+            document.getElementById('tblItems').innerHTML = itemsHtml;
+            document.getElementById('docTotal').innerText = datosGlobales.total.toFixed(2);
+            document.getElementById('docPeso').innerText = (datosGlobales.pesoTotal || 0).toFixed(2);
+            document.getElementById('docNotas').innerText = datosGlobales.notas || '';
+
+            document.getElementById('ticketContent').style.display = 'block';
+            document.getElementById('status').innerText = "Listo para conectar por Bluetooth";
+        }
+
+        // Motor ESC/POS Nativo
+        class EscPosEncoder {
+            constructor() { this.buffer = []; }
+            init() { this.buffer.push(0x1B, 0x40); return this; }
+            align(a) { this.buffer.push(0x1B, 0x61, a); return this; }
+            style(bold = false, doubleHeight = false, doubleWidth = false) {
+                let size = 0;
+                if (doubleWidth) size |= 0x20;
+                if (doubleHeight) size |= 0x10;
+                this.buffer.push(0x1B, 0x45, bold ? 1 : 0);
+                this.buffer.push(0x1D, 0x21, size);
+                return this;
+            }
+            text(str) {
+                const encoder = new TextEncoder();
+                const bytes = encoder.encode(str);
+                for (let b of bytes) this.buffer.push(b);
+                return this;
+            }
+            line(str = '') { this.text(str + '\n'); return this; }
+            row48(leftStr, rightStr) {
+                const width = 48;
+                const spaces = width - (leftStr.length + rightStr.length);
+                if (spaces > 0) {
+                    this.line(leftStr + ' '.repeat(spaces) + rightStr);
+                } else {
+                    this.line(leftStr);
+                    this.line(' '.repeat(Math.max(0, width - rightStr.length)) + rightStr);
+                }
+                return this;
+            }
+            feed(lines = 3) { this.buffer.push(0x1B, 0x64, lines); return this; }
+            encode() { return new Uint8Array(this.buffer); }
+        }
+
+        async function imprimirDirectoBT() {
+            const btn = document.getElementById('btnBT');
+            const status = document.getElementById('status');
+
+            if (!navigator.bluetooth) {
+                alert("Web Bluetooth no está disponible en este navegador. Asegúrate de abrir la página desde Google Chrome en Android.");
+                return;
+            }
+
+            try {
+                btn.disabled = true;
+                status.innerText = "Buscando MP80-05...";
+
+                const device = await navigator.bluetooth.requestDevice({
+                    acceptAllDevices: true,
+                    optionalServices: [SPP_SERVICE_UUID]
+                });
+
+                status.innerText = `Conectando a ${device.name || 'MP80-05'}...`;
+
+                const server = await device.gatt.connect();
+                const service = await server.getPrimaryService(SPP_SERVICE_UUID);
+                const characteristics = await service.getCharacteristics();
+                const writeChar = characteristics.find(c => c.properties.write || c.properties.writeWithoutResponse);
+
+                if (!writeChar) throw new Error("No se encontró canal de escritura Bluetooth.");
+
+                status.innerText = "Imprimiendo ticket...";
+
+                const esc = new EscPosEncoder();
+                esc.init()
+                   .align(1)
+                   .style(true, true, false)
+                   .line(datosGlobales.emisor.nombre || '')
+                   .style(false, false, false)
+                   .align(0)
+                   .line(`${datosGlobales.tituloDoc}: ${datosGlobales.id}`)
+                   .line(`Fecha de Emision: ${datosGlobales.fecha}`)
+                   .line(`NOMBRE O RAZON SOCIAL: ${datosGlobales.cliente.nombre}`)
+                   .line(`CI/RIF: ${datosGlobales.cliente.rif} | SUNAGRO: ${datosGlobales.cliente.sunagro || ''}`)
+                   .line(`Telf: ${datosGlobales.cliente.telefono || ''}`)
+                   .line(`Dir: ${datosGlobales.cliente.direccion || ''}`)
+                   .line('-'.repeat(48));
+
+                datosGlobales.items.forEach(item => {
+                    const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
+                    esc.style(true, false, false)
+                       .line(item.producto)
+                       .style(false, false, false)
+                       .row48(`  ${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`, subtotal);
+                });
+
+                esc.line('-'.repeat(48))
+                   .align(2)
+                   .style(true, true, false)
+                   .line(`TOTAL ref.: ${datosGlobales.total.toFixed(2)}`)
+                   .style(false, false, false)
+                   .align(0)
+                   .line(`Peso Total: ${(datosGlobales.pesoTotal || 0).toFixed(2)} Kg`)
+                   .line(`Notas: ${datosGlobales.notas || ''}`)
+                   .line('-'.repeat(48))
+                   .align(1)
+                   .line('*** La firma y sello de este documento implica')
+                   .line('que el producto fue recibido en perfectas condiciones. ***')
+                   .feed(4);
+
+                const dataBytes = esc.encode();
+                const chunkSize = 100;
+                for (let i = 0; i < dataBytes.length; i += chunkSize) {
+                    await writeChar.writeValue(dataBytes.slice(i, i + chunkSize));
+                }
+
+                status.innerText = "¡Ticket impreso con éxito!";
+                device.gatt.disconnect();
+
+            } catch (err) {
+                console.error(err);
+                status.innerText = "Error: " + err.message;
+                alert("Error de conexión: " + err.message);
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

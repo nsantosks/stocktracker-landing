@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impresión de Ticket - MP80-05</title>
+    <title>Impresión de Ticket</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body { font-family: 'Courier New', Courier, monospace; background: #555; margin: 0; padding: 0; }
@@ -86,12 +86,18 @@
     </div>
 
     <script>
-        // URL de tu WebApp de Apps Script publicada
         const APPS_SCRIPT_URL = "https://script.google.com/a/macros/gammalielanalytics.com/s/AKfycbyvV6UobJhplaHBON3PqqCLV1F9MNSY_kaGByzYAlPA5wPDDFfXT0wqaCV0S92TIbo/exec";
-        const SPP_SERVICE_UUID = '00001101-0000-1000-8000-00805f9b34fb';
+        
+        const CANDIDATE_SERVICES = [
+            'e7810a71-73ae-499d-8c15-faa9aef0c3f2', 
+            '49535343-fe7d-4ae5-8fa9-9fafd205e455', 
+            '0000ff00-0000-1000-8000-00805f9b34fb', 
+            '0000ae30-0000-1000-8000-00805f9b34fb', 
+            '000018f0-0000-1000-8000-00805f9b34fb'  
+        ];
+
         let datosGlobales = null;
 
-        // Carga inicial de datos desde la API
         window.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
             const idgs = params.get('idgs');
@@ -150,7 +156,6 @@
             document.getElementById('status').innerText = "Listo para conectar por Bluetooth";
         }
 
-        // Motor ESC/POS Nativo
         class EscPosEncoder {
             constructor() { this.buffer = []; }
             init() { this.buffer.push(0x1B, 0x40); return this; }
@@ -186,16 +191,6 @@
         }
 
         async function imprimirDirectoBT() {
-            // Lista de UUIDs de servicio BLE más comunes en impresoras térmicas portátiles
-const CANDIDATE_SERVICES = [
-    'e7810a71-73ae-499d-8c15-faa9aef0c3f2', // Módulo BLE Estándar (MP80 / Goojprt)
-    '49535343-fe7d-4ae5-8fa9-9fafd205e455', // Módulo ISSC UART
-    '0000ff00-0000-1000-8000-00805f9b34fb', // Módulo Xprinter / POS-80
-    '0000ae30-0000-1000-8000-00805f9b34fb', // Módulo Cat / Mini POS
-    '000018f0-0000-1000-8000-00805f9b34fb'  // Módulo Genérico
-];
-
-async function imprimirDirectoBT() {
             const btn = document.getElementById('btnBT');
             const status = document.getElementById('status');
         
@@ -208,7 +203,6 @@ async function imprimirDirectoBT() {
                 btn.disabled = true;
                 status.innerText = "Buscando impresora MP80-05...";
         
-                // 1. Solicitamos el dispositivo aceptando todos los servicios posibles
                 const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
                     optionalServices: CANDIDATE_SERVICES
@@ -218,24 +212,21 @@ async function imprimirDirectoBT() {
         
                 const server = await device.gatt.connect();
                 
-                // 2. Escaneo dinámico de servicios activos en la impresora
                 let writeChar = null;
                 const primaryServices = await server.getPrimaryServices();
         
                 for (const service of primaryServices) {
                     try {
                         const characteristics = await service.getCharacteristics();
-                        // Buscamos una característica que permita escribir datos
                         const targetChar = characteristics.find(c => 
                             c.properties.write || c.properties.writeWithoutResponse
                         );
                         if (targetChar) {
                             writeChar = targetChar;
-                            console.log("Canal de escritura BLE encontrado en servicio:", service.uuid);
                             break;
                         }
                     } catch (e) {
-                        // Ignorar servicios restringidos del sistema
+                        // Ignorar servicios de sistema
                     }
                 }
         
@@ -245,7 +236,6 @@ async function imprimirDirectoBT() {
         
                 status.innerText = "Generando ticket ESC/POS...";
         
-                // 3. Generación de los comandos ESC/POS
                 const esc = new EscPosEncoder();
                 esc.init()
                    .align(1)
@@ -285,9 +275,8 @@ async function imprimirDirectoBT() {
         
                 status.innerText = "Imprimiendo...";
         
-                // 4. Enviar los paquetes de datos a la característica BLE encontrada
                 const dataBytes = esc.encode();
-                const chunkSize = 100; // Fragmentación de seguridad para buffer BLE
+                const chunkSize = 100;
                 
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
                     const chunk = dataBytes.slice(i, i + chunkSize);

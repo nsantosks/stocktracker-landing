@@ -31,7 +31,7 @@
 
     <div id="control-panel">
         <button id="btnBT" onclick="imprimirDirectoBT()" class="btn btn-bt">
-            <span class="material-icons">bluetooth</span> Imprimir MP80-05
+            <span class="material-icons">bluetooth</span> Imprimir Impresora Portatil
         </button>
         <button onclick="window.print()" class="btn" style="background: white;">
             <span class="material-icons">print</span> Imprimir (PC)
@@ -201,14 +201,14 @@
         
             try {
                 btn.disabled = true;
-                status.innerText = "Buscando impresora MP80-05...";
+                status.innerText = "Buscando impresora...";
         
                 const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
                     optionalServices: CANDIDATE_SERVICES
                 });
         
-                status.innerText = `Conectando a ${device.name || 'MP80-05'}...`;
+                status.innerText = `Conectando a ${device.name || 'Impresora Portatil'}...`;
         
                 const server = await device.gatt.connect();
                 
@@ -225,52 +225,72 @@
                             writeChar = targetChar;
                             break;
                         }
-                    } catch (e) {
-                        // Ignorar servicios de sistema
-                    }
+                    } catch (e) {}
                 }
         
                 if (!writeChar) {
-                    throw new Error("No se encontró ningún puerto de escritura BLE habilitado en la impresora.");
+                    throw new Error("No se encontró puerto de escritura BLE en la impresora.");
                 }
         
                 status.innerText = "Generando ticket ESC/POS...";
         
+                // --- CONSTRUCCIÓN DEL TICKET CON FORMATO EXACTO APROBADO ---
                 const esc = new EscPosEncoder();
+                const SEPARADOR = '-'.repeat(48);
+        
                 esc.init()
+                   // Cabecera Centrada
                    .align(1)
-                   .style(true, true, false)
+                   .style(true, true, false) // Negrita y Doble Alto
                    .line(datosGlobales.emisor.nombre || '')
                    .style(false, false, false)
+                   .feed(1)
+                   
+                   // Bloque Datos del Documento (Izquierda)
                    .align(0)
-                   .line(`${datosGlobales.tituloDoc}: ${datosGlobales.id}`)
-                   .line(`Fecha de Emision: ${datosGlobales.fecha}`)
-                   .line(`NOMBRE O RAZON SOCIAL: ${datosGlobales.cliente.nombre}`)
+                   .style(true, false, false)
+                   .line(`${datosGlobales.tituloDoc || 'COTIZACION'}: ${datosGlobales.id}`)
+                   .style(false, false, false)
+                   .line(`Fecha de Emisión: ${datosGlobales.fecha}`)
+                   .feed(1)
+        
+                   // Bloque Cliente (En Mayúsculas como la plantilla)
+                   .line(`NOMBRE O RAZÓN SOCIAL: ${datosGlobales.cliente.nombre.toUpperCase()}`)
                    .line(`CI/RIF: ${datosGlobales.cliente.rif} | SUNAGRO: ${datosGlobales.cliente.sunagro || ''}`)
                    .line(`Telf: ${datosGlobales.cliente.telefono || ''}`)
-                   .line(`Dir: ${datosGlobales.cliente.direccion || ''}`)
-                   .line('-'.repeat(48));
+                   .line(`Dir: ${(datosGlobales.cliente.direccion || '').toUpperCase()}`)
+                   .line(SEPARADOR);
         
+                // Tabla de Productos (Estructura de 2 filas por ítem)
                 datosGlobales.items.forEach(item => {
                     const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
+                    
+                    // Fila 1: Título del producto en Negrita
                     esc.style(true, false, false)
                        .line(item.producto)
-                       .style(false, false, false)
-                       .row48(`  ${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`, subtotal);
+                       .style(false, false, false);
+                    
+                    // Fila 2: Cantidad x Precio (Izquierda) y Subtotal (Derecha)
+                    const detalle = `${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`;
+                    esc.row48(detalle, `$${subtotal}`);
                 });
         
-                esc.line('-'.repeat(48))
+                // Totales y Notas
+                esc.line(SEPARADOR)
                    .align(2)
-                   .style(true, true, false)
+                   .style(true, true, false) // Negrita y Doble Alto para el Total
                    .line(`TOTAL ref.: ${datosGlobales.total.toFixed(2)}`)
                    .style(false, false, false)
                    .align(0)
                    .line(`Peso Total: ${(datosGlobales.pesoTotal || 0).toFixed(2)} Kg`)
                    .line(`Notas: ${datosGlobales.notas || ''}`)
-                   .line('-'.repeat(48))
+                   .line(SEPARADOR)
+                   
+                   // Nota Legal al Pie (Centrada)
                    .align(1)
                    .line('*** La firma y sello de este documento implica')
-                   .line('que el producto fue recibido en perfectas condiciones. ***')
+                   .line('que el producto fue recibido en')
+                   .line('perfectas condiciones. ***')
                    .feed(4);
         
                 status.innerText = "Imprimiendo...";

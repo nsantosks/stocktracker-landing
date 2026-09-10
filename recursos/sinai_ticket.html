@@ -186,34 +186,66 @@
         }
 
         async function imprimirDirectoBT() {
+            // Lista de UUIDs de servicio BLE más comunes en impresoras térmicas portátiles
+const CANDIDATE_SERVICES = [
+    'e7810a71-73ae-499d-8c15-faa9aef0c3f2', // Módulo BLE Estándar (MP80 / Goojprt)
+    '49535343-fe7d-4ae5-8fa9-9fafd205e455', // Módulo ISSC UART
+    '0000ff00-0000-1000-8000-00805f9b34fb', // Módulo Xprinter / POS-80
+    '0000ae30-0000-1000-8000-00805f9b34fb', // Módulo Cat / Mini POS
+    '000018f0-0000-1000-8000-00805f9b34fb'  // Módulo Genérico
+];
+
+async function imprimirDirectoBT() {
             const btn = document.getElementById('btnBT');
             const status = document.getElementById('status');
-
+        
             if (!navigator.bluetooth) {
-                alert("Web Bluetooth no está disponible en este navegador. Asegúrate de abrir la página desde Google Chrome en Android.");
+                alert("Web Bluetooth no está disponible en este navegador. Usa Google Chrome en Android.");
                 return;
             }
-
+        
             try {
                 btn.disabled = true;
-                status.innerText = "Buscando MP80-05...";
-
+                status.innerText = "Buscando impresora MP80-05...";
+        
+                // 1. Solicitamos el dispositivo aceptando todos los servicios posibles
                 const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
-                    optionalServices: [SPP_SERVICE_UUID]
+                    optionalServices: CANDIDATE_SERVICES
                 });
-
+        
                 status.innerText = `Conectando a ${device.name || 'MP80-05'}...`;
-
+        
                 const server = await device.gatt.connect();
-                const service = await server.getPrimaryService(SPP_SERVICE_UUID);
-                const characteristics = await service.getCharacteristics();
-                const writeChar = characteristics.find(c => c.properties.write || c.properties.writeWithoutResponse);
-
-                if (!writeChar) throw new Error("No se encontró canal de escritura Bluetooth.");
-
-                status.innerText = "Imprimiendo ticket...";
-
+                
+                // 2. Escaneo dinámico de servicios activos en la impresora
+                let writeChar = null;
+                const primaryServices = await server.getPrimaryServices();
+        
+                for (const service of primaryServices) {
+                    try {
+                        const characteristics = await service.getCharacteristics();
+                        // Buscamos una característica que permita escribir datos
+                        const targetChar = characteristics.find(c => 
+                            c.properties.write || c.properties.writeWithoutResponse
+                        );
+                        if (targetChar) {
+                            writeChar = targetChar;
+                            console.log("Canal de escritura BLE encontrado en servicio:", service.uuid);
+                            break;
+                        }
+                    } catch (e) {
+                        // Ignorar servicios restringidos del sistema
+                    }
+                }
+        
+                if (!writeChar) {
+                    throw new Error("No se encontró ningún puerto de escritura BLE habilitado en la impresora.");
+                }
+        
+                status.innerText = "Generando ticket ESC/POS...";
+        
+                // 3. Generación de los comandos ESC/POS
                 const esc = new EscPosEncoder();
                 esc.init()
                    .align(1)
@@ -228,7 +260,7 @@
                    .line(`Telf: ${datosGlobales.cliente.telefono || ''}`)
                    .line(`Dir: ${datosGlobales.cliente.direccion || ''}`)
                    .line('-'.repeat(48));
-
+        
                 datosGlobales.items.forEach(item => {
                     const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
                     esc.style(true, false, false)
@@ -236,7 +268,7 @@
                        .style(false, false, false)
                        .row48(`  ${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`, subtotal);
                 });
-
+        
                 esc.line('-'.repeat(48))
                    .align(2)
                    .style(true, true, false)
@@ -250,16 +282,25 @@
                    .line('*** La firma y sello de este documento implica')
                    .line('que el producto fue recibido en perfectas condiciones. ***')
                    .feed(4);
-
+        
+                status.innerText = "Imprimiendo...";
+        
+                // 4. Enviar los paquetes de datos a la característica BLE encontrada
                 const dataBytes = esc.encode();
-                const chunkSize = 100;
+                const chunkSize = 100; // Fragmentación de seguridad para buffer BLE
+                
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
-                    await writeChar.writeValue(dataBytes.slice(i, i + chunkSize));
+                    const chunk = dataBytes.slice(i, i + chunkSize);
+                    if (writeChar.properties.writeWithoutResponse) {
+                        await writeChar.writeValueWithoutResponse(chunk);
+                    } else {
+                        await writeChar.writeValue(chunk);
+                    }
                 }
-
-                status.innerText = "¡Ticket impreso con éxito!";
-                device.gatt.disconnect();
-
+        
+                status.innerText = "¡Impresión completada!";
+                setTimeout(() => device.gatt.disconnect(), 1000);
+        
             } catch (err) {
                 console.error(err);
                 status.innerText = "Error: " + err.message;

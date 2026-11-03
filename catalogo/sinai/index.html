@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MTMQ834N');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SINAI: ERP operativo para distribuidoras mayoristas sobre Google Workspace y AppSheet. Control de pedidos en calle, pesaje en kilos y conciliación multidivisa.">
+    <title>SINAI - Control Integral de Ventas, Kilos y Rutas para Distribuidoras</title>
+    
+    <link rel="canonical" href="https://gammalielanalytics.com/catalogo/sinai/">
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Favicon Kit estandarizado -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png?v=20260419" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg?v=20260419" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=20260419" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png?v=20260419" />
+    <meta name="apple-mobile-web-app-title" content="Gammaliel Analytics" />
+    <link rel="manifest" href="/favicon/site.webmanifest?v=20260419" />
+
+    <!-- Open Graph para WhatsApp y Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SINAI | ERP de Distribución sobre Google Workspace">
+    <meta property="og:description" content="Elimina pedidos traspapelados, protege tu cartera de clientes y cuadra tus salidas en kilos con SINAI.">
+    <meta property="og:url" content="https://gammalielanalytics.com/catalogo/sinai/">
+    <meta property="og:image" content="https://gammalielanalytics.com/img/sinai/banner-og.png">
+
+    <!-- Librerías de Estilos & Componentes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- Schema.org estructurado -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "SINAI",
+          "operatingSystem": "Web, Android, iOS (Cloud Native)",
+          "applicationCategory": "BusinessApplication",
+          "description": "Sistema de gestión integral para distribuidoras y comercializadoras mayoristas. Control de pedidos móviles, pesaje de kilos, tesorería multidivisa y rutas logísticas sobre Google Workspace.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Consultoría y despliegue a medida por Gammaliel Analytics"
+          },
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Gammaliel Analytics",
+            "url": "https://gammalielanalytics.com/"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Necesito comprar un servidor local para implementar SINAI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. SINAI opera 100% sobre la nube segura de Google Workspace y AppSheet, permitiendo acceso multiusuario desde celulares, tablets o computadoras sin infraestructura local costosa."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo previene SINAI la fuga de clientes si un vendedor renuncia?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Toda la base de clientes, geolocalización, límites de crédito e historial residen en la cuenta institucional de tu empresa en Google Cloud. Al revocar el acceso del usuario, la información queda intacta en la compañía."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo resuelve el descuadre en productos vendidos por kilos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SINAI bloquea la facturación administrativa si no existe coincidencia validada entre la orden comercial y el pesaje físico registrado en la báscula de despacho."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTMQ834N"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="landing-page-wrapper">
+
+        <!-- HEADER / NAVBAR -->
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <a href="../../" class="logo">
+                        <img src="../../img/cromo/logo-gammaliel-solid.png" alt="Logo SINAI" class="logo-img">
+                        <span class="logo-text">SINAI | Sales Tracker</span>
+                    </a>
+
+                    <div class="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="#problemas" style="color: #ff0000;">¿Este es tu caso?</a></li>
+                        <li><a href="#modulos">Módulos</a></li>
+                        <li><a href="#ecosistema">Google Cloud</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#faq">F&Q</a></li>
+                        <li class="nav-cta"><a href="#pricing">Planes</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- HERO SECTION -->
+            <section class="relative pt-20 pb-24 text-center overflow-hidden">
+                <div class="hero-pattern-binary"></div>
+                <div class="container mx-auto px-6 z-10 relative">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-blue-50 border border-blue-200 px-4 py-1.5 rounded-full mb-4">
+                        CRM & ERP Operativo para Mayoristas & Distribuidoras
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+                        Deja de perder clientes por pedidos traspapelados y recupera el control de tu calle.
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                        SINAI sincroniza tus ventas en tiempo real, tu pesaje físico en kilogramos y tus rutas de despacho directamente sobre la nube de <strong>Google Workspace y AppSheet</strong>. Sin licencias abusivas por usuario.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#pricing" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">Diagnostico Gratuito</a>
+                        <a href="#demo" class="bg-white text-primary border-2 border-primary font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-50 transition-transform transform hover:scale-105 shadow-lg">Ver Demo</a>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <ul class="text-sm md:text-base text-gray-600 list-none max-w-md mx-auto text-left space-y-1 mb-8">
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> Preventa móvil con geolocalización y toma offline.</li>
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> Bloqueo de facturación por descuadre físico de kilos.</li>
+                            <li class="flex items-start"><span class="text-primary mr-2">✔</span> Caja multidivisa (USD y moneda local) con soporte fotográfico.</li>
+                        </ul>
+                        <img src="../../img/sinai/banner-sinai-dashboard.png" alt="Panel Operativo SINAI ERP" class="mx-auto rounded-lg shadow-2xl border-4 border-gray-200 w-full max-w-4xl" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTRASTE: PUNTOS DE DOLOR EN LA CALLE -->
+            <section id="problemas" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900" style="color: #ff0000;">¿Cuánto dinero pierde tu distribuidora en la calle?</h2>
+                        <p class="text-lg text-gray-600 mt-2">Notas en papel, capturas de transferencias y la memoria de los vendedores destruyen tus márgenes.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-gray-900">Pedidos perdidos</h3>
+                                <p class="text-xs text-gray-500 mb-3 font-semibold">EL CLIENTE SE VA A LA COMPETENCIA</p>
+                                <p class="text-sm text-gray-600">La orden quedó olvidada en WhatsApp, planta nunca preparó la carga y el cliente recibió la mercancía tarde o incompleta.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-primary font-medium">
+                                <strong>Con SINAI:</strong> La orden entra directo a planta y reserva inventario al instante.
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-gray-900">Fuga de cartera</h3>
+                                <p class="text-xs text-gray-500 mb-3 font-semibold">EL CHOFER QUE RENUNCIA</p>
+                                <p class="text-sm text-gray-600">Al irse un vendedor o chofer, se lleva coordenadas, acuerdos de crédito y contactos guardados en su teléfono personal.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-primary font-medium">
+                                <strong>Con SINAI:</strong> Toda la cartografía y expedientes residen en la nube de tu empresa.
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-gray-900">Mermas y kilos regalados</h3>
+                                <p class="text-xs text-gray-500 mb-3 font-semibold">DESCUADRE DE BÁSCULA</p>
+                                <p class="text-sm text-gray-600">Diferencias entre el pedido estimado y el pesaje real de carga que provocan pérdidas de dinero o reclamos de clientes.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-primary font-medium">
+                                <strong>Con SINAI:</strong> Ningún despacho se factura sin validación previa contra la báscula.
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-2 text-gray-900">Cobranza a ciegas</h3>
+                                <p class="text-xs text-gray-500 mb-3 font-semibold">PAGOS SIN CONCILIAR</p>
+                                <p class="text-sm text-gray-600">Despachos autorizados sin verificar transferencias bancarias o con tasas de cambio no supervisadas por tesorería.</p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-primary font-medium">
+                                <strong>Con SINAI:</strong> Registro fotográfico de comprobantes y validación multidivisa.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MÓDULOS DE SINAI (SLIDER SWIPER COMO EN LAB REPORTER) -->
+            <section id="modulos" class="py-20 bg-white">
+                <div class="container mx-auto px-6 overflow-hidden">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Circuito Operativo: Order-to-Cash</h2>
+                        <p class="text-lg text-gray-600 mt-2">Un flujo integrado desde la visita comercial hasta el banco.</p>
+                    </div>
+
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-12">
+                        <div class="swiper modules-slider pb-16">
+                            <div class="swiper-wrapper">
+                                
+                                <div class="swiper-slide">
+                                    <div class="flex flex-wrap items-center">
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <span class="text-xs font-bold text-primary uppercase tracking-wider">Módulo 01</span>
+                                            <h3 class="text-2xl font-bold mb-3 mt-1">Preventa & Gestión de Cartera (CRM)</h3>
+                                            <p class="text-gray-600 mb-4">Registro georreferenciado de clientes, expedientes fiscales (RIF) y listas de precios segmentadas por volumen. <strong class="text-primary">Toma de pedidos en calle incluso sin señal de internet.</strong></p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <img src="../../img/sinai/modulo-crm-preventa.png" alt="CRM Preventa SINAI" class="rounded-lg shadow-xl border" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="flex flex-wrap items-center">
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <span class="text-xs font-bold text-primary uppercase tracking-wider">Módulo 02</span>
+                                            <h3 class="text-2xl font-bold mb-3 mt-1">Consolidador de Cargas & Rutas</h3>
+                                            <p class="text-gray-600 mb-4">Agrupa pedidos por zonas geográficas y cubicaje. Monitorea el ciclo de entrega en tiempo real: <strong class="text-primary">Abierto → Cargando → En Ruta → Entregado.</strong></p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <img src="../../img/sinai/modulo-logistica-despachos.png" alt="Logística y Rutas SINAI" class="rounded-lg shadow-xl border" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="flex flex-wrap items-center">
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <span class="text-xs font-bold text-primary uppercase tracking-wider">Módulo 03</span>
+                                            <h3 class="text-2xl font-bold mb-3 mt-1">Integridad Sistemática de la Cobranza</h3>
+                                            <p class="text-gray-600 mb-4">Control de reportes de abono. <strong class="text-primary">Evita fallos de cobranza </strong>SINAI te ayuda a controlar las notificaciones de abono agilizando tu gestión de cobranza y conciliación bancaria.</p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <img src="../../img/sinai/modulo-cobranza-conciliada.png" alt="Cobranza Conciliada SINAI" class="rounded-lg shadow-xl border" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="flex flex-wrap items-center">
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <span class="text-xs font-bold text-primary uppercase tracking-wider">Módulo 04</span>
+                                            <h3 class="text-2xl font-bold mb-3 mt-1">Tesorería Multidivisa</h3>
+                                            <p class="text-gray-600 mb-4">Soporte fotográfico de transferencias, arqueo de cobros en ruta, conciliación en USD y moneda local a la tasa del día con <strong class="text-primary">reportes de saldos vencidos al instante.</strong></p>
+                                        </div>
+                                        <div class="w-full md:w-1/2 p-4">
+                                            <img src="../../img/sinai/modulo-tesoreria-bancos.png" alt="Tesorería Multidivisa SINAI" class="rounded-lg shadow-xl border" loading="lazy">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="swiper-button-next hidden md:flex"></div>
+                        <div class="swiper-button-prev hidden md:flex"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EL FACTOR GOOGLE WORKSPACE -->
+            <section id="ecosistema" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">La Infraestructura de Google Workspace al servicio de tu Fuerza de Ventas</h2>
+                        <p class="text-lg text-gray-600 mt-2">Convierte las herramientas de Google que ya pagas en una infraestructura empresarial de clase mundial.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                            <div class="text-4xl mb-4 text-primary"><i class="fab fa-google-drive"></i></div>
+                            <h3 class="text-xl font-bold mb-2">Bóveda Documental</h3>
+                            <p class="text-gray-600 text-sm">Archiva RIFs, comprobantes y permisos (SICA/SUNAGRO) en Google Drive corporativo.</p>
+                        </div>
+                        <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                            <div class="text-4xl mb-4 text-primary"><i class="fas fa-envelope-open-text"></i></div>
+                            <h3 class="text-xl font-bold mb-2">Gmail Corporativo</h3>
+                            <p class="text-gray-600 text-sm">Envía cotizaciones y notas de entrega en PDF desde tu dominio institucional (@tuempresa.com).</p>
+                        </div>
+                        <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                            <div class="text-4xl mb-4 text-primary"><i class="fas fa-robot"></i></div>
+                            <h3 class="text-xl font-bold mb-2">Apps Script Bot</h3>
+                            <p class="text-gray-600 text-sm">Conciliación automática de montos, avisos de cobro y actualización diaria de tasas cambiarias.</p>
+                        </div>
+                        <div class="text-center p-6 bg-white rounded-lg shadow-sm transition-shadow hover:shadow-xl">
+                            <div class="text-4xl mb-4 text-primary"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="text-xl font-bold mb-2">Soberanía de Datos</h3>
+                            <p class="text-gray-600 text-sm">Si un teléfono se pierde en ruta, la información está blindada y los accesos se revocan en un clic.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DEMO / VIDEO LAZY-LOAD -->
+            <section id="demo" class="py-20 bg-white">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Mira a SINAI en Acción</h2>
+                        <p class="text-lg text-gray-600 mt-2">Demostración en video del circuito completo: preventa móvil, pesaje y conciliación.</p>
+                    </div>
+                    <div id="video-container" class="max-w-4xl mx-auto aspect-video shadow-2xl rounded-xl"></div>
+                </div>
+            </section>
+
+            <!-- PLANES / IMPLEMENTACIÓN -->
+            <section id="pricing" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Implementación Estratégica SINAI</h2>
+                        <p class="text-lg text-gray-600 mt-2">Modelos de despliegue diseñados por consultores de Gammaliel Analytics.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto items-start">
+                        
+                        <!-- Plan 1 -->
+                        <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">Auditoría & Despliegue Express</h3>
+                            <p class="text-gray-500 mb-6">Ideal para distribuidoras que necesitan ordenar la preventa y su catálogo de clientes.</p>
+                            <div class="mb-6">
+                                <span class="text-sm bg-gray-100 px-3 py-1 rounded-full font-bold text-gray-600">PREVENTA BÁSICA</span>
+                            </div>
+                            <ul class="space-y-3 text-left mb-8 flex-grow text-sm">
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Módulo CRM y geolocalización de clientes.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Toma de pedidos móvil para vendedores.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Configuración de carpetas en Google Drive.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Capacitación audiovisual para el equipo.</li>
+                            </ul>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20deseo%20información%20sobre%20el%20despliegue%20Express%20de%20SINAI." class="bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">Consultar Despliegue</a>
+                        </div>
+
+                        <!-- Plan 2 (Destacado) -->
+                        <div class="border-2 border-primary rounded-xl p-8 shadow-2xl bg-white relative transform lg:scale-105 h-full flex flex-col">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase px-4 py-1 rounded-full popular-badge-anim">
+                                SISTEMA OPERATIVO COMPLETO
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Ecosistema SINAI Cloud</h3>
+                            <p class="text-gray-500 mb-6">Para distribuidoras que requieren circuito cerrado: pedidos, báscula y bancos.</p>
+                            <div class="mb-6">
+                                <span class="text-sm bg-blue-100 px-3 py-1 rounded-full font-bold text-primary">APPSHEET + GOOGLE CLOUD</span>
+                            </div>
+                            <ul class="space-y-3 text-left mb-8 flex-grow text-sm">
+                                <li class="flex items-center font-bold text-primary"><span class="text-blue-500 mr-3">★</span> Circuito Order-to-Cash completo.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Control de facturación por pesaje en kilos.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Consolidador de rutas y despacho logístico.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Tesorería multidivisa y conciliación fotográfica.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Despliegue de dominio corporativo Google Workspace.</li>
+                            </ul>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20deseo%20agendar%20una%20demostración%20del%20Ecosistema%20Completo%20SINAI." class="bg-primary w-full mt-auto text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg text-center">Agendar Demo en Vivo</a>
+                        </div>
+
+                        <!-- Plan 3 -->
+                        <div class="border rounded-xl p-8 shadow-lg bg-white h-full flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800">Solución a Medida & BI</h3>
+                            <p class="text-gray-500 mb-6">Integración con ERPs legados, plantas agroindustriales y tableros en Power BI.</p>
+                            <div class="mb-6">
+                                <span class="text-sm bg-purple-100 px-3 py-1 rounded-full font-bold text-purple-600">GAMMALIEL ANALYTICS PRO</span>
+                            </div>
+                            <ul class="space-y-3 text-left mb-8 flex-grow text-sm">
+                                <li class="flex items-center font-bold text-primary"><span class="text-green-500 mr-3">✔</span> Integración con sistemas contables existentes.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Tableros ejecutivos en Power BI / Looker Studio.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Auditoría In-situ de procesos Order-to-Cash.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Soporte y consultoría continua.</li>
+                            </ul>
+                            <a href="https://wa.me/+584128672845?text=Hola,%20necesito%20una%20solución%20a%20la%20medida%20con%20SINAI%20y%20Business%20Intelligence." class="bg-gray-800 text-white font-bold py-3 px-6 rounded-full text-lg hover:bg-black transition-transform transform hover:scale-105 shadow-lg text-center">Hablar con Consultor</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="py-20 bg-white">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <h2 class="text-3xl font-bold text-center mb-10">Preguntas Frecuentes</h2>
+                    <div class="space-y-4">
+                        <div class="border rounded-lg p-5 bg-white">
+                            <h3 class="font-bold text-lg">¿Necesito comprar un servidor o contratar licencias de software complejas?</h3>
+                            <p class="text-gray-600 mt-2">No. SINAI funciona sobre la arquitectura cloud de Google Workspace. Solo requieres tus cuentas de Google corporativas para desplegar la solución en computadoras, tabletas y teléfonos celulares de tu equipo.</p>
+                        </div>
+                        <div class="border rounded-lg p-5 bg-white">
+                            <h3 class="font-bold text-lg">¿Qué pasa si mi empresa no tiene Google Workspace actualmente?</h3>
+                            <p class="text-gray-600 mt-2">En Gammaliel Analytics te asesoramos en el despliegue de tu dominio corporativo oficial y la activación del entorno de Google, habilitando tu negocio con herramientas institucionales desde el primer día.</p>
+                        </div>
+                        <div class="border rounded-lg p-5 bg-white">
+                            <h3 class="font-bold text-lg">¿Cómo ayuda SINAI si mis productos se venden por peso y varían en el despacho?</h3>
+                            <p class="text-gray-600 mt-2">Ese es el núcleo de SINAI. El sistema traduce las órdenes comerciales en requerimientos de producción por kilos y bloquea la facturación administrativa si no hay concordancia exacta con el pesaje físico confirmado en báscula.</p>
+                        </div>
+                        <div class="border rounded-lg p-5 bg-white">
+                            <h3 class="font-bold text-lg">¿Nuestra cartera de clientes queda protegida si renuncia un chofer o vendedor?</h3>
+                            <p class="text-gray-600 mt-2">Totalmente. La base de datos, el historial de precios, las rutas y los expedientes residen en la cuenta institucional de tu empresa. Al revocar el usuario, la información permanece 100% resguardada en el negocio.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA FINAL -->
+            <section id="cta" class="bg-primary text-white">
+                <div class="container mx-auto px-6 py-20 text-center">
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">¿Listo para transformar la distribución de tu empresa?</h2>
+                    <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">Elimina pedidos traspapelados y recupera la rentabilidad de cada kilo despachado.</p>
+                    <a href="#pricing" class="bg-white text-primary font-bold py-4 px-10 rounded-full text-lg hover:bg-gray-200 transition-transform transform hover:scale-105 shadow-lg">
+                        Agendar Diagnóstico Operativo
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Placeholder para Footer Centralizado -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Scripts Base y Componentes -->
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        loadComponent('footer-placeholder', '../../components/footer.html');
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú Móvil
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('is-active');
+                    navLinks.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('is-active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+            }
+
+            // Slider Swiper de Módulos
+            new Swiper('.modules-slider', {
+                loop: true,
+                spaceBetween: 30,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            });
+
+            // Lazy Load optimizado de video demo
+            const videoContainer = document.getElementById('video-container');
+            if (videoContainer) {
+                const videoId = 'a5Gh9zkrXGA'; // Reemplazar por el video de SINAI cuando esté listo
+                videoContainer.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" class="w-full h-full object-cover cursor-pointer rounded-xl shadow-lg" alt="Ver video demostrativo de SINAI">`;
+                videoContainer.addEventListener('click', function() {
+                    this.innerHTML = `<iframe class="w-full h-full rounded-xl" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+                });
+            }
+        });
+    </script>
+
+     <a 
+        href="https://wa.me/+584128672845?text=Hola,%20estoy%20interesado%20conocer%20más%20de%20Stocktracker." 
+        class="whatsapp-float" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+        
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+    
+    </a>
+
+
+</body>
+</html>

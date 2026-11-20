@@ -22,14 +22,14 @@
         .bold { font-weight: bold; }
         .logo { max-width: 50mm; max-height: 25mm; margin: 0 auto 4px auto; display: block; filter: grayscale(100%); }
         .divider { border-top: 1px dashed #000; margin: 4px 0; }
-        .header-emisor { font-size: 14px; font-weight: bold; text-transform: uppercase; }
+        .header-emisor { font-size: 16px; font-weight: bold; text-transform: uppercase; }
         table { width: 100%; border-collapse: collapse; margin-top: 3px; }
         td { padding: 2px 0; font-size: 9.5px; vertical-align: top; }
         .prod-title { font-size: 13px; padding-top: 3px; }
-        .prod-detail { font-size: 12px; color: #222; padding-bottom: 3px; }
-        .prod-subtotal { font-size: 12px; padding-top: 3px; }
+        .prod-detail { font-size: 13px; color: #000; padding-bottom: 3px; }
+        .prod-subtotal { font-size: 13px; padding-top: 3px; }
         .border-bottom { border-bottom: 1px dotted #888; }
-        .total-box { font-size: 14px; margin-top: 6px; text-align: right; }
+        .total-box { font-size: 15px; margin-top: 6px; text-align: right; }
         @media print { body { background: none; } #control-panel { display: none; } .ticket-wrapper { width: 72mm; margin: 0; padding: 0; } }
     </style>
 </head>
@@ -53,14 +53,14 @@
 
         <div style="margin-top: 4px;">
             <div  style="font-size: 12px;"><strong id="lblTituloDoc">COTIZACIÓN:</strong> <strong><span id="docId"></span></strong></div>
-            <div  style="font-size: 12px;"><strong>Fecha de Emisión:</strong> <strong><span id="docFecha"></span></strong></div>
+            <div  style="font-size: 12px;"><strong>Fecha de Emisión:</strong> <span id="docFecha"></span></div>
         </div>
 
-        <div style="text-transform: uppercase; margin-top: 4px;">
-            <div style="font-size: 12px;"><strong>NOMBRE O RAZÓN SOCIAL:</strong> <strong><span id="cliNombre"></span></strong></div>
-            <div style="font-size: 10px;"><strong>CI/RIF:</strong> <strong><span id="cliRif"></span></strong> | <strong>SUNAGRO:</strong> <strong><span id="cliSunagro"></span></strong></div>
-            <div style="font-size: 10px;" ><strong>Telf:</strong> <strong><span id="cliTlf"></span></strong></div>
-            <div style="font-size: 10px;"><strong>Dir:</strong> <strong><span id="cliDir"></span></strong></div>
+        <div style="text-transform: uppercase; margin-top: 6px;">
+            <div style="font-size: 12px;"><strong>NOMBRE O RAZÓN SOCIAL:</strong> <span id="cliNombre"></span></div>
+            <div style="font-size: 10px;"><strong>CI/RIF:</strong> <span id="cliRif"></span> | <strong>SUNAGRO:</strong> <span id="cliSunagro"></span></div>
+            <div style="font-size: 10px;" ><strong>Telf:</strong> <span id="cliTlf"></span></div>
+            <div style="font-size: 10px;"><strong>Dir:</strong> <span id="cliDir"></span></div>
         </div>
 
         <div class="divider"></div>
@@ -75,7 +75,7 @@
             TOTAL ref.: <strong><span id="docTotal"></span></strong>
         </div>
 
-        <div style="font-size: 9px; margin-top: 4px;">
+        <div style="font-size: 10px; margin-top: 4px;">
             <strong>Peso Total:</strong> <span id="docPeso"></span> Kg
         </div>
 

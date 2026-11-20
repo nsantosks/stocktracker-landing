@@ -22,13 +22,14 @@
         .bold { font-weight: bold; }
         .logo { max-width: 50mm; max-height: 25mm; margin: 0 auto 4px auto; display: block; filter: grayscale(100%); }
         .divider { border-top: 1px dashed #000; margin: 4px 0; }
-        .header-emisor { font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        .header-emisor { font-size: 14px; font-weight: bold; text-transform: uppercase; }
         table { width: 100%; border-collapse: collapse; margin-top: 3px; }
         td { padding: 2px 0; font-size: 9.5px; vertical-align: top; }
-        .prod-title { font-size: 10px; padding-top: 3px; }
-        .prod-detail { color: #222; padding-bottom: 3px; }
+        .prod-title { font-size: 13px; padding-top: 3px; }
+        .prod-detail { font-size: 12px; color: #222; padding-bottom: 3px; }
+        .prod-subtotal { font-size: 12px; padding-top: 3px; }
         .border-bottom { border-bottom: 1px dotted #888; }
-        .total-box { font-size: 13px; margin-top: 6px; text-align: right; }
+        .total-box { font-size: 14px; margin-top: 6px; text-align: right; }
         @media print { body { background: none; } #control-panel { display: none; } .ticket-wrapper { width: 72mm; margin: 0; padding: 0; } }
     </style>
 </head>
@@ -51,15 +52,15 @@
         </div>
 
         <div style="margin-top: 4px;">
-            <div><strong id="lblTituloDoc">COTIZACIÓN:</strong> <span id="docId"></span></div>
-            <div><strong>Fecha de Emisión:</strong> <span id="docFecha"></span></div>
+            <div  style="font-size: 12px;"><strong id="lblTituloDoc">COTIZACIÓN:</strong> <strong><span id="docId"></span></strong></div>
+            <div  style="font-size: 12px;"><strong>Fecha de Emisión:</strong> <strong><span id="docFecha"></span></strong></div>
         </div>
 
-        <div style="font-size: 10px; text-transform: uppercase; margin-top: 4px;">
-            <div><strong>NOMBRE O RAZÓN SOCIAL:</strong> <span id="cliNombre"></span></div>
-            <div><strong>CI/RIF:</strong> <span id="cliRif"></span> | <strong>SUNAGRO:</strong> <span id="cliSunagro"></span></div>
-            <div><strong>Telf:</strong> <span id="cliTlf"></span></div>
-            <div><strong>Dir:</strong> <span id="cliDir"></span></div>
+        <div style="text-transform: uppercase; margin-top: 4px;">
+            <div style="font-size: 12px;"><strong>NOMBRE O RAZÓN SOCIAL:</strong> <strong><span id="cliNombre"></span></strong></div>
+            <div style="font-size: 10px;"><strong>CI/RIF:</strong> <strong><span id="cliRif"></span></strong> | <strong>SUNAGRO:</strong> <strong><span id="cliSunagro"></span></strong></div>
+            <div style="font-size: 10px;" ><strong>Telf:</strong> <strong><span id="cliTlf"></span></strong></div>
+            <div style="font-size: 10px;"><strong>Dir:</strong> <strong><span id="cliDir"></span></strong></div>
         </div>
 
         <div class="divider"></div>
@@ -71,7 +72,7 @@
         <div class="divider"></div>
 
         <div class="total-box bold">
-            TOTAL ref.: <span id="docTotal"></span>
+            TOTAL ref.: <strong><span id="docTotal"></span></strong>
         </div>
 
         <div style="font-size: 9px; margin-top: 4px;">
@@ -157,8 +158,8 @@
                     <tr><td colspan="2" class="prod-title"><strong>${item.producto}</strong></td></tr>
                     <tr class="border-bottom">
                         <td class="prod-detail">${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}</td>
-                        <td style="text-align:right">${subtotal}</td>
-                    </tr>`;
+                        <td class="prod-subtotal" style="text-align:right">${subtotal}</td>
+                    </tr>`; 
             });
 
             document.getElementById('tblItems').innerHTML = itemsHtml;

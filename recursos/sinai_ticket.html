@@ -58,9 +58,12 @@
 
         <div style="text-transform: uppercase; margin-top: 6px;">
             <div style="font-size: 12px;"><strong>NOMBRE O RAZÓN SOCIAL:</strong> <span id="cliNombre"></span></div>
-            <div style="font-size: 10px;"><strong>CI/RIF:</strong> <span id="cliRif"></span> | <strong>SUNAGRO:</strong> <span id="cliSunagro"></span></div>
-            <div style="font-size: 10px;" ><strong>Telf:</strong> <span id="cliTlf"></span></div>
-            <div style="font-size: 10px;"><strong>Dir:</strong> <span id="cliDir"></span></div>
+            <div style="font-size: 10px;">
+                <strong>CI/RIF:</strong> <span id="cliRif"></span>
+                <span id="wrapSunagro"> | <strong>SUNAGRO:</strong> <span id="cliSunagro"></span></span>
+            </div>
+            <div id="wrapTlf" style="font-size: 10px;"><strong>Telf:</strong> <span id="cliTlf"></span></div>
+            <div id="wrapDir" style="font-size: 10px;"><strong>Dir:</strong> <span id="cliDir"></span></div>
         </div>
 
         <div class="divider"></div>
@@ -79,7 +82,7 @@
             <strong>Peso Total:</strong> <span id="docPeso"></span> Kg
         </div>
 
-        <div style="font-size: 8.5px; margin-top: 4px;">
+        <div id="wrapNotas" style="font-size: 8.5px; margin-top: 4px;">
             <strong>Notas:</strong> <span id="docNotas"></span>
         </div>
 

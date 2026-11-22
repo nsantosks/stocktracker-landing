@@ -295,6 +295,11 @@
                 return this.raw([0x1D, 0x21, n]);
             }
 
+            font(tipo = 'A') {
+                // 'A' = 12x24 pts (Normal) | 'B' = 9x17 pts (Pequeña/Compacta)
+                return this.raw([0x1B, 0x4D, tipo === 'B' ? 1 : 0]);
+            }
+
             line(texto = '') {
                 const limpio = this.limpiar(texto);
                 for (let i = 0; i < limpio.length; i++) {
@@ -389,11 +394,12 @@
                         enc.line(`Notas: ${datosGlobales.notas}`);
                     }
 
-                    enc.divider('=')
+                   enc.divider('=')
                        .align('center')
-                       .line('*** La firma y sello de este documento')
-                       .line('implica que el producto fue recibido en')
-                       .line('perfectas condiciones. ***')
+                       .font('B') // Activa letra pequeña (9x17 pts)
+                       .line('*** La firma y sello de este documento implica')
+                       .line('que el producto fue recibido en perfectas condiciones. ***')
+                       .font('A') // Restaura Fuente A normal para el próximo ticket
                        .feed(5);
 
                     dataBytes = enc.encode();

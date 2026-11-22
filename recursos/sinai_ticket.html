@@ -22,7 +22,7 @@
         .bold { font-weight: bold; }
         .logo { max-width: 50mm; max-height: 25mm; margin: 0 auto 4px auto; display: block; filter: grayscale(100%); }
         .divider { border-top: 1px dashed #000; margin: 4px 0; }
-        .header-emisor { font-size: 16px; font-weight: bold; text-transform: uppercase; }
+        .header-emisor { font-size: 12px; font-weight: bold; text-transform: uppercase; }
         table { width: 100%; border-collapse: collapse; margin-top: 3px; }
         td { padding: 2px 0; font-size: 9.5px; vertical-align: top; }
         .prod-title { font-size: 13px; padding-top: 3px; }
@@ -40,10 +40,10 @@
             <span class="material-icons">bolt</span> Impresión Rápida
         </button>
         <button id="btnBTGrafico" onclick="imprimirDirectoBT('grafico')" class="btn btn-bt">
-            <span class="material-icons">receipt_long</span> Con Logo
+            <span class="material-icons">receipt_long</span> Impresión con arte
         </button>
         <button onclick="window.print()" class="btn" style="background: white;">
-            <span class="material-icons">print</span> PC
+            <span class="material-icons">print</span> Imprimir (PC)
         </button>
         <div id="status" class="status-bar">Cargando datos del ticket...</div>
     </div>
@@ -52,6 +52,7 @@
         <div class="text-center">
             <img id="imgLogo" class="logo" src="" crossorigin="anonymous">
             <div class="header-emisor" id="emisorNombre"></div>
+            <div style="font-size: 10px;" id="emisorRif"></div>
         </div>
 
         <div style="margin-top: 4px;">
@@ -152,6 +153,7 @@
 
             document.getElementById('imgLogo').src = datosGlobales.emisor.logo || '';
             document.getElementById('emisorNombre').innerText = datosGlobales.emisor.nombre || '';
+            document.getElementById('emisorRif').innerText = datosGlobales.emisor.rifemisor || '';
             document.getElementById('lblTituloDoc').innerText = (datosGlobales.tituloDoc || 'COTIZACIÓN') + ':';
             document.getElementById('docId').innerText = datosGlobales.id;
             document.getElementById('docFecha').innerText = datosGlobales.fecha;
@@ -341,12 +343,12 @@
 
                 if (tipoImpresion === 'nativo') {
                     // --- CONSTRUCCIÓN ULTRA RÁPIDA EN TEXTO NATIVO ESC/POS ---
-                    status.innerText = "Generando ticket nativo de alta velocidad...";
+                    status.innerText = "Generando ticket nativo...";
                     const enc = new EscPosTextEncoder(ANCHO_MM);
                     
                     enc.init()
                        .align('center')
-                       .bold(true).size(2, 2).line(datosGlobales.emisor.nombre)
+                       .bold(true).size(1, 2).line(datosGlobales.emisor.nombre)
                        .size(1, 1);
 
                     if (datosGlobales.emisor.rifemisor) {

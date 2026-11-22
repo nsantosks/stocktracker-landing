@@ -138,7 +138,6 @@
         });
 
         function renderizarTicket() {
-            // Reajuste del contenedor según el ancho en mm recibido
             const ticketElement = document.getElementById('ticketContent');
             const anchoImprimibleMm = Math.round(ANCHO_MM * 0.9);
             ticketElement.style.width = `${anchoImprimibleMm}mm`;
@@ -150,9 +149,24 @@
             document.getElementById('docFecha').innerText = datosGlobales.fecha;
             document.getElementById('cliNombre').innerText = datosGlobales.cliente.nombre;
             document.getElementById('cliRif').innerText = datosGlobales.cliente.rif;
-            document.getElementById('cliSunagro').innerText = datosGlobales.cliente.sunagro || '';
-            document.getElementById('cliTlf').innerText = datosGlobales.cliente.telefono || '';
-            document.getElementById('cliDir').innerText = datosGlobales.cliente.direccion || '';
+
+            // --- Visibilidad condicional para ahorrar papel ---
+            const sunagro = String(datosGlobales.cliente.sunagro || '').trim();
+            document.getElementById('cliSunagro').innerText = sunagro;
+            document.getElementById('wrapSunagro').style.display = sunagro ? 'inline' : 'none';
+
+            const tlf = String(datosGlobales.cliente.telefono || '').trim();
+            document.getElementById('cliTlf').innerText = tlf;
+            document.getElementById('wrapTlf').style.display = tlf ? 'block' : 'none';
+
+            const dir = String(datosGlobales.cliente.direccion || '').trim();
+            document.getElementById('cliDir').innerText = dir;
+            document.getElementById('wrapDir').style.display = dir ? 'block' : 'none';
+
+            const notas = String(datosGlobales.notas || '').trim();
+            document.getElementById('docNotas').innerText = notas;
+            document.getElementById('wrapNotas').style.display = notas ? 'block' : 'none';
+            // --------------------------------------------------
 
             let itemsHtml = '';
             datosGlobales.items.forEach(item => {
@@ -168,7 +182,6 @@
             document.getElementById('tblItems').innerHTML = itemsHtml;
             document.getElementById('docTotal').innerText = datosGlobales.total.toFixed(2);
             document.getElementById('docPeso').innerText = (datosGlobales.pesoTotal || 0).toFixed(2);
-            document.getElementById('docNotas').innerText = datosGlobales.notas || '';
 
             ticketElement.style.display = 'block';
             document.getElementById('status').innerText = `Listo para conectar por Bluetooth (${ANCHO_MM}mm)`;

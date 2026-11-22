@@ -320,39 +320,42 @@
                 const rasterEncoder = new EscPosRasterEncoder();
                 rasterEncoder.init()
                              .drawCanvas(canvas)
-                             .feed(4);
+                             .feed(6); // Avance extra para superar la cuchilla de corte
 
-                status.innerText = "Imprimiendo ticket...";
+                status.innerText = "Enviando datos a la impresora...";
 
-                // 4. Envío parametrizado según idVel ('fast': Envio Rapido para incrementar velocidad vs 'normal': Envío controlado por bloques para evitar desbordamiento de buffer (MP80-05)')
+                // 4. Envío sincronizado para evitar cortes a mitad del ticket
                 const dataBytes = rasterEncoder.encode();
-                const chunkSize = 32;
+                const chunkSize = 20; // MTU seguro estándar BLE
                 const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
                     const chunk = dataBytes.slice(i, i + chunkSize);
 
                     if (MODO_VELOCIDAD === 'normal') {
-                        // MODO SEGURO ('normal'): Prioriza confirmación por hardware (write)
                         if (writeChar.properties.write) {
                             await writeChar.writeValue(chunk);
-                        } else if (writeChar.properties.writeWithoutResponse) {
+                        } else {
                             await writeChar.writeValueWithoutResponse(chunk);
-                            await esperar(20);
+                            await esperar(25);
                         }
                     } else {
-                        // MODO RÁPIDO ('fast' - por defecto): Prioriza velocidad sin esperar respuesta
+                        // En modo 'fast', pausamos 18ms cada 20 bytes para no saturar el buffer
                         if (writeChar.properties.writeWithoutResponse) {
                             await writeChar.writeValueWithoutResponse(chunk);
-                            await esperar(12);
-                        } else if (writeChar.properties.write) {
+                            await esperar(18);
+                        } else {
                             await writeChar.writeValue(chunk);
                         }
                     }
                 }
 
+                status.innerText = "Finalizando impresión física...";
+                // Esperar 4.5 segundos a que el cabezal termine de imprimir antes de cortar Bluetooth
+                await esperar(4500);
+
                 status.innerText = "¡Impresión completada con éxito!";
-                setTimeout(() => device.gatt.disconnect(), 1200);
+                device.gatt.disconnect();
 
             } catch (err) {
                 console.error(err);

@@ -313,16 +313,20 @@
 
                 status.innerText = "Imprimiendo ticket...";
 
-                // 4. Envío por bloques de bytes a la impresora
+                // 4. Envío controlado por bloques para evitar desbordamiento de buffer (MP80-05)
                 const dataBytes = rasterEncoder.encode();
-                const chunkSize = 120;
-                
+                const chunkSize = 32; // Tamaño seguro para BLE en impresoras portátiles
+                const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
                     const chunk = dataBytes.slice(i, i + chunkSize);
-                    if (writeChar.properties.writeWithoutResponse) {
-                        await writeChar.writeValueWithoutResponse(chunk);
-                    } else {
+                    
+                    // Priorizar escritura CON confirmación para sincronizar el flujo
+                    if (writeChar.properties.write) {
                         await writeChar.writeValue(chunk);
+                    } else if (writeChar.properties.writeWithoutResponse) {
+                        await writeChar.writeValueWithoutResponse(chunk);
+                        await esperar(20); // Pausa necesaria si no hay confirmación por hardware
                     }
                 }
 

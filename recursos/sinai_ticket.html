@@ -107,6 +107,7 @@
 
         let datosGlobales = null;
         let ANCHO_MM = 80; // Ancho predeterminado en milímetros
+        let MODO_VELOCIDAD = 'fast'; // Valor por defecto: 'fast' | 'normal'
 
         window.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
@@ -116,6 +117,10 @@
             
             // Lectura parametrizada del ancho del papel enviado por AppSheet/URL
             ANCHO_MM = parseFloat(params.get('ancho')) || 80;
+
+            // Lectura del parámetro idVel ('fast' por defecto si no se envía)
+            const velParam = (params.get('idVel') || 'fast').toLowerCase().trim();
+            MODO_VELOCIDAD = (velParam === 'normal') ? 'normal' : 'fast';
 
             if (!idgs || !idcot) {
                 document.getElementById('status').innerText = "⚠️ Faltan parámetros en la URL (idgs, idcot)";
@@ -184,7 +189,7 @@
             document.getElementById('docPeso').innerText = (datosGlobales.pesoTotal || 0).toFixed(2);
 
             ticketElement.style.display = 'block';
-            document.getElementById('status').innerText = `Listo para conectar por Bluetooth (${ANCHO_MM}mm)`;
+            document.getElementById('status').innerText = `Listo para conectar por Bluetooth (${ANCHO_MM}mm | Modo: ${MODO_VELOCIDAD.toUpperCase()})`;
         }
 
         // --- ENCODER DE MAPA DE BIT RÁSTER ESC/POS (GS v 0) ---
@@ -258,10 +263,16 @@
 
             try {
                 btn.disabled = true;
-                status.innerText = `Procesando imagen (${ANCHO_MM}mm)...`;
+                status.innerText = `Procesando imagen (${ANCHO_MM}mm | Modo: ${MODO_VELOCIDAD.toUpperCase()})...`;
 
                 // Conversión aritmética: Factor ~4.8 px/mm para cabezal de 203 DPI
-                const canvasWidthPx = Math.round(ANCHO_MM * 4.8);
+                //const canvasWidthPx = Math.round(ANCHO_MM * 4.8);
+
+                // 1. Ajustar la captura exactamente a los 576 puntos nativos del cabezal (72mm a 203 DPI)
+                //const canvasWidthPx = Math.round(ANCHO_MM * 3.6);
+                
+                //1. Ajuste dinámico según el ancho real del contenedor del ticket (para evitar recortes)
+                const canvasWidthPx = ticketElement.offsetWidth;
 
                 // 1. Captura del HTML ajustada dinámicamente según el ancho parametrizado
                 const canvas = await html2canvas(ticketElement, {
@@ -313,20 +324,30 @@
 
                 status.innerText = "Imprimiendo ticket...";
 
-                // 4. Envío controlado por bloques para evitar desbordamiento de buffer (MP80-05)
+                // 4. Envío parametrizado según idVel ('fast': Envio Rapido para incrementar velocidad vs 'normal': Envío controlado por bloques para evitar desbordamiento de buffer (MP80-05)')
                 const dataBytes = rasterEncoder.encode();
-                const chunkSize = 32; // Tamaño seguro para BLE en impresoras portátiles
+                const chunkSize = 32;
                 const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
                     const chunk = dataBytes.slice(i, i + chunkSize);
-                    
-                    // Priorizar escritura CON confirmación para sincronizar el flujo
-                    if (writeChar.properties.write) {
-                        await writeChar.writeValue(chunk);
-                    } else if (writeChar.properties.writeWithoutResponse) {
-                        await writeChar.writeValueWithoutResponse(chunk);
-                        await esperar(20); // Pausa necesaria si no hay confirmación por hardware
+
+                    if (MODO_VELOCIDAD === 'normal') {
+                        // MODO SEGURO ('normal'): Prioriza confirmación por hardware (write)
+                        if (writeChar.properties.write) {
+                            await writeChar.writeValue(chunk);
+                        } else if (writeChar.properties.writeWithoutResponse) {
+                            await writeChar.writeValueWithoutResponse(chunk);
+                            await esperar(20);
+                        }
+                    } else {
+                        // MODO RÁPIDO ('fast' - por defecto): Prioriza velocidad sin esperar respuesta
+                        if (writeChar.properties.writeWithoutResponse) {
+                            await writeChar.writeValueWithoutResponse(chunk);
+                            await esperar(12);
+                        } else if (writeChar.properties.write) {
+                            await writeChar.writeValue(chunk);
+                        }
                     }
                 }
 

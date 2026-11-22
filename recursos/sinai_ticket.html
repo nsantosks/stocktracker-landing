@@ -36,11 +36,14 @@
 <body>
 
     <div id="control-panel">
-        <button id="btnBT" onclick="imprimirDirectoBT()" class="btn btn-bt">
-            <span class="material-icons">bluetooth</span> Imprimir Impresora Portatil
+        <button id="btnBTRapido" onclick="imprimirDirectoBT('nativo')" class="btn" style="background: #16a34a; color: white;">
+            <span class="material-icons">bolt</span> Impresión Rápida
+        </button>
+        <button id="btnBTGrafico" onclick="imprimirDirectoBT('grafico')" class="btn btn-bt">
+            <span class="material-icons">receipt_long</span> Con Logo
         </button>
         <button onclick="window.print()" class="btn" style="background: white;">
-            <span class="material-icons">print</span> Imprimir (PC)
+            <span class="material-icons">print</span> PC
         </button>
         <div id="status" class="status-bar">Cargando datos del ticket...</div>
     </div>
@@ -193,6 +196,7 @@
         }
 
         // --- ENCODER DE MAPA DE BIT RÁSTER ESC/POS (GS v 0) ---
+        // --- ENCODER DE MAPA DE BIT RÁSTER ESC/POS (GS v 0) ---
         class EscPosRasterEncoder {
             constructor() { this.buffer = []; }
 
@@ -251,8 +255,76 @@
             }
         }
 
-        async function imprimirDirectoBT() {
-            const btn = document.getElementById('btnBT');
+        // --- ENCODER NATIVO DE TEXTO ESC/POS (ULTRA RÁPIDO < 1 SEGUNDO) ---
+        class EscPosTextEncoder {
+            constructor(anchoMm = 80) {
+                this.buffer = [];
+                this.cols = anchoMm <= 60 ? 32 : 48;
+            }
+
+            limpiar(texto) {
+                return String(texto || '')
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .replace(/ñ/g, 'n').replace(/Ñ/g, 'N')
+                    .replace(/[^\x20-\x7E]/g, '');
+            }
+
+            raw(bytes) {
+                this.buffer.push(...bytes);
+                return this;
+            }
+
+            init() {
+                return this.raw([0x1B, 0x40, 0x1B, 0x74, 0x00]);
+            }
+
+            align(pos) {
+                const map = { left: 0, center: 1, right: 2 };
+                return this.raw([0x1B, 0x61, map[pos] || 0]);
+            }
+
+            bold(activo) {
+                return this.raw([0x1B, 0x45, activo ? 1 : 0]);
+            }
+
+            size(ancho = 1, alto = 1) {
+                const n = ((ancho - 1) << 4) | (alto - 1);
+                return this.raw([0x1D, 0x21, n]);
+            }
+
+            line(texto = '') {
+                const limpio = this.limpiar(texto);
+                for (let i = 0; i < limpio.length; i++) {
+                    this.buffer.push(limpio.charCodeAt(i));
+                }
+                this.buffer.push(0x0A);
+                return this;
+            }
+
+            divider(char = '-') {
+                return this.line(char.repeat(this.cols));
+            }
+
+            row(izq, der) {
+                const sIzq = this.limpiar(izq);
+                const sDer = this.limpiar(der);
+                const espacios = Math.max(1, this.cols - sIzq.length - sDer.length);
+                return this.line(sIzq + ' '.repeat(espacios) + sDer);
+            }
+
+            feed(lines = 5) {
+                return this.raw([0x1B, 0x64, lines]);
+            }
+
+            encode() {
+                return new Uint8Array(this.buffer);
+            }
+        }
+
+        async function imprimirDirectoBT(tipoImpresion = 'nativo') {
+            const btnRapido = document.getElementById('btnBTRapido');
+            const btnGrafico = document.getElementById('btnBTGrafico');
             const status = document.getElementById('status');
             const ticketElement = document.getElementById('ticketContent');
 
@@ -262,30 +334,90 @@
             }
 
             try {
-                btn.disabled = true;
-                status.innerText = `Procesando imagen (${ANCHO_MM}mm | Modo: ${MODO_VELOCIDAD.toUpperCase()})...`;
+                btnRapido.disabled = true;
+                btnGrafico.disabled = true;
 
-                // Conversión aritmética: Factor ~4.8 px/mm para cabezal de 203 DPI
-                //const canvasWidthPx = Math.round(ANCHO_MM * 4.8);
+                let dataBytes;
 
-                // 1. Ajustar la captura exactamente a los 576 puntos nativos del cabezal (72mm a 203 DPI)
-                //const canvasWidthPx = Math.round(ANCHO_MM * 3.6);
-                
-                //1. Ajuste dinámico según el ancho real del contenedor del ticket (para evitar recortes)
-                const canvasWidthPx = ticketElement.offsetWidth;
+                if (tipoImpresion === 'nativo') {
+                    // --- CONSTRUCCIÓN ULTRA RÁPIDA EN TEXTO NATIVO ESC/POS ---
+                    status.innerText = "Generando ticket nativo de alta velocidad...";
+                    const enc = new EscPosTextEncoder(ANCHO_MM);
+                    
+                    enc.init()
+                       .align('center')
+                       .bold(true).size(2, 2).line(datosGlobales.emisor.nombre)
+                       .size(1, 1);
 
-                // 1. Captura del HTML ajustada dinámicamente según el ancho parametrizado
-                const canvas = await html2canvas(ticketElement, {
-                    scale: 2,
-                    width: canvasWidthPx,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: '#ffffff'
-                });
+                    if (datosGlobales.emisor.rifemisor) {
+                        enc.line(`RIF: ${datosGlobales.emisor.rifemisor}`);
+                    }
+                    enc.bold(false).divider('-');
+
+                    enc.align('left')
+                       .bold(true).line(`${datosGlobales.tituloDoc || 'COTIZACION'}: ${datosGlobales.id}`).bold(false)
+                       .line(`Fecha: ${datosGlobales.fecha}`)
+                       .line(`Cliente: ${datosGlobales.cliente.nombre}`);
+
+                    const sunagro = String(datosGlobales.cliente.sunagro || '').trim();
+                    const lineaRif = sunagro 
+                        ? `CI/RIF: ${datosGlobales.cliente.rif} | SUNAGRO: ${sunagro}`
+                        : `CI/RIF: ${datosGlobales.cliente.rif}`;
+                    enc.line(lineaRif);
+
+                    if (datosGlobales.cliente.telefono) enc.line(`Telf: ${datosGlobales.cliente.telefono}`);
+                    if (datosGlobales.cliente.direccion) enc.line(`Dir: ${datosGlobales.cliente.direccion}`);
+
+                    enc.divider('-');
+
+                    datosGlobales.items.forEach(item => {
+                        const subtotal = (item.cantidadOriginal * item.precio).toFixed(2);
+                        const detalle = `${item.cantidadOriginal} ${item.unidad || 'UND'} x ${Number(item.precio).toFixed(2)}`;
+                        enc.bold(true).line(item.producto).bold(false)
+                           .row(detalle, subtotal);
+                    });
+
+                    enc.divider('-')
+                       .bold(true).size(1, 2)
+                       .row('TOTAL ref.:', datosGlobales.total.toFixed(2))
+                       .size(1, 1).bold(false)
+                       .line(`Peso Total: ${(datosGlobales.pesoTotal || 0).toFixed(2)} Kg`);
+
+                    if (datosGlobales.notas) {
+                        enc.line(`Notas: ${datosGlobales.notas}`);
+                    }
+
+                    enc.divider('=')
+                       .align('center')
+                       .line('*** La firma y sello de este documento')
+                       .line('implica que el producto fue recibido en')
+                       .line('perfectas condiciones. ***')
+                       .feed(5);
+
+                    dataBytes = enc.encode();
+
+                } else {
+                    // --- CONSTRUCCIÓN ELABORADA CON LOGO (MAPA DE BITS GS v 0) ---
+                    status.innerText = `Procesando imagen con logo (${ANCHO_MM}mm)...`;
+                    const canvasWidthPx = ticketElement.offsetWidth;
+                    const canvas = await html2canvas(ticketElement, {
+                        scale: 2,
+                        width: canvasWidthPx,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#ffffff'
+                    });
+
+                    const rasterEncoder = new EscPosRasterEncoder();
+                    rasterEncoder.init()
+                                 .drawCanvas(canvas)
+                                 .feed(6);
+
+                    dataBytes = rasterEncoder.encode();
+                }
 
                 status.innerText = "Buscando impresora Bluetooth...";
 
-                // 2. Conexión por Bluetooth BLE
                 const device = await navigator.bluetooth.requestDevice({
                     acceptAllDevices: true,
                     optionalServices: CANDIDATE_SERVICES
@@ -314,19 +446,9 @@
                     throw new Error("No se encontró canal de escritura BLE en la impresora.");
                 }
 
-                status.innerText = "Traduciendo a matriz de puntos...";
+                status.innerText = "Imprimiendo ticket...";
 
-                // 3. Generación de matriz gráfica de puntos (GS v 0)
-                const rasterEncoder = new EscPosRasterEncoder();
-                rasterEncoder.init()
-                             .drawCanvas(canvas)
-                             .feed(6); // Avance extra para superar la cuchilla de corte
-
-                status.innerText = "Enviando datos a la impresora...";
-
-                // 4. Envío sincronizado para evitar cortes a mitad del ticket
-                const dataBytes = rasterEncoder.encode();
-                const chunkSize = 20; // MTU seguro estándar BLE
+                const chunkSize = 20;
                 const esperar = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
                 for (let i = 0; i < dataBytes.length; i += chunkSize) {
@@ -340,7 +462,6 @@
                             await esperar(25);
                         }
                     } else {
-                        // En modo 'fast', pausamos 18ms cada 20 bytes para no saturar el buffer
                         if (writeChar.properties.writeWithoutResponse) {
                             await writeChar.writeValueWithoutResponse(chunk);
                             await esperar(18);
@@ -351,8 +472,8 @@
                 }
 
                 status.innerText = "Finalizando impresión física...";
-                // Esperar 4.5 segundos a que el cabezal termine de imprimir antes de cortar Bluetooth
-                await esperar(4500);
+                // En modo nativo basta 1.2s; en modo gráfico esperamos 4.5s
+                await esperar(tipoImpresion === 'nativo' ? 1200 : 4500);
 
                 status.innerText = "¡Impresión completada con éxito!";
                 device.gatt.disconnect();
@@ -362,7 +483,8 @@
                 status.innerText = "Error: " + err.message;
                 alert("Error durante la impresión: " + err.message);
             } finally {
-                btn.disabled = false;
+                btnRapido.disabled = false;
+                btnGrafico.disabled = false;
             }
         }
     </script>

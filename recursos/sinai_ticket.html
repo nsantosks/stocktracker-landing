@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impresión de Ticket - MP80-05</title>
+    <title>Impresión de Ticket</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Carga de html2canvas para rasterización de alta resolución -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -107,7 +107,7 @@
 
         let datosGlobales = null;
         let ANCHO_MM = 80; // Ancho predeterminado en milímetros
-        let MODO_VELOCIDAD = 'fast'; // Valor por defecto: 'fast' | 'normal'
+        let MODO_VELOCIDAD = 'normal'; // Valor por defecto: 'fast' | 'normal'
 
         window.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);

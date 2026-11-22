@@ -119,8 +119,8 @@
             ANCHO_MM = parseFloat(params.get('ancho')) || 80;
 
             // Lectura del parámetro idVel ('fast' por defecto si no se envía)
-            const velParam = (params.get('idVel') || 'fast').toLowerCase().trim();
-            MODO_VELOCIDAD = (velParam === 'normal') ? 'normal' : 'fast';
+            const velParam = (params.get('idVel') || 'normal').toLowerCase().trim();
+            MODO_VELOCIDAD = (velParam === 'fast') ? 'fast' : 'normal';
 
             if (!idgs || !idcot) {
                 document.getElementById('status').innerText = "⚠️ Faltan parámetros en la URL (idgs, idcot)";
